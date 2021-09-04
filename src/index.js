@@ -1,13 +1,14 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './index.css';
 import { BrowserRouter as Router } from "react-router-dom";
 import reportWebVitals from './reportWebVitals';
+import { Trendago } from './components/Trendago';
+import './index.css';
 
 ReactDOM.render(
   <React.StrictMode>
     <Router>
-    {/* <App /> */}
+    <Trendago />
     </Router>
   </React.StrictMode>,
   document.getElementById('root')
