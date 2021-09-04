@@ -3,9 +3,9 @@
     min-height: 5rem;
   }
   
-  body {
-    background-color: #edf8fd;
-  }
+  /* body {
+     background-color: #edf8fd; 
+  } */
   
   .login-body {
     /* background-image: url(./react.png); */
@@ -27,7 +27,7 @@
   }
   
   .sign-in {
-    background-color: rgb(124, 165, 241);
+    /* background-color: rgb(124, 165, 241); */
     padding: 1rem;
     margin-top: 1rem;
     margin-bottom: 1rem;

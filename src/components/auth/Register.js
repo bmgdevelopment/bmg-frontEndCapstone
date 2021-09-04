@@ -18,6 +18,7 @@ export const Register = () => {
         regionId: 0,
         dateJoined: registerDate
     })
+    
     const [conflictDialog, setConflictDialog] = useState(false)
     const history = useHistory()
 
@@ -48,7 +49,11 @@ export const Register = () => {
                         },
                         body: JSON.stringify({
                             email: registerUser.email,
-                            name: `${registerUser.firstName} ${registerUser.lastName}`
+                            name: `${registerUser.firstName} ${registerUser.lastName}`,
+                            gender: registerUser.gender,
+                            profileURL: registerUser.profileURL,
+                            regionId: registerUser.regionId,
+                            dateJoined: registerDate
                         })
                     })
                         .then(res => res.json())

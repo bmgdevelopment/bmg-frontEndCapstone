@@ -1,0 +1,62 @@
+nav * {
+    list-style: none;
+    text-decoration: none;
+    color: darkslategrey;
+}
+
+.topNav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border: 4px solid yellow;
+    border-bottom: .5px solid rgba(128, 128, 128, 0.742);
+    /* position: fixed; */
+    margin-bottom: 3em;
+    padding-left: 7em;
+    padding-right: 7em;
+}
+
+.logoDiv {
+    /* border: 2px solid rgb(165, 18, 194); */
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    align-items: center;
+    width: 300px;
+    height: auto;
+    margin-bottom: .5em;
+}
+
+.trendagoLogo {
+    height: 60px;
+    width: auto;
+    /* border: 2px solid coral; */
+    margin-left: .5em;
+    margin-top: .5em;
+}
+
+/* .navUL {
+    flex-direction: row; 
+    border: 2px solid yellowgreen;
+} */
+
+.allNavLi {
+    display: flex;
+    align-content: space-between;
+    justify-content: space-between;
+    border: 2px solid skyblue;
+    color: gray;
+    width: 60em;
+    /* margin-right: 1em; */
+}
+
+.aNavLink {
+    margin-left: em;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 20px;
+    font-weight: 600;
+}
+
+.aNavLink a:hover {
+    color: rgb(5, 124, 171);
+}

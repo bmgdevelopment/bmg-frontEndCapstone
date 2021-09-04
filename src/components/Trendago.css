@@ -3,24 +3,31 @@
     display: flex;
     margin-right: 5em;
     margin-left: 5em;
+    margin-bottom: 10em;
+    /* padding-top: 90px; */
 }
 
 /* ASIDE PANEL */
 .asidePanelHome {
     border: 2px solid green;
-    margin-top: 5em;
-    margin-right: 5em;
-    margin-left: 5em;
-    padding: 30px 30px;
+    margin-top: 2em;
+    margin-right: 2em;
+    margin-left: 2em;
+    /* padding-top: 30px 30px; */
 
 }
 
 .asideSearchDiv {
     border: 2px solid blue;
+    margin: 3px 30px;
+    display: flex;
 }
 
 .asideAddNewDiv {
     border: 2px solid red;
+    margin: 20px 30px;
+    display: flex;
+    justify-content: center;
 }
 
 .regionBannerLinks {
@@ -29,9 +36,10 @@
 }
 
 .regionBanner {
-    height: 40px;
-    width: 200px;
-    border: 2px solid black;    
+    height: 60px;
+    width: auto;
+    border: 1px solid rgba(159, 159, 159, 0.783);  
+    /* margin-bottom: 10px;   */
 }
 
 /* MAIN FEED */
@@ -40,9 +48,10 @@
 }
 
 .organizeTilesDiv {
-    border: 5px dotted purple;
+    border: 5px dotted red;
     display: flex;
-    justify-content: center;
+    justify-content: space-evenly;
+    align-items: center;
     padding-left: 3em;
     padding-right: 3em;
     flex-wrap: wrap;
@@ -51,5 +60,6 @@
 .outfitAccTile {
     height: 350px;
     width: 250px;
-    border: 2px solid black;    
+    border: 2px solid rgb(218, 216, 216);    
+    margin-top: 2em;
 }

@@ -1,0 +1,8 @@
+.allUserDiv {
+    border: 2px solid purple;
+    display: flex;
+    flex-direction: column;
+    margin-right: 5em;
+    margin-left: 5em;
+    margin-bottom: 10em;
+}

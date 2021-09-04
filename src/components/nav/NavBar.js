@@ -1,6 +1,7 @@
 import React from "react"
 import { Link, useHistory } from "react-router-dom"
 import "./NavBar.css"
+import plainLogoClear from "../images/plainLogoClear.png"
 
 export const NavBar = () => {
     const history = useHistory()
@@ -11,34 +12,40 @@ export const NavBar = () => {
     }
 
     return (
-        <nav className="">
-            <ul className="">
-                {/* <button>
-                    <li>
-                        <Link className="" to="/">
-                            <img className="" alt="" to="/home" src=""/>
-                        </Link>
-                    </li>
-                </button> */}
+        <nav className="topNav">
+            <div className="logoDiv">
+                    <Link className="" to="/">
+                        <img className="trendagoLogo" alt="trendagoLogo" src={plainLogoClear} />
+                    </Link>
+              
+            </div>
 
-                <li className="">
+            <ul className="navUL">
+                <div className="allNavLi">
+
+                    {/* <li className="aNavLink">
                     <Link className="" to="/"></Link>
-                </li>
-                <li className="">
-                    <Link className="" to="/profile">Profile</Link>
-                </li>
-                <li className="">
-                    <Link className="" to="/customerReviews">Customer Reviews</Link>
-                </li>
-                <li className="">
-                    <Link className="" to="/about">About</Link>
-                </li>
-                <li className="">
-                    <Link className="" to="/contactUs">Contact Us</Link>
-                </li>
-                <li className="">
-                    <Link className="" onClick={Logout}>Logout</Link>
-                </li>
+                </li> */}
+                    <li className="aNavLink">
+                        <Link className="" to="/profile">My Travel Trends</Link>
+                    </li>
+                    <li className="aNavLink">
+                        <Link className="" to="/trendyTravelers">Trendy Travelers</Link>
+                    </li>
+                    <li className="aNavLink">
+                        <Link className="" to="/customerReviews">Customer Reviews</Link>
+                    </li>
+                    <li className="aNavLink">
+                        <Link className="" to="/about">About</Link>
+                    </li>
+                    <li className="aNavLink">
+                        <Link className="" to="/contactUs">Contact Us</Link>
+                    </li>
+                    <li className="aNavLink">
+                        <Link className="" onClick={Logout}>Logout</Link>
+                    </li>
+                </div>
+
             </ul>
         </nav>
     )
