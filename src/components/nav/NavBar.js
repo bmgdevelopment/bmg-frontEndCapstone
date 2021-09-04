@@ -13,13 +13,13 @@ export const NavBar = () => {
     return (
         <nav className="">
             <ul className="">
-                <button>
+                {/* <button>
                     <li>
                         <Link className="" to="/">
                             <img className="" alt="" to="/home" src=""/>
                         </Link>
                     </li>
-                </button>
+                </button> */}
 
                 <li className="">
                     <Link className="" to="/"></Link>

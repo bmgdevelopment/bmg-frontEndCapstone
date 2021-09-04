@@ -7,7 +7,7 @@ export const Home = () => {
 
             <aside className="asidePanelHome">
                 <div className="asideSearchDiv">
-                    <input>🔍</input><button>Search</button>
+                    <input></input><button>Search</button>
                 </div>
 
                 <div className="asideAddNewDiv">
@@ -17,28 +17,30 @@ export const Home = () => {
                 <div className="asideRegionsDiv">
                     <h4>REGION QUICK LINKS</h4>
                     <div className="regionBannerLinks">
-                        <img className="regionBanner" alt="">🌏</img>
-                        <img className="regionBanner" alt="">🌏</img>
-                        <img className="regionBanner" alt="">🌏</img>
-                        <img className="regionBanner" alt="">🌏</img>
-                        <img className="regionBanner" alt="">🌏</img>
-                        <img className="regionBanner" alt="">🌏</img>
-                        <img className="regionBanner" alt="">🌏</img>
+                        <img className="regionBanner" alt=""></img>
+                        <img className="regionBanner" alt=""></img>
+                        <img className="regionBanner" alt=""></img>
+                        <img className="regionBanner" alt=""></img>
+                        <img className="regionBanner" alt=""></img>
+                        <img className="regionBanner" alt=""></img>
+                        <img className="regionBanner" alt=""></img>
+                    
                     </div>
                 </div>
             </aside>
 
             <div className="mainFeedHome">
                 <div className="organizeTilesDiv">
-                <img className="outfitAccTile" alt="">👚</img>
-                <img className="outfitAccTile" alt="">👚</img>
-                <img className="outfitAccTile" alt="">👚</img>
-                <img className="outfitAccTile" alt="">👚</img>
-                <img className="outfitAccTile" alt="">👚</img>
-                <img className="outfitAccTile" alt="">👚</img>
-                <img className="outfitAccTile" alt="">👚</img>
-                <img className="outfitAccTile" alt="">👚</img>
-                <img className="outfitAccTile" alt="">👚</img>
+                <img className="outfitAccTile" alt=""></img>
+                <img className="outfitAccTile" alt=""></img>
+                <img className="outfitAccTile" alt=""></img>
+                <img className="outfitAccTile" alt=""></img>
+                <img className="outfitAccTile" alt=""></img>
+                <img className="outfitAccTile" alt=""></img>
+                <img className="outfitAccTile" alt=""></img>
+                <img className="outfitAccTile" alt=""></img>
+                <img className="outfitAccTile" alt=""></img>
+                
                 </div>
             </div>
 
