@@ -1,10 +1,6 @@
 import React, { useContext, useEffect } from "react"
 import { UserContext } from "./UserProvider"
 import "./User.css"
-// import Admin from "../images/profilePics/Admin.png"
-import EmptyW from "../images/profilePics/EmptyW.png"
-import EmptyM from "../images/profilePics/EmptyM.png"
-
 
 
 export const UserList = () => {
