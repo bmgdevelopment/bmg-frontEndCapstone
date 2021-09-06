@@ -13,8 +13,8 @@ export const Register = () => {
         firstName: "",
         lastName: "",
         email: "",
-        gender: "Non-binary",
-        profileURL: "🙍🏽‍♀️🙎🏽‍♂️",
+        gender: "",
+        profileURL: "",
         regionId: 0,
         dateJoined: registerDate
     })

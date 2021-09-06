@@ -51,12 +51,12 @@ nav * {
 }
 
 .aNavLink {
-    margin-left: em;
+    /* margin-left: em; */
     font-family: 'Cormorant Garamond', serif;
     font-size: 20px;
     font-weight: 600;
 }
 
 .aNavLink a:hover {
-    color: rgb(5, 124, 171);
+    color: rgb(12, 72, 96);
 }
