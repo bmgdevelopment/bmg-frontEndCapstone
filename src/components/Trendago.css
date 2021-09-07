@@ -54,8 +54,9 @@
 }
 
 .addItemBanner {
-    height: 85px;
-    width: 255px;
+    height: 100px;
+    width: 275px;
+    border-radius: 5px;
     /* border: 1px solid rgba(159, 159, 159, 0);   */
     margin-bottom: 2px;  
 }

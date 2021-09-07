@@ -1,11 +1,10 @@
 import React, { createContext, useState} from "react"
-import "./Item.css"
 
 const apiURL = "http://localhost:7000"
 export const ItemContext = createContext()
 
 export const ItemProvider = (props) => {
-    const [items, setItems] = useState([])
+    const [ items, setItems ] = useState([])
 
     const getItems = () => {
         return fetch(`${apiURL}/items?_expand=user&_expand=region`)
@@ -36,7 +35,7 @@ export const ItemProvider = (props) => {
         <ItemContext.Provider value={
             { items, getItems, updateItem, deleteItem}
         }>
-
+            { props.children }
         </ItemContext.Provider>
     )
 
