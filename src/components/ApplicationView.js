@@ -15,8 +15,13 @@ import { RegionProvider } from "./region/RegionProvider"
 export const ApplicationView = () => {
     return (
         <>
-            <UserProvider>
+            {/* HOME VIEW WITH HARD CODED INFO */}
+            <Route exact path="/">
+                <Home />
+            </Route>
 
+            {/* ONE USER PROFILE DETAIL */}
+            <UserProvider>
                 <RegionProvider>
                     <ItemProvider>
                         <Route exact path="/profile">
@@ -26,10 +31,7 @@ export const ApplicationView = () => {
                 </RegionProvider>
             </UserProvider>
 
-            <Route exact path="/">
-                <Home />
-            </Route>
-
+            {/* ALL USERLIST */}
             <UserProvider>
                 <Route exact path="/trendyTravelers">
                     <UserList />

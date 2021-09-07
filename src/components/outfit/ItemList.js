@@ -1,16 +1,18 @@
 import React, { useEffect, useContext } from "react"
 import { ItemContext } from "./ItemProvider"
-import { UserContext } from "../user/UserProvider"
+import { Link } from "react-router-dom"
+
+// import { UserContext } from "../user/UserProvider"
 import "./Item.css"
 
 export const ItemList = () => {
     const { items, getItems } = useContext(ItemContext)
-    const { users, getUsers } = useContext(UserContext)
+    // const { users, getUsers } = useContext(UserContext)
 
-    useEffect(() => {
-        getUsers()
-        // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [])
+    // useEffect(() => {
+    //     getUsers()
+    //     // eslint-disable-next-line react-hooks/exhaustive-deps
+    // }, [])
 
     useEffect(() => {
         getItems()
@@ -28,7 +30,9 @@ export const ItemList = () => {
                     </div>
 
                     <div className="asideAddNewDiv">
-                        <button> <img className="addItemBanner" alt="Add item" src="http://dslv9ilpbe7p1.cloudfront.net/DsfNvC21hTskBXoyodN2Nw_store_banner_image.jpeg"></img>+ New Item</button>
+                        <Link to="/addNewItem">
+                        <img className="addItemBanner" alt="Add item" src="http://dslv9ilpbe7p1.cloudfront.net/DsfNvC21hTskBXoyodN2Nw_store_banner_image.jpeg"></img>
+                        </Link>
                     </div>
 
                     <div className="asideRegionsDiv">

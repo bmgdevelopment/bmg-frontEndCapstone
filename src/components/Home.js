@@ -1,5 +1,5 @@
 import React from "react"
-
+import { Link } from "react-router-dom"
 import "./outfit/Item.css"
 
 export const Home = () => {
@@ -10,15 +10,17 @@ export const Home = () => {
 
                 <aside className="asidePanelHome">
                     <div className="asideSearchDiv">
-                        <input></input><button>Search</button>
+                        <input></input><button>🔍</button>
                     </div>
 
                     <div className="asideAddNewDiv">
-                        <button> <img className="addItemBanner" alt="Add item" src="http://dslv9ilpbe7p1.cloudfront.net/DsfNvC21hTskBXoyodN2Nw_store_banner_image.jpeg"></img>+ New Item</button>
+                        <Link to="/addNewItem">
+                        <img className="addItemBanner" alt="Add item" src="http://dslv9ilpbe7p1.cloudfront.net/DsfNvC21hTskBXoyodN2Nw_store_banner_image.jpeg"></img>
+                        </Link>
                     </div>
 
                     <div className="asideRegionsDiv">
-                        <h4 className="h4RegionLink">REGION QUICK LINKS</h4>
+                        <h4 className="h4RegionLink">ALL REGIONS</h4>
                         <div className="regionBannerLinks">
                             <img className="regionBanner" alt="Africa1" src="https://i.pinimg.com/originals/b1/39/93/b13993a6b2dc8fdaf66d5e9a12ab0c28.jpg"></img>
                             <img className="regionBanner" alt="Antartica2" src="http://wallpaperstock.net/mountains--lake-antarctica_wallpapers_48195_852x480.jpg"></img>

@@ -1,6 +1,8 @@
 import React, { useEffect, useContext, useState } from "react"
 import { ItemContext } from "../outfit/ItemProvider"
 import { UserContext } from "../user/UserProvider"
+import { Link } from "react-router-dom"
+
 import "../Trendago.css"
 
 export const ProfileDetail = () => {
@@ -32,15 +34,17 @@ export const ProfileDetail = () => {
 
                 <aside className="asidePanelHome">
                     <div className="asideSearchDiv">
-                        <input></input><button>Search</button>
+                        <input></input><button>🔍</button>
                     </div>
 
                     <div className="asideAddNewDiv">
-                       <img className="addItemBanner" alt="Add item" src="http://dslv9ilpbe7p1.cloudfront.net/DsfNvC21hTskBXoyodN2Nw_store_banner_image.jpeg"></img>
+                        <Link to="/addNewItem">
+                        <img className="addItemBanner" alt="Add item" src="http://dslv9ilpbe7p1.cloudfront.net/DsfNvC21hTskBXoyodN2Nw_store_banner_image.jpeg"></img>
+                        </Link>
                     </div>
 
                     <div className="asideRegionsDiv">
-                        <h4 className="h4RegionLink">REGION QUICK LINKS</h4>
+                        <h4 className="h4RegionLink">All Regions</h4>
                         <div className="regionBannerLinks">
                             <img className="regionBanner" alt="Africa1" src="https://i.pinimg.com/originals/b1/39/93/b13993a6b2dc8fdaf66d5e9a12ab0c28.jpg"></img>
 

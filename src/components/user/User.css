@@ -2,8 +2,8 @@
     /* border: 2px solid purple; */
     display: flex;
     flex-direction: column;
-    margin-right: 6em;
-    margin-left: 6em;
+    margin-right: 10em;
+    margin-left: 10em;
     margin-bottom: 10em;
 }
 
@@ -42,6 +42,7 @@
 }
 
 .profileIMG {
+    filter: drop-shadow(0px 0px 20px rgba(172, 172, 172, 0.199));
     /* outline: 15px solid #63A6B1; */
     box-shadow: 0px 0px 0px 10px #63A6B1;
     border: 5px solid white;
@@ -68,18 +69,24 @@
 
 .profileBannerBkgd {
     width: 900px;
+    margin-top: 25px;
     height: 200px;
+    z-index: -8;
+    /* filter: blur(1px); */
+    /* filter: grayscale(80%); */
     /* border: 2px solid orange; */
 }
 
 .userProfileIMGBanner {
     box-shadow: 0px 0px 0px 10px #63A6B1;
+    filter: drop-shadow(0px 0px 20px rgba(172, 172, 172, 0.199));
     border: 5px solid white;
     border-radius: 50%;
     outline: 50%;
     width: 150px;
     margin-top: -220px;
     margin-left: 40px;
+    filter: drop-shadow(0px 0px 20px rgba(172, 172, 172, 0.199));
 }
 
 /* 
@@ -91,6 +98,7 @@
 .userProfileIMGSolo {
     /* border: 2px solid rgb(255, 6, 6); */
     margin-top: -20px;
+    z-index: 2;
 } 
 
 .userProfileTitle {
