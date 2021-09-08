@@ -1,5 +1,6 @@
-import React, {  useState } from "react"
+import React, { useState } from "react"
 import { Link, useHistory } from "react-router-dom";
+import { Button, Divider, Form, Grid, Segment } from 'semantic-ui-react'
 import "./Login.css"
 
 const apiURL = "http://localhost:7001"
@@ -39,36 +40,82 @@ export const Login = () => {
 
     return (
         <div className="login-body">
-        <main className="container--login">
-            <dialog className="dialog dialog--auth" open={existDialog}>
-                <div>User does not exist</div>
-                <button className="button--close" onClick={e => setExistDialog(false)}>Close</button>
-            </dialog>
-            <section>
-                <form className="form--login" onSubmit={handleLogin}>
-                    <h1 className>TRENDAGO</h1>
-                    <h4>Please sign in</h4>
-                    <fieldset>
-                        <label htmlFor="inputEmail"> Email address </label>
-                        <input type="email"
-                            id="email"
-                            className="form-control"
-                            placeholder="Email address"
-                            required autoFocus
-                            value={loginUser.email}
-                            onChange={handleInputChange} />
-                    </fieldset>
-                    <fieldset>
-                        <button type="submit" className="sign-in">
-                            Sign in
-                        </button>
-                    </fieldset>
-                </form>
-            </section>
-            <section className="link--register">
-                <Link to="/register" className="register">Create an account</Link>
-            </section>
-        </main>
+            <main className="container--login">
+                <dialog className="dialog dialog--auth" open={existDialog}>
+                    <div>User does not exist</div>
+                    <button className="button--close" onClick={e => setExistDialog(false)}>Close</button>
+                </dialog>
+
+                <section className="formSection">
+                    <form className="form--login" onSubmit={handleLogin}>
+                        <h1 className="loginTitle">TRENDAGO</h1>
+                        <h4>Please sign in</h4>
+
+                        <div className="loginFields">
+
+                            <fieldset>
+                                <label htmlFor="inputEmail"> Email address </label>
+                                <input type="email"
+                                    id="email"
+                                    className="form-control"
+                                    placeholder="Email address"
+                                    required autoFocus
+                                    value={loginUser.email}
+                                    onChange={handleInputChange} />
+                            </fieldset>
+
+                            <fieldset>
+                                <button type="submit" className="sign-in">
+                                    Sign in
+                                </button>
+                            </fieldset>
+                        </div>
+
+                        <div>
+                            <Segment placeholder>
+                                <Grid columns={2} relaxed='very' stackable>
+                                    <Grid.Column>
+                                        <Form onSubmit={handleLogin}>
+                                            <Form.Input
+                                                icon='user'
+                                                id="email"
+                                                className="form-control"
+                                                iconPosition='left'
+                                                label='Email Address'
+                                                placeholder='Email Address'
+                                                value={loginUser.email}
+                                                onChange={handleInputChange}
+                                            />
+                                            {/* <Form.Input
+                                                icon='lock'
+                                                iconPosition='left'
+                                                label='Password'
+                                                type='password'
+                                            /> */}
+
+                                            <Button type="submit" className="login" content='Login' primary />
+                                        </Form>
+                                    </Grid.Column>
+
+                                    <Grid.Column verticalAlign='middle'>
+                                    <Link to="/register" className="register">
+                                        <Button content='Register' icon='signup' size='big' />
+                                    </Link>
+                                    
+                                    </Grid.Column>
+                                </Grid>
+
+                                <Divider vertical>Or</Divider>
+                            </Segment>
+                            
+                        </div>
+                    </form>
+                </section>
+                
+                <section className="link--register">
+                    <Link to="/register" className="register">Create an account</Link>
+                </section>
+            </main>
         </div>
     )
 }

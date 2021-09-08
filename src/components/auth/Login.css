@@ -16,11 +16,12 @@
     background-position-y: center;
     background-repeat: no-repeat;
     background-blend-mode:soft-light;
-     border: 2px solid rgb(255, 255, 255);
-     margin: 0;
-     padding: auto;
-     padding-bottom: 10%;
-     height: auto;
+    border: 2px solid rgb(255, 255, 255);
+    margin: 0;
+    padding: auto;
+    padding-bottom: 12%;
+    /* padding-top: 10%; */
+    height: auto;
   }
   
   /* h1 {
@@ -32,13 +33,15 @@
     color: rgb(36, 34, 34);
     font-size: 70px;
     font-weight: 500;
+    margin-top: 100px;
   }
   
   .container--login {
     display: flex;
     flex-direction: column;
     width: 50%;
-    margin: 10% 15%;
+    margin: 2%;
+    /* margin: 10% 15%; */
   }
   
   .sign-in {
@@ -47,4 +50,8 @@
     margin-top: 1rem;
     margin-bottom: 1rem;
     border-radius: 1rem;
+  }
+
+  .formSection {
+    margin-left: 140px;
   }
