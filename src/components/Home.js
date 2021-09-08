@@ -8,7 +8,7 @@ export const Home = () => {
 
     return (
         <>
-            <div className="aside_and_mainFeed">
+            <div className="aside_and_mainFeed_home">
 
                 <aside className="asidePanelHome">
                     <div className="asideSearchDiv">
@@ -83,7 +83,7 @@ export const Home = () => {
                 size="small"
                 src='https://i.pinimg.com/236x/fa/ea/60/faea607d339389fe65f7d5b032df21c8--hollister-jeans-hollister-fashion.jpg'                
                 wrapped ui={false} 
-                label={{ as: 'a', corner: 'left', icon: 'heart outline' }}
+                label={{ as: 'a', corner: 'left', icon: 'suitcase' }}
                 />
                 <Card.Content>
                     <Card.Header>Matthew</Card.Header>
@@ -109,7 +109,7 @@ export const Home = () => {
                 size="small"
                 src='https://i.pinimg.com/originals/b3/c5/0d/b3c50df5f869ffaa402a4236ee91ef16.jpg' 
                 wrapped ui={false} 
-                label={{ as: 'a', corner: 'left', icon: 'heart outline' }}
+                label={{ as: 'a', corner: 'left', size: 'large', icon: 'suitcase' }}
                 />
                 <Card.Content>
                     <Card.Header>Matthew</Card.Header>
@@ -136,7 +136,7 @@ export const Home = () => {
                 size="small"
                 src='https://react.semantic-ui.com/images/avatar/large/matthew.png' 
                 wrapped ui={false} 
-                label={{ as: 'a', corner: 'left', icon: 'heart' }}
+                label={{ as: 'a', corner: 'left', size: 'large', icon: 'suitcase' }}
                 />
                 <Card.Content>
                     <Card.Header>Matthew</Card.Header>
@@ -163,7 +163,7 @@ export const Home = () => {
                 size="small"
                 src='https://i.pinimg.com/236x/fa/ea/60/faea607d339389fe65f7d5b032df21c8--hollister-jeans-hollister-fashion.jpg'                
                 wrapped ui={false} 
-                label={{ as: 'a', corner: 'left', icon: 'heart outline' }}
+                label={{ as: 'a', corner: 'left', size: 'large', icon: 'suitcase' }}
                 />
                 <Card.Content>
                     <Card.Header>Matthew</Card.Header>
@@ -189,7 +189,7 @@ export const Home = () => {
                 size="small"
                 src='https://react.semantic-ui.com/images/avatar/large/matthew.png' 
                 wrapped ui={false} 
-                label={{ as: 'a', corner: 'left', icon: 'heart outline' }}
+                label={{ as: 'a', corner: 'left', size: 'large', icon: 'suitcase' }}
                 />
                 <Card.Content>
                     <Card.Header>Matthew</Card.Header>
@@ -215,7 +215,7 @@ export const Home = () => {
                 size="small"
                 src='https://react.semantic-ui.com/images/avatar/large/matthew.png' 
                 wrapped ui={false} 
-                label={{ as: 'a', corner: 'left', icon: 'heart outline' }}
+                label={{ as: 'a', corner: 'left', size: 'large', icon: 'suitcase' }}
                 />
                 <Card.Content>
                     <Card.Header>Matthew</Card.Header>

@@ -1,6 +1,6 @@
 import React, { createContext, useState} from "react"
 
-const apiURL = "http://localhost:7000"
+const apiURL = "http://localhost:7001"
 export const ItemContext = createContext()
 
 export const ItemProvider = (props) => {

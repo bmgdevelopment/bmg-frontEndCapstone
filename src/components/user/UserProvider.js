@@ -1,7 +1,7 @@
 import React, { createContext, useState } from "react"
 import "./User.css"
 
-const apiURL = "http://localhost:7000"
+const apiURL = "http://localhost:7001"
 export const UserContext = createContext()
 
 

@@ -1,8 +1,17 @@
 .aside_and_mainFeed {
     /* border: 2px solid purple; */
     display: flex;
-    margin-right: 5em;
-    margin-left: 5em;
+    margin-right: 13em;
+    margin-left: 13em;
+    margin-bottom: 10em;
+    /* padding-top: 90px; */
+}
+
+.aside_and_mainFeed_home {
+    /* border: 2px solid purple; */
+    display: flex;
+    margin-right: 8em;
+    margin-left: 8em;
     margin-bottom: 10em;
     /* padding-top: 90px; */
 }

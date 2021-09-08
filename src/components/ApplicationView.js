@@ -26,9 +26,11 @@ export const ApplicationView = () => {
             <UserProvider>
                 <RegionProvider>
                     <ItemProvider>
+                        <SaveProvider>
                         <Route exact path="/profile">
                             <ProfileDetail />
                         </Route>
+                        </SaveProvider>
                     </ItemProvider>
                 </RegionProvider>
             </UserProvider>

@@ -2,7 +2,7 @@ import React, {  useState } from "react"
 import { Link, useHistory } from "react-router-dom";
 import "./Login.css"
 
-const apiURL = "http://localhost:7000"
+const apiURL = "http://localhost:7001"
 
 export const Login = () => {
     const [loginUser, setLoginUser] = useState({ email: "" })

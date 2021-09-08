@@ -2,8 +2,8 @@
     /* border: 2px solid purple; */
     display: flex;
     flex-direction: column;
-    margin-right: 10em;
-    margin-left: 10em;
+    margin-right: 13em;
+    margin-left: 13em;
     margin-bottom: 10em;
 }
 
@@ -72,21 +72,25 @@
 
 .userRegionDiv {
     margin-top: 3em;
-    color: gray;
+    color: rgb(154, 152, 152);
     margin: 0px 0px;
-    line-height: 2px;
+    /* line-height: 2px; */
+}
+
+.userRegionP {
+    margin-top: 3px;
+    margin-bottom: 0px;
 }
 
 /* BANNER FOR ONE USER */
 
 .profileBannerBkgd {
-    width: 900px;
+    width: 1150px;
     margin-top: 25px;
     height: 200px;
     z-index: -8;
-    /* filter: blur(1px); */
-    /* filter: grayscale(80%); */
-    /* border: 2px solid orange; */
+    filter: blur(.75px) drop-shadow(0px 0px 20px rgba(172, 172, 172, 0.199));
+    border: 1px solid rgba(182, 182, 182, 0.372);
 }
 
 .userProfileIMGBanner {
@@ -95,7 +99,7 @@
     border: 5px solid white;
     border-radius: 50%;
     outline: 50%;
-    width: 150px;
+    width: 200px;
     margin-top: -220px;
     margin-left: 40px;
     filter: drop-shadow(0px 0px 20px rgba(172, 172, 172, 0.199));
@@ -115,12 +119,12 @@
 
 .userProfileTitle {
     /* border: 2px solid green; */
-    padding-left: 230px;
+    padding-left: 255px;
     margin-top: 1px;
 }
 
 .userProfileTitle p {
-color: gray;
+color: rgb(193, 193, 193);
 font-size: 15px;
 margin: 0;
 }
@@ -129,6 +133,7 @@ margin: 0;
     font-family: 'Cormorant Garamond', serif;
     font-weight: 900;
     margin: 0;
+    margin-right: 2em;
     font-style: bold;
     font-size: 30px;
     color: darkslategray;
@@ -156,3 +161,30 @@ margin: 0;
     font-size: 20px;
     font-style: oblique;
 }
+
+/* SAVE ICON */
+.container {
+    position: relative;
+    text-align: center;
+    color: white;
+  }
+
+.top-right {
+    position: absolute;
+    top: 35px;
+    right: 10px;
+    font-size: 30px;
+    background-color: transparent;
+    border: none;
+  }
+
+  .ui.button, .ui.icon.button {
+      background: transparent;
+      background-color: transparent;
+  }
+
+  .ui.button:hover, .ui.icon.button:hover {
+      background: transparent;
+      background-color: transparent;
+      transform: scale(1.1);
+  }
