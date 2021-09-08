@@ -4,26 +4,41 @@
   }
   
   /* body {
-     background-color: #edf8fd; 
+     background-color: #599ebd; 
   } */
   
   .login-body {
-    /* background-image: url(./react.png); */
-    background-size: 20%;
+    background-image: url(https://i.postimg.cc/sxF5Yd7k/CAPSTONE-LOGIN.png);
+    /* background-image: url(https://i.postimg.cc/25KpGTHd/6.png); */
+    /* background-image: url(https://i.postimg.cc/0jZ0GXnP/1.png); */
+    background-size: 110%;
     background-position-x: center;
+    background-position-y: center;
     background-repeat: no-repeat;
     background-blend-mode:soft-light;
+     border: 2px solid rgb(255, 255, 255);
+     margin: 0;
+     padding: auto;
+     padding-bottom: 10%;
+     height: auto;
   }
   
-  h1 {
+  /* h1 {
   color:cornflowerblue;
+} */
+
+.loginTitle, h1 {
+    font-family: 'Cormorant Garamond', serif;
+    color: rgb(36, 34, 34);
+    font-size: 70px;
+    font-weight: 500;
   }
   
   .container--login {
     display: flex;
     flex-direction: column;
     width: 50%;
-    margin: 10% 25%;
+    margin: 10% 15%;
   }
   
   .sign-in {

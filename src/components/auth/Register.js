@@ -73,6 +73,7 @@ export const Register = () => {
     }
 
     return (
+        <div className="login-body">
         <main style={{ textAlign: "center" }}>
 
             <dialog className="dialog dialog--password" open={conflictDialog}>
@@ -124,5 +125,6 @@ export const Register = () => {
                 
             </form>
         </main>
+        </div>
     )
 }
