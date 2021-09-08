@@ -9,8 +9,10 @@ import { ProfileDetail } from "./profile/ProfileDetail"
 
 import { UserProvider } from "./user/UserProvider"
 import { UserList } from "./user/UserList"
+import { UserDetail } from "./user/UserDetail"
 
 import { RegionProvider } from "./region/RegionProvider"
+import { SaveProvider } from "./save/SaveProvider"
 
 export const ApplicationView = () => {
     return (
@@ -36,6 +38,19 @@ export const ApplicationView = () => {
                 <Route exact path="/trendyTravelers">
                     <UserList />
                 </Route>
+            </UserProvider>
+
+            {/* ONE USER PROFILE DETAIL */}
+            <UserProvider>
+                <RegionProvider>
+                    <ItemProvider>
+                        <SaveProvider>
+                        <Route exact path="/trendyTravelers/detail/:userId(\d+)">
+                            <UserDetail />
+                        </Route>
+                        </SaveProvider>
+                    </ItemProvider>
+                </RegionProvider>
             </UserProvider>
 
         </>

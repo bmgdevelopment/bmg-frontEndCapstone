@@ -1,6 +1,8 @@
 import React from "react"
 import { Link } from "react-router-dom"
 import "./outfit/Item.css"
+import { Grid, Image, Card, Icon } from 'semantic-ui-react'
+// import { Card, Icon, Image } from 'semantic-ui-react'
 
 export const Home = () => {
 
@@ -15,7 +17,7 @@ export const Home = () => {
 
                     <div className="asideAddNewDiv">
                         <Link to="/addNewItem">
-                        <img className="addItemBanner" alt="Add item" src="http://dslv9ilpbe7p1.cloudfront.net/DsfNvC21hTskBXoyodN2Nw_store_banner_image.jpeg"></img>
+                            <img className="addItemBanner" alt="Add item" src="http://dslv9ilpbe7p1.cloudfront.net/DsfNvC21hTskBXoyodN2Nw_store_banner_image.jpeg"></img>
                         </Link>
                     </div>
 
@@ -39,7 +41,7 @@ export const Home = () => {
 
                         <img className="itemTile" alt="item" src="https://i.pinimg.com/originals/fd/69/98/fd69989a72f58e02ef593ba358d55afa.jpg"></img>
                         <img className="itemTile" alt="item" src="https://i.pinimg.com/236x/18/aa/a2/18aaa22e623cfabe23f412dbf1cc9a30.jpg"></img>
-                        <img className="itemTile" alt="item" src="https://lh3.googleusercontent.com/proxy/c9aFWniLbGdwoJbTaBUq4Krjp6smAbCSicX00PsdZOoDgLIDtKBlmAseAkaKndcpar4pJuwKOfbWqu46SndtGrq10lXZZqjCuxv_234NCQ1Tx1t8VNhn6arDNKl2i1wy-FCcR8h528r58HPHXMN7flQn6dLRwFK1EVJ9"></img>
+                        <img className="itemTile" alt="item" src="https://i.pinimg.com/736x/f9/0d/6d/f90d6deb93f92f6455cd2fa8d77c7ce3.jpg"></img>
                         <img className="itemTile" alt="item" src="https://i.pinimg.com/originals/dc/d4/ab/dcd4ab6c40fbe444265c0e26921c896d.jpg"></img>
                         <img className="itemTile" alt="item" src="https://i.pinimg.com/originals/c8/db/c3/c8dbc3e6d26f7b0ba954d72b358cb04c.jpg"></img>
                         <img className="itemTile" alt="item" src="https://i.pinimg.com/736x/20/c0/a5/20c0a53e1b619025b3c2f17c816b98cc.jpg"></img>
@@ -64,12 +66,176 @@ export const Home = () => {
 
                         <img className="itemTile" alt="item" src="https://chrisreining.com/wp-content/uploads/2015/07/MED-MensSummerCapsule.jpg"></img>
 
-                        <img className="itemTile" alt="item" src="https://lh3.googleusercontent.com/proxy/mH4um_kV22UVXL-0621q-hwoXm9Py_F7x53Q1PvwzxTo97HbFNGjELR7goTpKPINwEa-_5eD7MiS3GP1Ql-t5qsRX3H5TrDo5Y02TLpi65-9b7rwRLmFTSwBjbWRH-oXR2qBpq9eXKjsDNTXSqff2TM"></img>
+                        <img className="itemTile" alt="item" src="https://i.pinimg.com/originals/b3/c5/0d/b3c50df5f869ffaa402a4236ee91ef16.jpg"></img>
 
                         <img className="itemTile" alt="item" src="https://i.pinimg.com/236x/fa/ea/60/faea607d339389fe65f7d5b032df21c8--hollister-jeans-hollister-fashion.jpg"></img>
                     </div>
                 </div>
             </div>
+
+<div className="testDiv">
+<Grid columns={4}>
+
+<Grid.Column>
+
+            <Card>
+                <Image 
+                size="small"
+                src='https://i.pinimg.com/236x/fa/ea/60/faea607d339389fe65f7d5b032df21c8--hollister-jeans-hollister-fashion.jpg'                
+                wrapped ui={false} 
+                label={{ as: 'a', corner: 'left', icon: 'heart outline' }}
+                />
+                <Card.Content>
+                    <Card.Header>Matthew</Card.Header>
+                    <Card.Meta>
+                        <span className='date'>Joined in 2015</span>
+                    </Card.Meta>
+                    <Card.Description>
+                        Matthew is a musician living in Nashville.
+                    </Card.Description>
+                </Card.Content>
+                <Card.Content extra>
+                    <a>
+                        <Icon name='user' />
+                        22 Friends
+                    </a>
+                </Card.Content>
+            </Card>
+</Grid.Column>
+
+<Grid.Column>
+            <Card>
+                <Image 
+                size="small"
+                src='https://i.pinimg.com/originals/b3/c5/0d/b3c50df5f869ffaa402a4236ee91ef16.jpg' 
+                wrapped ui={false} 
+                label={{ as: 'a', corner: 'left', icon: 'heart outline' }}
+                />
+                <Card.Content>
+                    <Card.Header>Matthew</Card.Header>
+                    <Card.Meta>
+                        <span className='date'>Joined in 2015</span>
+                    </Card.Meta>
+                    <Card.Description>
+                        Matthew is a musician living in Nashville.
+                    </Card.Description>
+                </Card.Content>
+                <Card.Content extra>
+                    <a>
+                        <Icon name='user' />
+                        22 Friends
+                    </a>
+                </Card.Content>
+            </Card>
+</Grid.Column>
+
+<Grid.Column>
+
+            <Card>
+                <Image 
+                size="small"
+                src='https://react.semantic-ui.com/images/avatar/large/matthew.png' 
+                wrapped ui={false} 
+                label={{ as: 'a', corner: 'left', icon: 'heart' }}
+                />
+                <Card.Content>
+                    <Card.Header>Matthew</Card.Header>
+                    <Card.Meta>
+                        <span className='date'>Joined in 2015</span>
+                    </Card.Meta>
+                    <Card.Description>
+                        Matthew is a musician living in Nashville.
+                    </Card.Description>
+                </Card.Content>
+                <Card.Content extra>
+                    <a>
+                        <Icon name='user' />
+                        22 Friends
+                    </a>
+                </Card.Content>
+            </Card>
+</Grid.Column>
+
+<Grid.Column>
+
+            <Card>
+                <Image 
+                size="small"
+                src='https://i.pinimg.com/236x/fa/ea/60/faea607d339389fe65f7d5b032df21c8--hollister-jeans-hollister-fashion.jpg'                
+                wrapped ui={false} 
+                label={{ as: 'a', corner: 'left', icon: 'heart outline' }}
+                />
+                <Card.Content>
+                    <Card.Header>Matthew</Card.Header>
+                    <Card.Meta>
+                        <span className='date'>Joined in 2015</span>
+                    </Card.Meta>
+                    <Card.Description>
+                        Matthew is a musician living in Nashville.
+                    </Card.Description>
+                </Card.Content>
+                <Card.Content extra>
+                    <a>
+                        <Icon name='user' />
+                        22 Friends
+                    </a>
+                </Card.Content>
+            </Card>
+</Grid.Column>
+
+<Grid.Column>
+            <Card>
+                <Image 
+                size="small"
+                src='https://react.semantic-ui.com/images/avatar/large/matthew.png' 
+                wrapped ui={false} 
+                label={{ as: 'a', corner: 'left', icon: 'heart outline' }}
+                />
+                <Card.Content>
+                    <Card.Header>Matthew</Card.Header>
+                    <Card.Meta>
+                        <span className='date'>Joined in 2015</span>
+                    </Card.Meta>
+                    <Card.Description>
+                        Matthew is a musician living in Nashville.
+                    </Card.Description>
+                </Card.Content>
+                <Card.Content extra>
+                    <a>
+                        <Icon name='user' />
+                        22 Friends
+                    </a>
+                </Card.Content>
+            </Card>
+</Grid.Column>
+
+<Grid.Column>
+            <Card>
+                <Image 
+                size="small"
+                src='https://react.semantic-ui.com/images/avatar/large/matthew.png' 
+                wrapped ui={false} 
+                label={{ as: 'a', corner: 'left', icon: 'heart outline' }}
+                />
+                <Card.Content>
+                    <Card.Header>Matthew</Card.Header>
+                    <Card.Meta>
+                        <span className='date'>Joined in 2015</span>
+                    </Card.Meta>
+                    <Card.Description>
+                        Matthew is a musician living in Nashville.
+                    </Card.Description>
+                </Card.Content>
+                <Card.Content extra>
+                    <a>
+                        <Icon name='user' />
+                        22 Friends
+                    </a>
+                </Card.Content>
+            </Card>
+            </Grid.Column>
+            </Grid>
+                </div>
 
             <div className="backToTopDiv">
                 <button className="backToTop">⬆</button>
@@ -77,3 +243,19 @@ export const Home = () => {
         </>
     )
 }
+
+/*
+INLINE AVATAR AND USERNAME
+import React from 'react'
+import { Image } from 'semantic-ui-react'
+
+const ImageExampleAvatar = () => (
+  <div>
+    <Image src='https://react.semantic-ui.com/images/wireframe/square-image.png' avatar />
+    <span>Username</span>
+  </div>
+)
+
+export default ImageExampleAvatar
+
+*/

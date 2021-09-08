@@ -1,4 +1,5 @@
 import React, { useContext, useEffect } from "react"
+import { Link } from "react-router-dom"
 import { UserContext } from "./UserProvider"
 import "./User.css"
 
@@ -22,12 +23,16 @@ export const UserList = () => {
                     return (
                         <div className="oneUserInfo" key={user.id}>
                             <div className="userProfileIMG" key={`userProfileURL--${user.id}`}>
+                            <Link to={`/trendyTravelers/detail/${user.id}`} key={`userPicLink--${user.id}`}>
                                 <img src={user.profileURL} alt="profileIMG" className="profileIMG" key={`profileIMG--${user.id}`} />
+                            </Link>
                             </div>
 
                             <div className="profileTextBox">
                                 <div className="userName" key={`userName--${user.id}`}>
+                                <Link to={`/trendyTravelers/detail/${user.id}`} key={`userNameLink--${user.id}`}>
                                     <h2 className="userH2" key={`userH2--${user.id}`}>{user.firstName} {user.lastName}</h2>
+                                </Link>                 
                                 </div>
 
                                 <div className="userRegionDiv" key={`region--${user.region.id}`}>

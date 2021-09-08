@@ -2,7 +2,6 @@ import React, { useEffect, useContext, useState } from "react"
 import { ItemContext } from "../outfit/ItemProvider"
 import { UserContext } from "../user/UserProvider"
 import { Link } from "react-router-dom"
-
 import "../Trendago.css"
 
 export const ProfileDetail = () => {
@@ -22,7 +21,8 @@ export const ProfileDetail = () => {
 
     useEffect(() => {
         getItems().then(() => {
-            const userItems = items.filter(item => item.userId === currentUserId); setAllUserItems(userItems)
+            const userItems = items.filter(item => item.userId === currentUserId); 
+            setAllUserItems(userItems)
         })
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [items])

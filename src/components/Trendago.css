@@ -243,3 +243,37 @@
     padding: 0px;
     width: 40px;
 }
+
+/* TESTING CSS */
+.testDiv {
+    /* border: 2px solid orange; */
+    padding: 30px 60px 30px 80px;
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.ui.card>.image {
+    /* border: 2px solid orange; */
+    width: 275px;
+    height: auto;
+    justify-content: center;
+}
+
+.ui.card * {
+    margin: 0em 0em;
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    border: none;
+}
+
+.ui.corner.label {
+    background-color: transparent!important;
+    color: teal;
+}
+
+.column {
+    display: flex;
+    justify-content: center;
+    align-content: center;
+}
