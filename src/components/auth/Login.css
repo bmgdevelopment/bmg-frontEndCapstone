@@ -1,6 +1,22 @@
 .dialog {
     min-width: 15rem;
     min-height: 5rem;
+    padding: 2%;
+    border: 2px solid rgba(11, 206, 193, 0.584);
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    align-items: center;
+    flex-direction: column;
+    z-index: 99;
+  }
+
+  .doesNotExist {
+    padding-bottom: 10px;
+  }
+
+  .button--close {
+    max-width: 100px;
   }
   
   /* body {
@@ -9,19 +25,19 @@
   
   .login-body {
     background-image: url(https://i.postimg.cc/sxF5Yd7k/CAPSTONE-LOGIN.png);
-    /* background-image: url(https://i.postimg.cc/25KpGTHd/6.png); */
-    /* background-image: url(https://i.postimg.cc/0jZ0GXnP/1.png); */
-    background-size: 110%;
-    background-position-x: center;
-    background-position-y: center;
-    background-repeat: no-repeat;
-    background-blend-mode:soft-light;
-    border: 2px solid rgb(255, 255, 255);
+    width: 100%;
+    height: 100%;
+    max-height: 100%;
     margin: 0;
-    padding: auto;
-    padding-bottom: 12%;
-    /* padding-top: 10%; */
-    height: auto;
+    padding: 0;
+    background-size:110% 100%;
+    background-repeat: no-repeat;
+    border: 2px solid rgb(245, 245, 245);
+    padding-top: 24%;
+    /* margin: 0; */
+    /* padding: auto; */
+    /* padding-bottom: 32%; */
+    /* height: auto; */
   }
   
   /* h1 {
@@ -30,17 +46,23 @@
 
 .loginTitle, h1 {
     font-family: 'Cormorant Garamond', serif;
-    color: rgb(36, 34, 34);
+    color: rgb(99, 99, 99);
+    /* color: rgb(36, 34, 34); */
     font-size: 70px;
     font-weight: 500;
-    margin-top: 100px;
+    /* margin-top: 100px; */
   }
+
+  /* .reactLoginForm {
+    border: 2px solid gold;
+  } */
   
   .container--login {
     display: flex;
     flex-direction: column;
     width: 50%;
     margin: 2%;
+    padding-bottom: -50px;
     /* margin: 10% 15%; */
   }
   
@@ -54,4 +76,10 @@
 
   .formSection {
     margin-left: 140px;
+  }
+
+  .ui.placeholder.segment {
+    background: transparent;
+    background-color: transparent;
+    min-height: 0;
   }

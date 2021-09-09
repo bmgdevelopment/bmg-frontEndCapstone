@@ -7,8 +7,18 @@ const apiURL = "http://localhost:7001"
 
 export const Login = () => {
     const [loginUser, setLoginUser] = useState({ email: "" })
-    const [existDialog, setExistDialog] = useState(false)
+    // const [existDialog, setExistDialog] = useState(false)
+    const [open, setOpen] = useState(false);
+
     const history = useHistory()
+    
+    const handleClickOpen = () => {
+        setOpen(true);
+      };
+
+      const handleClose = () => {
+        setOpen(false);
+      };
 
     const handleInputChange = (event) => {
         const newUser = { ...loginUser }
@@ -33,7 +43,8 @@ export const Login = () => {
                     sessionStorage.setItem("trendago_user", exists.id)
                     history.push("/")
                 } else {
-                    setExistDialog(true)
+                    // setExistDialog(true)
+                    handleClickOpen()
                 }
             })
     }
@@ -41,14 +52,14 @@ export const Login = () => {
     return (
         <div className="login-body">
             <main className="container--login">
-                <dialog className="dialog dialog--auth" open={existDialog}>
-                    <div>User does not exist</div>
-                    <button className="button--close" onClick={e => setExistDialog(false)}>Close</button>
+                <dialog className="dialog dialog--auth" open={open}>
+                    <div className="doesNotExist">User does not exist, please register for access</div>
+                    <button className="button--close" onClick={handleClose}>Close</button>
                 </dialog>
 
                 <section className="formSection">
-                    <form className="form--login" onSubmit={handleLogin}>
-                        <h1 className="loginTitle">TRENDAGO</h1>
+                    <h1 className="loginTitle">TRENDAGO</h1>
+                    {/* <form className="form--login">
                         <h4>Please sign in</h4>
 
                         <div className="loginFields">
@@ -70,51 +81,51 @@ export const Login = () => {
                                 </button>
                             </fieldset>
                         </div>
+                    </form> */}
 
-                        <div>
-                            <Segment placeholder>
-                                <Grid columns={2} relaxed='very' stackable>
-                                    <Grid.Column>
-                                        <Form onSubmit={handleLogin}>
-                                            <Form.Input
-                                                icon='user'
-                                                id="email"
-                                                className="form-control"
-                                                iconPosition='left'
-                                                label='Email Address'
-                                                placeholder='Email Address'
-                                                value={loginUser.email}
-                                                onChange={handleInputChange}
-                                            />
-                                            {/* <Form.Input
+                    <div className="reactLoginForm">
+                        <Segment placeholder>
+                            <Grid columns={2} relaxed='very' stackable>
+                                <Grid.Column>
+                                    <Form onSubmit={handleLogin}>
+                                        <Form.Input
+                                            icon='user'
+                                            id="email"
+                                            className="form-control"
+                                            iconPosition='left'
+                                            label='Email Address'
+                                            placeholder='Email Address'
+                                            value={loginUser.email}
+                                            onChange={handleInputChange}
+                                        />
+                                        {/* <Form.Input
                                                 icon='lock'
                                                 iconPosition='left'
                                                 label='Password'
                                                 type='password'
                                             /> */}
 
-                                            <Button type="submit" className="login" content='Login' primary />
-                                        </Form>
-                                    </Grid.Column>
+                                        <Button onClick={handleLogin} type="submit" className="login" content='Login' primary />
+                                    </Form>
+                                </Grid.Column>
 
-                                    <Grid.Column verticalAlign='middle'>
+                                <Grid.Column verticalAlign='middle'>
                                     <Link to="/register" className="register">
                                         <Button content='Register' icon='signup' size='big' />
                                     </Link>
-                                    
-                                    </Grid.Column>
-                                </Grid>
 
-                                <Divider vertical>Or</Divider>
-                            </Segment>
-                            
-                        </div>
-                    </form>
+                                </Grid.Column>
+                            </Grid>
+
+                            <Divider vertical>Or</Divider>
+                        </Segment>
+
+                    </div>
                 </section>
-                
-                <section className="link--register">
+
+                {/* <section className="link--register">
                     <Link to="/register" className="register">Create an account</Link>
-                </section>
+                </section> */}
             </main>
         </div>
     )
