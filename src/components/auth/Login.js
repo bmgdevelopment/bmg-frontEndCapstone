@@ -11,14 +11,14 @@ export const Login = () => {
     const [open, setOpen] = useState(false);
 
     const history = useHistory()
-    
+
     const handleClickOpen = () => {
         setOpen(true);
-      };
+    };
 
-      const handleClose = () => {
+    const handleClose = () => {
         setOpen(false);
-      };
+    };
 
     const handleInputChange = (event) => {
         const newUser = { ...loginUser }
@@ -43,7 +43,7 @@ export const Login = () => {
                     sessionStorage.setItem("trendago_user", exists.id)
                     history.push("/")
                 } else {
-                    // setExistDialog(true)
+                    window.alert("User does not exist, please register for access")
                     handleClickOpen()
                 }
             })
@@ -52,10 +52,10 @@ export const Login = () => {
     return (
         <div className="login-body">
             <main className="container--login">
-                <dialog className="dialog dialog--auth" open={open}>
+                {/* <dialog className="dialog dialog--auth" open={open} onClose={handleClose}>
                     <div className="doesNotExist">User does not exist, please register for access</div>
                     <button className="button--close" onClick={handleClose}>Close</button>
-                </dialog>
+                </dialog> */}
 
                 <section className="formSection">
                     <h1 className="loginTitle">TRENDAGO</h1>
@@ -87,7 +87,7 @@ export const Login = () => {
                         <Segment placeholder>
                             <Grid columns={2} relaxed='very' stackable>
                                 <Grid.Column>
-                                    <Form onSubmit={handleLogin}>
+                                    <Form>
                                         <Form.Input
                                             icon='user'
                                             id="email"
@@ -98,12 +98,12 @@ export const Login = () => {
                                             value={loginUser.email}
                                             onChange={handleInputChange}
                                         />
-                                        {/* <Form.Input
+                                        {/* {<Form.Input
                                                 icon='lock'
                                                 iconPosition='left'
                                                 label='Password'
                                                 type='password'
-                                            /> */}
+                                            /> } */}
 
                                         <Button onClick={handleLogin} type="submit" className="login" content='Login' primary />
                                     </Form>
@@ -113,7 +113,6 @@ export const Login = () => {
                                     <Link to="/register" className="register">
                                         <Button content='Register' icon='signup' size='big' />
                                     </Link>
-
                                 </Grid.Column>
                             </Grid>
 
@@ -130,3 +129,44 @@ export const Login = () => {
         </div>
     )
 }
+
+
+/*
+<div className="reactLoginForm">
+                        <Segment placeholder>
+                            <Grid columns={2} relaxed='very' stackable>
+                                <Grid.Column>
+                                    <Form>
+                                        <Form.Input
+                                            icon='user'
+                                            id="email"
+                                            className="form-control"
+                                            iconPosition='left'
+                                            label='Email Address'
+                                            placeholder='Email Address'
+                                            value={loginUser.email}
+                                            onChange={handleInputChange}
+                                        />
+                                        { <Form.Input
+                                                icon='lock'
+                                                iconPosition='left'
+                                                label='Password'
+                                                type='password'
+                                            /> 
+
+                                            <Button onClick={handleLogin} type="submit" className="login" content='Login' primary />
+                                            </Form>
+                                        </Grid.Column>
+        
+                                        <Grid.Column verticalAlign='middle'>
+                                            <Link to="/register" className="register">
+                                                <Button content='Register' icon='signup' size='big' />
+                                            </Link>
+                                        </Grid.Column>
+                                    </Grid>
+        
+                                    <Divider vertical>Or</Divider>
+                                </Segment>
+        
+                            </div>
+*/

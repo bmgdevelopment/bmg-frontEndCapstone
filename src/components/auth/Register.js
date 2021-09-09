@@ -1,13 +1,20 @@
-import React, { useState } from "react"
+import React, { useState, useEffect } from "react"
 import { useHistory, Link } from "react-router-dom";
+import { RegionContext } from "../region/RegionProvider"
 import "./Login.css"
+import "./Register.css"
 
 const apiURL = "http://localhost:7001"
 
 
 export const Register = () => {
 
+    const [regions, getRegions] = useState(RegionContext)
     const registerDate = Date(Date.now()).slice(0, 15)
+
+    useEffect(() => {
+        getRegions()
+    }, [])
 
     const [registerUser, setRegisterUser] = useState({
         firstName: "",
@@ -18,7 +25,7 @@ export const Register = () => {
         regionId: 0,
         dateJoined: registerDate
     })
-    
+
     const [conflictDialog, setConflictDialog] = useState(false)
     const history = useHistory()
 
@@ -73,58 +80,65 @@ export const Register = () => {
     }
 
     return (
-        <div className="login-body">
-        <main style={{ textAlign: "center" }}>
+        <div className="formContainerDiv">
+            <div className="colorBanner"></div>
 
-            <dialog className="dialog dialog--password" open={conflictDialog}>
+            <section className="registerTitle">
+                <h1 className="registrationH1 h1 mb-3 font-weight-normal"> Register for TRENDAGO</h1>
+                <p className="registerTitleP">Immediate access upon registration</p>
+            </section>
+
+            <hr />
+
+            {/* <dialog className="dialog dialog--password" open={conflictDialog}>
                 <div>Account with that email address already exists</div>
                 <button className="button--close" onClick={e => setConflictDialog(false)}>Close</button>
-            </dialog>
+            </dialog> */}
 
-            <form className="form--login" onSubmit={handleRegister}>
-                <h1 className="h3 mb-3 font-weight-normal">Please Register for Trendago</h1>
+            <div className="registrationFields">
+                <form className="form--login" onSubmit={handleRegister}>
 
-                <div className="">
-                    <fieldset>
-                        <label htmlFor="firstName"> First Name </label>
-                        <input type="text" name="firstName" id="firstName" className="form-control" placeholder="First name" required autoFocus value={registerUser.firstName} onChange={handleInputChange} />
-                    </fieldset>
+                    <div className="allRegFields">
+                        <fieldset className="regInputFieldHorizontal">
+                            <div className="sideByDiv">
+                                <label className="registrationLabel" htmlFor="firstName"> First Name </label>
+                                <input type="text" name="firstName" id="firstName" className="form-control-registration" placeholder=" First name" required autoFocus value={registerUser.firstName} onChange={handleInputChange} />
+                            </div>
+                            <div className="sideByDiv">
+                                <label className="registrationLabel" htmlFor="lastName"> Last Name </label>
+                                <input type="text" name="lastName" id="lastName" className="form-control-registration" placeholder=" Last name" required value={registerUser.lastName} onChange={handleInputChange} />
+                            </div>
 
-                    <fieldset>
-                        <label htmlFor="lastName"> Last Name </label>
-                        <input type="text" name="lastName" id="lastName" className="form-control" placeholder="Last name" required value={registerUser.lastName} onChange={handleInputChange} />
-                    </fieldset>
+                            <div className="sideByDiv">
+                            <label className="registrationLabel" htmlFor="inputGender">M | F</label>
+                            <input type="gender" name="gender" id="gender" className="form-control-registration-gender" placeholder="" required value={registerUser.gender} onChange={handleInputChange} />
+                            </div>
+                        </fieldset>
 
-                    <fieldset>
-                        <label htmlFor="inputEmail"> Email address </label>
-                        <input type="email" name="email" id="email" className="form-control" placeholder="Email address" required value={registerUser.email} onChange={handleInputChange} />
-                    </fieldset>
+                        <fieldset className="regInputFields">
+                            <label className="registrationLabel" htmlFor="inputEmail"> Email address </label>
+                            <input type="email" name="email" id="email" className="form-control-registration emailInput" placeholder=" Email address" required value={registerUser.email} onChange={handleInputChange} />
+                        </fieldset>
 
-                    <fieldset>
-                        <label htmlFor="inputGender">  </label>
-                        <input type="gender" name="gender" id="gender" className="form-control" placeholder="Gender Initial (M/F/N)" required value={registerUser.gender} onChange={handleInputChange} />
-                    </fieldset>
-                    <fieldset>
-                        <label htmlFor="inputprofileURL">  </label>
-                        <input type="profileURL" name="profileURL" id="profileURL" className="form-control" placeholder="Profile URL" required value={registerUser.profileURL} onChange={handleInputChange} />
-                    </fieldset>
-                    <fieldset>
-                        <label htmlFor="inputRegionId">   </label>
-                        <input type="regionId" name="regionId" id="regionId" className="form-control" placeholder="Select region number (1-7)" required value={registerUser.regionId} onChange={handleInputChange} />
-                    </fieldset>
-                </div>
+                        <fieldset className="regInputFields">
+                            <label className="registrationLabel" htmlFor="inputprofileURL">Profile URL</label>
+                            <input type="profileURL" name="profileURL" id="profileURL" className="form-control-registration profileInput" placeholder=" Profile URL" required value={registerUser.profileURL} onChange={handleInputChange} />
+                        </fieldset>
 
-                <div className="">
-                    <fieldset>
-                        <button type="submit"> Complete Registration </button>
-                    </fieldset>
-                    <fieldset>
-                        <p>Have an acount? Click <Link to="/login" className="login">here</Link></p>
-                    </fieldset>
-                </div>
-                
-            </form>
-        </main>
+                        <fieldset className="regInputFields">
+                            <label className="registrationLabel" htmlFor="inputRegionId">Region</label>
+                            <input type="regionId" name="regionId" id="regionId" className="form-control-registration regionSelect" placeholder=" Select region number (1-7)" required value={registerUser.regionId} onChange={handleInputChange} />
+                        </fieldset>
+                    </div>
+
+                    <div className="completeRegistrationDiv">
+                        <fieldset className="completeFieldset">
+                            <button type="submit" className="completeRegisBtn"> Complete Registration </button>
+                            <p className="returnToLogin">Have an acount? Click <Link to="/login" className="login">here</Link></p>
+                        </fieldset>
+                    </div>
+                </form>
+            </div>
         </div>
     )
 }
