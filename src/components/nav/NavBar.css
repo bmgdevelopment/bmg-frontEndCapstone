@@ -9,7 +9,7 @@ nav * {
     justify-content: space-between;
     align-content: center;
     align-items: center;
-    border: 4px solid yellow;
+    /* border: 4px solid yellow; */
     border-bottom: .5px solid rgba(128, 128, 128, 0.317);
     /* position: fixed; */
     margin-bottom: 3em;
@@ -64,10 +64,10 @@ nav * {
     transform: scale(1.1);
 }
 
-.aNavLink a:hover {
+.aNavLink a:hover, a:visited, a:active {
     color: rgb(33, 170, 201);
 }
 
 .aNavLink a {
-    color: rgb(34, 34, 34);
+    color: rgb(108, 107, 107);
 }

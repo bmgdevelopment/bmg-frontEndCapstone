@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react"
+import React, { useState, useEffect, useContext } from "react"
 import { useHistory, Link } from "react-router-dom";
 import { RegionContext } from "../region/RegionProvider"
 import "./Login.css"
@@ -9,12 +9,14 @@ const apiURL = "http://localhost:7001"
 
 export const Register = () => {
 
-    const [regions, getRegions] = useState(RegionContext)
+    const { regions, getRegions } = useContext(RegionContext)
     const registerDate = Date(Date.now()).slice(0, 15)
 
     useEffect(() => {
         getRegions()
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
+
 
     const [registerUser, setRegisterUser] = useState({
         firstName: "",
@@ -110,8 +112,8 @@ export const Register = () => {
                             </div>
 
                             <div className="sideByDiv">
-                            <label className="registrationLabel" htmlFor="inputGender">M | F</label>
-                            <input type="gender" name="gender" id="gender" className="form-control-registration-gender" placeholder="" required value={registerUser.gender} onChange={handleInputChange} />
+                                <label className="registrationLabel" htmlFor="inputGender">M | F</label>
+                                <input type="gender" name="gender" id="gender" className="form-control-registration-gender" placeholder="" required value={registerUser.gender} onChange={handleInputChange} />
                             </div>
                         </fieldset>
 
@@ -127,7 +129,15 @@ export const Register = () => {
 
                         <fieldset className="regInputFields">
                             <label className="registrationLabel" htmlFor="inputRegionId">Region</label>
-                            <input type="regionId" name="regionId" id="regionId" className="form-control-registration regionSelect" placeholder=" Select region number (1-7)" required value={registerUser.regionId} onChange={handleInputChange} />
+                            <select value={registerUser.regionId} name="regionId" id="regionId" className="form-control-registration regionSelect" required onChange={handleInputChange}>
+                                <option value="0">Select a home region</option>
+                                {regions.map(region => {
+                                    return (
+                                        <option value={region.id} key={region.id}>{region.name}</option>
+                                    )
+                                })}
+                            </select>
+                            {/* <input type="regionId" name="regionId" id="regionId" className="form-control-registration regionSelect" placeholder=" Select region number (1-7)" required value={registerUser.regionId} onChange={handleInputChange} /> */}
                         </fieldset>
                     </div>
 
@@ -142,3 +152,18 @@ export const Register = () => {
         </div>
     )
 }
+
+
+/*
+<select placeholder="Region select"" value={registerUser.regionId}  className="form-control-registration regionSelect"  required onChange={handleInputChange}>
+<option value="0">Select a home region</option>
+{
+    regions.map(region => {
+        return (
+                <option value={region.id} key={region.id}>{region.name}</option>
+                )
+            })
+
+        }
+        </select>
+*/

@@ -4,6 +4,7 @@ import { ApplicationView } from "./ApplicationView"
 import { NavBar } from "./nav/NavBar"
 import { Login } from "./auth/Login"
 import { Register } from "./auth/Register"
+import { RegionProvider } from "./region/RegionProvider"
 import "./Trendago.css"
 
 export const Trendago = () => (
@@ -26,8 +27,12 @@ export const Trendago = () => (
         <Route path="/login">
             <Login />
         </Route>
+
+<RegionProvider>
         <Route path="/register">
             <Register />
         </Route>
+</RegionProvider>
+
     </>
 )
