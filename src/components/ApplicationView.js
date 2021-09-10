@@ -18,18 +18,20 @@ export const ApplicationView = () => {
     return (
         <>
             {/* HOME VIEW WITH HARD CODED INFO */}
-            <Route exact path="/">
-                <Home />
-            </Route>
+            <ItemProvider>
+                <Route exact path="/">
+                    <Home />
+                </Route>
+            </ItemProvider>
 
             {/* ONE USER PROFILE DETAIL */}
             <UserProvider>
                 <RegionProvider>
                     <ItemProvider>
                         <SaveProvider>
-                        <Route exact path="/profile">
-                            <ProfileDetail />
-                        </Route>
+                            <Route exact path="/profile">
+                                <ProfileDetail />
+                            </Route>
                         </SaveProvider>
                     </ItemProvider>
                 </RegionProvider>
@@ -47,9 +49,9 @@ export const ApplicationView = () => {
                 <RegionProvider>
                     <ItemProvider>
                         <SaveProvider>
-                        <Route exact path="/trendyTravelers/detail/:userId(\d+)">
-                            <UserDetail />
-                        </Route>
+                            <Route exact path="/trendyTravelers/detail/:userId(\d+)">
+                                <UserDetail />
+                            </Route>
                         </SaveProvider>
                     </ItemProvider>
                 </RegionProvider>

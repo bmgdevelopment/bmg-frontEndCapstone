@@ -1,10 +1,18 @@
-import React from "react"
+import React, { useContext, useEffect } from "react"
 import { Link } from "react-router-dom"
+import { ItemContext } from "./outfit/ItemProvider"
 import "./outfit/Item.css"
-import { Grid, Image, Card, Icon } from 'semantic-ui-react'
+import { Grid, Image, Card, Icon, Button } from 'semantic-ui-react'
 // import { Card, Icon, Image } from 'semantic-ui-react'
 
 export const Home = () => {
+
+const { items, getItems } = useContext(ItemContext)
+
+useEffect(() => {
+    getItems()
+// eslint-disable-next-line react-hooks/exhaustive-deps
+}, [])
 
     return (
         <>
@@ -36,39 +44,19 @@ export const Home = () => {
                     </div>
                 </aside>
 
-                <div className="mainFeedHome">
+                    {/* MAIN FEED TO KEEP */}
+                    <div className="mainFeedHome">
                     <div className="organizeTilesDiv">
-
-                        <img className="itemTile" alt="item" src="https://i.pinimg.com/originals/fd/69/98/fd69989a72f58e02ef593ba358d55afa.jpg"></img>
-                        <img className="itemTile" alt="item" src="https://i.pinimg.com/236x/18/aa/a2/18aaa22e623cfabe23f412dbf1cc9a30.jpg"></img>
-                        <img className="itemTile" alt="item" src="https://i.pinimg.com/736x/f9/0d/6d/f90d6deb93f92f6455cd2fa8d77c7ce3.jpg"></img>
-                        <img className="itemTile" alt="item" src="https://i.pinimg.com/originals/dc/d4/ab/dcd4ab6c40fbe444265c0e26921c896d.jpg"></img>
-                        <img className="itemTile" alt="item" src="https://i.pinimg.com/originals/c8/db/c3/c8dbc3e6d26f7b0ba954d72b358cb04c.jpg"></img>
-                        <img className="itemTile" alt="item" src="https://i.pinimg.com/736x/20/c0/a5/20c0a53e1b619025b3c2f17c816b98cc.jpg"></img>
-                        <img className="itemTile" alt="item" src="https://i.pinimg.com/originals/cc/d5/cb/ccd5cb75b39be76550d8537d10516725.jpg"></img>
-                        <img className="itemTile" alt="item" src="https://i.pinimg.com/736x/f9/10/f4/f910f427e0f72a395deeb09210846cf7.jpg"></img>
-                        <img className="itemTile" alt="item" src="https://i.pinimg.com/originals/43/9c/5e/439c5e215fa928311c343046ddd28f81.jpg"></img>
-                        <img className="itemTile" alt="item" src="https://www.the36thavenue.com/wp-content/uploads/2015/10/8.jpg"></img>
-                        <img className="itemTile" alt="item" src="https://www.annachich.com/sites/annachich.com/files/styles/max_1600_width_or_height/public/button-down-shirt-boyfriend-jeans-casual-chic-weekend-look.jpg?itok=RkTg72a8"></img>
-                        <img className="itemTile" alt="item" src="https://www.stylevore.com/wp-content/uploads/2019/05/Time-flies-so-fast-and-in-a-anniversary-you-will.jpg"></img>
-
-                        <img className="itemTile" alt="item" src="https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/christmas-outfits-for-men-1-1540919742.jpg?resize=1600:*"></img>
-
-                        <img className="itemTile" alt="item" src="https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/christmas-outfits-for-men-3-1540919788.jpg?resize=1600:*"></img>
-
-                        <img className="itemTile" alt="item" src="https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/christmas-outfits-for-men-4-1540919810.jpg?resize=1600:*"></img>
-
-                        <img className="itemTile" alt="item" src="https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/christmas-outfits-for-men-5-1540919822.jpg?resize=1600:*"></img>
-
-                        <img className="itemTile" alt="item" src="http://styledsharp.com/wp-content/uploads/2020/04/casual-office-wear-men.png"></img>
-
-                        <img className="itemTile" alt="item" src="https://gabriellearruda.com/wp-content/uploads/2020/12/menscapsule_outfit1.jpg"></img>
-
-                        <img className="itemTile" alt="item" src="https://chrisreining.com/wp-content/uploads/2015/07/MED-MensSummerCapsule.jpg"></img>
-
-                        <img className="itemTile" alt="item" src="https://i.pinimg.com/originals/b3/c5/0d/b3c50df5f869ffaa402a4236ee91ef16.jpg"></img>
-
-                        <img className="itemTile" alt="item" src="https://i.pinimg.com/236x/fa/ea/60/faea607d339389fe65f7d5b032df21c8--hollister-jeans-hollister-fashion.jpg"></img>
+                        {
+                            items.map(item => {
+                                return (
+                                    // <img className="itemTile" alt="item" src={item.itemImage}></img>
+                                    <div className="container">
+                                       <img key={`userItemSave--${item.id}`} className="itemTile" alt="item" src={item.itemImage} />
+                                       {item.saved === true ? <div className="top-right"><Button icon><Icon circular inverted color='teal' name='suitcase'/></Button></div> : <div className="top-right"><Button icon><Icon circular inverted color='white' name='suitcase'/></Button></div>}
+                                   </div>)
+                            })
+                        }
                     </div>
                 </div>
             </div>

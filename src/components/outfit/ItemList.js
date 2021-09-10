@@ -31,7 +31,7 @@ export const ItemList = () => {
 
                     <div className="asideAddNewDiv">
                         <Link to="/addNewItem">
-                        <img className="addItemBanner" alt="Add item" src="http://dslv9ilpbe7p1.cloudfront.net/DsfNvC21hTskBXoyodN2Nw_store_banner_image.jpeg"></img>
+                            <img className="addItemBanner" alt="Add item" src="http://dslv9ilpbe7p1.cloudfront.net/DsfNvC21hTskBXoyodN2Nw_store_banner_image.jpeg"></img>
                         </Link>
                     </div>
 

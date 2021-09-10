@@ -8,7 +8,7 @@ export const NavBar = () => {
 
     const Logout = () => {
         sessionStorage.removeItem("trendago_user")
-        history.push("login")
+        history.push("/login")
     }
 
     return (
