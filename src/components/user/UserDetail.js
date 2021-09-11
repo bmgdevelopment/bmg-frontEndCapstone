@@ -43,41 +43,72 @@ export const UserDetail = () => {
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
 
+    const profileInfoBanner = () => {
+        return (
+            <div>
+                <div className="profileBanner">
+                    <img src={user.region.regionImage} alt="profileIMG" className="profileBannerBkgd" key={`profileIMGBanner--${user.id}`} />
+                </div>
+
+                <div className="userProfileTitle">
+                    <h2 className="userProfileH2">{user.firstName} {user.lastName}</h2>
+                    <p className="profileDetailsP">
+                        Member since {`${user.dateJoined}`} from {user.region.name}
+                    </p>
+                </div>
+
+                <div className="userProfileIMGSolo" key={`userProfileURL--${user.id}`}>
+                    <img src={user.profileURL} alt="profileIMG" className="userProfileIMGBanner" key={`profileIMG--${user.id}`} />
+                </div>
+
+            </div>
+        )
+    }
+
     return (
         <>
             <div className="aside_and_mainFeed">
-
-
                 <div className="mainFeedHome">
 
-                    <div>
-                        <div className="profileBanner">
-                            <img src={user.region.regionImage} alt="profileIMG" className="profileBannerBkgd" key={`profileIMGBanner--${user.id}`} />
-                        </div>
+                    {user.id ?
 
-                        <div className="userProfileTitle">
-                            <h2 className="userProfileH2">{user.firstName} {user.lastName}</h2>
-                            <p className="profileDetailsP">
-                            Member since {`${user.dateJoined}`} from {user.region.name}    
-                            </p>
-                        </div>
+                        <div>
+                            <div className="profileBanner">
+                                <img src={user.region.regionImage} alt="profileIMG" className="profileBannerBkgd" key={`profileIMGBanner--${user.id}`} />
+                            </div>
 
-                        <div className="userProfileIMGSolo" key={`userProfileURL--${user.id}`}>
-                            <img src={user.profileURL} alt="profileIMG" className="userProfileIMGBanner" key={`profileIMG--${user.id}`} />
-                        </div>
+                            <div className="userProfileTitle">
+                                <h2 className="userProfileH2">{user.firstName} {user.lastName}</h2>
+                                <p className="profileDetailsP">
+                                    Member since {`${user.dateJoined}`} from {user.region.name}
+                                </p>
+                            </div>
 
-                    </div>
+                            <div className="userProfileIMGSolo" key={`userProfileURL--${user.id}`}>
+                                <img src={user.profileURL} alt="profileIMG" className="userProfileIMGBanner" key={`profileIMG--${user.id}`} />
+                            </div>
+
+                        </div> : <p className="noItemsP">User info not retrieved, please try again </p>
+                    }
+
 
                     <div className="organizeTilesDiv">
                         {
-                        allUserItems.length === 0 && allUserSaves.length === 0 ? <div className="noItemsDiv"><p className="noItemsP">{`${user.firstName} has yet to add an item`}</p></div> :
-                            allUserItems.map(item => {
-                                return (
-                                    <div className="container">
-                                        <img key={`userItemSave--${item.id}`} className="itemTile" alt="item" src={item.itemImage} />
-                                        {item.saved === true ? <div className="top-right"><Button icon><Icon circular inverted color='teal' name='suitcase'/></Button></div> : <div className="top-right"><Button icon><Icon circular inverted color='white' name='suitcase'/></Button></div>}
-                                    </div>)
-                            })
+                            allUserItems.length === 0 && allUserSaves.length === 0 ? <div className="noItemsDiv"><p className="noItemsP">{`${user.firstName} has yet to add an item`}</p></div> :
+                                allUserItems.map(item => {
+                                    return (
+                                        <div className="container">
+                                            <img key={`userItemSave--${item.id}`} className="itemTile" alt="item" src={item.itemImage} />
+                                            {item.saved === true ? <div className="top-right"><Button icon><Icon circular inverted color='teal' name='suitcase' /></Button></div> : <div className="top-right"><Button icon><Icon circular inverted color='white' name='suitcase' /></Button></div>}
+                                        </div>)
+                                })
+                        }
+
+                        {
+                            allUserSaves.length > 0 ?
+                                <div className="trendTravH2Div">
+                                    <h1 className="trendyTravlersH2 saveH2">Trendy Favs</h1>
+                                </div> : <></>
                         }
                         {
                             allUserSaves.map(save => {
@@ -85,7 +116,7 @@ export const UserDetail = () => {
                                     <>
                                         <div className="container">
                                             <img key={`userItemSave--${save.id}`} className="itemTile" alt="item" src={save.item.itemImage} />
-                                            <div className="top-right"><Button icon><Icon circular inverted color='teal' name='suitcase'/></Button></div>                                        
+                                            <div className="top-right"><Button icon><Icon circular inverted color='teal' name='suitcase' /></Button></div>
                                         </div>
                                     </>
                                 )
