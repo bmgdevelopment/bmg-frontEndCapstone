@@ -70,7 +70,7 @@ export const UserDetail = () => {
             <div className="aside_and_mainFeed">
                 <div className="mainFeedHome">
 
-                    {user.id ?
+                    {
 
                         <div>
                             <div className="profileBanner">
@@ -88,7 +88,7 @@ export const UserDetail = () => {
                                 <img src={user.profileURL} alt="profileIMG" className="userProfileIMGBanner" key={`profileIMG--${user.id}`} />
                             </div>
 
-                        </div> : <p className="noItemsP">User info not retrieved, please try again </p>
+                        </div> 
                     }
 
 

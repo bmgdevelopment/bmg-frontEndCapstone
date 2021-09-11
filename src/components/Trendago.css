@@ -239,7 +239,7 @@
 /* BACK TO TOP BTN */
 
 .backToTopDiv {
-    border: 2px solid gray;
+    /* border: 2px solid gray; */
     display: flex;
     justify-content: flex-end;
     position: sticky;
