@@ -1,12 +1,11 @@
 import React, { useContext, useEffect, useState } from "react"
 import { UserContext } from "./UserProvider"
-import { ItemContext } from "../outfit/ItemProvider"
+import { ItemContext } from "../item/ItemProvider"
 import { SaveContext } from "../save/SaveProvider"
 import { useParams } from "react-router-dom"
 import { Button, Icon } from 'semantic-ui-react'
 
 import "./User.css"
-
 
 export const UserDetail = () => {
     const { users, getUsers } = useContext(UserContext)
@@ -25,7 +24,7 @@ export const UserDetail = () => {
             setUser(thisUser)
         })
         // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [userId])
+    }, [userId, users])
 
     useEffect(() => {
         getItems().then(() => {
@@ -33,7 +32,7 @@ export const UserDetail = () => {
             setAllUserItems(userItems)
         })
         // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [])
+    }, [items])
 
     useEffect(() => {
         getSaves().then(() => {
@@ -41,29 +40,29 @@ export const UserDetail = () => {
             setAllUserSaves(userSaves)
         })
         // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [])
+    }, [saves])
 
-    const profileInfoBanner = () => {
-        return (
-            <div>
-                <div className="profileBanner">
-                    <img src={user.region.regionImage} alt="profileIMG" className="profileBannerBkgd" key={`profileIMGBanner--${user.id}`} />
-                </div>
+    // const profileInfoBanner = () => {
+    //     return (
+    //         <div>
+    //             <div className="profileBanner">
+    //                 <img src={user.region.regionImage} alt="profileIMG" className="profileBannerBkgd" key={`profileIMGBanner--${user.id}`} />
+    //             </div>
 
-                <div className="userProfileTitle">
-                    <h2 className="userProfileH2">{user.firstName} {user.lastName}</h2>
-                    <p className="profileDetailsP">
-                        Member since {`${user.dateJoined}`} from {user.region.name}
-                    </p>
-                </div>
+    //             <div className="userProfileTitle">
+    //                 <h2 className="userProfileH2">{user.firstName} {user.lastName}</h2>
+    //                 <p className="profileDetailsP">
+    //                     Member since {`${user.dateJoined}`} from {user.region.name}
+    //                 </p>
+    //             </div>
 
-                <div className="userProfileIMGSolo" key={`userProfileURL--${user.id}`}>
-                    <img src={user.profileURL} alt="profileIMG" className="userProfileIMGBanner" key={`profileIMG--${user.id}`} />
-                </div>
+    //             <div className="userProfileIMGSolo" key={`userProfileURL--${user.id}`}>
+    //                 <img src={user.profileURL} alt="profileIMG" className="userProfileIMGBanner" key={`profileIMG--${user.id}`} />
+    //             </div>
 
-            </div>
-        )
-    }
+    //         </div>
+    //     )
+    // }
 
     return (
         <>
@@ -88,10 +87,17 @@ export const UserDetail = () => {
                                 <img src={user.profileURL} alt="profileIMG" className="userProfileIMGBanner" key={`profileIMG--${user.id}`} />
                             </div>
 
-                        </div> 
+                        </div>
                     }
 
+<br/>
 
+                        {
+                            allUserSaves.length > 0 ?
+                                <div className="trendTravH2Div">
+                                    <h1 className="trendyTravlersH2 userItemsH2">Your Trends</h1>
+                                </div> : <></>
+                        }
                     <div className="organizeTilesDiv">
                         {
                             allUserItems.length === 0 && allUserSaves.length === 0 ? <div className="noItemsDiv"><p className="noItemsP">{`${user.firstName} has yet to add an item`}</p></div> :
@@ -103,13 +109,16 @@ export const UserDetail = () => {
                                         </div>)
                                 })
                         }
+                    </div>
 
-                        {
-                            allUserSaves.length > 0 ?
-                                <div className="trendTravH2Div">
-                                    <h1 className="trendyTravlersH2 saveH2">Trendy Favs</h1>
-                                </div> : <></>
-                        }
+                    {
+                        allUserSaves.length > 0 ?
+                            <div className="trendTravH2Div">
+                                <h1 className="trendyTravlersH2 saveH2">Saved Trends</h1>
+                            </div> : <></>
+                    }
+                    
+                    <div className="organizeTilesDiv">
                         {
                             allUserSaves.map(save => {
                                 return (

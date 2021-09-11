@@ -1,7 +1,7 @@
 import React, { useContext, useEffect } from "react"
 import { Link } from "react-router-dom"
-import { ItemContext } from "./outfit/ItemProvider"
-import "./outfit/Item.css"
+import { ItemContext } from "./item/ItemProvider"
+import "./item/Item.css"
 import { Grid, Image, Card, Icon, Button } from 'semantic-ui-react'
 // import { Card, Icon, Image } from 'semantic-ui-react'
 

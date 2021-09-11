@@ -23,7 +23,7 @@ nav * {
     justify-content: center;
     align-content: center;
     align-items: center;
-    /* width: 300px; */
+    min-width: 650px;
     height: auto;
     margin-bottom: .5em;
 }
@@ -38,6 +38,7 @@ nav * {
 
 .navUL {
     display: flex;
+    min-width: 700px;
     justify-content: center;
     flex-direction: row; 
     /* border: 2px solid yellowgreen; */

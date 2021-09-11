@@ -85,7 +85,9 @@
 /* BANNER FOR ONE USER */
 
 .profileBannerBkgd {
-    width: 1150px;
+    /* width: 1150px; */
+    width: 95%;
+    min-width: 650px;
     margin-top: 25px;
     height: 200px;
     z-index: -8;

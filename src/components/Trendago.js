@@ -19,7 +19,7 @@ export const Trendago = () => (
                     </>
                 )
             } else {
-                return <Redirect to="login" />;
+                return <Redirect to="/login" />;
             }
         }}
         />

@@ -1,5 +1,5 @@
 import React, { useEffect, useContext, useState } from "react"
-import { ItemContext } from "../outfit/ItemProvider"
+import { ItemContext } from "../item/ItemProvider"
 import { UserContext } from "../user/UserProvider"
 import { SaveContext } from "../save/SaveProvider"
 import { Button, Icon } from 'semantic-ui-react'
@@ -23,15 +23,15 @@ export const ProfileDetail = () => {
             setCurrentUser(thisUser)
         })
         // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [])
+    }, [currentUserId, users])
 
     useEffect(() => {
         getItems().then(() => {
-            const userItems = items.filter(item => item.userId === currentUserId); 
+            const userItems = items.filter(item => item.userId === currentUserId);
             setAllUserItems(userItems)
         })
         // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [])
+    }, [items])
 
     useEffect(() => {
         getSaves().then(() => {
@@ -39,7 +39,7 @@ export const ProfileDetail = () => {
             setAllUserSaves(userSaves)
         })
         // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [])
+    }, [saves])
 
     return (
         <>
@@ -55,7 +55,7 @@ export const ProfileDetail = () => {
                         <div className="userProfileTitle">
                             <h2 className="userProfileH2">{currentUser.firstName} {currentUser.lastName}</h2>
                             <p className="profileDetailsP">
-                                Member since {`${currentUser.dateJoined}`} from {currentUser.region.name}    
+                                Member since {`${currentUser.dateJoined}`} from {currentUser.region.name}
                             </p>
                         </div>
 
@@ -65,24 +65,43 @@ export const ProfileDetail = () => {
 
                     </div>
 
+<br/>
+                    {
+                            allUserSaves.length > 0 ?
+                                <div className="trendTravH2Div">
+                                    <h1 className="trendyTravlersH2 userItemsH2">Your Trends</h1>
+                                </div> : <></>
+                        }
+
                     <div className="organizeTilesDiv">
                         {
-                           allUserItems.length === 0 && allUserSaves.length === 0 ? <div className="noItemsDiv"><p className="noItemsP">{`${currentUser.firstName} has yet to add an item`}</p></div> :
-                           allUserItems.map(item => {
-                               return (
-                                   <div className="container">
-                                       <img key={`userItemSave--${item.id}`} className="itemTile" alt="item" src={item.itemImage} />
-                                       {item.saved === true ? <div className="top-right"><Button icon><Icon circular inverted color='teal' name='suitcase'/></Button></div> : <div className="top-right"><Button icon><Icon circular inverted color='white' name='suitcase'/></Button></div>}
-                                   </div>)
-                           })
+                            allUserItems.length === 0 && allUserSaves.length === 0 ? <div className="noItemsDiv"><p className="noItemsP">{`${currentUser.firstName} has yet to add an item`}</p></div> :
+                                allUserItems.map(item => {
+                                    return (
+                                        <div className="container">
+                                            <img key={`userItemSave--${item.id}`} className="itemTile" alt="item" src={item.itemImage} />
+                                            {item.saved === true ? <div className="top-right"><Button icon><Icon circular inverted color='teal' name='suitcase' /></Button></div> : <div className="top-right"><Button icon><Icon circular inverted color='white' name='suitcase' /></Button></div>}
+                                        </div>)
+                                })
                         }
+                    </div>
+                    
+                    {
+                        allUserSaves.length > 0 ?
+                            <div className="trendTravH2Div">
+                                <h1 className="trendyTravlersH2 saveH2">Saved Trends</h1>
+                            </div> : <></>
+                    }
+
+                    <div className="organizeTilesDiv">
+
                         {
-                               allUserSaves.map(save => {
+                            allUserSaves.map(save => {
                                 return (
                                     <>
                                         <div className="container">
                                             <img key={`userItemSave--${save.id}`} className="itemTile" alt="item" src={save.item.itemImage} />
-                                            <div className="top-right"><Button icon><Icon circular inverted color='teal' name='suitcase'/></Button></div>                                        
+                                            <div className="top-right"><Button icon><Icon circular inverted color='teal' name='suitcase' /></Button></div>
                                         </div>
                                     </>
                                 )
