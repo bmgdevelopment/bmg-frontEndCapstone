@@ -3,7 +3,6 @@ import { ItemContext } from "../item/ItemProvider"
 import { UserContext } from "../user/UserProvider"
 import { SaveContext } from "../save/SaveProvider"
 import { Button, Icon } from 'semantic-ui-react'
-
 import "../Trendago.css"
 
 export const ProfileDetail = () => {
@@ -14,7 +13,6 @@ export const ProfileDetail = () => {
     const [currentUser, setCurrentUser] = useState({ region: {}, profileURL: {} })
     const [allUserItems, setAllUserItems] = useState([])
     const [allUserSaves, setAllUserSaves] = useState([])
-
     const currentUserId = parseInt(sessionStorage.getItem("trendago_user"))
 
     useEffect(() => {

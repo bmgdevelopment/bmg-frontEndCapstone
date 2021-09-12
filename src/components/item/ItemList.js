@@ -3,7 +3,7 @@ import { ItemContext } from "./ItemProvider"
 import { UserContext } from "../user/UserProvider"
 import { SaveContext } from "../save/SaveProvider"
 // import { ItemDetail } from "./ItemDetail"
-// import { useParams } from "react-router-dom"
+import { Link } from "react-router-dom"
 import { Button, Icon } from 'semantic-ui-react'
 import "./Item.css"
 
@@ -56,11 +56,16 @@ export const ItemList = () => {
                     filteredItems.map(item => {
                         return (
                             // <ItemDetail key={item.id} item={item} />
+                            
+                            <Link to={`/items/detail/${item.id}`}>
+                            
                             <div className="container">
                                 <img className="itemTile" key={`itemTile--${item.id}`} alt="item" src={item.itemImage}></img>
                                 <div className="top-right"><Button icon><Icon circular inverted color='teal' name='suitcase' /></Button></div> 
                                  <div className="top-right"><Button icon><Icon circular inverted color='white' name='suitcase' /></Button></div>
                             </div>
+                            </Link>
+                            
                         )
                     })
                 }
