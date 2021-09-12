@@ -12,13 +12,6 @@ import "./item/Item.css"
 
 export const Home = () => {
 
-    // const { items, getItems } = useContext(ItemContext)
-
-    // useEffect(() => {
-    //     getItems()
-    //     // eslint-disable-next-line react-hooks/exhaustive-deps
-    // }, [])
-
     return (
         <>
             <UserProvider>
@@ -50,7 +43,7 @@ export const Home = () => {
                     </UserProvider>
 
                 </div>
-                
+
             </div>
             <div className="backToTopDiv">
                 <button className="backToTop">⬆</button>

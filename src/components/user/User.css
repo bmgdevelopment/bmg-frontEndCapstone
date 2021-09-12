@@ -2,8 +2,8 @@
     /* border: 2px solid purple; */
     display: flex;
     flex-direction: column;
-    margin-right: 20%;
-    margin-left: 20%;
+    margin-right: 15%;
+    margin-left: 15%;
     margin-bottom: 10em;
     min-width: 700px;
 }

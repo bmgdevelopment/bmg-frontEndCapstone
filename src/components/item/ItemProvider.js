@@ -1,4 +1,5 @@
 import React, { createContext, useState } from "react"
+import { useEffect } from "react/cjs/react.development"
 
 const apiURL = "http://localhost:7001"
 export const ItemContext = createContext()
@@ -6,6 +7,10 @@ export const ItemContext = createContext()
 export const ItemProvider = (props) => {
     const [items, setItems] = useState([])
     const [ searchTerms, setSearchTerms] = useState("")
+
+    useEffect(() => {
+        console.log(searchTerms)
+    }, [searchTerms])
 
     const getItems = () => {
         return fetch(`${apiURL}/items?_expand=user&_expand=region`)

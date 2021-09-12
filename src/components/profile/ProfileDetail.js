@@ -16,28 +16,25 @@ export const ProfileDetail = () => {
     const currentUserId = parseInt(sessionStorage.getItem("trendago_user"))
 
     useEffect(() => {
-        getUsers().then(() => {
+        getUsers()
+        getItems()
+        getSaves()
+    }, [getItems, getSaves, getUsers])
+
+    useEffect(() => {
             const thisUser = users.find(user => user.id === currentUserId) || { region: {}, profileURL: {} }
             setCurrentUser(thisUser)
-        })
-        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [currentUserId, users])
 
     useEffect(() => {
-        getItems().then(() => {
             const userItems = items.filter(item => item.userId === currentUserId);
             setAllUserItems(userItems)
-        })
-        // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [items])
+    }, [currentUserId, items])
 
     useEffect(() => {
-        getSaves().then(() => {
             const userSaves = saves.filter(save => save.userId === currentUserId);
             setAllUserSaves(userSaves)
-        })
-        // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [saves])
+    }, [currentUserId, saves])
 
     return (
         <>
@@ -53,7 +50,7 @@ export const ProfileDetail = () => {
                         <div className="userProfileTitle">
                             <h2 className="userProfileH2">{currentUser.firstName} {currentUser.lastName}</h2>
                             <p className="profileDetailsP">
-                                Member since {`${currentUser.dateJoined}`} from {currentUser.region.name}
+                                Member since {currentUser.dateJoined} from {currentUser.region.name}
                             </p>
                         </div>
 

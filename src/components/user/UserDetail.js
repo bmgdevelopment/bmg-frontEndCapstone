@@ -42,28 +42,6 @@ export const UserDetail = () => {
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [saves])
 
-    // const profileInfoBanner = () => {
-    //     return (
-    //         <div>
-    //             <div className="profileBanner">
-    //                 <img src={user.region.regionImage} alt="profileIMG" className="profileBannerBkgd" key={`profileIMGBanner--${user.id}`} />
-    //             </div>
-
-    //             <div className="userProfileTitle">
-    //                 <h2 className="userProfileH2">{user.firstName} {user.lastName}</h2>
-    //                 <p className="profileDetailsP">
-    //                     Member since {`${user.dateJoined}`} from {user.region.name}
-    //                 </p>
-    //             </div>
-
-    //             <div className="userProfileIMGSolo" key={`userProfileURL--${user.id}`}>
-    //                 <img src={user.profileURL} alt="profileIMG" className="userProfileIMGBanner" key={`profileIMG--${user.id}`} />
-    //             </div>
-
-    //         </div>
-    //     )
-    // }
-
     return (
         <>
             <div className="aside_and_mainFeed">

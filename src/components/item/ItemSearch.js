@@ -1,6 +1,6 @@
 import React, { useContext } from "react"
 import { ItemContext } from "./ItemProvider"
-import { Icon } from 'semantic-ui-react'
+// import { Icon } from 'semantic-ui-react'
 import "./Item.css"
 
 export const ItemSearch = () => {
@@ -18,7 +18,9 @@ export const ItemSearch = () => {
                 <input 
                 type="text"
                 className="input--wide"
-                onKeyUp={(event) => setSearchTerms(event.target.value)}
+                onKeyUp={(event) => {
+                    setSearchTerms(event.target.value)}
+                } 
                 placeholder='Search by keyword like "warm" or "snow"... '
                 />
                 <i aria-hidden="true" className="search icon"></i>

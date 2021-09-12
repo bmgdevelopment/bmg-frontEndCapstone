@@ -1,56 +1,52 @@
 import React, { useContext, useEffect, useState } from "react"
-import { useParams } from "react-router-dom"
+import { useParams, Link } from "react-router-dom"
 import { ItemContext } from "./ItemProvider"
 import { UserContext } from "../user/UserProvider"
 import { Icon, Button } from 'semantic-ui-react'
 import "./Item.css"
 
 export const ItemDetail = (props) => {
-    const { items } = useContext(ItemContext)
+    const { items, getItems } = useContext(ItemContext)
     const { users, getUsers } = useContext(UserContext)
 
-    const [ item, setItem ] = useState({ user: {}, region: {} })
-    const [ itemUser, setItemUser ] = useState({ region: {}, profileURL: {} })
+    const [item, setItem] = useState({ user: {}, region: {} })
+    const [itemUser, setItemUser] = useState({ region: {}, profileURL: {} })
 
+    // const history = useHistory()
     const { itemId } = useParams()
 
     useEffect(() => {
-        getUsers()
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [])
-
-    useEffect(() => {
-            const thisUser = users.find(user => user.id === item.userId) || { region: {}, profileURL: {} }
-            setItemUser(thisUser)
-    }, [item.userId, users])
-
-    useEffect(() => {
-        if (props.item) {
-            setItem(props.item)
-        } else {
+        getItems().then(() => {
             const thisItem = items.find(item => item.id === parseInt(itemId)) || { user: {}, region: {} }
             setItem(thisItem)
-        }
-    }, [itemId, items, props.item])
+        })
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [items])
+
+    useEffect(() => {
+        getUsers().then(() => {
+            const thisUser = users.find(user => user.id === item.userId) || { region: {}, profileURL: {} }
+            setItemUser(thisUser)
+        })
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [itemId, users])
 
     return (
         <>
             <div className="organizeTilesDiv">
-
-                <div className="container">
-                    <img key={`userItemSave--${item.id}`} className="itemTile" alt="item" src={item.itemImage} />
-                    {item ? <div className="top-right"><Button icon><Icon circular inverted color='white' name='suitcase' /></Button></div> : <div className="top-right"><Button icon><Icon circular inverted color='teal' name='suitcase' /> </Button></div>}
-                </div>
+                {/* <div className="container">
+                <img key={`userItemSave--${item.id}`} className="itemTile" alt="item" src={item.itemImage} />
+                {item ? <div className="top-right"><Button icon><Icon circular inverted color='white' name='suitcase' /></Button></div> : <div className="top-right"><Button icon><Icon circular inverted color='teal' name='suitcase' /> </Button></div>}
             </div>
-            {/* <div>
-                    {itemUser.id === item.userId ? <p className="trendByName">{`Trend provided by ${itemUser.firstName} ${itemUser.lastName}`}</p> : <></>}
-                    {itemUser.id === item.userId ? <p className="itemUserRegion">{`Region: ${itemUser.region.name} `}</p> : <></>}
-                </div>
-                <Link to={"/"}>
-                    <button>X</button>
-                </Link> */}
+            <div>
+                {itemUser.id === item.userId ? <p className="trendByName">{`Trend provided by ${itemUser.firstName} ${itemUser.lastName}`}</p> : <></>}
+                {itemUser.id === item.userId ? <p className="itemUserRegion">{`Region: ${itemUser.region.name} `}</p> : <></>}
+            </div>
+            <Link to={"/"}>
+                <button>X</button>
+            </Link> */}
 
-            {/* <div className="oneItemTile">
+                <div className="oneItemTile">
                     <div className="itemInfo">
                         <div className="itemTopInfo">
                             <div className="container">
@@ -84,7 +80,8 @@ export const ItemDetail = (props) => {
                 <Link to={"/"}>
                     <button>X</button>
                 </Link>
-                */}
+
+            </div>
         </>
     )
 }
