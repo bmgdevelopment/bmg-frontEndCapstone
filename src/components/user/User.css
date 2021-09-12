@@ -2,9 +2,10 @@
     /* border: 2px solid purple; */
     display: flex;
     flex-direction: column;
-    margin-right: 13em;
-    margin-left: 13em;
+    margin-right: 20%;
+    margin-left: 20%;
     margin-bottom: 10em;
+    min-width: 700px;
 }
 
 .trendyTravlersH2 {

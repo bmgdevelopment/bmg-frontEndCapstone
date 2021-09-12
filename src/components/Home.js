@@ -1,27 +1,29 @@
 import React, { useContext, useEffect } from "react"
 import { Link } from "react-router-dom"
 import { ItemContext } from "./item/ItemProvider"
+// import { ItemSearch } from "../item/ItemSearch"
+import { UserProvider } from "./user/UserProvider"
+import { ItemProvider } from "./item/ItemProvider"
+import { RegionProvider } from "./region/RegionProvider"
+import { ItemList } from "./item/ItemList"
 import "./item/Item.css"
 import { Grid, Image, Card, Icon, Button } from 'semantic-ui-react'
 // import { Card, Icon, Image } from 'semantic-ui-react'
 
 export const Home = () => {
 
-const { items, getItems } = useContext(ItemContext)
+    const { items, getItems } = useContext(ItemContext)
 
-useEffect(() => {
-    getItems()
-// eslint-disable-next-line react-hooks/exhaustive-deps
-}, [])
+    useEffect(() => {
+        getItems()
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [])
 
     return (
         <>
             <div className="aside_and_mainFeed_home">
 
                 <aside className="asidePanelHome">
-                    <div className="asideSearchDiv">
-                        <input></input><button>🔍</button>
-                    </div>
 
                     <div className="asideAddNewDiv">
                         <Link to="/addNewItem">
@@ -44,186 +46,202 @@ useEffect(() => {
                     </div>
                 </aside>
 
-                    {/* MAIN FEED TO KEEP */}
-                    <div className="mainFeedHome">
+                {/* MAIN FEED TO KEEP */}
+                <div className="mainFeedHome">
+                    <br />
+                    {
+                        <div className="trendTravH2Div">
+                            <h1 className="trendyTravlersH2 userItemsH2">Explore All Trends</h1>
+                        </div>
+                    }
+
+                    {/* ALL ITEM LIST */}
+                    <UserProvider>
+                        <RegionProvider>
+                            <ItemProvider>
+                                <ItemList />
+                            </ItemProvider>
+                        </RegionProvider>
+                    </UserProvider>
+
                     <div className="organizeTilesDiv">
                         {
                             items.map(item => {
                                 return (
                                     // <img className="itemTile" alt="item" src={item.itemImage}></img>
                                     <div className="container">
-                                       <img key={`userItemSave--${item.id}`} className="itemTile" alt="item" src={item.itemImage} />
-                                       {item.saved === true ? <div className="top-right"><Button icon><Icon circular inverted color='teal' name='suitcase'/></Button></div> : <div className="top-right"><Button icon><Icon circular inverted color='white' name='suitcase'/></Button></div>}
-                                   </div>)
+                                        <img key={`userItemSave--${item.id}`} className="itemTile" alt="item" src={item.itemImage} />
+                                        {item.saved === true ? <div className="top-right"><Button icon><Icon circular inverted color='teal' name='suitcase' /></Button></div> : <div className="top-right"><Button icon><Icon circular inverted color='white' name='suitcase' /></Button></div>}
+                                    </div>)
                             })
                         }
                     </div>
                 </div>
             </div>
 
-<div className="testDiv">
-<Grid columns={4}>
+            <div className="testDiv">
+                <Grid columns={4}>
 
-<Grid.Column>
+                    <Grid.Column>
 
-            <Card>
-                <Image 
-                size="small"
-                src='https://i.pinimg.com/236x/fa/ea/60/faea607d339389fe65f7d5b032df21c8--hollister-jeans-hollister-fashion.jpg'                
-                wrapped ui={false} 
-                label={{ as: 'a', corner: 'left', icon: 'suitcase' }}
-                />
-                <Card.Content>
-                    <Card.Header>Matthew</Card.Header>
-                    <Card.Meta>
-                        <span className='date'>Joined in 2015</span>
-                    </Card.Meta>
-                    <Card.Description>
-                        Matthew is a musician living in Nashville.
-                    </Card.Description>
-                </Card.Content>
-                <Card.Content extra>
-                    <a>
-                        <Icon name='user' />
-                        22 Friends
-                    </a>
-                </Card.Content>
-            </Card>
-</Grid.Column>
+                        <Card>
+                            <Image
+                                size="small"
+                                src='https://i.pinimg.com/236x/fa/ea/60/faea607d339389fe65f7d5b032df21c8--hollister-jeans-hollister-fashion.jpg'
+                                wrapped ui={false}
+                                label={{ as: 'a', corner: 'left', icon: 'suitcase' }}
+                            />
+                            <Card.Content>
+                                <Card.Header>Matthew</Card.Header>
+                                <Card.Meta>
+                                    <span className='date'>Joined in 2015</span>
+                                </Card.Meta>
+                                <Card.Description>
+                                    Matthew is a musician living in Nashville.
+                                </Card.Description>
+                            </Card.Content>
+                            <Card.Content extra>
+                                <a>
+                                    <Icon name='user' />
+                                    22 Friends
+                                </a>
+                            </Card.Content>
+                        </Card>
+                    </Grid.Column>
 
-<Grid.Column>
-            <Card>
-                <Image 
-                size="small"
-                src='https://i.pinimg.com/originals/b3/c5/0d/b3c50df5f869ffaa402a4236ee91ef16.jpg' 
-                wrapped ui={false} 
-                label={{ as: 'a', corner: 'left', size: 'large', icon: 'suitcase' }}
-                />
-                <Card.Content>
-                    <Card.Header>Matthew</Card.Header>
-                    <Card.Meta>
-                        <span className='date'>Joined in 2015</span>
-                    </Card.Meta>
-                    <Card.Description>
-                        Matthew is a musician living in Nashville.
-                    </Card.Description>
-                </Card.Content>
-                <Card.Content extra>
-                    <a>
-                        <Icon name='user' />
-                        22 Friends
-                    </a>
-                </Card.Content>
-            </Card>
-</Grid.Column>
+                    <Grid.Column>
+                        <Card>
+                            <Image
+                                size="small"
+                                src='https://i.pinimg.com/originals/b3/c5/0d/b3c50df5f869ffaa402a4236ee91ef16.jpg'
+                                wrapped ui={false}
+                                label={{ as: 'a', corner: 'left', size: 'large', icon: 'suitcase' }}
+                            />
+                            <Card.Content>
+                                <Card.Header>Matthew</Card.Header>
+                                <Card.Meta>
+                                    <span className='date'>Joined in 2015</span>
+                                </Card.Meta>
+                                <Card.Description>
+                                    Matthew is a musician living in Nashville.
+                                </Card.Description>
+                            </Card.Content>
+                            <Card.Content extra>
+                                <a>
+                                    <Icon name='user' />
+                                    22 Friends
+                                </a>
+                            </Card.Content>
+                        </Card>
+                    </Grid.Column>
 
-<Grid.Column>
+                    <Grid.Column>
 
-            <Card>
-                <Image 
-                size="small"
-                src='https://react.semantic-ui.com/images/avatar/large/matthew.png' 
-                wrapped ui={false} 
-                label={{ as: 'a', corner: 'left', size: 'large', icon: 'suitcase' }}
-                />
-                <Card.Content>
-                    <Card.Header>Matthew</Card.Header>
-                    <Card.Meta>
-                        <span className='date'>Joined in 2015</span>
-                    </Card.Meta>
-                    <Card.Description>
-                        Matthew is a musician living in Nashville.
-                    </Card.Description>
-                </Card.Content>
-                <Card.Content extra>
-                    <a>
-                        <Icon name='user' />
-                        22 Friends
-                    </a>
-                </Card.Content>
-            </Card>
-</Grid.Column>
+                        <Card>
+                            <Image
+                                size="small"
+                                src='https://react.semantic-ui.com/images/avatar/large/matthew.png'
+                                wrapped ui={false}
+                                label={{ as: 'a', corner: 'left', size: 'large', icon: 'suitcase' }}
+                            />
+                            <Card.Content>
+                                <Card.Header>Matthew</Card.Header>
+                                <Card.Meta>
+                                    <span className='date'>Joined in 2015</span>
+                                </Card.Meta>
+                                <Card.Description>
+                                    Matthew is a musician living in Nashville.
+                                </Card.Description>
+                            </Card.Content>
+                            <Card.Content extra>
+                                <a>
+                                    <Icon name='user' />
+                                    22 Friends
+                                </a>
+                            </Card.Content>
+                        </Card>
+                    </Grid.Column>
 
-<Grid.Column>
+                    <Grid.Column>
 
-            <Card>
-                <Image 
-                size="small"
-                src='https://i.pinimg.com/236x/fa/ea/60/faea607d339389fe65f7d5b032df21c8--hollister-jeans-hollister-fashion.jpg'                
-                wrapped ui={false} 
-                label={{ as: 'a', corner: 'left', size: 'large', icon: 'suitcase' }}
-                />
-                <Card.Content>
-                    <Card.Header>Matthew</Card.Header>
-                    <Card.Meta>
-                        <span className='date'>Joined in 2015</span>
-                    </Card.Meta>
-                    <Card.Description>
-                        Matthew is a musician living in Nashville.
-                    </Card.Description>
-                </Card.Content>
-                <Card.Content extra>
-                    <a>
-                        <Icon name='user' />
-                        22 Friends
-                    </a>
-                </Card.Content>
-            </Card>
-</Grid.Column>
+                        <Card>
+                            <Image
+                                size="small"
+                                src='https://i.pinimg.com/236x/fa/ea/60/faea607d339389fe65f7d5b032df21c8--hollister-jeans-hollister-fashion.jpg'
+                                wrapped ui={false}
+                                label={{ as: 'a', corner: 'left', size: 'large', icon: 'suitcase' }}
+                            />
+                            <Card.Content>
+                                <Card.Header>Matthew</Card.Header>
+                                <Card.Meta>
+                                    <span className='date'>Joined in 2015</span>
+                                </Card.Meta>
+                                <Card.Description>
+                                    Matthew is a musician living in Nashville.
+                                </Card.Description>
+                            </Card.Content>
+                            <Card.Content extra>
+                                <a>
+                                    <Icon name='user' />
+                                    22 Friends
+                                </a>
+                            </Card.Content>
+                        </Card>
+                    </Grid.Column>
 
-<Grid.Column>
-            <Card>
-                <Image 
-                size="small"
-                src='https://react.semantic-ui.com/images/avatar/large/matthew.png' 
-                wrapped ui={false} 
-                label={{ as: 'a', corner: 'left', size: 'large', icon: 'suitcase' }}
-                />
-                <Card.Content>
-                    <Card.Header>Matthew</Card.Header>
-                    <Card.Meta>
-                        <span className='date'>Joined in 2015</span>
-                    </Card.Meta>
-                    <Card.Description>
-                        Matthew is a musician living in Nashville.
-                    </Card.Description>
-                </Card.Content>
-                <Card.Content extra>
-                    <a>
-                        <Icon name='user' />
-                        22 Friends
-                    </a>
-                </Card.Content>
-            </Card>
-</Grid.Column>
+                    <Grid.Column>
+                        <Card>
+                            <Image
+                                size="small"
+                                src='https://react.semantic-ui.com/images/avatar/large/matthew.png'
+                                wrapped ui={false}
+                                label={{ as: 'a', corner: 'left', size: 'large', icon: 'suitcase' }}
+                            />
+                            <Card.Content>
+                                <Card.Header>Matthew</Card.Header>
+                                <Card.Meta>
+                                    <span className='date'>Joined in 2015</span>
+                                </Card.Meta>
+                                <Card.Description>
+                                    Matthew is a musician living in Nashville.
+                                </Card.Description>
+                            </Card.Content>
+                            <Card.Content extra>
+                                <a>
+                                    <Icon name='user' />
+                                    22 Friends
+                                </a>
+                            </Card.Content>
+                        </Card>
+                    </Grid.Column>
 
-<Grid.Column>
-            <Card>
-                <Image 
-                size="small"
-                src='https://react.semantic-ui.com/images/avatar/large/matthew.png' 
-                wrapped ui={false} 
-                label={{ as: 'a', corner: 'left', size: 'large', icon: 'suitcase' }}
-                />
-                <Card.Content>
-                    <Card.Header>Matthew</Card.Header>
-                    <Card.Meta>
-                        <span className='date'>Joined in 2015</span>
-                    </Card.Meta>
-                    <Card.Description>
-                        Matthew is a musician living in Nashville.
-                    </Card.Description>
-                </Card.Content>
-                <Card.Content extra>
-                    <a>
-                        <Icon name='user' />
-                        22 Friends
-                    </a>
-                </Card.Content>
-            </Card>
-            </Grid.Column>
-            </Grid>
-                </div>
+                    <Grid.Column>
+                        <Card>
+                            <Image
+                                size="small"
+                                src='https://react.semantic-ui.com/images/avatar/large/matthew.png'
+                                wrapped ui={false}
+                                label={{ as: 'a', corner: 'left', size: 'large', icon: 'suitcase' }}
+                            />
+                            <Card.Content>
+                                <Card.Header>Matthew</Card.Header>
+                                <Card.Meta>
+                                    <span className='date'>Joined in 2015</span>
+                                </Card.Meta>
+                                <Card.Description>
+                                    Matthew is a musician living in Nashville.
+                                </Card.Description>
+                            </Card.Content>
+                            <Card.Content extra>
+                                <a>
+                                    <Icon name='user' />
+                                    22 Friends
+                                </a>
+                            </Card.Content>
+                        </Card>
+                    </Grid.Column>
+                </Grid>
+            </div>
 
             <div className="backToTopDiv">
                 <button className="backToTop">⬆</button>

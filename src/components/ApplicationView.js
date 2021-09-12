@@ -3,7 +3,7 @@ import { Route } from "react-router-dom"
 import { Home } from "./Home"
 
 import { ItemProvider } from "./item/ItemProvider"
-// import { ItemList } from "./item/ItemList"
+import { ItemList } from "./item/ItemList"
 
 import { ProfileDetail } from "./profile/ProfileDetail"
 
@@ -18,11 +18,18 @@ export const ApplicationView = () => {
     return (
         <>
             {/* HOME VIEW WITH HARD CODED INFO */}
-            <ItemProvider>
-                <Route exact path="/">
-                    <Home />
-                </Route>
-            </ItemProvider>
+            <UserProvider>
+                <RegionProvider>
+                    <ItemProvider>
+                        <SaveProvider>
+                            <Route exact path="/">
+                                <Home />
+                            </Route>
+                        </SaveProvider>
+                    </ItemProvider>
+                </RegionProvider>
+            </UserProvider>
+
 
             {/* ONE USER PROFILE DETAIL */}
             <UserProvider>

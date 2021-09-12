@@ -1,8 +1,8 @@
 .aside_and_mainFeed {
     /* border: 2px solid purple; */
     display: flex;
-    margin-right: 13em;
-    margin-left: 13em;
+    margin-right: 20%;
+    margin-left: 20%;
     margin-bottom: 10em;
     /* padding-top: 90px; */
 }

@@ -1,7 +1,12 @@
 import React from "react"
 import { Link, useHistory } from "react-router-dom"
-import "./NavBar.css"
 import plainLogoClear from "../images/plainLogoClear.png"
+import { Input } from 'semantic-ui-react'
+// import { ItemSearch } from "../item/ItemSearch"
+// import { UserProvider } from "../user/UserProvider"
+// import { ItemProvider } from "../item/ItemProvider"
+// import { RegionProvider } from "../region/RegionProvider"
+import "./NavBar.css"
 
 export const NavBar = () => {
     const history = useHistory()
@@ -13,20 +18,18 @@ export const NavBar = () => {
     }
 
     return (
+        <>
         <nav className="topNav">
             <div className="logoDiv">
                     <Link className="" to="/">
                         <img className="trendagoLogo" alt="trendagoLogo" src={plainLogoClear} />
                     </Link>
-              
             </div>
 
             <ul className="navUL">
                 <div className="allNavLi">
 
-                    {/* <li className="aNavLink">
-                    <Link className="" to="/"></Link>
-                </li> */}
+            
                     <li className="aNavLink">
                         <Link className="" to="/profile">My Travel Trends</Link>
                     </li>
@@ -46,9 +49,22 @@ export const NavBar = () => {
                         <Link className="" onClick={Logout}>Logout</Link>
                     </li>
                 </div>
-
             </ul>
+
+
+                    <div classname="searchDiv">
+{/* <UserProvider>
+<ItemProvider>
+<RegionProvider>
+            <ItemSearch />
+</RegionProvider>
+</ItemProvider>
+</UserProvider> */}
+                    <Input fluid icon='search' placeholder='Search...' />
+                        {/* <input className="searchInput"></input><button>🔍</button> */}
+                    </div>
         </nav>
+        </>
     )
 }
 

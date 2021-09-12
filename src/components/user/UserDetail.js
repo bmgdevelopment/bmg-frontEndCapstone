@@ -136,10 +136,6 @@ export const UserDetail = () => {
 
                 </div>
             </div>
-
-            <div className="backToTopDiv">
-                <button className="backToTop">⬆</button>
-            </div>
         </>
     )
 

@@ -1,15 +1,16 @@
-import React, { createContext, useState} from "react"
+import React, { createContext, useState } from "react"
 
 const apiURL = "http://localhost:7001"
 export const ItemContext = createContext()
 
 export const ItemProvider = (props) => {
-    const [ items, setItems ] = useState([])
+    const [items, setItems] = useState([])
+    const [ searchTerms, setSearchTerms] = useState("")
 
     const getItems = () => {
         return fetch(`${apiURL}/items?_expand=user&_expand=region`)
-        .then(res => res.json())
-        .then(setItems)
+            .then(res => res.json())
+            .then(setItems)
     }
 
     const updateItem = (item) => {
@@ -20,22 +21,26 @@ export const ItemProvider = (props) => {
             },
             body: JSON.stringify(item)
         })
-        .then(getItems)
+            .then(getItems)
+    }
+
+    const getItemById = (itemId) => {
+        return fetch(`${apiURL}/items/${itemId}`)
+            .then(res => res.json())
     }
 
     const deleteItem = (itemId) => {
         return fetch((`${apiURL}/items/${itemId}`), {
             method: "DELETE"
         })
-        .then(getItems)
+            .then(getItems)
     }
-
 
     return (
         <ItemContext.Provider value={
-            { items, getItems, updateItem, deleteItem}
+            { items, getItems, updateItem, deleteItem, getItemById, searchTerms, setSearchTerms }
         }>
-            { props.children }
+            {props.children}
         </ItemContext.Provider>
     )
 
