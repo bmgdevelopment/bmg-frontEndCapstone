@@ -1,39 +1,86 @@
+import React, { useContext, useEffect, useState } from "react"
+import { useParams } from "react-router-dom"
+import { ItemContext } from "./ItemProvider"
+import { UserContext } from "../user/UserProvider"
+// import { Link } from "react-router-dom"
+// import { RegionContext } from "./region/RegionProvider"
+// import { SaveContext } from "./save/SaveProvider"
+import { Icon, Button } from 'semantic-ui-react'
 import "./Item.css"
 
-export const ItemDetail = () => {
+export const ItemDetail = (props) => {
+    const { items } = useContext(ItemContext)
+    const { users, getUsers } = useContext(UserContext)
+    // const { regions, getRegions } = useContext(RegionContext)
+    // const { saves, getSaves } = useContext(SaveContext)
+
+    const [item, setItem] = useState({ user: {}, region: {} })
+    const [itemUser, setItemUser] = useState({ region: {}, profileURL: {} })
+    // const [ allCurrentUserSaves, setCurrentUserSaves ] = useState([])
+
+
+    // const history = useHistory()
+    const { itemId } = useParams()
+
+    useEffect(() => {
+        getUsers().then(() => {
+            const thisUser = users.find(user => user.id === item.userId) || { region: {}, profileURL: {} }
+            setItemUser(thisUser)
+        })
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [itemId, users])
+
+    useEffect(() => {
+        if (props.item) {
+            setItem(props.item)
+        } else {
+            const thisItem = items.find(item => item.id === parseInt(itemId)) || { user: {}, region: {} }
+            setItem(thisItem)
+        }
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [itemId])
+
     return (
         <>
 
-            <div className="oneItemTile">
-                <img className="itemIMG" alt="itemIMG" src="https://i.pinimg.com/originals/fd/69/98/fd69989a72f58e02ef593ba358d55afa.jpg"></img>
-
+            <div className="container">
+                <img key={`userItemSave--${item.id}`} className="itemTile" alt="item" src={item.itemImage} />
+                {item ? <div className="top-right"><Button icon><Icon circular inverted color='white' name='suitcase' /></Button></div> : <div className="top-right"><Button icon><Icon circular inverted color='teal' name='suitcase' /> </Button></div>}
+            </div>
+            <div>
+                {itemUser.id === item.userId ? <p className="trendByName">{`Trend provided by ${itemUser.firstName} ${itemUser.lastName}`}</p> : <></>}
+                {itemUser.id === item.userId ? <p className="itemUserRegion">{`Region: ${itemUser.region.name} `}</p> : <></>}
+            </div>
+            {/* <Link to={`/items/detail/${item.id}`}>
+                <button>TEST</button>
+            </Link> */}
+            {/* <div className="oneItemTile">
                 <div className="itemInfo">
                     <div className="itemTopInfo">
-                        <span className="itemMustPackDiv">
-                            <p>Luggage icon [--]{/* {ternary for if clicked and unclicked show image} */}</p>
-                        </span>
 
                         <span className="itemSummary">
-                            <p className="itemSummaryP">WHOJIE NOSEH NJSDNEON NSOEFHUSN </p>
+                            <p className="itemSummaryP">{item.summary}</p>
                         </span>
 
                         <div className="imgNameRegionDate">
                             <span className="creatorImgWithName">
                                 <img alt="userIMG" src="" />
-                                <p>Created by Me</p>
+                                <div>
+                                    {itemUser.id === item.userId ? <p className="trendByName">{`Trend provided by ${itemUser.firstName} ${itemUser.lastName}`}</p> : <></>}
+                                    {itemUser.id === item.userId ? <p className="itemUserRegion">{`Region: ${itemUser.region} `}</p> : <></>}
+                                </div>
                             </span>
-                            <p className="itemUserRegion">Region: North America</p>
                         </div>
                     </div>
 
                     <div className="itemBottomInfo">
                         <div className="keywordDiv">
                             <p>Keywords</p>
-                            <p>hot shorts sun bright</p>
+                            <p>{item.descriptiveWords}</p>
                         </div>
                     </div>
                 </div>
-            </div>
+            </div> */}
         </>
     )
 }

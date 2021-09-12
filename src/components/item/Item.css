@@ -1,0 +1,23 @@
+.searchDiv {
+    border: 1px solid rgba(0, 128, 128, 0.55);
+    border-radius: 30px;
+    margin-right: 25%;
+    margin-left: 25%;
+    margin-top: -10px;
+    padding: 7px 20px;
+    display: flex;
+    justify-content: space-between;
+    /* margin-bottom: 13px; */
+}
+
+.input--wide {
+    /* border: 2px solid yellow; */
+    border: none;
+    width: 90%;
+
+}
+
+.search {
+    /* border: 2px solid rgb(187, 0, 238); */
+    color: gray;
+}

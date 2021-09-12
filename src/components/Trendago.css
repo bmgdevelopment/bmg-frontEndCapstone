@@ -1,8 +1,8 @@
 .aside_and_mainFeed {
     /* border: 2px solid purple; */
     display: flex;
-    margin-right: 20%;
-    margin-left: 20%;
+    margin-right: 12%;
+    margin-left: 12%;
     margin-bottom: 10em;
     /* padding-top: 90px; */
 }
@@ -10,8 +10,8 @@
 .aside_and_mainFeed_home {
     /* border: 2px solid purple; */
     display: flex;
-    margin-right: 8em;
-    margin-left: 8em;
+    margin-right: 10%;
+    margin-left: 10%;
     margin-bottom: 10em;
     /* padding-top: 90px; */
 }
@@ -103,8 +103,8 @@
     display: flex;
     justify-content: space-evenly;
     align-items: center;
-    padding-left: 3em;
-    padding-right: 3em;
+    /* padding-left: 3em;
+    padding-right: 3em; */
     flex-wrap: wrap;
     padding-bottom: 3em;
 }

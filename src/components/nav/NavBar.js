@@ -28,7 +28,6 @@ export const NavBar = () => {
 
             <ul className="navUL">
                 <div className="allNavLi">
-
             
                     <li className="aNavLink">
                         <Link className="" to="/profile">My Travel Trends</Link>
@@ -51,18 +50,10 @@ export const NavBar = () => {
                 </div>
             </ul>
 
-
-                    <div classname="searchDiv">
-{/* <UserProvider>
-<ItemProvider>
-<RegionProvider>
-            <ItemSearch />
-</RegionProvider>
-</ItemProvider>
-</UserProvider> */}
-                    <Input fluid icon='search' placeholder='Search...' />
-                        {/* <input className="searchInput"></input><button>🔍</button> */}
-                    </div>
+                    {/* <div classname="searchDiv">
+                    <Input fluid icon='search' placeholder='Search by terms like "warm" or "snowy"...' />
+                       <input className="searchInput"></input><button>🔍</button> 
+                    </div> */}
         </nav>
         </>
     )

@@ -1,19 +1,29 @@
 import React, { useContext } from "react"
 import { ItemContext } from "./ItemProvider"
-import { Input } from 'semantic-ui-react'
+import { Icon } from 'semantic-ui-react'
 import "./Item.css"
 
 export const ItemSearch = () => {
     const { setSearchTerms } = useContext(ItemContext)
 
     return (
-        <div classname="searchDiv">
-            <Input fluid
+        <div className="searchDiv">
+            {/* <Input fluid
+                type="text"
+                className="input--wide"
+                onSearchChange={(event) => setSearchTerms(event.target.value)}
+                icon='search'
+                placeholder='Search by keyword like "warm" or "snow" ' />  */}
+
+                <input 
                 type="text"
                 className="input--wide"
                 onKeyUp={(event) => setSearchTerms(event.target.value)}
-                icon='search'
-                placeholder='Search by keyword like "warm" or "snow" ' />
+                placeholder='Search by keyword like "warm" or "snow"... '
+                />
+                <i aria-hidden="true" className="search icon"></i>
         </div>
     )
 }
+
+//<div class="ui icon input"><input type="text" placeholder="Search..."/><i aria-hidden="true" class="search icon"></i></div> 

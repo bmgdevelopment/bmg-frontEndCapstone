@@ -1,29 +1,67 @@
 import React, { useContext, useEffect } from "react"
-import { Link } from "react-router-dom"
-import { ItemContext } from "./item/ItemProvider"
-// import { ItemSearch } from "../item/ItemSearch"
-import { UserProvider } from "./user/UserProvider"
 import { ItemProvider } from "./item/ItemProvider"
+import { ItemSearch } from "./item/ItemSearch"
+import { UserProvider } from "./user/UserProvider"
 import { RegionProvider } from "./region/RegionProvider"
 import { ItemList } from "./item/ItemList"
-import "./item/Item.css"
-import { Grid, Image, Card, Icon, Button } from 'semantic-ui-react'
+// import { Link } from "react-router-dom"
+// import { ItemContext } from "./item/ItemProvider"
+// import { Grid, Image, Card, Icon, Button } from 'semantic-ui-react'
 // import { Card, Icon, Image } from 'semantic-ui-react'
+import "./item/Item.css"
 
 export const Home = () => {
 
-    const { items, getItems } = useContext(ItemContext)
+    // const { items, getItems } = useContext(ItemContext)
 
-    useEffect(() => {
-        getItems()
-        // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [])
+    // useEffect(() => {
+    //     getItems()
+    //     // eslint-disable-next-line react-hooks/exhaustive-deps
+    // }, [])
 
     return (
         <>
+            <UserProvider>
+                <RegionProvider>
+                    <ItemProvider>
+                        <ItemSearch />
+                    </ItemProvider>
+                </RegionProvider>
+            </UserProvider>
+
             <div className="aside_and_mainFeed_home">
 
-                <aside className="asidePanelHome">
+                {/* MAIN FEED TO KEEP */}
+                <div className="mainFeedHome">
+                    <br />
+                    {
+                        <div className="trendTravH2Div">
+                            <h1 className="trendyTravlersH2 userItemsH2">Explore All Trends</h1>
+                        </div>
+                    }
+
+                    {/* ALL ITEM LIST */}
+                    <UserProvider>
+                        <RegionProvider>
+                            <ItemProvider>
+                                <ItemList />
+                            </ItemProvider>
+                        </RegionProvider>
+                    </UserProvider>
+
+                </div>
+                
+            </div>
+            <div className="backToTopDiv">
+                <button className="backToTop">⬆</button>
+            </div>
+        </>
+    )
+}
+
+/*
+
+  <aside className="asidePanelHome">
 
                     <div className="asideAddNewDiv">
                         <Link to="/addNewItem">
@@ -46,25 +84,7 @@ export const Home = () => {
                     </div>
                 </aside>
 
-                {/* MAIN FEED TO KEEP */}
-                <div className="mainFeedHome">
-                    <br />
-                    {
-                        <div className="trendTravH2Div">
-                            <h1 className="trendyTravlersH2 userItemsH2">Explore All Trends</h1>
-                        </div>
-                    }
-
-                    {/* ALL ITEM LIST */}
-                    <UserProvider>
-                        <RegionProvider>
-                            <ItemProvider>
-                                <ItemList />
-                            </ItemProvider>
-                        </RegionProvider>
-                    </UserProvider>
-
-                    <div className="organizeTilesDiv">
+                  <div className="organizeTilesDiv">
                         {
                             items.map(item => {
                                 return (
@@ -76,10 +96,23 @@ export const Home = () => {
                             })
                         }
                     </div>
-                </div>
-            </div>
 
-            <div className="testDiv">
+
+INLINE AVATAR AND USERNAME
+import React from 'react'
+import { Image } from 'semantic-ui-react'
+
+const ImageExampleAvatar = () => (
+  <div>
+    <Image src='https://react.semantic-ui.com/images/wireframe/square-image.png' avatar />
+    <span>Username</span>
+  </div>
+)
+
+export default ImageExampleAvatar
+
+
+ <div className="testDiv">
                 <Grid columns={4}>
 
                     <Grid.Column>
@@ -242,26 +275,4 @@ export const Home = () => {
                     </Grid.Column>
                 </Grid>
             </div>
-
-            <div className="backToTopDiv">
-                <button className="backToTop">⬆</button>
-            </div>
-        </>
-    )
-}
-
-/*
-INLINE AVATAR AND USERNAME
-import React from 'react'
-import { Image } from 'semantic-ui-react'
-
-const ImageExampleAvatar = () => (
-  <div>
-    <Image src='https://react.semantic-ui.com/images/wireframe/square-image.png' avatar />
-    <span>Username</span>
-  </div>
-)
-
-export default ImageExampleAvatar
-
 */

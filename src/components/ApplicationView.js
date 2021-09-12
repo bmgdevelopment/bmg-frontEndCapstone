@@ -3,7 +3,9 @@ import { Route } from "react-router-dom"
 import { Home } from "./Home"
 
 import { ItemProvider } from "./item/ItemProvider"
-import { ItemList } from "./item/ItemList"
+import { ItemDetail} from "./item/ItemDetail"
+// import { ItemList } from "./item/ItemList"
+// import { ItemSearch } from "./item/ItemSearch"
 
 import { ProfileDetail } from "./profile/ProfileDetail"
 
@@ -29,7 +31,6 @@ export const ApplicationView = () => {
                     </ItemProvider>
                 </RegionProvider>
             </UserProvider>
-
 
             {/* ONE USER PROFILE DETAIL */}
             <UserProvider>
@@ -58,6 +59,19 @@ export const ApplicationView = () => {
                         <SaveProvider>
                             <Route exact path="/trendyTravelers/detail/:userId(\d+)">
                                 <UserDetail />
+                            </Route>
+                        </SaveProvider>
+                    </ItemProvider>
+                </RegionProvider>
+            </UserProvider>
+
+            {/* ONE ITEM DETAIL */}
+            <UserProvider>
+                <RegionProvider>
+                    <ItemProvider>
+                        <SaveProvider>
+                            <Route exact path="/items/detail/:itemId(\d+)">
+                                <ItemDetail />
                             </Route>
                         </SaveProvider>
                     </ItemProvider>

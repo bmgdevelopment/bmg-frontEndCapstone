@@ -29,7 +29,7 @@ nav * {
 }
 
 .trendagoLogo {
-    height: 70px;
+    height: 80px;
     width: auto;
     margin-right: 1.5em;
     margin-top: 1.5em;
@@ -74,7 +74,7 @@ nav * {
     color: rgb(108, 107, 107);
 }
 
-.searchDiv, .ui.fluid.input  {
+.ui.fluid.input  {
     /* border: 2px solid orange; */
     margin-right: 20%;
     margin-left: 20%;
