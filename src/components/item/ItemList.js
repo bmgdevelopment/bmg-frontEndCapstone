@@ -49,9 +49,9 @@ export const ItemList = () => {
         }
     }, [searchTerms, items])
 
-    // useEffect(() => {
+    useEffect(() => {
         console.log(searchTerms)
-    // }, [searchTerms])
+    }, [searchTerms])
 
 // debugger
     return (

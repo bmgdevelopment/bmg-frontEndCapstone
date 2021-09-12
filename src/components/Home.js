@@ -17,34 +17,28 @@ export const Home = () => {
             <UserProvider>
                 <RegionProvider>
                     <ItemProvider>
+
                         <ItemSearch />
+
+                        <div className="aside_and_mainFeed_home">
+
+                            {/* MAIN FEED TO KEEP */}
+                            <div className="mainFeedHome">
+                                <br />
+                                {
+                                    <div className="trendTravH2Div">
+                                        <h1 className="trendyTravlersH2 userItemsH2">Explore All Trends</h1>
+                                    </div>
+                                }
+                                <ItemList />
+
+                            </div>
+                        </div>
+
                     </ItemProvider>
                 </RegionProvider>
             </UserProvider>
 
-            <div className="aside_and_mainFeed_home">
-
-                {/* MAIN FEED TO KEEP */}
-                <div className="mainFeedHome">
-                    <br />
-                    {
-                        <div className="trendTravH2Div">
-                            <h1 className="trendyTravlersH2 userItemsH2">Explore All Trends</h1>
-                        </div>
-                    }
-
-                    {/* ALL ITEM LIST */}
-                    <UserProvider>
-                        <RegionProvider>
-                            <ItemProvider>
-                                <ItemList />
-                            </ItemProvider>
-                        </RegionProvider>
-                    </UserProvider>
-
-                </div>
-
-            </div>
             <div className="backToTopDiv">
                 <button className="backToTop">⬆</button>
             </div>

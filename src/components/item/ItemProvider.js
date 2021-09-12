@@ -8,10 +8,6 @@ export const ItemProvider = (props) => {
     const [items, setItems] = useState([])
     const [ searchTerms, setSearchTerms] = useState("")
 
-    useEffect(() => {
-        console.log(searchTerms)
-    }, [searchTerms])
-
     const getItems = () => {
         return fetch(`${apiURL}/items?_expand=user&_expand=region`)
             .then(res => res.json())
