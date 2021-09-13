@@ -19,6 +19,7 @@ export const ItemDetailInfo = (props) => {
         getItems().then(() => {
             const thisItem = items.find(item => item.id === parseInt(itemId)) || { user: {}, region: {} }
             setItem(thisItem)
+            shortKeywords(thisItem)
         })
     }, [getItems, itemId, items])
 
@@ -29,50 +30,59 @@ export const ItemDetailInfo = (props) => {
         })
     }, [getUsers, item.userId, itemId, users])
 
+    let splitArr = []
+    const shortKeywords = (item) => {
+        if (item.id > 0) {
+            splitArr = item.descriptiveWords.split(" ").slice(0, 10)
+        }
+        return splitArr
+    }
+
     return (
         <>
-            <Link to={"/"} className="X">
-                <button>X</button>
-            </Link>
             <div className="organizeTilesDiv">
-                {/* <div className="container">
-                <img key={`userItemSave--${item.id}`} className="itemTile" alt="item" src={item.itemImage} />
-                {item ? <div className="top-right"><Button icon><Icon circular inverted color='white' name='suitcase' /></Button></div> : <div className="top-right"><Button icon><Icon circular inverted color='teal' name='suitcase' /> </Button></div>}
-            </div>
-            <div>
-                {itemUser.id === item.userId ? <p className="trendByName">{`Trend provided by ${itemUser.firstName} ${itemUser.lastName}`}</p> : <></>}
-                {itemUser.id === item.userId ? <p className="itemUserRegion">{`Region: ${itemUser.region.name} `}</p> : <></>}
-            </div>
-            <Link to={"/"}>
-                <button>X</button>
-            </Link> */}
 
-                <div className="oneItemTile">
+
+                <div className="oneItemDetailTile">
                     <div className="container">
                         <img key={`userItemSave--${item.id}`} className="oneItemTileIMG" alt="item" src={item.itemImage} />
                         {item ? <div className="top-right"><Button icon><Icon circular inverted color='white' name='suitcase' /></Button></div> : <div className="top-right"><Button icon><Icon circular inverted color='teal' name='suitcase' /> </Button></div>}
+
+                        <div className="tileInfoDiv">
+                            <p className="tileDetail oneTileDetail">
+                                <Link to={`/trendyTravelers/detail/${itemUser.id}`} key={`userNameLink--${itemUser.id}`}>
+                                    <img src={itemUser.profileURL} alt="profileIMG" className="oneTileIMGicon" key={`profileIMGicon--${itemUser.id}`} />
+                                    {itemUser.firstName} {itemUser.lastName}<br />
+                                    <p className="tileRegion">{itemUser.region.name}</p>
+                                </Link>
+                            </p>
+                        </div>
                     </div>
                     <div className="oneItemInfo">
                         <div className="itemTopInfo">
-                            <span className="itemSummary">
-                                <p className="itemSummaryP">{item.summary}</p>
-                            </span>
-
-                            <div className="imgNameRegionDate">
-                                <span className="creatorImgWithName">
-                                    <img alt="userIMG" src={itemUser.profileURL} className="" />
-                                    <div>
-                                        {itemUser.id === item.userId ? <p className="trendByName">{`Trend provided by ${itemUser.firstName} ${itemUser.lastName}`}</p> : <></>}
-                                        {itemUser.id === item.userId ? <p className="itemUserRegion">{`Region: ${itemUser.region.name} `}</p> : <></>}
-                                    </div>
-                                </span>
-                            </div>
+                            <Link to={"/"} className="X">
+                                <button>X</button>
+                            </Link>
+                            <p className="itemSummaryTitleP">{item.summary}</p>
                         </div>
 
                         <div className="itemBottomInfo">
                             <div className="keywordDiv">
-                                <p>Keywords</p>
-                                <p>{item.descriptiveWords}</p>
+                                <div className="arrangeKeywords">
+                                    <p>Keywords</p>
+                                    <div className="keyWordBubbles">
+                                        {splitArr.map(word => {
+                                            return <p className="keyWordSelect">{word}</p>
+                                        })}
+                                        
+                                        <p>here</p>
+                                        <p>is</p>
+                                        <p>where</p>
+                                        <p>words</p>
+                                        <p>can</p>
+                                        <p>go</p>
+                                    </div>
+                                </div>
                             </div>
                         </div>
 
@@ -83,3 +93,11 @@ export const ItemDetailInfo = (props) => {
         </>
     )
 }
+
+/*
+const shortKeywords = (item) => {
+    const splitArr = item.descriptiveWords.split(" ").slice(0,10)
+    console.log(splitArr)
+   return splitArr
+}
+*/

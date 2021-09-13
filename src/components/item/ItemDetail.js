@@ -42,6 +42,7 @@ export const ItemDetail = (props) => {
                         <img key={`userItemSave--${item.id}`} className="itemTile" alt="item" src={item.itemImage} />
                     </Link>
                     {item ? <div className="top-right"><Button icon><Icon circular inverted color='white' name='suitcase' /></Button></div> : <div className="top-right"><Button icon><Icon circular inverted color='teal' name='suitcase' /> </Button></div>}
+                    
                     <div className="tileInfoDiv">
                         <p className="tileDetail">
                             <Link to={`/trendyTravelers/detail/${itemUser.id}`} key={`userNameLink--${itemUser.id}`}>
@@ -51,6 +52,7 @@ export const ItemDetail = (props) => {
                             </Link>
                         </p>
                     </div>
+                    
                 </div>
             </div>
         </>
