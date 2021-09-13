@@ -1,11 +1,6 @@
 import React from "react"
 import { Link, useHistory } from "react-router-dom"
 import plainLogoClear from "../images/plainLogoClear.png"
-import { Input } from 'semantic-ui-react'
-// import { ItemSearch } from "../item/ItemSearch"
-// import { UserProvider } from "../user/UserProvider"
-// import { ItemProvider } from "../item/ItemProvider"
-// import { RegionProvider } from "../region/RegionProvider"
 import "./NavBar.css"
 
 export const NavBar = () => {
@@ -30,30 +25,34 @@ export const NavBar = () => {
                 <div className="allNavLi">
             
                     <li className="aNavLink">
-                        <Link className="" to="/profile">My Travel Trends</Link>
+                        <Link className="" to="/">Explore</Link>
                     </li>
+                    |
+                    <li className="aNavLink">
+                        <Link className="" to="/profile">My Trends</Link>
+                    </li>
+                    |
                     <li className="aNavLink">
                         <Link className="" to="/trendyTravelers">Trendy Travelers</Link>
                     </li>
+                    |
                     <li className="aNavLink">
                         <Link className="" to="/customerReviews">Customer Reviews</Link>
                     </li>
+                    |
                     <li className="aNavLink">
                         <Link className="" to="/about">About</Link>
                     </li>
+                    |
                     <li className="aNavLink">
                         <Link className="" to="/contactUs">Contact Us</Link>
                     </li>
+                    |
                     <li className="aNavLink">
                         <Link className="" onClick={Logout}>Logout</Link>
                     </li>
                 </div>
             </ul>
-
-                    {/* <div classname="searchDiv">
-                    <Input fluid icon='search' placeholder='Search by terms like "warm" or "snowy"...' />
-                       <input className="searchInput"></input><button>🔍</button> 
-                    </div> */}
         </nav>
         </>
     )

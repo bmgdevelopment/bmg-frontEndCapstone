@@ -3,6 +3,7 @@ import { ItemContext } from "../item/ItemProvider"
 import { UserContext } from "../user/UserProvider"
 import { SaveContext } from "../save/SaveProvider"
 import { Button, Icon } from 'semantic-ui-react'
+import { Link } from "react-router-dom"
 import "../Trendago.css"
 
 export const ProfileDetail = () => {
@@ -100,39 +101,37 @@ export const ProfileDetail = () => {
                                             <div className="top-right"><Button icon><Icon circular inverted color='teal' name='suitcase' /></Button></div>
                                         </div>
 
-                                        {/* 
-                                         <div className="container">
-                        <img key={`userItemSave--${item.id}`} className="itemTile" alt="item" src={item.itemImage} />
-                  
-                    {item ? <div className="top-right"><Button icon><Icon circular inverted color='teal' name='suitcase' /> </Button></div> : <div className="top-right"><Button icon><Icon circular inverted color='white' name='suitcase' /></Button></div> }
-                    <div className="tileInfoDiv">
-                        <p className="tileDetail">
-                           { 
-                               users.map(itemUser => {
-                            <Link to={`/trendyTravelers/detail/${itemUser.id}`} key={`userNameLink--${itemUser.id}`}>
-                                <img src={itemUser.profileURL} alt="profileIMG" className="profileIMGicon" key={`profileIMGicon--${itemUser.id}`} />
-                                {itemUser.firstName} {itemUser.lastName}<br />
-                                <p className="tileRegion">{itemUser.region.name}</p>
-                            </Link>
-                        }
-                            )
-                            }
-                        </p>
-                    </div>
+
+                                        {/* <div className="container">
+                                            <img key={`userItemSave--${save.id}`} className="itemTile" alt="item" src={save.itemImage} />
+
+                                            {save ? <div className="top-right"><Button icon><Icon circular inverted color='teal' name='suitcase' /> </Button></div> : <div className="top-right"><Button icon><Icon circular inverted color='white' name='suitcase' /></Button></div>}
+                                            <div className="tileInfoDiv">
+                                                <p className="tileDetail">
+                                                            <Link to={`/trendyTravelers/detail/${save.userId}`} key={`userNameLink--${save.userId}`}>
+                                                                <img src={save.user.profileURL} alt="profileIMG" className="profileIMGicon" key={`profileIMGicon--${save.userId}`} />
+                                                                {save.user.firstName} {save.user.lastName}<br />
+                                                                //  <p className="tileRegion">{save.item.region.name}</p> 
+                                                            </Link>
+                                                      
+                                                </p>
+                                            </div>
+                                        </div> 
                                         */}
-                                    </>
-                                )
+
+                                        </>
+                                        )
                             })
                         }
-                    </div>
+                                    </div>
                 </div>
-            </div>
+                </div>
 
-            <div className="backToTopDiv">
-                <button className="backToTop">⬆</button>
-            </div>
-        </>
-    )
+                <div className="backToTopDiv">
+                    <button className="backToTop">⬆</button>
+                </div>
+            </>
+            )
 
 
 } // end of ItemList
