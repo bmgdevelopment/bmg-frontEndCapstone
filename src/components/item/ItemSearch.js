@@ -21,7 +21,7 @@ export const ItemSearch = () => {
                 onKeyUp={(event) => {
                     setSearchTerms(event.target.value)}
                 } 
-                placeholder='Search by keyword like "warm" or "snow"... '
+                placeholder='Search by keyword like "coral" or "blue"... '
                 />
                 <i aria-hidden="true" className="search icon"></i>
         </div>

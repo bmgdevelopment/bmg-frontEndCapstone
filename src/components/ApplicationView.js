@@ -4,6 +4,7 @@ import { Home } from "./Home"
 
 import { ItemProvider } from "./item/ItemProvider"
 import { ItemDetail} from "./item/ItemDetail"
+import { ItemDetailInfo} from "./item/ItemDetailInfo"
 // import { ItemList } from "./item/ItemList"
 // import { ItemSearch } from "./item/ItemSearch"
 
@@ -70,8 +71,21 @@ export const ApplicationView = () => {
                 <RegionProvider>
                     <ItemProvider>
                         <SaveProvider>
-                            <Route exact path="/items/detail/:itemId(\d+)">
+                            <Route exact path="/items/">
                                 <ItemDetail />
+                            </Route>
+                        </SaveProvider>
+                    </ItemProvider>
+                </RegionProvider>
+            </UserProvider>
+
+            {/* ONE ITEM DETAIL */}
+            <UserProvider>
+                <RegionProvider>
+                    <ItemProvider>
+                        <SaveProvider>
+                            <Route exact path="/items/detail/:itemId(\d+)">
+                                <ItemDetailInfo />
                             </Route>
                         </SaveProvider>
                     </ItemProvider>

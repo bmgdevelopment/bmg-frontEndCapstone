@@ -73,13 +73,13 @@ export const ItemList = () => {
                             // <ItemDetail key={item.id} item={item} />
 
                             <Link to={`/items/detail/${item.id}`}>
+                            </Link>
 
                                 <div className="container">
                                     <img className="itemTile" key={`itemTile--${item.id}`} alt="item" src={item.itemImage}></img>
                                     <div className="top-right"><Button icon><Icon circular inverted color='teal' name='suitcase' /></Button></div>
                                     <div className="top-right"><Button icon><Icon circular inverted color='white' name='suitcase' /></Button></div>
                                 </div>
-                            </Link>
                         )
                     })
 */

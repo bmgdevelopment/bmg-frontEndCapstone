@@ -22,18 +22,18 @@ export const ProfileDetail = () => {
     }, [getItems, getSaves, getUsers])
 
     useEffect(() => {
-            const thisUser = users.find(user => user.id === currentUserId) || { region: {}, profileURL: {} }
-            setCurrentUser(thisUser)
+        const thisUser = users.find(user => user.id === currentUserId) || { region: {}, profileURL: {} }
+        setCurrentUser(thisUser)
     }, [currentUserId, users])
 
     useEffect(() => {
-            const userItems = items.filter(item => item.userId === currentUserId);
-            setAllUserItems(userItems)
+        const userItems = items.filter(item => item.userId === currentUserId);
+        setAllUserItems(userItems)
     }, [currentUserId, items])
 
     useEffect(() => {
-            const userSaves = saves.filter(save => save.userId === currentUserId);
-            setAllUserSaves(userSaves)
+        const userSaves = saves.filter(save => save.userId === currentUserId);
+        setAllUserSaves(userSaves)
     }, [currentUserId, saves])
 
     return (
@@ -60,13 +60,14 @@ export const ProfileDetail = () => {
 
                     </div>
 
-<br/>
+                    <br />
+
                     {
-                            allUserSaves.length > 0 ?
-                                <div className="trendTravH2Div">
-                                    <h1 className="trendyTravlersH2 userItemsH2">Your Trends</h1>
-                                </div> : <></>
-                        }
+                        allUserSaves.length > 0 ?
+                            <div className="trendTravH2Div">
+                                <h1 className="trendyTravlersH2 userItemsH2">Your Trends</h1>
+                            </div> : <></>
+                    }
 
                     <div className="organizeTilesDiv">
                         {
@@ -80,7 +81,7 @@ export const ProfileDetail = () => {
                                 })
                         }
                     </div>
-                    
+
                     {
                         allUserSaves.length > 0 ?
                             <div className="trendTravH2Div">
@@ -98,6 +99,27 @@ export const ProfileDetail = () => {
                                             <img key={`userItemSave--${save.id}`} className="itemTile" alt="item" src={save.item.itemImage} />
                                             <div className="top-right"><Button icon><Icon circular inverted color='teal' name='suitcase' /></Button></div>
                                         </div>
+
+                                        {/* 
+                                         <div className="container">
+                        <img key={`userItemSave--${item.id}`} className="itemTile" alt="item" src={item.itemImage} />
+                  
+                    {item ? <div className="top-right"><Button icon><Icon circular inverted color='teal' name='suitcase' /> </Button></div> : <div className="top-right"><Button icon><Icon circular inverted color='white' name='suitcase' /></Button></div> }
+                    <div className="tileInfoDiv">
+                        <p className="tileDetail">
+                           { 
+                               users.map(itemUser => {
+                            <Link to={`/trendyTravelers/detail/${itemUser.id}`} key={`userNameLink--${itemUser.id}`}>
+                                <img src={itemUser.profileURL} alt="profileIMG" className="profileIMGicon" key={`profileIMGicon--${itemUser.id}`} />
+                                {itemUser.firstName} {itemUser.lastName}<br />
+                                <p className="tileRegion">{itemUser.region.name}</p>
+                            </Link>
+                        }
+                            )
+                            }
+                        </p>
+                    </div>
+                                        */}
                                     </>
                                 )
                             })

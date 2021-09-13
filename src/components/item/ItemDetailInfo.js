@@ -5,7 +5,7 @@ import { UserContext } from "../user/UserProvider"
 import { Icon, Button } from 'semantic-ui-react'
 import "./Item.css"
 
-export const ItemDetail = (props) => {
+export const ItemDetailInfo = (props) => {
     const { items, getItems } = useContext(ItemContext)
     const { users, getUsers } = useContext(UserContext)
 

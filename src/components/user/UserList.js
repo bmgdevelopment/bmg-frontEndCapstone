@@ -39,8 +39,7 @@ export const UserList = () => {
                                     <p className="userRegionP" key={`userRegionName--${user.id}`}>Region: {user.region.name}</p>
                                     <p className="userDateJoinedP" key={`userDateJoined--${user.id}`}>Member since {user.dateJoined}</p>
                                 </div>
-
-                              
+                                
                             </div>
 
                         </div>

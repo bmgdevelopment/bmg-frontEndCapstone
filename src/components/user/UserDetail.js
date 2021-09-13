@@ -15,32 +15,28 @@ export const UserDetail = () => {
     const [user, setUser] = useState({ region: {}, profileURL: {} })
     const [allUserItems, setAllUserItems] = useState([])
     const [allUserSaves, setAllUserSaves] = useState([])
-
     const { userId } = useParams()
 
     useEffect(() => {
-        getUsers().then(() => {
+        getUsers()
+        getItems()
+        getSaves()
+    }, [getItems, getSaves, getUsers])
+
+    useEffect(() => {
             const thisUser = users.find(user => user.id === parseInt(userId)) || { region: {} }
             setUser(thisUser)
-        })
-        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [userId, users])
 
     useEffect(() => {
-        getItems().then(() => {
             const userItems = items.filter(item => item.userId === parseInt(userId));
             setAllUserItems(userItems)
-        })
-        // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [items])
+    }, [items, userId])
 
     useEffect(() => {
-        getSaves().then(() => {
             const userSaves = saves.filter(save => save.userId === parseInt(userId));
             setAllUserSaves(userSaves)
-        })
-        // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [saves])
+    }, [saves, userId])
 
     return (
         <>
@@ -73,7 +69,7 @@ export const UserDetail = () => {
                         {
                             allUserSaves.length > 0 ?
                                 <div className="trendTravH2Div">
-                                    <h1 className="trendyTravlersH2 userItemsH2">Your Trends</h1>
+                                    <h1 className="trendyTravlersH2 userItemsH2">{user.firstName}'s Trends</h1>
                                 </div> : <></>
                         }
                     <div className="organizeTilesDiv">
@@ -92,7 +88,7 @@ export const UserDetail = () => {
                     {
                         allUserSaves.length > 0 ?
                             <div className="trendTravH2Div">
-                                <h1 className="trendyTravlersH2 saveH2">Saved Trends</h1>
+                                <h1 className="trendyTravlersH2 saveH2">{user.firstName}'s Saved Trends</h1>
                             </div> : <></>
                     }
                     
