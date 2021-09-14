@@ -1,19 +1,25 @@
 import React, { useContext, useEffect, useState } from "react"
-import { useParams, Link } from "react-router-dom"
+import { useParams, useHistory, Link } from "react-router-dom"
 import { ItemContext } from "./ItemProvider"
 import { UserContext } from "../user/UserProvider"
+import { SaveContext } from "../save/SaveProvider"
 import { Icon, Button } from 'semantic-ui-react'
 import "./Item.css"
 
 export const ItemDetail = (props) => {
     const { items } = useContext(ItemContext)
     const { users, getUsers } = useContext(UserContext)
+    const { saves, getSaves, saveItem, deleteSave } = useContext(SaveContext)
+    const history = useHistory()
     const [item, setItem] = useState({ user: {}, region: {} })
     const [itemUser, setItemUser] = useState({ region: {}, profileURL: {} })
-    const { itemId } = useParams()
+    const [allUserSaves, setAllUserSaves] = useState([])
     const currentLoggedInUserId = parseInt(sessionStorage.getItem("trendago_user"))
 
+    const { itemId } = useParams()
+
     useEffect(() => {
+        getSaves()
         getUsers()
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
@@ -24,16 +30,61 @@ export const ItemDetail = (props) => {
     }, [item.userId, users])
 
     useEffect(() => {
+        const userSaves = saves.filter(save => save.userId === currentLoggedInUserId) || []
+        setAllUserSaves(userSaves)
+    }, [currentLoggedInUserId, saves])
+
+    useEffect(() => {
         if (props.item) {
             setItem(props.item)
         } else {
             const thisItem = items.find(item => item.id === parseInt(itemId)) || { user: {}, region: {} }
             setItem(thisItem)
         }
-    }, [itemId, items, props.item])
+    }, [item, itemId, items, props.item])
 
-    const noSaveBtn = () => {
-        return item.userId === currentLoggedInUserId ? <></> : <div className="top-right"><Button icon><Icon circular inverted color='white' name='suitcase' /></Button></div> 
+    // const saveIconCheck = () => {
+    //     if (props.item.userId === currentLoggedInUserId) {
+    //         allUserSaves.map(save => {
+    //             if (save.itemId === props.item.id) {
+    //                 return <div className="top-right"><Button icon><Icon circular inverted color='teal' name='suitcase' /> </Button></div>
+    //             } else {
+    //                 return <></>
+    //             }
+    //         })
+    //     } else {
+    //         return <div className="top-right"><Button icon><Icon circular inverted color='white' name='suitcase' /></Button></div>
+    //     }
+    // }
+
+    // const saveIconCheck = () => {
+    //     if (props.item.userId === currentLoggedInUserId) {
+    //         return <></>
+    //     } else if (props.item.userId === !currentLoggedInUserId) {
+    //         allUserSaves.map(save => {
+    //             if (save.itemId === props.item.id && save.userId === currentLoggedInUserId) {
+    //                 return  <div className="top-right"><Button icon><Icon circular inverted color='teal' name='suitcase' /> </Button></div>
+    //             }
+    //         })
+    //     } else {
+    //         return <div className="top-right"><Button icon><Icon circular inverted color='white' name='suitcase' /></Button></div>
+    //     }
+    // }
+
+    const saveIconCheck = () => {
+        if (props.item.userId === currentLoggedInUserId) {
+            return <></>
+        } else if (props.item.userId === !currentLoggedInUserId) {
+            let savingBtn;
+            // eslint-disable-next-line array-callback-return
+            allUserSaves.map(save => {
+                save.userId === currentLoggedInUserId ?
+                    savingBtn = <div className="top-right"><Button icon><Icon circular inverted color='teal' name='suitcase' onClick={() => { deleteSave(save.id).then(() => history.push("/")) }} /></Button></div>
+                    :
+                    savingBtn = <div className="top-right"><Button icon><Icon circular inverted color='white' name='suitcase' onClick={() => { saveItem(item).then(() => history.push("/")) }} /> </Button></div>
+            })
+            return savingBtn
+        } 
     }
 
     return (
@@ -44,9 +95,11 @@ export const ItemDetail = (props) => {
                     <Link to={`/items/detail/${item.id}`}>
                         <img key={`userItemSave--${item.id}`} className="itemTile" alt="item" src={item.itemImage} />
                     </Link>
-                    {/* {item ? <div className="top-right"><Button icon><Icon circular inverted color='white' name='suitcase' /></Button></div> : <div className="top-right"><Button icon><Icon circular inverted color='teal' name='suitcase' /> </Button></div>} */}
-                    {item ? noSaveBtn() : <div className="top-right"><Button icon><Icon circular inverted color='teal' name='suitcase' /> </Button></div>}
-                    
+                    {/* {item  ? noSaveBtn() : <div className="top-right"><Button icon><Icon circular inverted color='teal' name='suitcase' /> </Button></div>} */}
+                    {/* {save.userId === currentLoggedInUserId ? <div className="top-right"><Button icon><Icon circular inverted color='teal' name='suitcase' onClick={() => {deleteSave(save.id).then(() => history.push("/"))}}/></Button></div> : <div className="top-right"><Button icon><Icon circular inverted color='white' name='suitcase' onClick={() => {saveItem(item).then(() => history.push("/"))}}/> </Button></div>} */}
+                    {saveIconCheck()}
+
+
                     <div className="tileInfoDiv">
                         <p className="tileDetail">
                             <Link to={`/trendyTravelers/detail/${itemUser.id}`} key={`userNameLink--${itemUser.id}`}>
@@ -55,7 +108,7 @@ export const ItemDetail = (props) => {
                                 <p className="tileRegion">{itemUser.region.name}</p>
                             </Link>
                         </p>
-                    </div>                    
+                    </div>
                 </div>
 
             </div>
@@ -64,11 +117,6 @@ export const ItemDetail = (props) => {
 }
 
 /*
-<Link to={`/trendyTravelers/detail/${itemUser.id}`} key={`userNameLink--${itemUser.id}`}>
+{save.userId === currentLoggedInUserId ? <div className="top-right"><Button icon><Icon circular inverted color='teal' name='suitcase' onClick={() => {deleteSave(save.id).then(() => history.push("/"))}}/></Button></div> : <div className="top-right"><Button icon><Icon circular inverted color='white' name='suitcase' onClick={() => {saveItem(item).then(() => history.push("/"))}}/> </Button></div>}
 
-src={itemUser.profileURL} alt="profileIMG" className="profileIMGicon" key={`profileIMGicon--${itemUser.id}`}
-
-{item.userId === currentLoggedInUserId ? <></> : <div className="top-right"><Button icon><Icon circular inverted color='white' name='suitcase' /></Button></div> }
-
-<div className="top-right"><Button icon><Icon circular inverted color='white' name='suitcase' /></Button></div>  //if not the users
 */

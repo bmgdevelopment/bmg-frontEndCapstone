@@ -2,7 +2,6 @@ import React, { useEffect, useContext, useState } from "react"
 import { ItemContext } from "./ItemProvider"
 import { ItemDetail } from "./ItemDetail"
 // import { UserContext } from "../user/UserProvider"
-// import { SaveContext } from "../save/SaveProvider"
 // import { Link } from "react-router-dom"
 // import { Button, Icon } from 'semantic-ui-react'
 import "./Item.css"

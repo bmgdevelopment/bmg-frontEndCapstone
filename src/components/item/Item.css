@@ -178,11 +178,13 @@
 .keywordDetailDiv {
     color: gray;
     font-size: 15px;
-    padding: 10px;
-    padding-bottom: 20px;
-    padding: 10px;
+    padding-top: 10px;
+    padding-bottom: 15px;
+    /* padding-left: 5px;
+    padding-right: 5px; */
     display: flex;
     justify-content: center;
+    /* border: 2px solid rgb(190, 30, 205); */
 }
 
 .X {
@@ -212,6 +214,8 @@
     display: flex;
     justify-content: center;
     flex-direction: column;
+    margin-top: 5px;
+    /* border: 2px solid rgb(50, 215, 152); */
 }
 
 .keywordsTitle {
@@ -242,5 +246,5 @@
     border: 1px solid rgba(0, 128, 128, 0.344);
     padding: 3px 5%;
     border-radius: 15px;
-    font-size: 15px;
+    font-size: 13px;
 }

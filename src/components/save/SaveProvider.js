@@ -19,9 +19,20 @@ export const SaveProvider = (props) => {
             .then(getSaves)
     }
 
+    const saveItem = (item) => {
+        return fetch(`${apiURL}/saves`, {
+            method: "POST",
+            header: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify(item)
+        })
+        .then(getSaves)
+    }
+
     return (
         <SaveContext.Provider value={
-            { saves, getSaves, deleteSave }
+            { saves, getSaves, saveItem, deleteSave }
         }>
             {props.children}
         </SaveContext.Provider>

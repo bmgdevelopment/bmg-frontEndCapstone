@@ -15,6 +15,7 @@ export const UserDetail = () => {
     const [user, setUser] = useState({ region: {}, profileURL: {} })
     const [allUserItems, setAllUserItems] = useState([])
     const [allUserSaves, setAllUserSaves] = useState([])
+    const currentUserId = parseInt(sessionStorage.getItem("trendago_user"))
     const { userId } = useParams()
 
     useEffect(() => {
@@ -40,7 +41,7 @@ export const UserDetail = () => {
     }, [saves, userId])
 
     const noSaveBtn = (item) => {
-        return item.userId === parseInt(userId) ? <></> : <div className="top-right"><Button icon><Icon circular inverted color='white' name='suitcase' /></Button></div> 
+        return item.userId === currentUserId ? <></> : <div className="top-right"><Button icon><Icon circular inverted color='white' name='suitcase' /></Button></div> 
     }
 
     return (

@@ -1,5 +1,4 @@
 import React, { createContext, useState } from "react"
-import { useEffect } from "react/cjs/react.development"
 
 const apiURL = "http://localhost:7001"
 export const ItemContext = createContext()

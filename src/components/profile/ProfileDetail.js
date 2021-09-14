@@ -10,10 +10,10 @@ export const ProfileDetail = () => {
     const { items, getItems } = useContext(ItemContext)
     const { users, getUsers } = useContext(UserContext)
     const { saves, getSaves } = useContext(SaveContext)
+    const [allUserSaves, setAllUserSaves] = useState([])
 
     const [currentUser, setCurrentUser] = useState({ region: {}, profileURL: {} })
     const [allUserItems, setAllUserItems] = useState([])
-    const [allUserSaves, setAllUserSaves] = useState([])
     const currentUserId = parseInt(sessionStorage.getItem("trendago_user"))
 
     useEffect(() => {
