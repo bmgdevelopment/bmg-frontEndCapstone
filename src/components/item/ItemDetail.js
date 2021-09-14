@@ -8,11 +8,10 @@ import "./Item.css"
 export const ItemDetail = (props) => {
     const { items } = useContext(ItemContext)
     const { users, getUsers } = useContext(UserContext)
-
     const [item, setItem] = useState({ user: {}, region: {} })
     const [itemUser, setItemUser] = useState({ region: {}, profileURL: {} })
-
     const { itemId } = useParams()
+    const currentLoggedInUserId = parseInt(sessionStorage.getItem("trendago_user"))
 
     useEffect(() => {
         getUsers()
@@ -33,6 +32,10 @@ export const ItemDetail = (props) => {
         }
     }, [itemId, items, props.item])
 
+    const noSaveBtn = () => {
+        return item.userId === currentLoggedInUserId ? <></> : <div className="top-right"><Button icon><Icon circular inverted color='white' name='suitcase' /></Button></div> 
+    }
+
     return (
         <>
             <div className="organizeTilesDiv">
@@ -41,7 +44,8 @@ export const ItemDetail = (props) => {
                     <Link to={`/items/detail/${item.id}`}>
                         <img key={`userItemSave--${item.id}`} className="itemTile" alt="item" src={item.itemImage} />
                     </Link>
-                    {item ? <div className="top-right"><Button icon><Icon circular inverted color='white' name='suitcase' /></Button></div> : <div className="top-right"><Button icon><Icon circular inverted color='teal' name='suitcase' /> </Button></div>}
+                    {/* {item ? <div className="top-right"><Button icon><Icon circular inverted color='white' name='suitcase' /></Button></div> : <div className="top-right"><Button icon><Icon circular inverted color='teal' name='suitcase' /> </Button></div>} */}
+                    {item ? noSaveBtn() : <div className="top-right"><Button icon><Icon circular inverted color='teal' name='suitcase' /> </Button></div>}
                     
                     <div className="tileInfoDiv">
                         <p className="tileDetail">
@@ -51,9 +55,9 @@ export const ItemDetail = (props) => {
                                 <p className="tileRegion">{itemUser.region.name}</p>
                             </Link>
                         </p>
-                    </div>
-                    
+                    </div>                    
                 </div>
+
             </div>
         </>
     )
@@ -63,4 +67,8 @@ export const ItemDetail = (props) => {
 <Link to={`/trendyTravelers/detail/${itemUser.id}`} key={`userNameLink--${itemUser.id}`}>
 
 src={itemUser.profileURL} alt="profileIMG" className="profileIMGicon" key={`profileIMGicon--${itemUser.id}`}
+
+{item.userId === currentLoggedInUserId ? <></> : <div className="top-right"><Button icon><Icon circular inverted color='white' name='suitcase' /></Button></div> }
+
+<div className="top-right"><Button icon><Icon circular inverted color='white' name='suitcase' /></Button></div>  //if not the users
 */

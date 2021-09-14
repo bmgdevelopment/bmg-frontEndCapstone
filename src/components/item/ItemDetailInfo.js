@@ -11,31 +11,41 @@ export const ItemDetailInfo = (props) => {
 
     const [item, setItem] = useState({ user: {}, region: {} })
     const [itemUser, setItemUser] = useState({ region: {}, profileURL: {} })
+    const [splitArr, setArr ] = useState([])
+    const currentUserId = parseInt(sessionStorage.getItem("trendago_user"))
+
 
     // const history = useHistory()
     const { itemId } = useParams()
 
     useEffect(() => {
-        getItems().then(() => {
+        getUsers()
+        getItems()
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [])
+    
+    useEffect(() => {
             const thisItem = items.find(item => item.id === parseInt(itemId)) || { user: {}, region: {} }
             setItem(thisItem)
-            shortKeywords(thisItem)
-        })
-    }, [getItems, itemId, items])
+            setArr(shortKeywords(thisItem))
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [itemId, items])
 
     useEffect(() => {
-        getUsers().then(() => {
             const thisUser = users.find(user => user.id === item.userId) || { region: {}, profileURL: {} }
             setItemUser(thisUser)
-        })
-    }, [getUsers, item.userId, itemId, users])
+    }, [item.userId, itemId, users])
 
-    let splitArr = []
     const shortKeywords = (item) => {
+        let splitSpliceArr = []
         if (item.id > 0) {
-            splitArr = item.descriptiveWords.split(" ").slice(0, 10)
+            splitSpliceArr = item.descriptiveWords.split(" ").slice(0, 10)
         }
-        return splitArr
+        return splitSpliceArr
+    }
+
+    const noSaveBtn = (item) => {
+        return item.userId === currentUserId ? <></> : <div className="top-right"><Button icon><Icon circular inverted color='white' name='suitcase' /></Button></div> 
     }
 
     return (
@@ -46,7 +56,7 @@ export const ItemDetailInfo = (props) => {
                 <div className="oneItemDetailTile">
                     <div className="container">
                         <img key={`userItemSave--${item.id}`} className="oneItemTileIMG" alt="item" src={item.itemImage} />
-                        {item ? <div className="top-right"><Button icon><Icon circular inverted color='white' name='suitcase' /></Button></div> : <div className="top-right"><Button icon><Icon circular inverted color='teal' name='suitcase' /> </Button></div>}
+                        {item ? noSaveBtn(item) : <div className="top-right"><Button icon><Icon circular inverted color='teal' name='suitcase' /> </Button></div>}
 
                         <div className="tileInfoDiv">
                             <p className="tileDetail oneTileDetail">
@@ -67,20 +77,13 @@ export const ItemDetailInfo = (props) => {
                         </div>
 
                         <div className="itemBottomInfo">
-                            <div className="keywordDiv">
+                            <div className="keywordDetailDiv">
                                 <div className="arrangeKeywords">
-                                    <p>Keywords</p>
+                                    <p className="keywordsTitle">Keywords</p>
                                     <div className="keyWordBubbles">
                                         {splitArr.map(word => {
                                             return <p className="keyWordSelect">{word}</p>
                                         })}
-                                        
-                                        <p>here</p>
-                                        <p>is</p>
-                                        <p>where</p>
-                                        <p>words</p>
-                                        <p>can</p>
-                                        <p>go</p>
                                     </div>
                                 </div>
                             </div>

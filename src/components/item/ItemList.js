@@ -12,9 +12,8 @@ export const ItemList = () => {
     // const { saves, getSaves } = useContext(SaveContext)
     const { items, getItems, searchTerms } = useContext(ItemContext)
     const [filteredItems, setFiltered] = useState([])
-
+    
     // const currentUserId = parseInt(sessionStorage.getItem("trendago_user"))
-
     // const [currentUser, setCurrentUser] = useState({ region: {}, profileURL: {} })
     // const [allUserSaves, setAllUserSaves] = useState([])
     
@@ -22,22 +21,7 @@ export const ItemList = () => {
         getItems()
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
-    
-    //     useEffect(() => {
-    //         getUsers().then(() => {
-    //             const thisUser = users.find(user => user.id === currentUserId) || { region: {}, profileURL: {} }
-    //             setCurrentUser(thisUser)
-    //         })
-    //         // eslint-disable-next-line react-hooks/exhaustive-deps
-    //     }, [currentUserId])
 
-    // useEffect(() => {
-    //     getSaves().then(() => {
-    //         const userSaves = saves.filter(save => save.userId === currentUserId);
-    //         setAllUserSaves(userSaves)
-    //     })
-    //     // eslint-disable-next-line react-hooks/exhaustive-deps
-    // }, [])
 
     useEffect(() => {
         // debugger
@@ -66,20 +50,3 @@ export const ItemList = () => {
         </>
     )
 } // end of ItemList
-
-/*
- filteredItems.map(item => {
-                        return (
-                            // <ItemDetail key={item.id} item={item} />
-
-                            <Link to={`/items/detail/${item.id}`}>
-                            </Link>
-
-                                <div className="container">
-                                    <img className="itemTile" key={`itemTile--${item.id}`} alt="item" src={item.itemImage}></img>
-                                    <div className="top-right"><Button icon><Icon circular inverted color='teal' name='suitcase' /></Button></div>
-                                    <div className="top-right"><Button icon><Icon circular inverted color='white' name='suitcase' /></Button></div>
-                                </div>
-                        )
-                    })
-*/

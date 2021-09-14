@@ -3,7 +3,7 @@ import { ItemContext } from "../item/ItemProvider"
 import { UserContext } from "../user/UserProvider"
 import { SaveContext } from "../save/SaveProvider"
 import { Button, Icon } from 'semantic-ui-react'
-import { Link } from "react-router-dom"
+// import { Link } from "react-router-dom"
 import "../Trendago.css"
 
 export const ProfileDetail = () => {
@@ -20,7 +20,8 @@ export const ProfileDetail = () => {
         getUsers()
         getItems()
         getSaves()
-    }, [getItems, getSaves, getUsers])
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [])
 
     useEffect(() => {
         const thisUser = users.find(user => user.id === currentUserId) || { region: {}, profileURL: {} }
@@ -36,6 +37,10 @@ export const ProfileDetail = () => {
         const userSaves = saves.filter(save => save.userId === currentUserId);
         setAllUserSaves(userSaves)
     }, [currentUserId, saves])
+
+    const noSaveBtn = (item) => {
+        return item.userId === currentUserId ? <></> : <div className="top-right"><Button icon><Icon circular inverted color='white' name='suitcase' /></Button></div> 
+    }
 
     return (
         <>
@@ -64,7 +69,7 @@ export const ProfileDetail = () => {
                     <br />
 
                     {
-                        allUserSaves.length > 0 ?
+                        allUserItems.length > 0 ?
                             <div className="trendTravH2Div">
                                 <h1 className="trendyTravlersH2 userItemsH2">Your Trends</h1>
                             </div> : <></>
@@ -77,7 +82,7 @@ export const ProfileDetail = () => {
                                     return (
                                         <div className="container">
                                             <img key={`userItemSave--${item.id}`} className="itemTile" alt="item" src={item.itemImage} />
-                                            {item.saved === true ? <div className="top-right"><Button icon><Icon circular inverted color='teal' name='suitcase' /></Button></div> : <div className="top-right"><Button icon><Icon circular inverted color='white' name='suitcase' /></Button></div>}
+                                            {item ? noSaveBtn(item) : <div className="top-right"><Button icon><Icon circular inverted color='white' name='suitcase' /></Button></div>}
                                         </div>)
                                 })
                         }
@@ -134,4 +139,4 @@ export const ProfileDetail = () => {
             )
 
 
-} // end of ItemList
+} // end of ProfileDetail

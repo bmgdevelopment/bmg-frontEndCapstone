@@ -21,7 +21,8 @@ export const UserDetail = () => {
         getUsers()
         getItems()
         getSaves()
-    }, [getItems, getSaves, getUsers])
+     // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [])
 
     useEffect(() => {
             const thisUser = users.find(user => user.id === parseInt(userId)) || { region: {} }
@@ -37,6 +38,10 @@ export const UserDetail = () => {
             const userSaves = saves.filter(save => save.userId === parseInt(userId));
             setAllUserSaves(userSaves)
     }, [saves, userId])
+
+    const noSaveBtn = (item) => {
+        return item.userId === parseInt(userId) ? <></> : <div className="top-right"><Button icon><Icon circular inverted color='white' name='suitcase' /></Button></div> 
+    }
 
     return (
         <>
@@ -67,7 +72,7 @@ export const UserDetail = () => {
 <br/>
 
                         {
-                            allUserSaves.length > 0 ?
+                            allUserItems.length > 0 ?
                                 <div className="trendTravH2Div">
                                     <h1 className="trendyTravlersH2 userItemsH2">{user.firstName}'s Trends</h1>
                                 </div> : <></>
@@ -79,7 +84,7 @@ export const UserDetail = () => {
                                     return (
                                         <div className="container">
                                             <img key={`userItemSave--${item.id}`} className="itemTile" alt="item" src={item.itemImage} />
-                                            {item.saved === true ? <div className="top-right"><Button icon><Icon circular inverted color='teal' name='suitcase' /></Button></div> : <div className="top-right"><Button icon><Icon circular inverted color='white' name='suitcase' /></Button></div>}
+                                            {item ? noSaveBtn(item) : <div className="top-right"><Button icon><Icon circular inverted color='white' name='suitcase' /></Button></div>}
                                         </div>)
                                 })
                         }
