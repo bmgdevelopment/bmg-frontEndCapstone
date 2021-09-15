@@ -109,10 +109,17 @@
 
 .itemTopInfo {
     border-bottom: 1px solid rgba(113, 113, 113, 0.11);
-    height: 250px;
+    height: 260px;
     /* border: 5px solid rgb(255, 82, 8); */
     /* background-color:  #55909a; */
     /* background-color:  #cfd8da; */
+}
+
+.itemInfoBtns {
+    /* border: 2px dotted rgb(11, 187, 105); */
+    display: flex;
+    justify-content: flex-end;
+    margin-top: -5px;
 }
 
 .oneItemTileIMG {
@@ -154,7 +161,7 @@
 .oneTileIMGicon {
     box-shadow: 0px 0px 0px 3px #bbbbbb;
     border: 2px solid white;
-    height: 125px;
+    height: 100px;
     width: auto;
     border-radius: 50%;
     outline: 50%;
@@ -188,10 +195,11 @@
 }
 
 .X {
-    margin-left: 80%;
-    position: inherit;
+    margin-left: 5px;
+    /* position: inherit; */
     z-index: 50;
 }
+
 
 .X button {
     font-size: 30px;
@@ -200,6 +208,7 @@
     background-color: transparent;
     border: none;
     z-index: 100;
+    margin-right: 5px;
 }
 
 .X button:hover {
@@ -208,6 +217,29 @@
     color: red;
     background-color: transparent;
     border: red;
+}
+
+.change {
+    /* margin-left: 76%; */
+    /* position: inherit; */
+    z-index: 50;
+}
+
+.change button {
+    font-size: 30px;
+    font-weight: 100;
+    color: rgba(128, 128, 128, 0.212);
+    background-color: transparent;
+    border: none;
+    z-index: 100;
+}
+
+.change button:hover {
+    font-size: 30px;
+    font-weight: 100;
+    color: #63A6B1;
+    background-color: transparent;
+    border: #63A6B1;
 }
 
 .arrangeKeywords {
@@ -243,8 +275,15 @@
 
 .keyWordSelect {
     margin: 5px;
-    border: 1px solid rgba(0, 128, 128, 0.344);
+    border: 1px solid #63A6B1;
     padding: 3px 5%;
     border-radius: 15px;
     font-size: 13px;
+    background-color: transparent;
+    color: gray;
+}
+
+.keyWordSelect:hover {
+    background-color: #63A6B1;
+    color: white;
 }

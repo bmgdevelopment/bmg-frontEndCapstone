@@ -5,6 +5,7 @@ import { Home } from "./Home"
 import { ItemProvider } from "./item/ItemProvider"
 import { ItemDetail} from "./item/ItemDetail"
 import { ItemDetailInfo} from "./item/ItemDetailInfo"
+import { ItemForm} from "./item/ItemForm"
 // import { ItemList } from "./item/ItemList"
 // import { ItemSearch } from "./item/ItemSearch"
 
@@ -79,7 +80,7 @@ export const ApplicationView = () => {
                 </RegionProvider>
             </UserProvider>
 
-            {/* ONE ITEM DETAIL */}
+            {/* ONE ITEM DETAIL WITH INFO */}
             <UserProvider>
                 <RegionProvider>
                     <ItemProvider>
@@ -88,6 +89,17 @@ export const ApplicationView = () => {
                                 <ItemDetailInfo />
                             </Route>
                         </SaveProvider>
+                    </ItemProvider>
+                </RegionProvider>
+            </UserProvider>
+
+            {/* ONE ITEM EDIT*/}
+            <UserProvider>
+                <RegionProvider>
+                    <ItemProvider>
+                            <Route exact path="/items/edit/:itemId(\d+)">
+                                <ItemForm />
+                            </Route>
                     </ItemProvider>
                 </RegionProvider>
             </UserProvider>

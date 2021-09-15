@@ -33,7 +33,7 @@ export const ItemList = () => {
     }, [searchTerms, items])
 
     useEffect(() => {
-        console.log(searchTerms)
+        // console.log(searchTerms)
     }, [searchTerms])
 
 // debugger

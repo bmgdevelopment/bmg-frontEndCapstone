@@ -3,7 +3,7 @@ import { ItemContext } from "../item/ItemProvider"
 import { UserContext } from "../user/UserProvider"
 import { SaveContext } from "../save/SaveProvider"
 import { Button, Icon } from 'semantic-ui-react'
-// import { Link } from "react-router-dom"
+import { Link } from "react-router-dom"
 import "../Trendago.css"
 
 export const ProfileDetail = () => {
@@ -20,7 +20,7 @@ export const ProfileDetail = () => {
         getUsers()
         getItems()
         getSaves()
-    // eslint-disable-next-line react-hooks/exhaustive-deps
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
 
     useEffect(() => {
@@ -39,7 +39,7 @@ export const ProfileDetail = () => {
     }, [currentUserId, saves])
 
     const noSaveBtn = (item) => {
-        return item.userId === currentUserId ? <></> : <div className="top-right"><Button icon><Icon circular inverted color='white' name='suitcase' /></Button></div> 
+        return item.userId === currentUserId ? <></> : <div className="top-right"><Button icon><Icon circular inverted color='white' name='suitcase' /></Button></div>
     }
 
     return (
@@ -81,8 +81,10 @@ export const ProfileDetail = () => {
                                 allUserItems.map(item => {
                                     return (
                                         <div className="container">
-                                            <img key={`userItemSave--${item.id}`} className="itemTile" alt="item" src={item.itemImage} />
-                                            {item ? noSaveBtn(item) : <div className="top-right"><Button icon><Icon circular inverted color='white' name='suitcase' /></Button></div>}
+                                            <Link to={`/items/detail/${item.id}`}>
+                                                <img key={`userItemSave--${item.id}`} className="itemTile" alt="item" src={item.itemImage} />
+                                                {item ? noSaveBtn(item) : <div className="top-right"><Button icon><Icon circular inverted color='white' name='suitcase' /></Button></div>}
+                                            </Link>
                                         </div>)
                                 })
                         }
@@ -102,8 +104,10 @@ export const ProfileDetail = () => {
                                 return (
                                     <>
                                         <div className="container">
-                                            <img key={`userItemSave--${save.id}`} className="itemTile" alt="item" src={save.item.itemImage} />
-                                            <div className="top-right"><Button icon><Icon circular inverted color='teal' name='suitcase' /></Button></div>
+                                            <Link to={`/items/detail/${save.itemId}`}>
+                                                <img key={`userItemSave--${save.id}`} className="itemTile" alt="item" src={save.item.itemImage} />
+                                                <div className="top-right"><Button icon><Icon circular inverted color='teal' name='suitcase' /></Button></div>
+                                            </Link>
                                         </div>
 
 
@@ -124,19 +128,19 @@ export const ProfileDetail = () => {
                                         </div> 
                                         */}
 
-                                        </>
-                                        )
+                                    </>
+                                )
                             })
                         }
-                                    </div>
+                    </div>
                 </div>
-                </div>
+            </div>
 
-                <div className="backToTopDiv">
-                    <button className="backToTop">⬆</button>
-                </div>
-            </>
-            )
+            <div className="backToTopDiv">
+                <button className="backToTop">⬆</button>
+            </div>
+        </>
+    )
 
 
 } // end of ProfileDetail

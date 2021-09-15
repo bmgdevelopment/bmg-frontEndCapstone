@@ -24,6 +24,17 @@ export const ItemProvider = (props) => {
             .then(getItems)
     }
 
+    const addItem = (itemObj) => {
+        return fetch(`${apiURL}/items`, {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify(itemObj)
+        })
+        .then(getItems)
+    }
+
     const getItemById = (itemId) => {
         return fetch(`${apiURL}/items/${itemId}`)
             .then(res => res.json())
@@ -38,7 +49,7 @@ export const ItemProvider = (props) => {
 
     return (
         <ItemContext.Provider value={
-            { items, getItems, updateItem, deleteItem, getItemById, searchTerms, setSearchTerms }
+            { items, getItems, addItem, updateItem, deleteItem, getItemById, searchTerms, setSearchTerms }
         }>
             {props.children}
         </ItemContext.Provider>

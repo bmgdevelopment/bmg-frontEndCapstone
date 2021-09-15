@@ -1,8 +1,9 @@
 import React, { useContext, useEffect, useState } from "react"
 import { UserContext } from "./UserProvider"
 import { ItemContext } from "../item/ItemProvider"
+import { RegionContext } from "../region/RegionProvider"
 import { SaveContext } from "../save/SaveProvider"
-import { useParams } from "react-router-dom"
+import { useParams, Link } from "react-router-dom"
 import { Button, Icon } from 'semantic-ui-react'
 
 import "./User.css"
@@ -11,6 +12,7 @@ export const UserDetail = () => {
     const { users, getUsers } = useContext(UserContext)
     const { items, getItems } = useContext(ItemContext)
     const { saves, getSaves } = useContext(SaveContext)
+    const { regions, getRegions } = useContext(RegionContext)
 
     const [user, setUser] = useState({ region: {}, profileURL: {} })
     const [allUserItems, setAllUserItems] = useState([])
@@ -21,28 +23,60 @@ export const UserDetail = () => {
     useEffect(() => {
         getUsers()
         getItems()
+        getRegions()
         getSaves()
-     // eslint-disable-next-line react-hooks/exhaustive-deps
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
 
     useEffect(() => {
-            const thisUser = users.find(user => user.id === parseInt(userId)) || { region: {} }
-            setUser(thisUser)
+        const thisUser = users.find(user => user.id === parseInt(userId)) || { region: {} }
+        setUser(thisUser)
     }, [userId, users])
 
     useEffect(() => {
-            const userItems = items.filter(item => item.userId === parseInt(userId));
-            setAllUserItems(userItems)
+        const userItems = items.filter(item => item.userId === parseInt(userId));
+        setAllUserItems(userItems)
     }, [items, userId])
 
     useEffect(() => {
-            const userSaves = saves.filter(save => save.userId === parseInt(userId));
-            setAllUserSaves(userSaves)
+        const userSaves = saves.filter(save => save.userId === parseInt(userId));
+        setAllUserSaves(userSaves)
     }, [saves, userId])
 
     const noSaveBtn = (item) => {
-        return item.userId === currentUserId ? <></> : <div className="top-right"><Button icon><Icon circular inverted color='white' name='suitcase' /></Button></div> 
+        return item.userId === currentUserId ? <></> : <div className="top-right"><Button icon><Icon circular inverted color='white' name='suitcase' /></Button></div>
     }
+
+    const userItemMatch = (save) => {
+        let userImgLink;
+        for (const user of users) {
+                for (const region of regions) {
+                    userImgLink = save.userId === user.Id ? <div className="tileInfoDiv">
+                    <p className="tileDetail">
+                        <Link to={`/trendyTravelers/detail/${user.id}`} key={`userNameLink--${user.id}`}>
+                            <img src={user.profileURL} alt="profileIMG" className="profileIMGicon" key={`profileIMGicon--${user.id}`} />
+                            {user.firstName} {user.lastName}<br />
+                            <p className="tileRegion">{region.name}</p>
+                        </Link>
+                    </p>
+                </div> : <></>
+                }
+        }
+        return userImgLink;
+    }
+
+
+    /*
+    {save.userId === user.Id ? <div className="tileInfoDiv">
+                            <p className="tileDetail">
+                                <Link to={`/trendyTravelers/detail/${user.id}`} key={`userNameLink--${user.id}`}>
+                                    <img src={user.profileURL} alt="profileIMG" className="profileIMGicon" key={`profileIMGicon--${user.id}`} />
+                                    {user.firstName} {user.lastName}<br />
+                                    <p className="tileRegion">{region.name}</p>
+                                </Link>
+                            </p>
+                        </div> : <></>}
+    */ 
 
     return (
         <>
@@ -70,22 +104,24 @@ export const UserDetail = () => {
                         </div>
                     }
 
-<br/>
+                    <br />
 
-                        {
-                            allUserItems.length > 0 ?
-                                <div className="trendTravH2Div">
-                                    <h1 className="trendyTravlersH2 userItemsH2">{user.firstName}'s Trends</h1>
-                                </div> : <></>
-                        }
+                    {
+                        allUserItems.length > 0 ?
+                            <div className="trendTravH2Div">
+                                <h1 className="trendyTravlersH2 userItemsH2">{user.firstName}'s Trends</h1>
+                            </div> : <></>
+                    }
                     <div className="organizeTilesDiv">
                         {
                             allUserItems.length === 0 && allUserSaves.length === 0 ? <div className="noItemsDiv"><p className="noItemsP">{`${user.firstName} has yet to add an item`}</p></div> :
                                 allUserItems.map(item => {
                                     return (
                                         <div className="container">
-                                            <img key={`userItemSave--${item.id}`} className="itemTile" alt="item" src={item.itemImage} />
-                                            {item ? noSaveBtn(item) : <div className="top-right"><Button icon><Icon circular inverted color='white' name='suitcase' /></Button></div>}
+                                            <Link to={`/items/detail/${item.id}`}>
+                                                <img key={`userItemSave--${item.id}`} className="itemTile" alt="item" src={item.itemImage} />
+                                                {item ? noSaveBtn(item) : <div className="top-right"><Button icon><Icon circular inverted color='white' name='suitcase' /></Button></div>}
+                                            </Link>
                                         </div>)
                                 })
                         }
@@ -97,15 +133,33 @@ export const UserDetail = () => {
                                 <h1 className="trendyTravlersH2 saveH2">{user.firstName}'s Saved Trends</h1>
                             </div> : <></>
                     }
-                    
+
                     <div className="organizeTilesDiv">
                         {
                             allUserSaves.map(save => {
                                 return (
                                     <>
                                         <div className="container">
-                                            <img key={`userItemSave--${save.id}`} className="itemTile" alt="item" src={save.item.itemImage} />
-                                            <div className="top-right"><Button icon><Icon circular inverted color='teal' name='suitcase' /></Button></div>
+                                            <Link to={`/items/detail/${save.itemId}`}>
+                                                <img key={`userItemSave--${save.id}`} className="itemTile" alt="item" src={save.item.itemImage} />
+                                                <div className="top-right"><Button icon><Icon circular inverted color='teal' name='suitcase' /></Button></div>
+                                            </Link>
+                                        {userItemMatch(save)}
+
+
+                                            {/* 
+                                           
+                                                <div className="tileInfoDiv">
+                                                <p className="tileDetail">
+                                                    <Link to={`/trendyTravelers/detail/${save.user.id}`} key={`userNameLink--${save.user.id}`}>
+                                                        <img src={save.user.profileURL} alt="profileIMG" className="profileIMGicon" key={`profileIMGicon--${save.user.id}`} />
+                                                        {save.user.firstName} {save.user.lastName}<br />
+                                                        <p className="tileRegion">{save.item.userId}</p>
+                                                    </Link>
+                                                </p>
+                                            </div> 
+                                            */}
+
                                         </div>
                                     </>
                                 )

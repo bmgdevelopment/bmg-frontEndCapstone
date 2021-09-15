@@ -1,39 +1,39 @@
 import React, { useContext, useEffect, useState } from "react"
-import { useParams, Link } from "react-router-dom"
+import { useParams, Link, useHistory } from "react-router-dom"
 import { ItemContext } from "./ItemProvider"
 import { UserContext } from "../user/UserProvider"
 import { Icon, Button } from 'semantic-ui-react'
 import "./Item.css"
 
 export const ItemDetailInfo = (props) => {
-    const { items, getItems } = useContext(ItemContext)
+    const { items, getItems, setSearchTerms } = useContext(ItemContext)
     const { users, getUsers } = useContext(UserContext)
 
     const [item, setItem] = useState({ user: {}, region: {} })
     const [itemUser, setItemUser] = useState({ region: {}, profileURL: {} })
-    const [splitArr, setArr ] = useState([])
+    const [splitArr, setArr] = useState([])
     const currentUserId = parseInt(sessionStorage.getItem("trendago_user"))
 
 
-    // const history = useHistory()
+    const history = useHistory()
     const { itemId } = useParams()
 
     useEffect(() => {
         getUsers()
         getItems()
-    // eslint-disable-next-line react-hooks/exhaustive-deps
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
-    
+
     useEffect(() => {
-            const thisItem = items.find(item => item.id === parseInt(itemId)) || { user: {}, region: {} }
-            setItem(thisItem)
-            setArr(shortKeywords(thisItem))
-    // eslint-disable-next-line react-hooks/exhaustive-deps
+        const thisItem = items.find(item => item.id === parseInt(itemId)) || { user: {}, region: {} }
+        setItem(thisItem)
+        setArr(shortKeywords(thisItem))
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [itemId, items])
 
     useEffect(() => {
-            const thisUser = users.find(user => user.id === item.userId) || { region: {}, profileURL: {} }
-            setItemUser(thisUser)
+        const thisUser = users.find(user => user.id === item.userId) || { region: {}, profileURL: {} }
+        setItemUser(thisUser)
     }, [item.userId, itemId, users])
 
     const shortKeywords = (item) => {
@@ -45,7 +45,7 @@ export const ItemDetailInfo = (props) => {
     }
 
     const noSaveBtn = (item) => {
-        return item.userId === currentUserId ? <></> : <div className="top-right"><Button icon><Icon circular inverted color='white' name='suitcase' /></Button></div> 
+        return item.userId === currentUserId ? <></> : <div className="top-right"><Button icon><Icon circular inverted color='white' name='suitcase' /></Button></div>
     }
 
     return (
@@ -68,11 +68,18 @@ export const ItemDetailInfo = (props) => {
                             </p>
                         </div>
                     </div>
+
                     <div className="oneItemInfo">
+
                         <div className="itemTopInfo">
-                            <Link to={"/"} className="X">
-                                <button>X</button>
-                            </Link>
+                            <div className="itemInfoBtns">
+                                <Link to={`/items/edit/=${item.id}`} className="change">
+                                    <button>𝌡</button>
+                                </Link>
+                                <Link to={"/"} className="X">
+                                    <button>X</button>
+                                </Link>
+                            </div>
                             <p className="itemSummaryTitleP">{item.summary}</p>
                         </div>
 
@@ -82,7 +89,9 @@ export const ItemDetailInfo = (props) => {
                                     <p className="keywordsTitle">Keywords</p>
                                     <div className="keyWordBubbles">
                                         {splitArr.map(word => {
-                                            return <p className="keyWordSelect">{word}</p>
+                                            return <button value={word} className="keyWordSelect" onClick={(event) => {
+                                                setSearchTerms(event.target.value).then(() => history.push("/"))
+                                            }}>{word}</button>
                                         })}
                                     </div>
                                 </div>
@@ -98,6 +107,9 @@ export const ItemDetailInfo = (props) => {
 }
 
 /*
+
+<p value={word} className="keyWordSelect">{word}</p>
+
 const shortKeywords = (item) => {
     const splitArr = item.descriptiveWords.split(" ").slice(0,10)
     console.log(splitArr)

@@ -38,7 +38,6 @@ export const Register = () => {
     }
 
     const existingUserCheck = () => {
-        // If your json-server URL is different, please change it below!
         return fetch(`${apiURL}/users?email=${registerUser.email}`)
             .then(res => res.json())
             .then(user => !!user.length) //🤓 !! means true? 
@@ -50,7 +49,6 @@ export const Register = () => {
         existingUserCheck()
             .then((userExists) => {
                 if (!userExists) {
-                    // If your json-server URL is different, please change it below!
                     fetch(`${apiURL}/users`, {
                         method: "POST",
                         headers: {
