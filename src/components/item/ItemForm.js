@@ -39,24 +39,25 @@ export const ItemForm = () => {
             setIsLoading(true);
             if (itemId) {
                 updateItem({
-                    id: item.id,
+                    id: itemId,
                     descriptiveWords: item.descriptiveWords,
                     summary: item.summary,
                     itemImage: item.itemImage,
                     type: item.type,
                     userId: item.userId,
-                    regionId: item.userId
+                    regionId: item.regionId
                 })
-                    .then(() => history.push(`/items/detail/${item.id}`))
+                    .then(() => history.push(`/items/detail/${itemId}`))
             } else {
                 addItem({
                     summary: item.summary,
                     descriptiveWords: item.descriptiveWords,
                     itemImage: item.itemImage,
                     type: item.type,
+                    userId: userId,
                     regionId: item.regionId
                 })
-                    .then(() => history.push(`/items/detail/${item.id}`))
+                    .then(() => history.push(`/items/detail/${itemId}`))
             }
         }
     }
@@ -65,20 +66,83 @@ export const ItemForm = () => {
         getUsers().then(getRegions).then(() => {
             if (itemId) {
                 getItemById(itemId)
-                .then(item => {
-                    setItem(item)
-                    setIsLoading(false)
-                })
+                    .then(item => {
+                        setItem(item)
+                        setIsLoading(false)
+                    })
             } else {
                 setIsLoading(false)
             }
         })
-    // eslint-disable-next-line react-hooks/exhaustive-deps
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
 
     return (
         <>
-        <p>TEST</p>
+            <div className="itemFormContainerDiv">
+                <div className="colorBanner"></div>
+
+                <section className="registerTitle addItemTitle">
+                    <div className="titleBox1">
+                        <h1 className="registrationH1 addItemH1 h1 mb-3 font-weight-normal">Add Outfit & Accessories</h1>
+                        <p className="registerTitleP ">We suggest you upload one outfit ensemble with accessories at a time</p>
+                    </div>
+
+                    <div className="titleBox2">
+                        <Link to={`/items/detail/${item.id}`} className="X">
+                            <button>X</button>
+                        </Link>
+                    </div>
+                </section>
+
+
+                <div className="registrationFields addItemFields">
+                    <form className="form--login" onSubmit={handleSaveItem}>
+
+                        <div className="allRegFields allAddFields">
+                            <fieldset className="regInputFields">
+                                <label className="registrationLabel itemLabel" htmlFor="itemSummary"> Item Summary</label>
+                                <textarea type="text" name="summary" id="itemSummary" className="itemSummaryInput itemFields" placeholder=" Please provide a short item summary (10 words or less)" required autoFocus value={item.summary} onChange={handleControlledInputChange} />
+                            </fieldset>
+
+                            <fieldset className="regInputFields">
+                                <label className="registrationLabel itemLabel" htmlFor="itemDescription"> Descriptive Words</label>
+                                <textarea rows="5" type="text" name="descriptiveWords" id="itemDescription" className="itemDescriptionInput itemFields" placeholder=" Place descriptive words associated with your item" required value={item.descriptiveWords} onChange={handleControlledInputChange} />
+                            </fieldset>
+
+                            <fieldset className="regInputFields">
+                                <label className="registrationLabel itemLabel" htmlFor="itemURL">Item Image URL</label>
+                                <input type="text" name="itemImage" id="itemImageURL" className=" itemFields" placeholder=" ex. www.google.com/outfitpic/2..." required value={item.itemImage} onChange={handleControlledInputChange} />
+                            </fieldset>
+
+                            <fieldset className="regInputFields">
+                                <label className="registrationLabel itemLabel" htmlFor="itemType"> ItemType </label>
+                                <input type="text" name="type" id="itemType" className="itemTypeInput itemFields" placeholder="Outfit? Accessories? Or Outfit and accessories?" required value={item.type} onChange={handleControlledInputChange} />
+                            </fieldset>
+
+                            <fieldset className="regInputFields">
+                                <label className="registrationLabel itemLabel" htmlFor="inputRegionId">Region</label>
+                                <select value={item.regionId} name="regionId" id="regionId" className="regionSelect itemFields" required onChange={handleControlledInputChange}>
+                                    <option value="0">Select a home region</option>
+                                    {regions.map(region => {
+                                        return (
+                                            <option value={region.id} key={region.id}>{region.name}</option>
+                                        )
+                                    })}
+                                </select>
+                                {/* <input type="regionId" name="regionId" id="regionId" className="form-control-registration regionSelect" placeholder=" Select region number (1-7)" required value={registerUser.regionId} onChange={handleControlledInputChange} />  */}
+
+                            </fieldset>
+                        </div>
+
+                        <div className="completeRegistrationDiv completeItem">
+                            <fieldset className="completeFieldset completeItemFieldset">
+                                <button type="submit" className="completeRegisBtn addItemButton"> {itemId? <> Complete Update  </> : <> Save New Trend </>} </button>
+                            </fieldset>
+                        </div>
+                    </form>
+                </div>
+            </div>
         </>
     )
 
@@ -88,51 +152,46 @@ export const ItemForm = () => {
         <div className="formContainerDiv">
             <div className="colorBanner"></div>
 
-            <section className="registerTitle">
-                <h1 className="registrationH1 h1 mb-3 font-weight-normal"> Register for TRENDAGO</h1>
-                <p className="registerTitleP">Immediate access upon registration</p>
-            </section>
+            <section className="registerTitle addItemTitle">
+            <div className="titleBox1">
+            <h1 className="registrationH1 addItemH1 h1 mb-3 font-weight-normal">Add Outfit & Accessories </h1>
+            <p className="registerTitleP addItemTitle">We suggest you upload one outfit ensemble with accessories per add</p>
+            </div>
+
+            <div className="titleBox2">
+
+            </div>
+             </section>
 
             <hr />
 
-            <dialog className="dialog dialog--password" open={conflictDialog}>
-                <div>Account with that email address already exists</div>
-                <button className="button--close" onClick={e => setConflictDialog(false)}>Close</button>
-            </dialog> 
+            <div className="registrationFields addItemFields">
+                <form className="form--login" onSubmit={handleSaveItem}>
 
-            <div className="registrationFields">
-                <form className="form--login" onSubmit={item}>
+                    <div className="allRegFields allAddFields">
+                        <fieldset className="regInputFields">
+                                <label className="registrationLabel itemLabel" htmlFor="itemSummary"> Item Summary</label>
+                                <input type="text" name="summary" id="itemSummary" className="form-control-registration itemSummaryInput" placeholder=" Please provide a short item summary (10 words or less)" required autoFocus value={item.summary} onChange={handleControlledInputChange} />
+                            </fieldset>
 
-                    <div className="allRegFields">
-                        <fieldset className="regInputFieldHorizontal">
-                            <div className="sideByDiv">
-                                <label className="registrationLabel" htmlFor="firstName"> First Name </label>
-                                <input type="text" name="firstName" id="firstName" className="form-control-registration" placeholder=" First name" required autoFocus value={item} onChange={item} />
-                            </div>
-                            <div className="sideByDiv">
-                                <label className="registrationLabel" htmlFor="lastName"> Last Name </label>
-                                <input type="text" name="lastName" id="lastName" className="form-control-registration" placeholder=" Last name" required value={item} onChange={item} />
-                            </div>
+                        <fieldset className="regInputFields">
+                                <label className="registrationLabel itemLabel" htmlFor="itemDescription"> Descriptive Words</label>
+                                <input type="text" name="descriptiveWords" id="itemDescription" className="form-control-registration itemDescriptionInput" placeholder=" Place descriptive words associated with your item" required value={item.descriptiveWords} onChange={handleControlledInputChange} />
+                            </fieldset>
 
-                            <div className="sideByDiv">
-                                <label className="registrationLabel" htmlFor="inputGender">M | F</label>
-                                <input type="gender" name="gender" id="gender" className="form-control-registration-gender" placeholder="" required value={item} onChange={item} />
-                            </div>
+                        <fieldset className="regInputFields">
+                                <label className="registrationLabel itemLabel" htmlFor="itemURL">Item Image URL</label>
+                                <input type="text" name="itemImage" id="itemImageURL" className="form-control-registration itemImageURLInput" placeholder=" ex. www.google.com/outfitpic/2..." required value={item.itemImage} onChange={handleControlledInputChange} />
                         </fieldset>
 
                         <fieldset className="regInputFields">
-                            <label className="registrationLabel" htmlFor="inputEmail"> Email address </label>
-                            <input type="email" name="email" id="email" className="form-control-registration emailInput" placeholder=" Email address" required value={item} onChange={item} />
+                            <label className="registrationLabel itemLabel" htmlFor="itemType"> ItemType </label>
+                            <input type="text" name="type" id="itemType" className="form-control-registration itemTypeInput" placeholder="Outfit? Accessories? Or Outfit and accessories?" required value={item.type} onChange={handleControlledInputChange} />
                         </fieldset>
 
                         <fieldset className="regInputFields">
-                            <label className="registrationLabel" htmlFor="inputprofileURL">Profile URL</label>
-                            <input type="profileURL" name="profileURL" id="profileURL" className="form-control-registration profileInput" placeholder=" Profile URL" required value={item} onChange={item} />
-                        </fieldset>
-
-                        <fieldset className="regInputFields">
-                            <label className="registrationLabel" htmlFor="inputRegionId">Region</label>
-                            <select value={item.regionId} name="regionId" id="regionId" className="form-control-registration regionSelect" required onChange={item}>
+                            <label className="registrationLabel itemLabel" htmlFor="inputRegionId">Region</label>
+                            <select value={item.regionId} name="regionId" id="regionId" className="form-control-registration regionSelect" required onChange={handleControlledInputChange}>
                                 <option value="0">Select a home region</option>
                                 {regions.map(region => {
                                     return (
@@ -140,16 +199,16 @@ export const ItemForm = () => {
                                     )
                                 })}
                             </select>
-                       <input type="regionId" name="regionId" id="regionId" className="form-control-registration regionSelect" placeholder=" Select region number (1-7)" required value={registerUser.regionId} onChange={item} /> 
+                    //    <input type="regionId" name="regionId" id="regionId" className="form-control-registration regionSelect" placeholder=" Select region number (1-7)" required value={registerUser.regionId} onChange={handleControlledInputChange} />
                         </fieldset>
                     </div>
 
-                    <div className="completeRegistrationDiv">
-                        <fieldset className="completeFieldset">
-                            <button type="submit" className="completeRegisBtn"> Complete Registration </button>
-                            <p className="returnToLogin">Have an acount? Click <Link to="/login" className="login">here</Link></p>
+                    <div className="completeRegistrationDiv completeItem">
+                        <fieldset className="completeFieldset completeItemFieldset">
+                            <button type="submit" className="completeRegisBtn addItemButton"> { item.id ? <> Update Trend </> : <> Save New Trend </>} </button>
                         </fieldset>
                     </div>
                 </form>
             </div>
-        </div>*/
+        </div>
+        */

@@ -14,6 +14,8 @@ export const NavBar = () => {
     return (
         <>
         <nav className="topNav">
+            <div></div>
+            <div>
             <div className="logoDiv">
                     <Link className="" to="/">
                         <img className="trendagoLogo" alt="trendagoLogo" src={plainLogoClear} />
@@ -52,6 +54,7 @@ export const NavBar = () => {
                     </li>
                 </div>
             </ul>
+            </div>
         </nav>
         </>
     )

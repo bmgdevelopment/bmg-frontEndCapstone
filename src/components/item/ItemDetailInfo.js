@@ -73,7 +73,7 @@ export const ItemDetailInfo = (props) => {
 
                         <div className="itemTopInfo">
                             <div className="itemInfoBtns">
-                                <Link to={`/items/edit/=${item.id}`} className="change">
+                                <Link to={`/items/edit/${item.id}`} className="change">
                                     <button>𝌡</button>
                                 </Link>
                                 <Link to={"/"} className="X">

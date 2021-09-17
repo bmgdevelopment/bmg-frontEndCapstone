@@ -287,3 +287,104 @@
     background-color: #63A6B1;
     color: white;
 }
+
+/* EDIT ITEM INFO */
+
+.itemFormContainerDiv {
+    background-color: rgb(255, 255, 255);
+    margin-top: 50px;
+    width: 640px;
+    border-radius: 20px 10px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 10px;
+    padding-bottom: 30px;
+    filter: drop-shadow(rgb(220, 226, 225) 2px 2px 10px);
+}
+
+.itemSummaryInput {
+    /* width: 400px; */
+    color: gray;
+    font-weight: 800;
+    font-size: 23px;
+    font-family: 'Cormorant Garamond', serif;
+    border: 1px solid rgba(128, 128, 128, 0.331);    
+    /* border-left: 1px solid rgba(128, 128, 128, 0.331); */ 
+    border-radius: 3px;
+    padding-left: 10px;
+    color: gray;
+}
+
+.itemFields {
+    color: rgb(104, 104, 104);
+    border-radius: 3px;
+    padding-left: 10px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    line-height: 1.5;
+    width: 507px;
+}
+
+.addItemFields input {
+    border: none;
+    border-left: 1px solid rgba(128, 128, 128, 0.331);
+    padding-left: 10px;
+    font-size: 15px;
+    padding: 9px 2px;
+    color: rgb(128, 128, 128);
+    /* border: 1px solid rgba(128, 128, 128, 0.452); */
+    border-radius: 3px;
+}
+
+.itemInputFields {
+    padding-bottom: 20px;
+    padding-left: 20px;
+}
+
+.allItemFields {
+    font-size: 15px;
+    padding: 0px
+}
+
+.allItemFields fieldset {
+    border: none;
+}
+
+.addItemTitle {
+    padding-top: 10px;
+    padding-left: 30px;
+    display: flex;
+    justify-content: space-around;
+    flex-direction: row;
+}
+
+.titleBox1 {
+    /* border: 2px solid orange; */
+    margin-top: 10px;
+    margin-left: 15px;
+}
+
+.titleBox2 {
+    margin-top: 10px;
+    margin-left: 10px;
+    /* border: 2px solid rgb(60, 54, 44); */
+}
+
+.exitItem button {
+    font-size: 30px;
+    font-weight: 100;
+    color: rgba(128, 128, 128, 0.212);
+    background-color: transparent;
+    border: none;
+    z-index: 100;
+}
+
+.addItemTitle {
+    color: rgba(171, 169, 169, 0.692);
+    font-size: 15px;
+    margin-bottom: 10px;
+}
+
+.addItemTitle p {
+    margin-bottom: 10px;
+}

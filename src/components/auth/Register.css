@@ -48,7 +48,7 @@ hr {
 
 .allRegFields input, .regionSelect {
     font-size: 15px;
-    padding: 9px 2px;
+    padding: 9px 10px;
     color: rgb(128, 128, 128);
     border: 1px solid rgba(128, 128, 128, 0.452);
     border-radius: 3px;
@@ -88,6 +88,7 @@ hr {
 .regInputFields {
     padding-bottom: 20px;
     padding-left: 20px;
+    padding-right: 10px;
 }
 
 .emailInput, .profileInput, .regionSelect {

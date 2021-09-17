@@ -30,41 +30,42 @@ import "./Item.css"
 
 export const ItemDetail = (props) => {
     const { items } = useContext(ItemContext)
+    const { itemId } = useParams()
     const { users, getUsers } = useContext(UserContext)
     const { saves, getSaves, saveItem, deleteSave } = useContext(SaveContext)
     const history = useHistory()
+    const [allUserSaves, setAllUserSaves] = useState([])
 
     const [item] = useState(props.item || { user: {}, region: {} })
+    // const [allUserSaves] = useState(props.allUserSaves || [])
     const [itemUser, setItemUser] = useState({ region: {}, profileURL: {} })
-    const [isSaved, setIsSaved] = useState(false)
+    // const [isSaved, setIsSaved] = useState(false)
     const currentLoggedInUserId = parseInt(sessionStorage.getItem("trendago_user"))
-    // const [allUserSaves, setAllUserSaves] = useState([])
-
-    const { itemId } = useParams()
 
     useEffect(() => {
-        getSaves()
         getUsers()
+        getSaves()
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [])
+
+    useEffect(() => {
+        const userSaves = saves.filter(save => save.userId === currentLoggedInUserId) || []
+        setAllUserSaves(userSaves)
+        console.log(saves)
+        console.log(userSaves)
+        console.log(allUserSaves)
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
 
     // useEffect(() => {
-    //     const userSaves = saves.filter(save => save.userId === currentLoggedInUserId) || []
-    //     setAllUserSaves(userSaves)
-    //     console.log(allUserSaves)
+    //     for (const save of allUserSaves) {
+    //         if (save.user.id === currentLoggedInUserId) {
+    //             console.log(isSaved)
+    //             setIsSaved(true)
+    //         }
+    //     }
     //     // eslint-disable-next-line react-hooks/exhaustive-deps
     // }, [])
-
-    useEffect(() => {
-        for (const save of saves) {
-            if (save.user.id === currentLoggedInUserId) {
-                console.log(saves)
-                setIsSaved(true)
-            }
-        }
-    }, [currentLoggedInUserId, saves])
-
-
 
     useEffect(() => {
         const thisUser = users.find(user => user.id === item.userId) || { region: {}, profileURL: {} }
@@ -72,21 +73,52 @@ export const ItemDetail = (props) => {
     }, [item.userId, users])
 
 
-    // const saveIconCheck = () => {
-    //     if (props.item.userId === currentLoggedInUserId) {
-    //         return <></>
-    //     } else if (props.item.userId === !currentLoggedInUserId) {
-    //         allUserSaves.map(save => {
-    //             if (save.itemId === props.item.id && save.userId === currentLoggedInUserId) {
-    //                 return <div className="top-right"><Button icon><Icon circular inverted color='teal' name='suitcase' /> </Button></div>
-    //             }
-    //         })
-    //     } else {
-    //         return <div className="top-right"><Button icon><Icon circular inverted color='white' name='suitcase' /></Button></div>
-    //     }
+    const saveIconCheck = (item) => {
+        // console.log(allUserSaves)
+        for (const save of allUserSaves) {
+            if (save.itemId === item.id && save.userId === currentLoggedInUserId) {
+                return <div className="top-right">
+                    <Button icon><Icon circular inverted color='teal' name='suitcase' onClick={() => { deleteSave(save.id).then(() => history.push("/")) }} /></Button>
+                </div>
+            } else if (save.itemId !== item.id && item.userId !== currentLoggedInUserId) {
+                return <div className="top-right">
+                    <Button icon><Icon circular inverted color='white' name='suitcase' onClick={() => { saveItem(item).then(() => history.push("/")) }} /> </Button>
+                </div>
+            } else {
+                return <></>
+            }
+        }
+    }
+
+    // const saveItemBtn = () => {
+    //     return <div className="top-right">
+    //         <Button icon><Icon circular inverted color='teal' name='suitcase' /> </Button>
+    //     </div>
     // }
 
+    // const unsaveItemBtn = () => {
+    //     return <div className="top-right">
+    //         <Button icon><Icon circular inverted color='white' name='suitcase' /> </Button>
+    //     </div>
+    // }
 
+    // const saveOrUnsaveEvent = (e) => {
+    //     for (const save of allUserSaves) {
+    //         if (save.userId === currentLoggedInUserId && save.itemId === item.id) {
+    //             //already saved
+    //             unsaveItemBtn()
+    //             deleteSave(save.id)
+    //             .then(() => history.push("/"))
+    //         } else {
+    //             saveItemBtn()
+    //             saveItem({
+    //                 userId: currentLoggedInUserId,
+    //                 itemId: item.id
+    //             })
+    //             .then(() => history.push("/"))
+    //         }
+    //     }
+    // }
 
     return (
         <>
@@ -97,28 +129,42 @@ export const ItemDetail = (props) => {
                         <img key={`userItemSave--${item.id}`} className="itemTile" alt="item" src={item.itemImage} />
                     </Link>
 
+                    {saveIconCheck(item)}
 
-                    {item.userId !== currentLoggedInUserId && isSaved &&
+                    {/* {item.userId !== currentLoggedInUserId &&
                         <div className="top-right">
-                            <Button icon><Icon circular inverted color='teal' name='suitcase' onClick={() => { deleteSave(2).then(() => history.push("/")) }} /></Button>
+                            <Button icon><Icon circular inverted color='white' name='suitcase' onClick={saveOrUnsaveEvent} /> </Button>
                         </div>
-                    }
-                    {item.userId !== currentLoggedInUserId && !isSaved &&
+                    } */}
+                    {/* {
+                        allUserSaves.map(save => {
+                           return save.userId === currentLoggedInUserId && save.itemId === item.id ?
+                                <div className="top-right"><Button icon><Icon circular inverted color='teal' name='suitcase' onClick={() => { deleteSave(save.id).then(() => history.push("/")) }} /></Button></div>
+                                :
+                                <div className="top-right"><Button icon><Icon circular inverted color='white' name='suitcase' onClick={() => { saveItem(item).then(() => history.push("/")) }} /> </Button></div>
+                        })
+                    } */}
 
+
+                    {/* {item.userId !== currentLoggedInUserId && !isSaved &&
                         <div className="top-right">
                             <Button icon><Icon circular inverted color='white' name='suitcase' onClick={() => { saveItem(item).then(() => history.push("/")) }} /> </Button>
                         </div>
                     }
-
+                    {item.userId !== currentLoggedInUserId && isSaved &&
+                        <div className="top-right">
+                            <Button icon><Icon circular inverted color='teal' name='suitcase' onClick={() => { deleteSave(2).then(() => history.push("/")) }} /></Button>
+                        </div>
+                    } */}
 
                     <div className="tileInfoDiv">
-                        <p className="tileDetail">
+                        <div className="tileDetail">
                             <Link to={`/trendyTravelers/detail/${itemUser.id}`} key={`userNameLink--${itemUser.id}`}>
                                 <img src={itemUser.profileURL} alt="profileIMG" className="profileIMGicon" key={`profileIMGicon--${itemUser.id}`} />
                                 {itemUser.firstName} {itemUser.lastName}<br />
                                 <p className="tileRegion">{itemUser.region.name}</p>
                             </Link>
-                        </p>
+                        </div>
                     </div>
 
                 </div>
@@ -129,21 +175,8 @@ export const ItemDetail = (props) => {
 }
 
 
+
+
 /*
-saves.map(save =>  {
-return
-    {save.userId === currentLoggedInUserId &&
-            <div className="top-right">
-            <Button icon><Icon circular inverted color='teal' name='suitcase' onClick={() => { deleteSave(2).then(() => history.push("/")) }} /></Button>
-        </div>
-    }
-
-    {save.userId !== currentLoggedInUserId &&
-        <div className="top-right">
-            <Button icon><Icon circular inverted color='white' name='suitcase' onClick={() => { saveItem(item).then(() => history.push("/")) }} /> </Button>
-        </div>
-    }
-})
-
 
 */
