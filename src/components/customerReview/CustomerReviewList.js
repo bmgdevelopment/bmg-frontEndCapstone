@@ -1,16 +1,32 @@
-import React, { useState, useContext } from "react";
+import React, { useState, useContext, useEffect } from "react";
 // import ReactDOM from 'react-dom';
 // import { Carousel } from '@trendyol-js/react-carousel';
 import './CustomerReview.css'
 import { UserContext } from "../user/UserProvider"
+import { RegionContext } from "../region/RegionProvider"
 import { CustomerReviewContext } from "../customerReview/CustomerReviewProvider"
 
 
 export const CustomerReviewList = () => {
     const { users, getUsers } = useContext(UserContext)
     const { customerReviews, getReviews } = useContext(CustomerReviewContext)
+    const { regions, getRegions } = useContext(RegionContext)
 
-    
+    const [reviewUser, setReviewUser] = useState({ region: {}, profileURL: {} })
+    // const [ oneReview, setOneReview ] = useState( {})
+
+    useEffect(() => {
+        getUsers()
+        getReviews()
+        getRegions()
+    }, [])
+
+    // useEffect(() => {
+    //     const thisUser = users.find(user => user.id === ) || {}
+    //     setReviewUser(thisUser)
+
+    // }, [])
+
 
     return (
         <>
