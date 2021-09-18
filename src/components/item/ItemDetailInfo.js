@@ -56,7 +56,8 @@ export const ItemDetailInfo = (props) => {
                 <div className="oneItemDetailTile">
                     <div className="container">
                         <img key={`userItemSave--${item.id}`} className="oneItemTileIMG" alt="item" src={item.itemImage} />
-                        {item ? noSaveBtn(item) : <div className="top-right"><Button icon><Icon circular inverted color='teal' name='suitcase' /> </Button></div>}
+                        {item ? noSaveBtn(item) : <></>}
+                        {/* <div className="top-right"><Button icon><Icon circular inverted color='teal' name='suitcase' /> </Button></div> */}
 
                         <div className="tileInfoDiv">
                             <p className="tileDetail oneTileDetail">
@@ -73,9 +74,13 @@ export const ItemDetailInfo = (props) => {
 
                         <div className="itemTopInfo">
                             <div className="itemInfoBtns">
-                                <Link to={`/items/edit/${item.id}`} className="change">
-                                    <button>𝌡</button>
-                                </Link>
+
+                                {item.userId === currentUserId ?
+                                    <Link to={`/items/edit/${item.id}`} className="change">
+                                        <button>𝌡</button>
+                                    </Link> :
+                                    <></>}
+
                                 <Link to={"/"} className="X">
                                     <button>X</button>
                                 </Link>
