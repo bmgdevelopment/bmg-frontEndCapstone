@@ -5,6 +5,7 @@ import reportWebVitals from './reportWebVitals';
 import { Trendago } from './components/Trendago';
 import './index.css';
 import 'semantic-ui-css/semantic.min.css'
+// import 'bootstrap/dist/css/bootstrap.min.css';
 
 ReactDOM.render(
   <React.StrictMode>

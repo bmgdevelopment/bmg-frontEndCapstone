@@ -76,7 +76,8 @@ export const ItemDetail = (props) => {
 
 
     const saveIconCheck = (item) => {
-        console.log(allUserSaves)
+        // console.log(allUserSaves)
+        // debugger
         if (item.userId !== currentLoggedInUserId) {
 
             for (const save of allUserSaves) {

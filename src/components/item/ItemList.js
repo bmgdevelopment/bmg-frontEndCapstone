@@ -15,19 +15,32 @@ export const ItemList = () => {
 
     const { saves, getSaves,saveItem, deleteSave } = useContext(SaveContext)
     const [allUserSaves, setAllUserSaves] = useState([])
+
+    const { isSaved, setIsSaved } = useState(false)
+
     const currentLoggedInUserId = parseInt(sessionStorage.getItem("trendago_user"))
     const history = useHistory()
 
     useEffect(() => {
-        getItems()
-        getSaves()
+        getItems().then(getSaves)
     }, [])
+
+    // useEffect(() => {
+    //     getItems().then(getSaves).then(() => {
+    //         if (saves.length > 0) {
+    //             const userSaves = saves.filter(save => save.userId === currentLoggedInUserId) 
+    //             setAllUserSaves(userSaves)
+    //             console.log(userSaves)
+    //             // console.log(allUserSaves)
+    //         }
+    //     })
+    // }, [])
 
     useEffect(() => {
         const userSaves = saves.filter(save => save.userId === currentLoggedInUserId) || []
         setAllUserSaves(userSaves)
         // console.log(allUserSaves)
-    }, [currentLoggedInUserId, saves])
+    }, [allUserSaves, currentLoggedInUserId, saves])
 
     useEffect(() => {
         if (searchTerms !== "") {
@@ -37,10 +50,28 @@ export const ItemList = () => {
             setFiltered(items)
         }
     }, [searchTerms, items])
+    
+    useEffect(() => {}, [searchTerms])
 
-    useEffect(() => {
-        // console.log(searchTerms)
-    }, [searchTerms])
+    
+    //     const saveIconCheck = (item) => {
+    //     // console.log(allUserSaves)
+    //     for (const save of allUserSaves) {
+    //         if (save.itemId === item.id && save.userId === currentLoggedInUserId) {
+    //             return <div className="top-right">
+    //                 <Button icon><Icon circular inverted color='teal' name='suitcase' onClick={() => { deleteSave(save.id).then(() => history.push("/")) }} /></Button>
+    //             </div>
+    //         } else if (save.itemId !== item.id && item.userId !== currentLoggedInUserId) {
+    //             return <div className="top-right">
+    //                 <Button icon><Icon circular inverted color='white' name='suitcase' onClick={() => { saveItem(item).then(() => history.push("/")) }} /> </Button>
+    //             </div>
+    //         } else {
+    //             return <></>
+    //         }
+    //     }
+    // }
+    
+
 
 
     // const saveIconCheck = (item) => {

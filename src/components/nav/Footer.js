@@ -87,7 +87,11 @@ export const Footer = () => {
         </Grid> */}
 
         {/* <Divider inverted section /> */}
-        <Icon centered size='large' name='github'/> <br/>Created by BMG Development <br/>
+        <Icon centered size='large' name='github'/> 
+        <br/>
+        <br/>
+        Created by BMG Development 
+        <br/>
         <List horizontal inverted divided link size='small'>
           {/* <List.Item as='a' href='#'>
             Terms and Conditions

@@ -2,7 +2,7 @@ import React, { useContext, useEffect, useState } from "react"
 import { Link, useHistory } from "react-router-dom"
 import plainLogoClear from "../images/plainLogoClear.png"
 import { UserContext } from "../user/UserProvider"
-import { Icon, Button } from 'semantic-ui-react'
+import { Icon, Button, Popup } from 'semantic-ui-react'
 import {
     Container,
     Divider,
@@ -47,7 +47,8 @@ export const NavBar = () => {
                     </Link>
                 </div>
 
-                {/* <Dropdown item simple color='teal' text='Where to? '>
+                
+                {/* <Dropdown item simple color='teal' icon="sidebar">
 
                     <Dropdown.Menu>
                         <Dropdown.Item>Explore</Dropdown.Item>
@@ -99,16 +100,38 @@ export const NavBar = () => {
                     </div>
                     <div className="navSection1">
                         <Link to={`/trendyTravelers/detail/${trendagoUser.id}`} className="profilePicDirectLink" key={`userNameLink--${trendagoUser.id}`}>
-                            <img key="smallIconProfilePic" className="tinyProfileLink" alt="tinyProfileLink" src={trendagoUser.profileURL} />
+                            {<Popup
+                                trigger={<img key="smallIconProfilePic" className="tinyProfileLink" alt="tinyProfileLink" src={trendagoUser.profileURL} />}
+                                content="My Trends"
+                                basic
+                            />}
+
+                            {/* <img key="smallIconProfilePic" className="tinyProfileLink" alt="tinyProfileLink" src={trendagoUser.profileURL} /> */}
                         </Link>
                         <Link to="items/create" className="addItemFormLink">
-                            <Button icon><Icon circular inverted color='white' name='suitcase' /></Button>
+                            {<Popup
+                                trigger={<Button icon><Icon circular inverted color='white' name='suitcase' /></Button>}
+                                content="Create New Item"
+                                basic
+                            />}
+                            {/* <Button icon><Icon circular color='white' name='suitcase' /></Button> */}
                             {/* <Button icon><Icon circular inverted color='white' name='bars' /></Button> */}
                         </Link>
+
                     </div>
                 </ul>
             </nav>
         </>
     )
 }
+/*
+
+import { Button, Popup } from 'semantic-ui-react'
+    {<Popup
+        trigger={<img key="smallIconProfilePic" className="tinyProfileLink" alt="tinyProfileLink" src={trendagoUser.profileURL} />}
+        content="My Trends"
+        basic
+    />}
+
+*/
 
