@@ -36,9 +36,9 @@ export const Home = () => {
                 </RegionProvider>
             </UserProvider>
 
-            <div className="backToTopDiv">
+            {/* <div className="backToTopDiv">
                 <button className="backToTop">⬆</button>
-            </div>
+            </div> */}
         </>
     )
 }

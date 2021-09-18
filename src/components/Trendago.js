@@ -2,6 +2,7 @@ import React from "react"
 import { Route, Redirect } from "react-router-dom"
 import { ApplicationView } from "./ApplicationView"
 import { NavBar } from "./nav/NavBar"
+import { Footer } from "./nav/Footer"
 import { Login } from "./auth/Login"
 import { Register } from "./auth/Register"
 import { RegionProvider } from "./region/RegionProvider"
@@ -19,6 +20,7 @@ export const Trendago = () => (
                                 <NavBar />
                             </UserProvider>
                             <ApplicationView />
+                            <Footer />
                         </>
                     )
                 } else {

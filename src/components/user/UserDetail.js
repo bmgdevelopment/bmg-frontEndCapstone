@@ -142,10 +142,13 @@ export const UserDetail = () => {
                                         <div className="container">
                                             <Link to={`/items/detail/${save.itemId}`}>
                                                 <img key={`userItemSave--${save.id}`} className="itemTile" alt="item" src={save.item.itemImage} />
-                                                <div className="top-right"><Button icon><Icon circular inverted color='teal' name='suitcase' /></Button></div>
+                                                { currentUserId === user.id ? <><div className="top-right"><Button icon><Icon circular inverted color='teal' name='suitcase' /></Button></div></> : <div className="top-right"><Button icon><Icon circular inverted color='white' name='suitcase' /></Button></div>}
                                             </Link>
                                         {userItemMatch(save)}
 
+                                    {/* 
+                                    { currentUserId === user.id && <div className="top-right"><Button icon><Icon circular inverted color='white' name='suitcase' /></Button></div>}
+                                    */}
 
                                             {/* 
                                            

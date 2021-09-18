@@ -110,7 +110,6 @@ export const ProfileDetail = () => {
                                             </Link>
                                         </div>
 
-
                                         {/* <div className="container">
                                             <img key={`userItemSave--${save.id}`} className="itemTile" alt="item" src={save.itemImage} />
 
