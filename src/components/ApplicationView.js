@@ -104,6 +104,17 @@ export const ApplicationView = () => {
                 </RegionProvider>
             </UserProvider>
 
+            {/* CREATE NEW ITEM*/}
+            <UserProvider>
+                <RegionProvider>
+                    <ItemProvider>
+                            <Route exact path="/items/create">
+                                <ItemForm />
+                            </Route>
+                    </ItemProvider>
+                </RegionProvider>
+            </UserProvider>
+
         </>
     )
 }

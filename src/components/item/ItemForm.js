@@ -6,7 +6,7 @@ import { useHistory, useParams, Link } from 'react-router-dom';
 import "./Item.css"
 
 export const ItemForm = () => {
-    const { users, getUsers } = useContext(UserContext)
+    const { getUsers } = useContext(UserContext)
     const { regions, getRegions } = useContext(RegionContext)
     const { addItem, getItemById, updateItem } = useContext(ItemContext)
 
@@ -57,7 +57,7 @@ export const ItemForm = () => {
                     userId: userId,
                     regionId: item.regionId
                 })
-                    .then(() => history.push(`/items/detail/${itemId}`))
+                    .then(() => history.push(`/trendyTravelers/detail/${userId}`))
             }
         }
     }
@@ -89,36 +89,57 @@ export const ItemForm = () => {
                     </div>
 
                     <div className="titleBox2">
-                        <Link to={`/items/detail/${item.id}`} className="X">
+                        {/* <Link to={`/items/detail/${item.id}`} className="X">
+                            <button>X</button>
+                        </Link> */}
+
+                       { item.id ? 
+                         <Link to={`/items/detail/${item.id}`} className="X">
                             <button>X</button>
                         </Link>
+                        : 
+                         <Link to={"/"} className="X">
+                            <button>X</button>
+                        </Link>}
+                       
                     </div>
                 </section>
 
 
                 <div className="registrationFields addItemFields">
-                    <form className="form--login" onSubmit={handleSaveItem}>
+                    <form className="form--login" >
 
                         <div className="allRegFields allAddFields">
                             <fieldset className="regInputFields">
-                                <label className="registrationLabel itemLabel" htmlFor="itemSummary"> Item Summary</label>
-                                <textarea type="text" name="summary" id="itemSummary" className="itemSummaryInput itemFields" placeholder=" Please provide a short item summary (10 words or less)" required autoFocus value={item.summary} onChange={handleControlledInputChange} />
+                                <label className="registrationLabel itemLabel" htmlFor="itemSummary">{itemId ? <> Item Summary </> : <> Item Summary (10 words or less)</>}</label>
+                                <textarea type="text" name="summary" id="itemSummary" className="itemSummaryInput itemFields" placeholder="" required autoFocus value={item.summary} onChange={handleControlledInputChange} />
                             </fieldset>
 
                             <fieldset className="regInputFields">
-                                <label className="registrationLabel itemLabel" htmlFor="itemDescription"> Descriptive Words</label>
-                                <textarea rows="5" type="text" name="descriptiveWords" id="itemDescription" className="itemDescriptionInput itemFields" placeholder=" Place descriptive words associated with your item" required value={item.descriptiveWords} onChange={handleControlledInputChange} />
+                                <label className="registrationLabel itemLabel" htmlFor="itemDescription"> {itemId ? <> Descriptive Words </> : <> Place descriptive all words associated with your item </>} </label>
+                                <textarea rows="5" type="text" name="descriptiveWords" id="itemDescription" className="itemDescriptionInput itemFields" placeholder="" required value={item.descriptiveWords} onChange={handleControlledInputChange} />
                             </fieldset>
 
                             <fieldset className="regInputFields">
-                                <label className="registrationLabel itemLabel" htmlFor="itemURL">Item Image URL</label>
+                                <label className="registrationLabel itemLabel" htmlFor="itemURL"> {itemId ? <> Item Image Address URL </> : <> Item Image Address URL (2:3 width to height ratio suggested) </>}</label>
                                 <input type="text" name="itemImage" id="itemImageURL" className=" itemFields" placeholder=" ex. www.google.com/outfitpic/2..." required value={item.itemImage} onChange={handleControlledInputChange} />
                             </fieldset>
 
                             <fieldset className="regInputFields">
-                                <label className="registrationLabel itemLabel" htmlFor="itemType"> ItemType </label>
-                                <input type="text" name="type" id="itemType" className="itemTypeInput itemFields" placeholder="Outfit? Accessories? Or Outfit and accessories?" required value={item.type} onChange={handleControlledInputChange} />
+                                <label className="registrationLabel itemLabel" htmlFor="itemType"> ItemType {/* {itemId ? <> </> : <> </>} */}</label>
+                                {itemId ? 
+                                <input type="text" name="type" id="itemType" className="itemTypeInput itemFields" placeholder="Outfit? Accessories? Or Outfit and accessories?" required value={item.type} onChange={handleControlledInputChange} /> 
+                                : 
+                                <select name="type" id="itemType" className="itemTypeInput itemFields" placeholder="Outfit? Accessories? Or Outfit and accessories?" required value={item.type} onChange={handleControlledInputChange}>
+                                    <option value="0">Select an item type</option>
+                                    <option value="outfit">Outfit</option>
+                                    <option value="accessory">Accessory</option>
+                                    <option value="both">Outfit and Accessory</option>
+                                </select>
+                                }
+
                             </fieldset>
+
 
                             <fieldset className="regInputFields">
                                 <label className="registrationLabel itemLabel" htmlFor="inputRegionId">Region</label>
@@ -130,14 +151,21 @@ export const ItemForm = () => {
                                         )
                                     })}
                                 </select>
-                                {/* <input type="regionId" name="regionId" id="regionId" className="form-control-registration regionSelect" placeholder=" Select region number (1-7)" required value={registerUser.regionId} onChange={handleControlledInputChange} />  */}
 
                             </fieldset>
                         </div>
 
                         <div className="completeRegistrationDiv completeItem">
                             <fieldset className="completeFieldset completeItemFieldset">
-                                <button type="submit" className="completeRegisBtn addItemButton"> {itemId? <> Complete Update  </> : <> Save New Trend </>} </button>
+                                <button
+                                    className="completeRegisBtn addItemButton"
+                                    disabled={isLoading}
+                                    onClick={event => {
+                                        event.preventDefault() // Prevent browser from submitting the form and refreshing the page
+                                        handleSaveItem()
+                                    }}>
+                                    {itemId ? <> Complete Update  </> : <> Save New Trend </>}
+                                </button>
                             </fieldset>
                         </div>
                     </form>
@@ -148,67 +176,3 @@ export const ItemForm = () => {
 
 } // end of ItemForm
 
-/*
-        <div className="formContainerDiv">
-            <div className="colorBanner"></div>
-
-            <section className="registerTitle addItemTitle">
-            <div className="titleBox1">
-            <h1 className="registrationH1 addItemH1 h1 mb-3 font-weight-normal">Add Outfit & Accessories </h1>
-            <p className="registerTitleP addItemTitle">We suggest you upload one outfit ensemble with accessories per add</p>
-            </div>
-
-            <div className="titleBox2">
-
-            </div>
-             </section>
-
-            <hr />
-
-            <div className="registrationFields addItemFields">
-                <form className="form--login" onSubmit={handleSaveItem}>
-
-                    <div className="allRegFields allAddFields">
-                        <fieldset className="regInputFields">
-                                <label className="registrationLabel itemLabel" htmlFor="itemSummary"> Item Summary</label>
-                                <input type="text" name="summary" id="itemSummary" className="form-control-registration itemSummaryInput" placeholder=" Please provide a short item summary (10 words or less)" required autoFocus value={item.summary} onChange={handleControlledInputChange} />
-                            </fieldset>
-
-                        <fieldset className="regInputFields">
-                                <label className="registrationLabel itemLabel" htmlFor="itemDescription"> Descriptive Words</label>
-                                <input type="text" name="descriptiveWords" id="itemDescription" className="form-control-registration itemDescriptionInput" placeholder=" Place descriptive words associated with your item" required value={item.descriptiveWords} onChange={handleControlledInputChange} />
-                            </fieldset>
-
-                        <fieldset className="regInputFields">
-                                <label className="registrationLabel itemLabel" htmlFor="itemURL">Item Image URL</label>
-                                <input type="text" name="itemImage" id="itemImageURL" className="form-control-registration itemImageURLInput" placeholder=" ex. www.google.com/outfitpic/2..." required value={item.itemImage} onChange={handleControlledInputChange} />
-                        </fieldset>
-
-                        <fieldset className="regInputFields">
-                            <label className="registrationLabel itemLabel" htmlFor="itemType"> ItemType </label>
-                            <input type="text" name="type" id="itemType" className="form-control-registration itemTypeInput" placeholder="Outfit? Accessories? Or Outfit and accessories?" required value={item.type} onChange={handleControlledInputChange} />
-                        </fieldset>
-
-                        <fieldset className="regInputFields">
-                            <label className="registrationLabel itemLabel" htmlFor="inputRegionId">Region</label>
-                            <select value={item.regionId} name="regionId" id="regionId" className="form-control-registration regionSelect" required onChange={handleControlledInputChange}>
-                                <option value="0">Select a home region</option>
-                                {regions.map(region => {
-                                    return (
-                                        <option value={region.id} key={region.id}>{region.name}</option>
-                                    )
-                                })}
-                            </select>
-                    //    <input type="regionId" name="regionId" id="regionId" className="form-control-registration regionSelect" placeholder=" Select region number (1-7)" required value={registerUser.regionId} onChange={handleControlledInputChange} />
-                        </fieldset>
-                    </div>
-
-                    <div className="completeRegistrationDiv completeItem">
-                        <fieldset className="completeFieldset completeItemFieldset">
-                            <button type="submit" className="completeRegisBtn addItemButton"> { item.id ? <> Update Trend </> : <> Save New Trend </>} </button>
-                        </fieldset>
-                    </div>
-                </form>
-            </div>
-        </div>
-        */
