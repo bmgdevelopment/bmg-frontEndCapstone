@@ -1,43 +1,33 @@
 import React, { useContext, useEffect } from "react";
-// import ReactDOM from 'react-dom';
 import { Carousel } from '@trendyol-js/react-carousel';
-import './CustomerReview.css'
 import { UserContext } from "../user/UserProvider"
-import { CustomerReviewContext } from "../customerReview/CustomerReviewProvider"
+import { Grid, Header, Image, Segment } from 'semantic-ui-react'
+import { CustomerReviewContext } from "./CustomerReviewProvider"
+import  trendagoCollage1 from '../images/trendagoCollage.png'
+import './AboutReviewsContact.css'
 
+
+// 🛑 HAVING ISSUES OF LOADING WITHOUT GOING TO ANOTHER PAGE THEN RETURNING
 
 export const CustomerReviewList = () => {
     const { users, getUsers } = useContext(UserContext)
     const { customerReviews, getReviews } = useContext(CustomerReviewContext)
 
-    // const [reviewUser, setReviewUser] = useState({ region: {}, profileURL: {} })
-    // const [oneReview, setOneReview] = useState({ userId: {} })
+    useEffect(() => {
+        getUsers()
+    }, [])
 
     useEffect(() => {
-        getUsers().then(getReviews)
+        getReviews()
     }, [])
 
     useEffect(() => { }, [customerReviews, users])
-
-    // debugger
-
-    // useEffect(() => {
-    //     for (const oneReview of customerReviews) {
-    //         setOneReview(oneReview).then(() => {
-    //             const thisUser = users.find(user => user.id === oneReview.userId) || { userId: {} }
-    //             setReviewUser(thisUser)
-    //         })
-    //     }
-    // }, [])
-
-
 
     const userMatchedReview = (review, users) => {
         const reviewInfo = users.map(user => {
             if (review.userId === user.id) {
                 return <>
                     <div className="centeringBoxReview">
-                        {/* <div className="imgBoxReview"></div> */}
                         <div className="boxes">
                             <div className="blackContainer">
                                 <div className="div1Review">
@@ -59,9 +49,9 @@ export const CustomerReviewList = () => {
                                     </div>
                                 </div>
 
-                            <div className="div2Review">
-                                <div className="reviewSummary">" {review.review} "</div>
-                            </div>
+                                <div className="div2Review">
+                                    <div className="reviewSummary">" {review.review} "</div>
+                                </div>
                             </div>
                         </div>
                         <div className="imgBoxReview"></div>
@@ -74,14 +64,40 @@ export const CustomerReviewList = () => {
         return reviewInfo
     }
 
-
     return (
         <>
-            {/* <div className="arrangeReviews"> */}
-            {/* <div className="profileBanner"> */}
-            <div className="customerReviewsDiv">
-                <h1 className="trendyTravlersH2 customerReviewsH2">Customer Reviews </h1>
-            </div>
+        <div className="organizeSegment">
+
+            <Segment vertical>
+                <Grid container stackable verticalAlign='middle'>
+
+                    <Grid.Row>
+                        <Grid.Column width={8}>
+                            <Header as='h3' style={{ fontSize: '3em', fontFamily: 'Cormorant Garamond' }}>
+                                Need stlish traveling trends? 
+                            </Header>
+                            <p style={{ fontSize: '1.33em', color: 'gray' }}>
+                                You've safely landed on the best application that can bridge the gap between all trends across regions. Isn't it relieving that you no longer have to struggle with packing proper clothing for your trips? Catch your flights with confidence! 
+                            </p>
+                            <Header as='h3' style={{ fontSize: '3em', fontFamily: 'Cormorant Garamond' }}>
+                                Share your travel trends <br/> across the globe
+                            </Header>
+                            <p style={{ fontSize: '1.33em', color: 'gray' }}>
+                                Yes that's right, you can share your trendy expertise right here with others who will visit your region. Sharing is caring so upload the trends you love and represent for your region!
+                            </p>
+                        </Grid.Column>
+
+                         <Grid.Column floated='right' width={8}>
+                            <Image className="aboutCollage" rounded size='large' src={trendagoCollage1} />
+                        </Grid.Column> 
+                            {/* <Image rounded size='large' src={trendagoCollage1} /> */}
+                    </Grid.Row>
+
+                </Grid>
+            </Segment>
+        </div>
+
+
             <Carousel show={2.5} slide={2} swiping={true}>
                 {
                     customerReviews.map(review => {

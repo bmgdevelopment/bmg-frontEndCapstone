@@ -1,3 +1,12 @@
+.organizeSegment {
+        /* border: 3px solid orange; */
+        margin-top: -5em;
+        margin-left: 16em;
+        /* margin-right: 14em; */
+        min-width: 1100px;
+        z-index: -10;
+        padding-top: -5em;
+}
 .arrangeReviews {
     display: flex;
     flex-direction: column;
@@ -37,11 +46,14 @@
 }
 
 .imgBoxReview {
+        /* background-image: url(https://5.imimg.com/data5/UB/WL/YH/SELLER-291351/hemp-fabric--500x500.jpg); */
+        /* background-image: url(https://i.pinimg.com/474x/00/8c/05/008c05b9b96a486171f1ac05fdce6c11.jpg); */
         background-image: url(https://cdn.clubsolaris.com/com/ES/es/blog/viaja-ligero/equipaje-esencial-en-las-vacaciones.jpg);
         filter: drop-shadow(6px 6px 2px rgba(17, 16, 16, 0.577));
         background-position: center;
-        filter: blur(1.5px);
-        opacity: .9;
+        filter: blur(1px);
+        opacity: .6;
+        border-radius: 15px;
 }
 
 .styles-module_carousel-arrow__26sRw {
@@ -105,7 +117,7 @@
 
 .reviewUserPic, .styles-module_item-container__a8zaY img {
     box-shadow: 0px 0px 0px 10px #63A6B1;
-    border: 5px solid white;
+    border: 8px solid white;
     height: auto;
     width: auto;
     border-radius: 50%;
@@ -128,7 +140,8 @@
 .blackContainer {
         /* border: 2px solid coral; */
         /* margin: 20px 0; */
-        background-color: rgba(0, 0, 0, 0.582);
+        /* background-color: #63a7b19f; */
+        background-color: #0000006b;
         border-radius: 15px;
         min-width: 400px;
         height: 200px;
@@ -139,4 +152,12 @@
 
 .reviewStar, .styles-module_item-provider__YgMwz {
         font-size: 20px;
+}
+
+/* .aboutCollage {
+        border: 2px solid rgba(119, 216, 9, 0.842);
+} */
+
+.ui.grid>.row>.column {
+        min-width: 550px;
 }

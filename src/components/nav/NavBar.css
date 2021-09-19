@@ -15,6 +15,7 @@ nav * {
     margin-bottom: 3em;
     padding-left: 7em;
     padding-right: 7em;
+    z-index: 100;
 }
 
 .logoDiv {
@@ -29,7 +30,7 @@ nav * {
 }
 
 .trendagoLogo {
-    height: 80px;
+    height: 90px;
     width: auto;
     margin-right: 1.5em;
     margin-top: 1.5em;
@@ -54,7 +55,7 @@ nav * {
     color: gray;
     width: 60em;
     min-width: 850px;
-    padding: 0 20px;
+    padding: 0 60px;
     /* flex-basis: 100%; */
 }
 
@@ -135,7 +136,3 @@ nav * {
     /* border: 1px solid white; */
     background-color: #63A6B1;
 } 
-    
-/* i.icon {
-    font-size: 1.2em;
-} */

@@ -8,13 +8,10 @@ import "./Item.css"
 export const ItemDetailInfo = (props) => {
     const { items, getItems, setSearchTerms } = useContext(ItemContext)
     const { users, getUsers } = useContext(UserContext)
-
     const [item, setItem] = useState({ user: {}, region: {} })
     const [itemUser, setItemUser] = useState({ region: {}, profileURL: {} })
     const [splitArr, setArr] = useState([])
     const currentUserId = parseInt(sessionStorage.getItem("trendago_user"))
-
-
     const history = useHistory()
     const { itemId } = useParams()
 
@@ -52,7 +49,6 @@ export const ItemDetailInfo = (props) => {
         <>
             <div className="organizeTilesDiv">
 
-
                 <div className="oneItemDetailTile">
                     <div className="container">
                         <img key={`userItemSave--${item.id}`} className="oneItemTileIMG" alt="item" src={item.itemImage} />
@@ -81,8 +77,6 @@ export const ItemDetailInfo = (props) => {
                                     </Link> :
                                     <></>}
 
-
-                                
                                 { item.userId === currentUserId && 
                                 <Link to={`/trendyTravelers/detail/${currentUserId}`} className="X">
                                     <button>X</button>
@@ -103,7 +97,6 @@ export const ItemDetailInfo = (props) => {
                                 </Link>
                                 }
 
-
                             </div>
                             <p className="itemSummaryTitleP">{item.summary}</p>
                         </div>
@@ -122,10 +115,8 @@ export const ItemDetailInfo = (props) => {
                                 </div>
                             </div>
                         </div>
-
                     </div>
                 </div>
-
             </div>
         </>
     )

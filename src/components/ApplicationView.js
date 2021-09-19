@@ -6,9 +6,6 @@ import { ItemProvider } from "./item/ItemProvider"
 import { ItemDetail } from "./item/ItemDetail"
 import { ItemDetailInfo } from "./item/ItemDetailInfo"
 import { ItemForm } from "./item/ItemForm"
-// import { ItemList } from "./item/ItemList"
-// import { ItemSearch } from "./item/ItemSearch"
-
 import { ProfileDetail } from "./profile/ProfileDetail"
 
 import { UserProvider } from "./user/UserProvider"
@@ -17,8 +14,8 @@ import { UserDetail } from "./user/UserDetail"
 
 import { RegionProvider } from "./region/RegionProvider"
 import { SaveProvider } from "./save/SaveProvider"
-import { CustomerReviewProvider } from "./customerReview/CustomerReviewProvider"
-import { CustomerReviewList } from "./customerReview/CustomerReviewList"
+import { CustomerReviewProvider } from "./aboutReviewsContact/CustomerReviewProvider"
+import { CustomerReviewList } from "./aboutReviewsContact/AboutReviewsContact"
 
 export const ApplicationView = () => {
     return (
@@ -64,7 +61,6 @@ export const ApplicationView = () => {
                     <UserList />
                 </Route>
             </UserProvider>
-
 
             <UserProvider>
                 <RegionProvider>

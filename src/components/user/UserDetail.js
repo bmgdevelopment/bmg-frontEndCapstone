@@ -127,7 +127,7 @@ export const UserDetail = () => {
                                         <div className="container">
                                             <Link to={`/items/detail/${item.id}`}>
                                                 <img key={`userItemSave--${item.id}`} className="itemTile" alt="item" src={item.itemImage} />
-                                                {currentUserId === user.id || currentUserId === item.userId ? noSaveBtn(item) : <div className="top-right"><Button icon><Icon circular inverted color='white' name='suitcase' /></Button></div>}
+                                                {currentUserId === user.id || currentUserId === item.userId ? noSaveBtn(item) : <div className="top-right"><Button icon><Icon circular inverted color='grey' name='suitcase' /></Button></div>}
                                             </Link>
                                         </div>)
                                 })

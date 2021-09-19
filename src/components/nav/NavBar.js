@@ -3,17 +3,17 @@ import { Link, useHistory } from "react-router-dom"
 import plainLogoClear from "../images/plainLogoClear.png"
 import { UserContext } from "../user/UserProvider"
 import { Icon, Button, Popup } from 'semantic-ui-react'
-import {
-    Container,
-    Divider,
-    Dropdown,
-    Grid,
-    Header,
-    Image,
-    List,
-    Menu,
-    Segment,
-} from 'semantic-ui-react'
+// import {
+//     Container,
+//     Divider,
+//     Dropdown,
+//     Grid,
+//     Header,
+//     Image,
+//     List,
+//     Menu,
+//     Segment,
+// } from 'semantic-ui-react'
 
 import "./NavBar.css"
 
@@ -47,9 +47,7 @@ export const NavBar = () => {
                     </Link>
                 </div>
 
-                
                 {/* <Dropdown item simple color='teal' icon="sidebar">
-
                     <Dropdown.Menu>
                         <Dropdown.Item>Explore</Dropdown.Item>
                         <Dropdown.Item>Trendy Travelers</Dropdown.Item>
@@ -83,11 +81,7 @@ export const NavBar = () => {
                         </li>
                         |
                         <li className="aNavLink">
-                            <Link className="" to="/customerReviews">Customer Reviews</Link>
-                        </li>
-                        |
-                        <li className="aNavLink">
-                            <Link className="" to="/about">About</Link>
+                            <Link className="" to="/customerReviews">About</Link>
                         </li>
                         |
                         <li className="aNavLink">
@@ -108,9 +102,9 @@ export const NavBar = () => {
 
                             {/* <img key="smallIconProfilePic" className="tinyProfileLink" alt="tinyProfileLink" src={trendagoUser.profileURL} /> */}
                         </Link>
-                        <Link to="items/create" className="addItemFormLink">
+                        <Link to="/items/create" className="addItemFormLink">
                             {<Popup
-                                trigger={<Button icon><Icon circular inverted color='white' name='suitcase' /></Button>}
+                                trigger={<Button icon><Icon circular inverted color='white' name='add' /></Button>}
                                 content="Create New Item"
                                 basic
                             />}
