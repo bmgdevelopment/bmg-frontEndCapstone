@@ -25,6 +25,9 @@ export const ItemList = () => {
         getItems().then(getSaves)
     }, [])
 
+    useEffect(() => {}, [items, saves])
+
+
     // useEffect(() => {
     //     getItems().then(getSaves).then(() => {
     //         if (saves.length > 0) {
@@ -53,7 +56,6 @@ export const ItemList = () => {
     
     useEffect(() => {}, [searchTerms])
 
-    
     //     const saveIconCheck = (item) => {
     //     // console.log(allUserSaves)
     //     for (const save of allUserSaves) {
@@ -71,9 +73,6 @@ export const ItemList = () => {
     //     }
     // }
     
-
-
-
     // const saveIconCheck = (item) => {
     //     // console.log(allUserSaves)
     //     for (const save of allUserSaves) {

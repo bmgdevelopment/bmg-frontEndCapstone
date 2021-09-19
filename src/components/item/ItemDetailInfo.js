@@ -81,9 +81,29 @@ export const ItemDetailInfo = (props) => {
                                     </Link> :
                                     <></>}
 
+
+                                
+                                { item.userId === currentUserId && 
+                                <Link to={`/trendyTravelers/detail/${currentUserId}`} className="X">
+                                    <button>X</button>
+                                </Link>
+                                }
+
+                                {/* //WANT TO FILTER BY SAVES TO RETURN TO CURRENT USER PAGE/CURRENT PROFILE VIEW PAGE
+                                { item.userId === currentUserId && 
+                                <Link to={`/trendyTravelers/detail/${currentUserId}`} className="X">
+                                    <button>X</button>
+                                </Link>
+                                } 
+                                */}
+
+                                { item.userId !== currentUserId && 
                                 <Link to={"/"} className="X">
                                     <button>X</button>
                                 </Link>
+                                }
+
+
                             </div>
                             <p className="itemSummaryTitleP">{item.summary}</p>
                         </div>

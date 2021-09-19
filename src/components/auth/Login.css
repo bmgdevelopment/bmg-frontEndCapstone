@@ -19,10 +19,6 @@
     max-width: 100px;
   }
   
-  /* body {
-     background-color: #599ebd; 
-  } */
-  
   .login-body {
     background-image: url(https://i.postimg.cc/sxF5Yd7k/CAPSTONE-LOGIN.png);
     width: 100%;
@@ -47,9 +43,9 @@
 .loginTitle, h1 {
     font-family: 'Cormorant Garamond', serif;
     color: rgb(99, 99, 99);
-    /* color: rgb(36, 34, 34); */
     font-size: 70px;
     font-weight: 500;
+    /* color: rgb(36, 34, 34); */
     /* margin-top: 100px; */
   }
 
