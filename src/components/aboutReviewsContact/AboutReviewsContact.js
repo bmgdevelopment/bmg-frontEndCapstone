@@ -13,17 +13,24 @@ export const CustomerReviewList = () => {
     const { users, getUsers } = useContext(UserContext)
     const { customerReviews, getReviews } = useContext(CustomerReviewContext)
 
-    useEffect(() => {
-        getUsers()
-    }, [])
+    // useEffect(() => {
+    //     getUsers()
+    // }, [])
+
+    // useEffect(() => {
+    //     getReviews()
+    // }, [])
 
     useEffect(() => {
+        getUsers()
         getReviews()
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
 
     useEffect(() => { }, [customerReviews, users])
 
     const userMatchedReview = (review, users) => {
+        // eslint-disable-next-line array-callback-return
         const reviewInfo = users.map(user => {
             if (review.userId === user.id) {
                 return <>
@@ -74,7 +81,7 @@ export const CustomerReviewList = () => {
                     <Grid.Row>
                         <Grid.Column width={8}>
                             <Header as='h3' style={{ fontSize: '3em', fontFamily: 'Cormorant Garamond' }}>
-                                Need stlish traveling trends? 
+                                TRENDAGO <br/> For stylish traveling trends 
                             </Header>
                             <p style={{ fontSize: '1.33em', color: 'gray' }}>
                                 You've safely landed on the best application that can bridge the gap between all trends across regions. Isn't it relieving that you no longer have to struggle with packing proper clothing for your trips? Catch your flights with confidence! 
@@ -88,7 +95,7 @@ export const CustomerReviewList = () => {
                         </Grid.Column>
 
                          <Grid.Column floated='right' width={8}>
-                            <Image className="aboutCollage" rounded size='large' src={trendagoCollage1} />
+                            <Image className="aboutCollage" rounded size='huge' src={trendagoCollage1} />
                         </Grid.Column> 
                             {/* <Image rounded size='large' src={trendagoCollage1} /> */}
                     </Grid.Row>

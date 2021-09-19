@@ -215,9 +215,9 @@
 .X button:hover {
     font-size: 30px;
     font-weight: 100;
-    color: red;
+    color: black;
     background-color: transparent;
-    border: red;
+    border: black;
 }
 
 .change {
@@ -233,6 +233,24 @@
     background-color: transparent;
     border: none;
     z-index: 100;
+}
+
+.trashBtnItem{
+    font-size: 25px;
+    font-weight: 100;
+    color: rgba(255, 13, 13, 0.201);
+    background-color: transparent;
+    border: none;
+    z-index: 100;
+}
+.trashBtnItem:hover {
+    font-size: 25px;
+    font-weight: 100;
+    color: rgb(252, 0, 0);
+    background-color: transparent;
+    border: none;
+    z-index: 100;
+    border: red;
 }
 
 .change button:hover {

@@ -7,7 +7,7 @@ import { Link } from "react-router-dom"
 import "../Trendago.css"
 
 export const ProfileDetail = () => {
-    const { items, getItems } = useContext(ItemContext)
+    const { items, getItems, deleteItem, getItemById } = useContext(ItemContext)
     const { users, getUsers } = useContext(UserContext)
     const { saves, getSaves } = useContext(SaveContext)
     const [allUserSaves, setAllUserSaves] = useState([])

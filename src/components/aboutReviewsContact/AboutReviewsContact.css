@@ -36,23 +36,23 @@
 }
 
 .boxes, .imgBoxReview {
-        width: 500px;
+        width: 400px;
         min-width: 500px;
         color: white;
         height: 350px; 
-        padding: 25px 40px;
+        padding: 25px 50px;
         border-radius: 5px;
         margin: 20px;
 }
 
 .imgBoxReview {
-        /* background-image: url(https://5.imimg.com/data5/UB/WL/YH/SELLER-291351/hemp-fabric--500x500.jpg); */
-        /* background-image: url(https://i.pinimg.com/474x/00/8c/05/008c05b9b96a486171f1ac05fdce6c11.jpg); */
-        background-image: url(https://cdn.clubsolaris.com/com/ES/es/blog/viaja-ligero/equipaje-esencial-en-las-vacaciones.jpg);
-        filter: drop-shadow(6px 6px 2px rgba(17, 16, 16, 0.577));
+        background-image: url(https://i.pinimg.com/474x/00/8c/05/008c05b9b96a486171f1ac05fdce6c11.jpg);
+        /* background-image: url(https://cdn.clubsolaris.com/com/ES/es/blog/viaja-ligero/equipaje-esencial-en-las-vacaciones.jpg); */
+        filter: drop-shadow(6px 6px 8px rgba(17, 16, 16, 0.577));
         background-position: center;
-        filter: blur(1px);
-        opacity: .6;
+        filter: blur(3px);
+        opacity: .8;
+        border: 20px solid white;
         border-radius: 15px;
 }
 
@@ -141,8 +141,9 @@
         /* border: 2px solid coral; */
         /* margin: 20px 0; */
         /* background-color: #63a7b19f; */
-        background-color: #0000006b;
-        border-radius: 15px;
+        filter: drop-shadow(6px 6px 8px rgba(17, 16, 16, 0.577));
+        background-color: #000000;
+        /* border-radius: 15px; */
         min-width: 400px;
         height: 200px;
         min-height: 200px;
@@ -154,9 +155,14 @@
         font-size: 20px;
 }
 
-/* .aboutCollage {
-        border: 2px solid rgba(119, 216, 9, 0.842);
-} */
+.aboutCollage {
+        /* border: 2px solid rgba(119, 216, 9, 0.842); */
+        filter: drop-shadow(6px 6px 8px rgba(17, 16, 16, 0.577));
+        height: 600px;
+        width: 300px;
+        overflow: hidden;
+       
+} 
 
 .ui.grid>.row>.column {
         min-width: 550px;

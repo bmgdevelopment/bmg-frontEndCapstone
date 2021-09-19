@@ -6,7 +6,7 @@ import { Icon, Button } from 'semantic-ui-react'
 import "./Item.css"
 
 export const ItemDetailInfo = (props) => {
-    const { items, getItems, setSearchTerms } = useContext(ItemContext)
+    const { items, getItems, setSearchTerms, deleteItem } = useContext(ItemContext)
     const { users, getUsers } = useContext(UserContext)
     const [item, setItem] = useState({ user: {}, region: {} })
     const [itemUser, setItemUser] = useState({ region: {}, profileURL: {} })
@@ -45,6 +45,13 @@ export const ItemDetailInfo = (props) => {
         return item.userId === currentUserId ? <></> : <div className="top-right"><Button icon><Icon circular inverted color='white' name='suitcase' /></Button></div>
     }
 
+    const removeItem = () => {
+        deleteItem(item.id)
+            .then(() => {
+                history.push(`/trendyTravelers/detail/${itemUser.id}`)
+            })
+    }
+
     return (
         <>
             <div className="organizeTilesDiv">
@@ -71,16 +78,31 @@ export const ItemDetailInfo = (props) => {
                         <div className="itemTopInfo">
                             <div className="itemInfoBtns">
 
+
+                                {item.userId === currentUserId ?
+                                    <button
+                                        className="trashBtnItem"
+                                        onClick={removeItem}
+                                    >🗑</button>
+                                    :
+                                    <></>}
+
                                 {item.userId === currentUserId ?
                                     <Link to={`/items/edit/${item.id}`} className="change">
                                         <button>𝌡</button>
                                     </Link> :
                                     <></>}
 
-                                { item.userId === currentUserId && 
-                                <Link to={`/trendyTravelers/detail/${currentUserId}`} className="X">
-                                    <button>X</button>
-                                </Link>
+                                {item.userId === currentUserId &&
+                                    <Link to={`/trendyTravelers/detail/${currentUserId}`} className="X">
+                                        <button>X</button>
+                                    </Link>
+                                }
+
+                                {item.userId !== currentUserId &&
+                                    <Link to={"/"} className="X">
+                                        <button>X</button>
+                                    </Link>
                                 }
 
                                 {/* //WANT TO FILTER BY SAVES TO RETURN TO CURRENT USER PAGE/CURRENT PROFILE VIEW PAGE
@@ -90,12 +112,6 @@ export const ItemDetailInfo = (props) => {
                                 </Link>
                                 } 
                                 */}
-
-                                { item.userId !== currentUserId && 
-                                <Link to={"/"} className="X">
-                                    <button>X</button>
-                                </Link>
-                                }
 
                             </div>
                             <p className="itemSummaryTitleP">{item.summary}</p>
