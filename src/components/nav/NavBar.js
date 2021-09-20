@@ -108,8 +108,6 @@ export const NavBar = () => {
                                 content="Create New Item"
                                 basic
                             />}
-                            {/* <Button icon><Icon circular color='white' name='suitcase' /></Button> */}
-                            {/* <Button icon><Icon circular inverted color='white' name='bars' /></Button> */}
                         </Link>
 
                     </div>

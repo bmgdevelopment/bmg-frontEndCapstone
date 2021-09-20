@@ -5,9 +5,10 @@ import { SaveContext } from "../save/SaveProvider"
 import { Button, Icon } from 'semantic-ui-react'
 import { Link } from "react-router-dom"
 import "../Trendago.css"
+import "../user/User.css"
 
 export const ProfileDetail = () => {
-    const { items, getItems, deleteItem, getItemById } = useContext(ItemContext)
+    const { items, getItems } = useContext(ItemContext)
     const { users, getUsers } = useContext(UserContext)
     const { saves, getSaves } = useContext(SaveContext)
     const [allUserSaves, setAllUserSaves] = useState([])
@@ -44,8 +45,8 @@ export const ProfileDetail = () => {
 
     return (
         <>
+        <div className="profileAdjust">
             <div className="aside_and_mainFeed">
-
                 <div className="mainFeedHome">
 
                     <div>
@@ -137,6 +138,7 @@ export const ProfileDetail = () => {
 
             <div className="backToTopDiv">
                 <button className="backToTop">⬆</button>
+            </div>
             </div>
         </>
     )

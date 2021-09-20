@@ -91,6 +91,7 @@
 /* ITEM DETAIL INFO */
 /*------------------*/
 .oneItemDetailTile {
+    padding-top: 18%;
     width: 700px;
     display: flex;
     justify-content: center;
@@ -309,9 +310,13 @@
 
 /* EDIT ITEM INFO */
 
+.formAdjustPosition {
+    padding-top: 18%;
+}
+
 .itemFormContainerDiv {
     background-color: rgb(255, 255, 255);
-    margin-top: 50px;
+    /* margin-top: 50px; */
     width: 640px;
     border-radius: 20px 10px;
     margin-left: auto;
@@ -407,3 +412,4 @@
 .addItemTitle p {
     margin-bottom: 10px;
 }
+

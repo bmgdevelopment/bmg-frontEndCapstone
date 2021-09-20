@@ -101,9 +101,7 @@ export const Footer = () => {
     </Segment>
   </div>
 
-        //         <li className="">
-        //             <Link className="" to="/backToTop"></Link>
-        //         </li>
+   
     )
 }
 

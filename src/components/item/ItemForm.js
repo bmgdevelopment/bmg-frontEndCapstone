@@ -79,6 +79,8 @@ export const ItemForm = () => {
 
     return (
         <>
+        <div className="formAdjustPosition">
+        
             <div className="itemFormContainerDiv">
                 <div className="colorBanner"></div>
 
@@ -170,6 +172,7 @@ export const ItemForm = () => {
                         </div>
                     </form>
                 </div>
+            </div>
             </div>
         </>
     )

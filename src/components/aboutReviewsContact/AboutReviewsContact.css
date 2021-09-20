@@ -81,6 +81,19 @@
         margin-right: 15px;
         font-size: 21px;
         line-height: 25px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        align-items: center;
+        align-content: center;
+}
+
+.div2Review p {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        align-items: center;
+        align-content: center;
 }
 
 .reviewNameRegion {
@@ -138,19 +151,24 @@
 .blackContainer {
         /* border: 2px solid coral; */
         /* margin: 20px 0; */
-        /* background-color: #63a7b19f; */
         filter: drop-shadow(6px 6px 8px rgba(17, 16, 16, 0.577));
-        background-color: #000000;
+        /* background-color: #000000; */
+        background-color: #ffffff;
         /* border-radius: 15px; */
         min-width: 400px;
-        height: 200px;
+        height: 220px;
         min-height: 200px;
         width: 400px;
         padding: 10px;
+        opacity: .8;
 }
 
+.blackContainer p {
+        color: rgb(28, 28, 28)}
+
 .reviewStar, .styles-module_item-provider__YgMwz {
-        font-size: 20px;
+        font-size: 22px;
+        padding-right: 10px;
 }
 
 .aboutCollage {

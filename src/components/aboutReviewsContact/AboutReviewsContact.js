@@ -1,8 +1,8 @@
 import React, { useContext, useEffect } from "react";
 import { Carousel } from '@trendyol-js/react-carousel';
 import { UserContext } from "../user/UserProvider"
-import { Grid, Header, Image, Segment } from 'semantic-ui-react'
 import { CustomerReviewContext } from "./CustomerReviewProvider"
+import { Grid, Header, Image, Segment } from 'semantic-ui-react'
 import  trendagoCollage1 from '../images/trendagoCollage.png'
 import './AboutReviewsContact.css'
 
@@ -28,6 +28,8 @@ export const CustomerReviewList = () => {
     }, [])
 
     useEffect(() => { }, [customerReviews, users])
+    
+
 
     const userMatchedReview = (review, users) => {
         // eslint-disable-next-line array-callback-return
@@ -61,8 +63,10 @@ export const CustomerReviewList = () => {
                                 </div>
                             </div>
                         </div>
-                        <div className="imgBoxReview"></div>
-
+                        <div className="imgBoxReview">  </div>
+                        {/* { review.userId === user.id && <div className="imgBoxReview" style={{ backgroundImage: `url(${user.region.regionImage})` }} >  </div> } */}
+                       
+                        
                     </div>
 
                 </>
