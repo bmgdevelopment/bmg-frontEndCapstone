@@ -57,17 +57,15 @@ nav * {
     align-content: space-between;
     justify-content: space-evenly;
     /* border: 2px solid skyblue; */
-    color: gray;
     width: 60em;
     min-width: 850px;
-    padding: 0 60px;
-    /* flex-basis: 100%; */
+    padding: 0 80px;
 }
 
 .aNavLink {
     /* margin-left: em; */
     font-family: 'Cormorant Garamond', serif;
-    font-size: 20px;
+    font-size: 22px;
     font-weight: 600;
 }
 
@@ -80,7 +78,7 @@ nav * {
 }
 
 .aNavLink a {
-    color: rgb(108, 107, 107);
+    color:gray;
 }
 
 .ui.fluid.input  {

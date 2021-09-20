@@ -87,34 +87,23 @@ export const Footer = () => {
         </Grid> */}
 
         {/* <Divider inverted section /> */}
+        <Link className="bmgRepoLink" to="https://github.com/bmgdevelopment/bmg-frontEndCapstone">
         <Icon centered size='large' name='github'/> 
+        </Link>
         <br/>
         <br/>
+        <Link className="bmgRepoLink" to="https://github.com/bmgdevelopment/bmg-frontEndCapstone">
         Created by BMG Development 
+        </Link>
         <br/>
-        <List horizontal inverted divided link size='small'>
-          {/* <List.Item as='a' href='#'>
-            Terms and Conditions
-          </List.Item>
-          <List.Item as='a' href='#'>
-            Privacy Policy
-          </List.Item> */}
-        </List>
+   
       </Container>
     </Segment>
   </div>
-        // <nav className="">
-        //     <ul className="">
-        //         <li className="">
-        //             <Link className="" to="/bmgGithub"></Link>
-        //         </li>
-        //         <li className="">Created by BMGDevelopment <Link className="" to="/bmgGithub"></Link>
-        //         </li>
+
         //         <li className="">
         //             <Link className="" to="/backToTop"></Link>
         //         </li>
-        //     </ul>
-        // </nav>
     )
 }
 

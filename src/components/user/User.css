@@ -11,10 +11,17 @@
 
 .trendyTravlersH2 {
     font-family: 'Cormorant Garamond', serif;
-    /* font-weight: 900; */
-    /* font-style: bold; */
     font-size: 2.5em;
     margin-top: 0%;
+    color: rgb(57, 58, 58);
+    letter-spacing: 1px;
+    border-bottom: 1px solid rgba(128, 128, 128, 0.178);
+}
+
+.exploreTrends {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 2.5em;
+    margin: 0 2em;
     color: rgb(57, 58, 58);
     letter-spacing: 1px;
     border-bottom: 1px solid rgba(128, 128, 128, 0.178);

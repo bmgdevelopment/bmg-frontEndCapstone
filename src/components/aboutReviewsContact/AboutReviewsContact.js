@@ -57,7 +57,7 @@ export const CustomerReviewList = () => {
                                 </div>
 
                                 <div className="div2Review">
-                                    <div className="reviewSummary">" {review.review} "</div>
+                                    <p className="reviewSummary">" {review.review} "</p>
                                 </div>
                             </div>
                         </div>
@@ -104,7 +104,7 @@ export const CustomerReviewList = () => {
         </div>
 
 
-            <Carousel show={2.5} slide={2} swiping={true}>
+            <Carousel show={2.5} slide={1} swiping={true}>
                 {
                     customerReviews.map(review => {
                         return userMatchedReview(review, users)

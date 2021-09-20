@@ -26,7 +26,7 @@ export const Home = () => {
                                     <br />
                                     {
                                         <div className="trendTravH2Div">
-                                            <h1 className="trendyTravlersH2 userItemsH2">Explore All Trends</h1>
+                                            <h1 className="exploreTrends">Explore All Trends</h1>
                                         </div>
                                     }
                                     <ItemList />
