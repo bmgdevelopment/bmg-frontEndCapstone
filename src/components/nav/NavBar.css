@@ -4,18 +4,23 @@ nav * {
     color: darkslategrey;
 }
 
+
+/* NAVBAR SECTION */
 .topNav {
     display: block;
     justify-content: space-between;
     align-content: center;
     align-items: center;
-    /* border: 4px solid yellow; */
+    background-color: white;
+    /* border: 8px solid yellow; */
     border-bottom: .5px solid rgba(128, 128, 128, 0.26);
-    /* position: fixed; */
+    position: fixed;
     margin-bottom: 3em;
     padding-left: 7em;
     padding-right: 7em;
     z-index: 100;
+    right: 0px;
+    left: 0px;
 }
 
 .logoDiv {

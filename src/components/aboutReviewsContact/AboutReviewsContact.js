@@ -74,11 +74,10 @@ export const CustomerReviewList = () => {
     return (
         <>
         <div className="organizeSegment">
-
             <Segment vertical>
                 <Grid container stackable verticalAlign='middle'>
 
-                    <Grid.Row>
+                    <Grid.Row style={{paddingLeft: '120px'}}>
                         <Grid.Column width={8}>
                             <Header as='h3' style={{ fontSize: '3em', fontFamily: 'Cormorant Garamond' }}>
                                 TRENDAGO <br/> For stylish traveling trends 
@@ -94,10 +93,10 @@ export const CustomerReviewList = () => {
                             </p>
                         </Grid.Column>
 
-                         <Grid.Column floated='right' width={8}>
-                            <Image className="aboutCollage" rounded size='huge' src={trendagoCollage1} />
-                        </Grid.Column> 
-                            {/* <Image rounded size='large' src={trendagoCollage1} /> */}
+                         {/* <Grid.Column floated='right' width={8}>
+                            <Image className="aboutCollage" rounded size='large' src={trendagoCollage1} />
+                        </Grid.Column>  */}
+                            <Image className="aboutCollage" rounded size='large' src={trendagoCollage1} />
                     </Grid.Row>
 
                 </Grid>

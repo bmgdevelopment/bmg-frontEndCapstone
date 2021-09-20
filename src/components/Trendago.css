@@ -16,6 +16,10 @@
     /* padding-top: 90px; */
 }
 
+.searchBarHomeDiv {
+    padding-top: 18%;
+}
+
 /* ASIDE PANEL */
 .asidePanelHome {
     /* border: 2px solid rgba(199, 180, 146, 0.205); */
@@ -238,14 +242,14 @@
 
 /* BACK TO TOP BTN */
 
-.backToTopDiv {
-    /* border: 2px solid gray; */
+/* .backToTopDiv {
+    border: 2px solid gray;
     display: flex;
     justify-content: flex-end;
     position: sticky;
-}
+} */
 
-.backToTop {
+/* .backToTop {
     background-color: darkslategrey;
     justify-content: center;
     align-content: center;
@@ -256,18 +260,18 @@
     height: 40px;
     padding: 0px;
     width: 40px;
-}
+} */
 
 /* TESTING CSS */
-.testDiv {
-    /* border: 2px solid orange; */
+/* .testDiv {
+    border: 2px solid orange;
     padding: 30px 60px 30px 80px;
     display: flex;
     justify-content: space-evenly;
 }
 
 .ui.card>.image {
-    /* border: 2px solid orange; */
+    border: 2px solid orange;
     width: 275px;
     height: auto;
     justify-content: center;
@@ -290,4 +294,4 @@
     display: flex;
     justify-content: center;
     align-content: center;
-}
+} */

@@ -5,6 +5,7 @@
     margin-right: 15%;
     margin-left: 15%;
     margin-bottom: 10em;
+    padding-top: 20%;
     min-width: 700px;
 }
 
@@ -12,6 +13,7 @@
     font-family: 'Cormorant Garamond', serif;
     /* font-weight: 900; */
     /* font-style: bold; */
+    font-size: 2.5em;
     margin-top: 0%;
     color: rgb(57, 58, 58);
     letter-spacing: 1px;

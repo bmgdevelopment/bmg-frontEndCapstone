@@ -15,7 +15,9 @@ export const Home = () => {
                 <RegionProvider>
                     <ItemProvider>
                         <SaveProvider>
+                            <div className="searchBarHomeDiv">
                             <ItemSearch />
+                            </div>
 
                             <div className="aside_and_mainFeed_home">
 
