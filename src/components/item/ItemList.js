@@ -98,8 +98,16 @@ export const ItemList = () => {
                         return <ItemDetail key={item.id} item={item} allUserSaves={allUserSaves} />  
                     })
                 }
-               
             </div>
         </>
     )
 } // end of ItemList
+
+
+/*
+JSON-SERVER
+Full-text search
+Add q
+
+GET /posts?q=internet
+*/ 

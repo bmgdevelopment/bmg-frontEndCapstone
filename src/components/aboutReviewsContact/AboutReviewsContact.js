@@ -1,6 +1,6 @@
 import React, { useContext, useEffect } from "react";
 import { Carousel } from '@trendyol-js/react-carousel';
-import { UserContext } from "../user/UserProvider"
+import { RegionContext } from "../region/RegionProvider"
 import { CustomerReviewContext } from "./CustomerReviewProvider"
 import { Grid, Header, Image, Segment } from 'semantic-ui-react'
 import  trendagoCollage1 from '../images/trendagoCollage.png'
@@ -10,31 +10,18 @@ import './AboutReviewsContact.css'
 // 🛑 HAVING ISSUES OF LOADING WITHOUT GOING TO ANOTHER PAGE THEN RETURNING
 
 export const CustomerReviewList = () => {
-    const { users, getUsers } = useContext(UserContext)
     const { customerReviews, getReviews } = useContext(CustomerReviewContext)
-
-    // useEffect(() => {
-    //     getUsers()
-    // }, [])
-
-    // useEffect(() => {
-    //     getReviews()
-    // }, [])
+    const { regions, getRegions } = useContext(RegionContext)
 
     useEffect(() => {
-        getUsers()
+        getRegions()
         getReviews()
-    // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
 
-    useEffect(() => { }, [customerReviews, users])
-    
+    // useEffect(() => { }, [customerReviews, regions])
 
-
-    const userMatchedReview = (review, users) => {
-        // eslint-disable-next-line array-callback-return
-        const reviewInfo = users.map(user => {
-            if (review.userId === user.id) {
+    const userMatchedReview = (review) => {
+      
                 return <>
                     <div className="centeringBoxReview">
                         <div className="boxes">
@@ -42,11 +29,14 @@ export const CustomerReviewList = () => {
                                 <div className="div1Review">
                                     <div className="reviewNameRegion">
                                         <div>
-                                            <img alt="reviewUserPic" src={user.profileURL} />
+                                            <img alt="reviewUserPic" src={review.user.profileURL} />
                                         </div>
                                         <div className="reviewPdiv">
-                                            <p className="reviewFirstName">{user.firstName}</p>
-                                            <p className="reviewUserRegion">{user.region.name}</p>
+                                            <p className="reviewFirstName">{review.user.firstName}</p>
+                                            {regions.map(region => {
+                                               return review.user.regionId === region.id && <p className="reviewUserRegion">{region.name}</p>   
+                                            })
+                                            }
                                         </div>
                                     </div>
                                     <div>
@@ -64,15 +54,12 @@ export const CustomerReviewList = () => {
                             </div>
                         </div>
                         <div className="imgBoxReview">  </div>
-                        {/* { review.userId === user.id && <div className="imgBoxReview" style={{ backgroundImage: `url(${user.region.regionImage})` }} >  </div> } */}
+                        {/* <div className="imgBoxReview" style={{ backgroundImage: `url(${regionObj.regionImage})` }} >  </div> */}
                        
                         
                     </div>
 
                 </>
-            }
-        })
-        return reviewInfo
     }
 
     return (
@@ -111,10 +98,20 @@ export const CustomerReviewList = () => {
             <Carousel show={2.5} slide={1} swiping={true}>
                 {
                     customerReviews.map(review => {
-                        return userMatchedReview(review, users)
+                        return userMatchedReview(review)
                     })
                 }
             </Carousel>
+
+            
+{/* 
+            <Carousel show={2.5} slide={1} swiping={true}>
+                {
+                    customerReviews.map(review => {
+                        return userMatchedReview(review, users)
+                    })
+                }
+            </Carousel> */}
 
             {/* </div> */}
             {/* </div> */}

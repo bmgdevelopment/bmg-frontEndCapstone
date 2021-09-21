@@ -43,6 +43,11 @@ export const ProfileDetail = () => {
         return item.userId === currentUserId ? <></> : <div className="top-right"><Button icon><Icon circular inverted color='white' name='suitcase' /></Button></div>
     }
 
+    const sliceDate = (date) => {
+        return date.slice(-4)
+    }
+
+
     return (
         <>
         <div className="profileAdjust">
@@ -57,7 +62,7 @@ export const ProfileDetail = () => {
                         <div className="userProfileTitle">
                             <h2 className="userProfileH2">{currentUser.firstName} {currentUser.lastName}</h2>
                             <p className="profileDetailsP">
-                                Member since {currentUser.dateJoined} from {currentUser.region.name}
+                                Member since {sliceDate(currentUser.dateJoined)} from {currentUser.region.name}
                             </p>
                         </div>
 

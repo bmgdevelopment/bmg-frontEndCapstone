@@ -7,7 +7,7 @@ export const CustomerReviewProvider = (props)=> {
     const [ customerReviews, setReviews ] = useState([])
 
     const getReviews = () => {
-        return fetch(`${apiURL}/customerReviews`)
+        return fetch(`${apiURL}/customerReviews?_expand=user`)
         .then(res => res.json())
         .then(setReviews)
     }

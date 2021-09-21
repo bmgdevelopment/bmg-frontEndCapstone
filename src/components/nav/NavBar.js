@@ -37,6 +37,20 @@ export const NavBar = () => {
         sessionStorage.removeItem("trendago_user")
         history.push("/login")
     }
+/*
+
+const Logout = () => {
+    sessionStorage.removeItem("trendago_user")
+    history.push("/login")
+}
+
+//in UL
+
+ <li className="aNavLink">
+    <Link className="" onClick={Logout}>Logout</Link>
+</li>
+
+*/
 
     return (
         <>
@@ -92,6 +106,7 @@ export const NavBar = () => {
                             <Link className="" onClick={Logout}>Logout</Link>
                         </li>
                     </div>
+
                     <div className="navSection1">
                         <Link to={`/trendyTravelers/detail/${trendagoUser.id}`} className="profilePicDirectLink" key={`userNameLink--${trendagoUser.id}`}>
                             {<Popup
