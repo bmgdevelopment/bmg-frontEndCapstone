@@ -34,8 +34,8 @@ export const NavBar = () => {
     }, [currentLoggedInUserId, users])
 
     const Logout = () => {
-        sessionStorage.removeItem("trendago_user")
         history.push("/login")
+        sessionStorage.removeItem("trendago_user")
     }
 /*
 
@@ -103,7 +103,7 @@ const Logout = () => {
                         </li>
                         |
                         <li className="aNavLink">
-                            <Link className="" onClick={Logout}>Logout</Link>
+                            <Link className="" to="/login" onClick={Logout}>Logout</Link>
                         </li>
                     </div>
 

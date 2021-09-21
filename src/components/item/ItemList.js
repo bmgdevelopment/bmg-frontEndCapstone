@@ -1,101 +1,60 @@
 import React, { useEffect, useContext, useState } from "react"
+import { useLocation } from "react-router-dom"
 import { ItemContext } from "./ItemProvider"
 import { ItemDetail } from "./ItemDetail"
 import { SaveContext } from "../save/SaveProvider"
 import "./Item.css"
 
-import { Icon, Button } from 'semantic-ui-react'
-import { useHistory } from "react-router-dom"
+// import { Icon, Button } from 'semantic-ui-react'
+// import { useHistory } from "react-router-dom"
 
+function useQuery() {
+    return new URLSearchParams(useLocation().search);
+  } 
 
 export const ItemList = () => {
     // const { users, getUsers } = useContext(UserContext)
     const { items, getItems, searchTerms } = useContext(ItemContext)
-    const [filteredItems, setFiltered] = useState([])
-
-    const { saves, getSaves,saveItem, deleteSave } = useContext(SaveContext)
-    const [allUserSaves, setAllUserSaves] = useState([])
-
-    const { isSaved, setIsSaved } = useState(false)
-
+    const { userSaves, getSavesByUserId } = useContext(SaveContext)
     const currentLoggedInUserId = parseInt(sessionStorage.getItem("trendago_user"))
-    const history = useHistory()
+    const [filteredItems, setFiltered] = useState([])
+    const query = useQuery() //using URL from browser
+    const keywordSearchTerm = query.get('keywordSearchTerm')
+
+    // console.log(keywordSearchTerm)
 
     useEffect(() => {
-        getItems().then(getSaves)
+        getItems()
+        getSavesByUserId(currentLoggedInUserId)
+        // console.log(userSaves)
     }, [])
 
-    useEffect(() => {}, [items, saves])
-
-
-    // useEffect(() => {
-    //     getItems().then(getSaves).then(() => {
-    //         if (saves.length > 0) {
-    //             const userSaves = saves.filter(save => save.userId === currentLoggedInUserId) 
-    //             setAllUserSaves(userSaves)
-    //             console.log(userSaves)
-    //             // console.log(allUserSaves)
-    //         }
-    //     })
-    // }, [])
-
     useEffect(() => {
-        const userSaves = saves.filter(save => save.userId === currentLoggedInUserId) || []
-        setAllUserSaves(userSaves)
-        // console.log(allUserSaves)
-    }, [allUserSaves, currentLoggedInUserId, saves])
-
-    useEffect(() => {
-        if (searchTerms !== "") {
-            const subset = items.filter(item => item.descriptiveWords.toLowerCase().includes(searchTerms.toLowerCase()))
+        if (searchTerms !== "" || keywordSearchTerm) {
+            const subset = items.filter(item => item.descriptiveWords.toLowerCase().includes(keywordSearchTerm.toLowerCase()) )
+            // || item.descriptiveWords.toLowerCase().includes(searchTerms.toLowerCase()) )
+            console.log(subset)
             setFiltered(subset)
         } else {
             setFiltered(items)
         }
-    }, [searchTerms, items])
+    }, [searchTerms, items, keywordSearchTerm])
     
-    useEffect(() => {}, [searchTerms])
+    // useEffect(() => {}, [searchTerms])
 
-    //     const saveIconCheck = (item) => {
-    //     // console.log(allUserSaves)
-    //     for (const save of allUserSaves) {
-    //         if (save.itemId === item.id && save.userId === currentLoggedInUserId) {
-    //             return <div className="top-right">
-    //                 <Button icon><Icon circular inverted color='teal' name='suitcase' onClick={() => { deleteSave(save.id).then(() => history.push("/")) }} /></Button>
-    //             </div>
-    //         } else if (save.itemId !== item.id && item.userId !== currentLoggedInUserId) {
-    //             return <div className="top-right">
-    //                 <Button icon><Icon circular inverted color='white' name='suitcase' onClick={() => { saveItem(item).then(() => history.push("/")) }} /> </Button>
-    //             </div>
-    //         } else {
-    //             return <></>
-    //         }
-    //     }
-    // }
-    
-    // const saveIconCheck = (item) => {
-    //     // console.log(allUserSaves)
-    //     for (const save of allUserSaves) {
-    //         if (save.itemId === item.id && save.userId === currentLoggedInUserId) {
-    //             return <div className="top-right">
-    //                 <Button icon><Icon circular inverted color='teal' name='suitcase' onClick={() => { deleteSave(save.id).then(() => history.push("/")) }} /></Button>
-    //             </div>
-    //         } else if (save.itemId !== item.id && item.userId !== currentLoggedInUserId) {
-    //             return <div className="top-right">
-    //                 <Button icon><Icon circular inverted color='white' name='suitcase' onClick={() => { saveItem(item).then(() => history.push("/")) }} /> </Button>
-    //             </div>
-    //         } else {
-    //             return <></>
-    //         }
-    //     }
-    // }
+    if (!userSaves.length) return <h1>Loading...</h1>
 
     return (
         <>
+
+
             <div className="organizeTilesDiv">
                 {
                     filteredItems.map(item => {
-                        return <ItemDetail key={item.id} item={item} allUserSaves={allUserSaves} />  
+                        const savedItem = userSaves.find(save => save.itemId === item.id) 
+                        const isSaved = !!savedItem //(!! converts returned value into a boolean)
+                    //    console.log(isSaved)
+                        return <ItemDetail key={item.id} item={item} isSaved={isSaved} savedItemId={savedItem && savedItem.id}/>  
                     })
                 }
             </div>

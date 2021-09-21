@@ -29,9 +29,12 @@ export const Trendago = () => (
             }}
         />
 
+       
+            <Route path="/login" component={Login}/>
+{/* 
         <Route path="/login">
             <Login />
-        </Route>
+        </Route> */}
 
         <RegionProvider>
             <Route path="/register">

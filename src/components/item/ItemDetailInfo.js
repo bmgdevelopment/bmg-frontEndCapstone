@@ -123,8 +123,8 @@ export const ItemDetailInfo = (props) => {
                                     <p className="keywordsTitle">Keywords</p>
                                     <div className="keyWordBubbles">
                                         {splitArr.map(word => {
-                                            return <button value={word} className="keyWordSelect" onClick={(event) => {
-                                                setSearchTerms(event.target.value).then(() => history.push("/"))
+                                            return <button name={word} value={word} className="keyWordSelect" onClick={() => {
+                                                history.push(`/?keywordSearchTerm=${word}`)
                                             }}>{word}</button>
                                         })}
                                     </div>
