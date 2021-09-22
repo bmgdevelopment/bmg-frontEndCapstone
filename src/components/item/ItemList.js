@@ -43,6 +43,7 @@ export const ItemList = () => {
     // useEffect(() => {}, [searchTerms])
 
     if (!userSaves.length) return <h1>Loading...</h1>
+    // if (!userSaves.length) return <h1>Loading...</h1>
 
     return (
         <>

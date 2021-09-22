@@ -25,6 +25,9 @@ export const ItemDetail = (props) => {
         setItemUser(thisUser)
     }, [item.userId, users])
 
+    useEffect(() => {
+
+    }, [ props.isSaved, props.savedItemId])
 
 const handleSave = () => {
     const itemIdOfSave = item.id
@@ -51,12 +54,23 @@ const handleSave = () => {
                     </Link>
 
 
-                    {props.isSaved ?
-                        <div className="top-right"><Button icon><Icon circular inverted color='teal' name='suitcase' onClick={handleSave} /></Button></div>
+                    { item.userId === currentLoggedInUserId ? 
+                        <></> 
                         :
-                        <div className="top-right"><Button icon><Icon circular inverted color='white' name='suitcase' onClick={handleSave} /> </Button></div>
+                        props.isSaved ?
+                        <div className="top-right"><Button icon className="suitCaseSaveBtn"><Icon circular inverted color='teal' name='suitcase' onClick={handleSave} /></Button></div>                      
+                        :
+                        <div className="top-right"><Button icon className="suitCaseSaveBtn"><Icon circular inverted name='suitcase' onClick={handleSave} /></Button></div>
 
                     }
+                       
+
+                    {/* {props.isSaved ?
+                        <div className="top-right"><Button icon className="suitCaseSaveBtn"><Icon circular inverted color='teal' name='suitcase' onClick={handleSave} /></Button></div>                      
+                        :
+                        <div className="top-right"><Button icon className="suitCaseSaveBtn"><Icon circular inverted name='suitcase' onClick={handleSave} /></Button></div>
+
+                    } */}
 
                     <div className="tileInfoDiv">
                         <div className="tileDetail">

@@ -413,3 +413,14 @@
     margin-bottom: 10px;
 }
 
+/* SAVE/UNSAVE BTN BACKGROUND DISABLED */
+i.icon:before, i.icon:after, .suitcase:before, .suitcase::after, i.icon:hover, i.icon:active {
+    background: none;
+}
+
+/* 
+.suitCaseSaveBtn, .suitCaseSaveBtn:active, .ui.icon.button, .ui.icon.button:active {
+    background: transparent;
+    padding: 0;
+    border: transparent;
+} */
