@@ -37,20 +37,20 @@ export const NavBar = () => {
         history.push("/login")
         sessionStorage.removeItem("trendago_user")
     }
-/*
-
-const Logout = () => {
-    sessionStorage.removeItem("trendago_user")
-    history.push("/login")
-}
-
-//in UL
-
- <li className="aNavLink">
-    <Link className="" onClick={Logout}>Logout</Link>
-</li>
-
-*/
+    /*
+    
+    const Logout = () => {
+        sessionStorage.removeItem("trendago_user")
+        history.push("/login")
+    }
+    
+    //in UL
+    
+     <li className="aNavLink">
+        <Link className="" onClick={Logout}>Logout</Link>
+    </li>
+    
+    */
 
     return (
         <>
@@ -108,15 +108,20 @@ const Logout = () => {
                     </div>
 
                     <div className="navSection1">
-                        <Link to={`/trendyTravelers/detail/${trendagoUser.id}`} className="profilePicDirectLink" key={`userNameLink--${trendagoUser.id}`}>
-                            {<Popup
-                                trigger={<img key="smallIconProfilePic" className="tinyProfileLink" alt="tinyProfileLink" src={trendagoUser.profileURL} />}
-                                content="My Trends"
-                                basic
-                            />}
 
-                            {/* <img key="smallIconProfilePic" className="tinyProfileLink" alt="tinyProfileLink" src={trendagoUser.profileURL} /> */}
-                        </Link>
+
+                        {!trendagoUser.profileURL.length ? <div class="ui active centered inline loader"></div> :
+
+
+                            <Link to={`/trendyTravelers/detail/${trendagoUser.id}`} className="profilePicDirectLink" key={`userNameLink--${trendagoUser.id}`}>
+                                {<Popup
+                                    trigger={<img key="smallIconProfilePic" className="tinyProfileLink" alt="tinyProfileLink" src={trendagoUser.profileURL} />}
+                                    content="My Trends"
+                                    basic
+                                />}
+                            </Link>
+                        }
+
                         <Link to="/items/create" className="addItemFormLink">
                             {<Popup
                                 trigger={<Button icon><Icon circular inverted color='white' name='add' /></Button>}

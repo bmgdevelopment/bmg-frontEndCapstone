@@ -67,11 +67,16 @@ export const ItemDetail = (props) => {
 
                     <div className="tileInfoDiv">
                         <div className="tileDetail">
+                            
+                            { !itemUser.region.name && !itemUser.profileURL
+                                ? <div class="ui active centered inline loader"></div>
+                                :
                             <Link to={`/trendyTravelers/detail/${itemUser.id}`} key={`userNameLink--${itemUser.id}`}>
                                 <img src={itemUser.profileURL} alt="profileIMG" className="profileIMGicon" key={`profileIMGicon--${itemUser.id}`} />
                                 {itemUser.firstName} {itemUser.lastName}<br />
                                 <p className="tileRegion">{itemUser.region.name}</p>
                             </Link>
+                            }
                         </div>
                     </div>
 

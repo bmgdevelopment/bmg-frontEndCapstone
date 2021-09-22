@@ -38,7 +38,8 @@ export const ItemList = () => {
         }
     }, [searchTerms, items, keywordSearchTerm])
     
-    if (!userSaves.length) return <h1>Loading...</h1>
+    // LOADER
+    if (!userSaves.length) return <div className="centerLoaderHome organizeTilesDiv"><div class="ui active centered inline loader"></div></div>
 
     return (
         <>
