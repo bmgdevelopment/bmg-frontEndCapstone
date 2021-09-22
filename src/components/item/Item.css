@@ -413,14 +413,14 @@
     margin-bottom: 10px;
 }
 
-/* SAVE/UNSAVE BTN BACKGROUND DISABLED */
+/* SAVE/UNSAVE BTN BACKGROUND DISABLED
 i.icon:before, i.icon:after, .suitcase:before, .suitcase::after, i.icon:hover, i.icon:active {
     background: none;
-}
+} */
 
 /* 
-.suitCaseSaveBtn, .suitCaseSaveBtn:active, .ui.icon.button, .ui.icon.button:active {
+.suitCaseSaveBtn, .suitCaseSaveBtn:active, .suitCaseSaveBtn:after, .ui.icon.button, .ui.icon.button:after, .ui.icon.button:active {
+    position: normal;
+    z-index: 10;
     background: transparent;
-    padding: 0;
-    border: transparent;
 } */

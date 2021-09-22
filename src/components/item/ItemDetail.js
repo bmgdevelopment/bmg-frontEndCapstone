@@ -10,10 +10,11 @@ import "./Item.css"
 export const ItemDetail = (props) => {
     const { users, getUsers } = useContext(UserContext)
     const { saveItem, deleteSave } = useContext(SaveContext)
-    // const history = useHistory()
+    
 
     const { item } = props
     const [itemUser, setItemUser] = useState({ region: {}, profileURL: {} })
+    const [ state, setState ] = useState( {})
     const currentLoggedInUserId = parseInt(sessionStorage.getItem("trendago_user"))
 
     useEffect(() => {
@@ -26,23 +27,24 @@ export const ItemDetail = (props) => {
     }, [item.userId, users])
 
     useEffect(() => {
+      
+    }, [props.isSaved, props.savedItemId])
 
-    }, [ props.isSaved, props.savedItemId])
+    const handleSave = () => {
+        const itemIdOfSave = item.id
+        const saveUserId = currentLoggedInUserId
 
-const handleSave = () => {
-    const itemIdOfSave = item.id
-    const saveUserId = currentLoggedInUserId
-
-    if (props.isSaved) {
-        deleteSave(props.savedItemId)
-    } else {
-        saveItem({
-            itemId: itemIdOfSave,
-            userId: saveUserId
-        })
-        // .then(() => history.push("/"))
+        if (props.isSaved) {
+            deleteSave(props.savedItemId)
+            .then(() => setState( {} )) //used to re-render component smoothly
+        } else {
+            saveItem({
+                itemId: itemIdOfSave,
+                userId: saveUserId
+            })
+            .then(() => setState( {} )) //used to re-render component smoothly
+        }
     }
-}
 
     return (
         <>
@@ -53,24 +55,15 @@ const handleSave = () => {
                         <img key={`userItemSave--${item.id}`} className="itemTile" alt="item" src={item.itemImage} />
                     </Link>
 
-
-                    { item.userId === currentLoggedInUserId ? 
-                        <></> 
+                    {item.userId === currentLoggedInUserId ?
+                        <></>
                         :
                         props.isSaved ?
-                        <div className="top-right"><Button icon className="suitCaseSaveBtn"><Icon circular inverted color='teal' name='suitcase' onClick={handleSave} /></Button></div>                      
-                        :
-                        <div className="top-right"><Button icon className="suitCaseSaveBtn"><Icon circular inverted name='suitcase' onClick={handleSave} /></Button></div>
+                            <div className="top-right"><Button icon className="suitCaseSaveBtn"><Icon circular inverted color='teal' name='suitcase' onClick={handleSave} /></Button></div>
+                            :
+                            <div className="top-right"><Button icon className="suitCaseSaveBtn"><Icon circular inverted name='suitcase' onClick={handleSave} /></Button></div>
 
                     }
-                       
-
-                    {/* {props.isSaved ?
-                        <div className="top-right"><Button icon className="suitCaseSaveBtn"><Icon circular inverted color='teal' name='suitcase' onClick={handleSave} /></Button></div>                      
-                        :
-                        <div className="top-right"><Button icon className="suitCaseSaveBtn"><Icon circular inverted name='suitcase' onClick={handleSave} /></Button></div>
-
-                    } */}
 
                     <div className="tileInfoDiv">
                         <div className="tileDetail">

@@ -43,8 +43,8 @@ export const ProfileDetail = () => {
         return item.userId === currentUserId ? <></> : <div className="top-right"><Button icon><Icon circular inverted color='white' name='suitcase' /></Button></div>
     }
 
-    const sliceDate = (date) => {
-        return date.slice(-4)
+    const sliceDate = (user) => {
+        return user.dateJoined.slice(-4)
     }
 
 
@@ -62,7 +62,7 @@ export const ProfileDetail = () => {
                         <div className="userProfileTitle">
                             <h2 className="userProfileH2">{currentUser.firstName} {currentUser.lastName}</h2>
                             <p className="profileDetailsP">
-                                Member since {sliceDate(currentUser.dateJoined)} from {currentUser.region.name}
+                                Member since {sliceDate(currentUser)} from {currentUser.region.name}
                             </p>
                         </div>
 
@@ -112,26 +112,11 @@ export const ProfileDetail = () => {
                                         <div className="container">
                                             <Link to={`/items/detail/${save.itemId}`}>
                                                 <img key={`userItemSave--${save.id}`} className="itemTile" alt="item" src={save.item.itemImage} />
-                                                <div className="top-right"><Button icon><Icon circular inverted color='teal' name='suitcase' /></Button></div>
+                                                {/* <div className="top-right"><Button icon><Icon circular inverted color='teal' name='suitcase' /></Button></div> */}
                                             </Link>
                                         </div>
 
-                                        {/* <div className="container">
-                                            <img key={`userItemSave--${save.id}`} className="itemTile" alt="item" src={save.itemImage} />
-
-                                            {save ? <div className="top-right"><Button icon><Icon circular inverted color='teal' name='suitcase' /> </Button></div> : <div className="top-right"><Button icon><Icon circular inverted color='white' name='suitcase' /></Button></div>}
-                                            <div className="tileInfoDiv">
-                                                <p className="tileDetail">
-                                                            <Link to={`/trendyTravelers/detail/${save.userId}`} key={`userNameLink--${save.userId}`}>
-                                                                <img src={save.user.profileURL} alt="profileIMG" className="profileIMGicon" key={`profileIMGicon--${save.userId}`} />
-                                                                {save.user.firstName} {save.user.lastName}<br />
-                                                                //  <p className="tileRegion">{save.item.region.name}</p> 
-                                                            </Link>
-                                                      
-                                                </p>
-                                            </div>
-                                        </div> 
-                                        */}
+                                        
 
                                     </>
                                 )

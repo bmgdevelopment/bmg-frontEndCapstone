@@ -1,23 +1,31 @@
 import React, { useContext, useEffect, useState } from "react"
 import { useParams, Link, useHistory } from "react-router-dom"
 import { ItemContext } from "./ItemProvider"
+import { SaveContext } from "../save/SaveProvider"
 import { UserContext } from "../user/UserProvider"
 import { Icon, Button } from 'semantic-ui-react'
 import "./Item.css"
 
-export const ItemDetailInfo = (props) => {
-    const { items, getItems, setSearchTerms, deleteItem } = useContext(ItemContext)
+export const ItemDetailInfo = () => {
+    const { itemId } = useParams()
+    const { items, getItems, deleteItem } = useContext(ItemContext)
     const { users, getUsers } = useContext(UserContext)
+    const { userSaves, getSavesByUserId, saveItem, deleteSave } = useContext(SaveContext)
+
     const [item, setItem] = useState({ user: {}, region: {} })
     const [itemUser, setItemUser] = useState({ region: {}, profileURL: {} })
     const [splitArr, setArr] = useState([])
+    const [trueSave, setTrueSave] = useState(false)
+    const [trueSaveId, setTrueSaveId] = useState({ id: {} })
+    const [state, setState] = useState({})
+
     const currentUserId = parseInt(sessionStorage.getItem("trendago_user"))
     const history = useHistory()
-    const { itemId } = useParams()
 
     useEffect(() => {
         getUsers()
         getItems()
+        getSavesByUserId(currentUserId)
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
 
@@ -28,10 +36,25 @@ export const ItemDetailInfo = (props) => {
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [itemId, items])
 
+
+    useEffect(() => {
+        if (item) {
+            const savedItemInfo = userSaves.find(save => save.itemId === parseInt(itemId)) || { id: {} }
+            console.log(userSaves)
+            const isSaved = !!savedItemInfo
+            setTrueSave(isSaved)
+            if (savedItemInfo) {
+                setTrueSaveId(savedItemInfo.id)
+                //  console.log(trueSave)
+                //  console.log(trueSaveId)
+            }
+        }
+    }, [userSaves, itemId, trueSave, trueSaveId, item])
+
     useEffect(() => {
         const thisUser = users.find(user => user.id === item.userId) || { region: {}, profileURL: {} }
         setItemUser(thisUser)
-    }, [item.userId, itemId, users])
+    }, [item.userId, users])
 
     const shortKeywords = (item) => {
         let splitSpliceArr = []
@@ -41,16 +64,49 @@ export const ItemDetailInfo = (props) => {
         return splitSpliceArr
     }
 
-    const noSaveBtn = (item) => {
-        return item.userId === currentUserId ? <></> : <div className="top-right"><Button icon><Icon circular inverted color='white' name='suitcase' /></Button></div>
-    }
-
     const removeItem = () => {
         deleteItem(item.id)
             .then(() => {
                 history.push(`/trendyTravelers/detail/${itemUser.id}`)
             })
     }
+
+    const handleSave = () => {
+        const itemIdOfSave = parseInt(itemId)
+        const saveUserId = currentUserId
+        if (trueSave) {
+            deleteSave(trueSaveId)
+            getSavesByUserId(currentUserId)
+            history.push(`/trendyTravelers/detail/${currentUserId}`)
+        } else {
+            saveItem({
+                itemId: itemIdOfSave,
+                userId: saveUserId
+            })
+            getSavesByUserId(currentUserId)
+            history.push(`/trendyTravelers/detail/${currentUserId}`)
+        }
+    }
+
+    console.log(item)
+    console.log(trueSave)
+    console.log(trueSaveId)
+
+    
+    const buttonCheck = () => {
+        if (item.userId === currentUserId) {
+            return console.log("blank")
+        } else if ( trueSave) {
+            console.log("yay")
+            return <div className="top-right"><Button icon className="suitCaseSaveBtn"><Icon circular inverted color='teal' name='suitcase' onClick={handleSave} /></Button></div>
+        } else {
+            console.log("plain")
+            return <div className="top-right"><Button icon className="suitCaseSaveBtn"><Icon circular inverted name='suitcase' onClick={handleSave} /></Button></div>
+        }
+    }
+    
+
+    // if (!item.id) return <h1>Loading...</h1>
 
     return (
         <>
@@ -59,19 +115,33 @@ export const ItemDetailInfo = (props) => {
                 <div className="oneItemDetailTile">
                     <div className="container">
                         <img key={`userItemSave--${item.id}`} className="oneItemTileIMG" alt="item" src={item.itemImage} />
-                        {item ? noSaveBtn(item) : <></>}
-                        {/* <div className="top-right"><Button icon><Icon circular inverted color='teal' name='suitcase' /> </Button></div> */}
 
                         <div className="tileInfoDiv">
-                            <p className="tileDetail oneTileDetail">
+                            <div className="tileDetail oneTileDetail">
                                 <Link to={`/trendyTravelers/detail/${itemUser.id}`} key={`userNameLink--${itemUser.id}`}>
                                     <img src={itemUser.profileURL} alt="profileIMG" className="oneTileIMGicon" key={`profileIMGicon--${itemUser.id}`} />
                                     {itemUser.firstName} {itemUser.lastName}<br />
                                     <p className="tileRegion">{itemUser.region.name}</p>
                                 </Link>
-                            </p>
+                            </div>
                         </div>
+
+                        {buttonCheck()}
+                        
+                        {/* NEED HELP! BUTTONS NOT SHOWING AGAIN */}
+
+                        {/* {item.userId === currentUserId ?
+                            <>{console.log("oops")}</>
+                            :
+                            trueSave ?
+                                console.log("yay") && <div className="top-right"><Button icon className="suitCaseSaveBtn"><Icon circular inverted color='teal' name='suitcase' onClick={handleSave} /></Button></div>
+
+                                :
+                                <div className="top-right"><Button icon ><Icon circular inverted name='suitcase' onClick={handleSave} /></Button></div>
+                        } */}
+
                     </div>
+
 
                     <div className="oneItemInfo">
 

@@ -32,23 +32,16 @@ export const ItemList = () => {
     useEffect(() => {
         if (searchTerms !== "" || keywordSearchTerm) {
             const subset = items.filter(item => item.descriptiveWords.toLowerCase().includes(keywordSearchTerm.toLowerCase()) )
-            // || item.descriptiveWords.toLowerCase().includes(searchTerms.toLowerCase()) )
-            console.log(subset)
             setFiltered(subset)
         } else {
             setFiltered(items)
         }
     }, [searchTerms, items, keywordSearchTerm])
     
-    // useEffect(() => {}, [searchTerms])
-
     if (!userSaves.length) return <h1>Loading...</h1>
-    // if (!userSaves.length) return <h1>Loading...</h1>
 
     return (
         <>
-
-
             <div className="organizeTilesDiv">
                 {
                     filteredItems.map(item => {
