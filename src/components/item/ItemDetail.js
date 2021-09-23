@@ -11,7 +11,6 @@ export const ItemDetail = (props) => {
     const { users, getUsers } = useContext(UserContext)
     const { saveItem, deleteSave } = useContext(SaveContext)
 
-
     const { item } = props
     const [itemUser, setItemUser] = useState({ region: {}, profileURL: {} })
     const [state, setState] = useState({})
@@ -27,8 +26,7 @@ export const ItemDetail = (props) => {
     }, [item.userId, users])
 
     useEffect(() => {
-
-    }, [props.isSaved, props.savedItemId])
+    }, [props, props.isSaved, props.savedItemId])
 
     const handleSave = () => {
         const itemIdOfSave = item.id

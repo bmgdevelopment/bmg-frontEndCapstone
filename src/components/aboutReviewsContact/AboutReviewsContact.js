@@ -7,8 +7,6 @@ import trendagoCollage1 from '../images/trendagoCollage.png'
 import './AboutReviewsContact.css'
 
 
-// 🛑 HAVING ISSUES OF LOADING WITHOUT GOING TO ANOTHER PAGE THEN RETURNING
-
 export const CustomerReviewList = () => {
     const { customerReviews, getReviews } = useContext(CustomerReviewContext)
     const { regions, getRegions } = useContext(RegionContext)
@@ -68,9 +66,6 @@ export const CustomerReviewList = () => {
 
         </>
     }
-
-    // if (!userSaves.length) return <h1>Loading...</h1>
-
 
     return (
         <>

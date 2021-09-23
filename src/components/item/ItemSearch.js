@@ -4,17 +4,12 @@ import { ItemContext } from "./ItemProvider"
 import "./Item.css"
 
 export const ItemSearch = () => {
-    const { setSearchTerms } = useContext(ItemContext)
+    const { searchTerms, setSearchTerms } = useContext(ItemContext)
 
+    console.log(searchTerms)
+    
     return (
         <div className="searchDiv">
-            {/* <Input fluid
-                type="text"
-                className="input--wide"
-                onSearchChange={(event) => setSearchTerms(event.target.value)}
-                icon='search'
-                placeholder='Search by keyword like "warm" or "snow" ' />  */}
-
                 <input 
                 type="text"
                 className="input--wide"
@@ -28,4 +23,3 @@ export const ItemSearch = () => {
     )
 }
 
-//<div class="ui icon input"><input type="text" placeholder="Search..."/><i aria-hidden="true" class="search icon"></i></div> 

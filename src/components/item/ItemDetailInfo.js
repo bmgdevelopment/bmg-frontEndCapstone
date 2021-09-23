@@ -8,7 +8,7 @@ import "./Item.css"
 
 export const ItemDetailInfo = () => {
     const { itemId } = useParams()
-    const { items, getItems, deleteItem } = useContext(ItemContext)
+    const { items, getItems, deleteItem, setSearchTerms } = useContext(ItemContext)
     const { users, getUsers } = useContext(UserContext)
     const { userSaves, getSavesByUserId, saveItem, deleteSave } = useContext(SaveContext)
 
@@ -16,7 +16,7 @@ export const ItemDetailInfo = () => {
     const [itemUser, setItemUser] = useState({ region: {}, profileURL: {} })
     const [splitArr, setArr] = useState([])
     const [trueSave, setTrueSave] = useState(false)
-    const [trueSaveId, setTrueSaveId] = useState({ id: {} })
+    const [trueSaveId, setTrueSaveId] = useState(0)
     const [state, setState] = useState({})
 
     const currentUserId = parseInt(sessionStorage.getItem("trendago_user"))
@@ -38,18 +38,20 @@ export const ItemDetailInfo = () => {
 
 
     useEffect(() => {
+        // debugger
         if (itemId) {
-            const savedItemInfo = userSaves.find(save => save.itemId === parseInt(itemId)) || { id: {} }
+            const savedItemInfo = userSaves.find(save => save.itemId === parseInt(itemId))
             console.log(userSaves)
             const isSaved = !!savedItemInfo
             setTrueSave(isSaved)
+            
             if (savedItemInfo) {
                 setTrueSaveId(savedItemInfo.id)
                 //  console.log(trueSave)
                 //  console.log(trueSaveId)
             }
         }
-    }, [userSaves, itemId, trueSave, trueSaveId])
+    }, [userSaves, itemId])
 
     useEffect(() => {
         const thisUser = users.find(user => user.id === item.userId) || { region: {}, profileURL: {} }
@@ -77,26 +79,26 @@ export const ItemDetailInfo = () => {
         if (trueSave) {
             deleteSave(trueSaveId)
             getSavesByUserId(currentUserId)
-            history.push(`/trendyTravelers/detail/${currentUserId}`)
+            .then(() => setState({})) //used to re-render component smoothly
         } else {
             saveItem({
                 itemId: itemIdOfSave,
                 userId: saveUserId
             })
             getSavesByUserId(currentUserId)
-            history.push(`/trendyTravelers/detail/${currentUserId}`)
+            .then(() => setState({})) //used to re-render component smoothly
         }
     }
 
     console.log(item)
     console.log("trueSave? " + trueSave)
-    console.log("saveId? " + trueSaveId)
+    console.log("trueSaveId? " + trueSaveId)
 
-    
+
     const buttonCheck = () => {
         if (item.userId === currentUserId) {
             return console.log("blank")
-        } else if ( trueSave) {
+        } else if (trueSave) {
             console.log("yay")
             return <div className="top-right"><Button icon className="suitCaseSaveBtn"><Icon circular inverted color='teal' name='suitcase' onClick={handleSave} /></Button></div>
         } else {
@@ -104,7 +106,7 @@ export const ItemDetailInfo = () => {
             return <div className="top-right"><Button icon className="suitCaseSaveBtn"><Icon circular inverted name='suitcase' onClick={handleSave} /></Button></div>
         }
     }
-    
+
 
     // if (!item.id) return <h1>Loading...</h1>
 
@@ -127,18 +129,6 @@ export const ItemDetailInfo = () => {
                         </div>
 
                         {buttonCheck()}
-                        
-                        {/* NEED HELP! BUTTONS NOT SHOWING AGAIN */}
-
-                        {/* {item.userId === currentUserId ?
-                            <>{console.log("oops")}</>
-                            :
-                            trueSave ?
-                                console.log("yay") && <div className="top-right"><Button icon className="suitCaseSaveBtn"><Icon circular inverted color='teal' name='suitcase' onClick={handleSave} /></Button></div>
-
-                                :
-                                <div className="top-right"><Button icon ><Icon circular inverted name='suitcase' onClick={handleSave} /></Button></div>
-                        } */}
 
                     </div>
 
@@ -175,13 +165,6 @@ export const ItemDetailInfo = () => {
                                     </Link>
                                 }
 
-                                {/* //WANT TO FILTER BY SAVES TO RETURN TO CURRENT USER PAGE/CURRENT PROFILE VIEW PAGE
-                                { item.userId === currentUserId && 
-                                <Link to={`/trendyTravelers/detail/${currentUserId}`} className="X">
-                                    <button>X</button>
-                                </Link>
-                                } 
-                                */}
 
                             </div>
                             <p className="itemSummaryTitleP">{item.summary}</p>
