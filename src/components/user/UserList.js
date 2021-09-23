@@ -14,9 +14,8 @@ export const UserList = () => {
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
 
-    const sliceDate = (date) => {
-        console.log(date)
-        return date.slice(-4)
+    const sliceDate = (dateSent) => {
+        return dateSent.slice(-4)
     }
 
     const listFilter = (user) => {

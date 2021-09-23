@@ -68,7 +68,9 @@ export const UserDetail = () => {
         return userImgLink;
     }
 
-
+    // const sliceDate = (dateSent) => {
+    //     return <>{dateSent.slice(-4)}</>
+    // }
 
     return (
         <>
@@ -85,7 +87,7 @@ export const UserDetail = () => {
                             <div className="userProfileTitle">
                                 <h2 className="userProfileH2">{user.firstName} {user.lastName}</h2>
                                 <p className="profileDetailsP">
-                                    Member since {`${user.dateJoined}`} from {user.region.name}
+                                    Member since {user.dateJoined} from {user.region.name}
                                 </p>
                             </div>
 

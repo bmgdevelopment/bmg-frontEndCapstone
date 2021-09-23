@@ -41,9 +41,15 @@ export const ProfileDetail = () => {
         setAllUserSaves(userSaves)
     }, [currentUserId, saves, allUserSaves])
 
-    const sliceDate = (date) => {
-        return date.slice(-4)
-    }
+    // const noSaveBtn = (item) => {
+    //     if (item.userId === currentUserId) {
+    //         return <></>
+    //     }
+    // }
+
+    // const sliceDate = (date) => {
+    //     return date.slice(-4)
+    // }
 
     return (
 
@@ -60,7 +66,7 @@ export const ProfileDetail = () => {
                             <div className="userProfileTitle">
                                 <h2 className="userProfileH2">{currentUser.firstName} {currentUser.lastName}</h2>
                                 <p className="profileDetailsP">
-                                    Member since {sliceDate(`${currentUser.dateJoined}`)} from {currentUser.region.name}
+                                    Member since {currentUser.dateJoined} from {currentUser.region.name}
                                 </p>
                             </div>
 
