@@ -98,10 +98,10 @@ export const NavBar = () => {
                             <Link className="" to="/customerReviews">About</Link>
                         </li>
                         |
-                        <li className="aNavLink">
+                        {/* <li className="aNavLink">
                             <Link className="" to="/contactUs">Contact Us</Link>
                         </li>
-                        |
+                        | */}
                         <li className="aNavLink">
                             <Link className="" to="/login" onClick={Logout}>Logout</Link>
                         </li>
@@ -110,7 +110,7 @@ export const NavBar = () => {
                     <div className="navSection1">
 
 
-                        {!trendagoUser.profileURL.length ? <div class="ui active centered inline loader"></div> :
+                        {!trendagoUser.profileURL.length ? <div className="ui active centered inline loader"></div> :
 
 
                             <Link to={`/trendyTravelers/detail/${trendagoUser.id}`} className="profilePicDirectLink" key={`userNameLink--${trendagoUser.id}`}>

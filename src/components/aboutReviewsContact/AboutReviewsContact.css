@@ -40,15 +40,35 @@
         border-radius: 5px;
         margin: 20px;
 }
+.carouselDiv {
+        /* border: 2px solid yellow; */
+        /* background-image: url(https://i.postimg.cc/SRmTmCwp/TRENDAGO-BANNER.png); */
+        filter: drop-shadow(6px 2px 8px rgba(17, 16, 16, 0.577));
+        /* background-position: center; */
+        /* filter: blur(3px); */
+        /* height: 600px; */
+        padding: 80px 0;
+        /* opacity: .8; */
+        background-repeat: no-repeat;
+        background-color: #63a7b1;
+        /* background-color: black; */
+        background-size: cover;
+}
+
+.reviewHeader {
+        border: 2px solid orange;
+        display: flex;
+        justify-content: center;
+        
+}
 
 .imgBoxReview {
-        background-image: url(https://i.pinimg.com/474x/00/8c/05/008c05b9b96a486171f1ac05fdce6c11.jpg);
-        /* background-image: url(https://cdn.clubsolaris.com/com/ES/es/blog/viaja-ligero/equipaje-esencial-en-las-vacaciones.jpg); */
         filter: drop-shadow(6px 6px 8px rgba(17, 16, 16, 0.577));
         background-position: center;
         filter: blur(3px);
         opacity: .8;
-        border: 20px solid white;
+        /* width: 300px; */
+        /* border: 20px solid white; */
         border-radius: 15px;
 }
 
@@ -152,13 +172,13 @@
         filter: drop-shadow(6px 6px 8px rgba(17, 16, 16, 0.577));
         /* background-color: #000000; */
         background-color: #ffffff;
-        /* border-radius: 15px; */
+        /* border-radius: 15kpx; */
         min-width: 400px;
         height: 220px;
         min-height: 200px;
-        width: 400px;
-        padding: 10px;
-        opacity: .8;
+        width: 600px;
+        padding: 10px 12px;
+        /* opacity: .8; */
 }
 
 .blackContainer p {
@@ -181,4 +201,5 @@
 .ui.grid>.row>.column {
         min-width: 550px;
 }
+
 

@@ -53,13 +53,13 @@ export const UserDetail = () => {
             for (const region of regions) {
                 userImgLink = save.userId === sortedUser.id ?
                     <div className="tileInfoDiv">
-                        <p className="tileDetail">
+                        <div className="tileDetail">
                             <Link to={`/trendyTravelers/detail/${sortedUser.id}`} key={`userNameLink--${sortedUser.id}`}>
                                 <img src={sortedUser.profileURL} alt="profileIMG" className="profileIMGicon" key={`profileIMGicon--${sortedUser.id}`} />
                                 {sortedUser.firstName} {sortedUser.lastName}<br />
                                 <p className="tileRegion">{region.name}</p>
                             </Link>
-                        </p>
+                        </div>
                     </div>
                     :
                     <></>
@@ -69,17 +69,6 @@ export const UserDetail = () => {
     }
 
 
-    /*
-    {save.userId === user.Id ? <div className="tileInfoDiv">
-                            <p className="tileDetail">
-                                <Link to={`/trendyTravelers/detail/${user.id}`} key={`userNameLink--${user.id}`}>
-                                    <img src={user.profileURL} alt="profileIMG" className="profileIMGicon" key={`profileIMGicon--${user.id}`} />
-                                    {user.firstName} {user.lastName}<br />
-                                    <p className="tileRegion">{region.name}</p>
-                                </Link>
-                            </p>
-                        </div> : <></>}
-    */
 
     return (
         <>
@@ -127,7 +116,7 @@ export const UserDetail = () => {
                                         <div className="container">
                                             <Link to={`/items/detail/${item.id}`}>
                                                 <img key={`userItemSave--${item.id}`} className="itemTile" alt="item" src={item.itemImage} />
-                                                {currentUserId === user.id || currentUserId === item.userId ? noSaveBtn(item) : <div className="top-right"><Button icon><Icon circular inverted color='grey' name='suitcase' /></Button></div>}
+                                                {currentUserId === user.id || currentUserId === item.userId ? noSaveBtn(item) : <div className="top-right"><Button icon><Icon circular inverted name='suitcase' /></Button></div>}
                                             </Link>
                                         </div>)
                                 })
@@ -154,28 +143,11 @@ export const UserDetail = () => {
                                                 {/* {currentUserId === save.userId ? <><div className="top-right"><Button icon><Icon circular inverted color='teal' name='suitcase' /></Button></div></> : <div className="top-right"><Button icon><Icon circular inverted color='white' name='suitcase' /></Button></div>} */}
                                            
                                            { currentUserId === save.userId && <> <div className="top-right"><Button icon><Icon circular inverted color='teal' name='suitcase' /></Button></div></>}
-                                           { currentUserId !== save.userId && <> <div className="top-right"><Button icon><Icon circular inverted color='grey' name='suitcase' /></Button></div></>}
+                                           { currentUserId !== save.userId && <> <div className="top-right"><Button icon><Icon circular inverted name='suitcase' /></Button></div></>}
                                            {/* { currentUserId === item.userId && <></>} */}
                                           
                                             </Link>
                                             {userItemMatch(save)}
-
-                                            {/* 
-                                    { currentUserId === user.id && <div className="top-right"><Button icon><Icon circular inverted color='white' name='suitcase' /></Button></div>}
-                                    */}
-
-                                            {/* 
-                                           
-                                                <div className="tileInfoDiv">
-                                                <p className="tileDetail">
-                                                    <Link to={`/trendyTravelers/detail/${save.user.id}`} key={`userNameLink--${save.user.id}`}>
-                                                        <img src={save.user.profileURL} alt="profileIMG" className="profileIMGicon" key={`profileIMGicon--${save.user.id}`} />
-                                                        {save.user.firstName} {save.user.lastName}<br />
-                                                        <p className="tileRegion">{save.item.userId}</p>
-                                                    </Link>
-                                                </p>
-                                            </div> 
-                                            */}
 
                                         </div>
                                     </>
@@ -195,21 +167,4 @@ export const UserDetail = () => {
 
 
 /*
-       {
-        allUserSaves.map(save => {
-            return (
-                <img key={`userItemSave--${save.id}`} className="itemTile" alt="item" src={save.item.itemImage}></img>
-            )
-        })
-    }
-
-    // import  mustPackGrayFalse from "..images/mustPackGrayFalse.png"
-// import mustPackStarTrue from "../images/mustPackStarTrue.png"
-
-        <div className="container">
-            <img key={`userItemSave--${save.id}`} className="itemTile" alt="item" src={save.item.itemImage} />
-            {item.saved === true ? <div className="top-right"><button classname="redHeartBtn">❤️</button></div> : <div className="top-right"><button classname="outlineHeartBtn">♡</button></div> }
-        </div>
-
-
 */

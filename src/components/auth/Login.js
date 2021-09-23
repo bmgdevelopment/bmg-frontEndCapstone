@@ -48,7 +48,6 @@ export const Login = () => {
                 }
             })
     }
-    console.log("hi")
     return (
         <div className="login-body">
             <main className="container--login">

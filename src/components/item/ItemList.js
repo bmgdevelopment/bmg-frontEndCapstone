@@ -5,9 +5,6 @@ import { ItemDetail } from "./ItemDetail"
 import { SaveContext } from "../save/SaveProvider"
 import "./Item.css"
 
-// import { Icon, Button } from 'semantic-ui-react'
-// import { useHistory } from "react-router-dom"
-
 function useQuery() {
     return new URLSearchParams(useLocation().search);
   } 

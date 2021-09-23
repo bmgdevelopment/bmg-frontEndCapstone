@@ -15,6 +15,7 @@ export const UserList = () => {
     }, [])
 
     const sliceDate = (date) => {
+        console.log(date)
         return date.slice(-4)
     }
 

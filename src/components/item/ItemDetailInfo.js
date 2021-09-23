@@ -38,7 +38,7 @@ export const ItemDetailInfo = () => {
 
 
     useEffect(() => {
-        if (item) {
+        if (itemId) {
             const savedItemInfo = userSaves.find(save => save.itemId === parseInt(itemId)) || { id: {} }
             console.log(userSaves)
             const isSaved = !!savedItemInfo
@@ -49,7 +49,7 @@ export const ItemDetailInfo = () => {
                 //  console.log(trueSaveId)
             }
         }
-    }, [userSaves, itemId, trueSave, trueSaveId, item])
+    }, [userSaves, itemId, trueSave, trueSaveId])
 
     useEffect(() => {
         const thisUser = users.find(user => user.id === item.userId) || { region: {}, profileURL: {} }
@@ -89,8 +89,8 @@ export const ItemDetailInfo = () => {
     }
 
     console.log(item)
-    console.log(trueSave)
-    console.log(trueSaveId)
+    console.log("trueSave? " + trueSave)
+    console.log("saveId? " + trueSaveId)
 
     
     const buttonCheck = () => {

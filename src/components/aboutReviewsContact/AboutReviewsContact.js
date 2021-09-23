@@ -29,7 +29,14 @@ export const CustomerReviewList = () => {
                         <div className="div1Review">
                             <div className="reviewNameRegion">
                                 <div>
-                                    <img alt="reviewUserPic" src={review.user.profileURL} />
+
+                                    {
+                                        !review.user.profileURL.length
+                                            ? <div class="ui active centered inline loader"></div>
+                                            : <img alt="reviewUserPic" src={review.user.profileURL} />
+                                    }
+
+                                    {/* <img alt="reviewUserPic" src={review.user.profileURL} /> */}
                                 </div>
                                 <div className="reviewPdiv">
                                     <p className="reviewFirstName">{review.user.firstName}</p>
@@ -97,58 +104,30 @@ export const CustomerReviewList = () => {
                 </Segment>
             </div>
 
-            {customerReviews.length ?
-                <Carousel show={2.5} slide={1} swiping={true}>
-                    {
-                        customerReviews.map(review => {
-                            return userMatchedReview(review)
-                        })
-                    }
-                </Carousel>
-                :
-                <h1>Loading...</h1>
-            }
+            <div className="carouselDiv">
+                {/* <div className="reviewHeader" >
+                    <Header as='h3' style={{ fontSize: '3em', fontFamily: 'Cormorant Garamond', color: 'white' }}>
+                        TRENDAGO <br /> For stylish traveling trends
+                    </Header>
+                </div> */}
+                {/* <p style={{ fontSize: '1.33em', color: 'gray' }}>
+                                    You've safely landed on the best application that can bridge the gap between all trends across regions. Isn't it relieving that you no longer have to struggle with packing proper clothing for your trips? Catch your flights with confidence!
+                                </p> */}
 
+                {customerReviews.length ?
+                    <Carousel show={2.5} slide={1} swiping={true}>
+                        {
+                            customerReviews.map(review => {
+                                return userMatchedReview(review)
+                            })
+                        }
+                    </Carousel>
+                    :
+                    <div className="ui active centered inline loader"></div>
 
-            {/* <Carousel show={2.5} slide={1} swiping={true}>
-                {
-                    customerReviews.map(review => {
-                        return userMatchedReview(review)
-                    })
                 }
-            </Carousel> */}
+            </div>
 
-
-            {/* 
-            <Carousel show={2.5} slide={1} swiping={true}>
-                {
-                    customerReviews.map(review => {
-                        return userMatchedReview(review, users)
-                    })
-                }
-            </Carousel> */}
-
-            {/* </div> */}
-            {/* </div> */}
-
-            {/* <div className="aside_and_mainFeed">
-
-                <div className="mainFeedHome">
-
-                    <div className="arrangeReviews">
-                        <div className="profileBanner">
-                            <div className="trendTravH2Div">
-                                <h1 className="trendyTravlersH2 userItemsH2">Customer Reviews </h1>
-                            </div>
-                            {
-                                customerReviews.map(review => {
-                                    return userMatchedReview(review, users)
-                                })
-                            }
-                        </div>
-                    </div>
-                </div>
-            </div> */}
         </>
     )
 }
