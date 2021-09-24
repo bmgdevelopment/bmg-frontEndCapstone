@@ -412,6 +412,19 @@
 .addItemTitle p {
     margin-bottom: 10px;
 }
+
+.clearLinkDiv {
+    /* border: 2px solid coral; */
+    display: flex;
+    justify-content: flex-end;
+    margin: 0 27%;
+}
+
+.clearLink {
+    /* border: 2px solid blue; */
+    padding-top: 5px;
+}
+
 /* 
 .centerLoaderHome {
     display: flex;

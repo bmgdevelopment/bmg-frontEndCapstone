@@ -11,12 +11,13 @@ function useQuery() {
 
 export const ItemList = () => {
     // const { users, getUsers } = useContext(UserContext)
-    const { items, getItems, searchTerms } = useContext(ItemContext)
+    const { items, getItems, searchTerms, setSearchTerms } = useContext(ItemContext)
     const { userSaves, getSavesByUserId } = useContext(SaveContext)
     const currentLoggedInUserId = parseInt(sessionStorage.getItem("trendago_user"))
     const [filteredItems, setFiltered] = useState([])
+
     const query = useQuery() //using URL from browser
-    const keywordSearchTerm = query.get('keywordSearchTerm')
+    const keywordSearchTerm = query.get('keywordSearchTerm') || ""
 
     // console.log(keywordSearchTerm)
 
@@ -26,17 +27,32 @@ export const ItemList = () => {
         // console.log(userSaves)
     }, [])
 
+    // useEffect(() => {
+    //     if (searchTerms !== "" || keywordSearchTerm) {
+    //         const subset = items.filter(item => item.descriptiveWords.toLowerCase().includes(keywordSearchTerm.toLowerCase())  )
+    //         // || item.descriptiveWords.toLowerCase().includes(searchTerms.toLowerCase()) )
+    //     //    if (subset.length) 
+    //         setFiltered(subset)
+    //     } else {
+    //         setFiltered(items)
+    //     }
+    // }, [searchTerms, items, keywordSearchTerm])
+    
+
     useEffect(() => {
-        if (searchTerms !== "" || keywordSearchTerm) {
-            const subset = items.filter(item => item.descriptiveWords.toLowerCase().includes(keywordSearchTerm.toLowerCase())  )
-            // || item.descriptiveWords.toLowerCase().includes(searchTerms.toLowerCase()) )
-        //    if (subset.length) 
+        if (searchTerms !== "" ) {
+            const subset = items.filter(item => item.descriptiveWords.toLowerCase().includes(searchTerms.toLowerCase())  )
+            setFiltered(subset)
+        } else if (keywordSearchTerm) {
+            const subset = items.filter(item => item.descriptiveWords.includes(keywordSearchTerm))
             setFiltered(subset)
         } else {
             setFiltered(items)
         }
-    }, [searchTerms, items, keywordSearchTerm])
-    
+    }, [searchTerms, items, keywordSearchTerm, setSearchTerms])
+
+
+
     // LOADER
     if (!userSaves.length) return <div className="centerLoaderHome organizeTilesDiv"><div className="ui active centered inline loader"></div></div>
 
