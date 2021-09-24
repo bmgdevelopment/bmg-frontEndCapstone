@@ -42,7 +42,7 @@
 }
 .carouselDiv {
         /* border: 2px solid yellow; */
-        /* background-image: url(https://i.postimg.cc/SRmTmCwp/TRENDAGO-BANNER.png); */
+        background-image: url(https://i.postimg.cc/SRmTmCwp/TRENDAGO-BANNER.png);
         filter: drop-shadow(6px 2px 8px rgba(17, 16, 16, 0.577));
         /* background-position: center; */
         /* filter: blur(3px); */
@@ -106,7 +106,7 @@
         align-content: center;
 }
 
-.div2Review p {
+.div2Review p, .blackContainer p {
         display: flex;
         justify-content: center;
         align-items: center;
@@ -145,7 +145,7 @@
 }
 
 .reviewUserPic, .styles-module_item-container__a8zaY img {
-    box-shadow: 0px 0px 0px 10px #63A6B1;
+    box-shadow: 0px 0px 0px 10px #c0c2c2;
     border: 8px solid white;
     height: auto;
     width: auto;
@@ -171,10 +171,10 @@
         /* margin: 20px 0; */
         filter: drop-shadow(6px 6px 8px rgba(17, 16, 16, 0.577));
         /* background-color: #000000; */
-        background-color: #ffffff;
-        /* border-radius: 15kpx; */
+        background-color: #ffffffde;
+        border-radius: 15px;
         min-width: 400px;
-        height: 240px;
+        height: 220px;
         min-height: 200px;
         width: 600px;
         padding: 10px 12px;

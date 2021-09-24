@@ -7,7 +7,9 @@ import "./Item.css"
 export const ItemSearch = () => {
     const { searchTerms, setSearchTerms } = useContext(ItemContext)
     console.log(searchTerms)
-    // const empty = ""
+    const empty = () => {
+        setSearchTerms("")
+    } 
 
     return (
         <>
@@ -27,7 +29,7 @@ export const ItemSearch = () => {
             <Link 
             className="clearLink" 
             to={'/'} 
-            // onClick={setSearchTerms(empty)}
+            onClick={empty}
             >Clear Search Results</Link>
         </div>
     </>
