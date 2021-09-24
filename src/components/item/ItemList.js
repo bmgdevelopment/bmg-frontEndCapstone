@@ -28,7 +28,9 @@ export const ItemList = () => {
 
     useEffect(() => {
         if (searchTerms !== "" || keywordSearchTerm) {
-            const subset = items.filter(item => item.descriptiveWords.toLowerCase().includes(keywordSearchTerm.toLowerCase()) )
+            const subset = items.filter(item => item.descriptiveWords.toLowerCase().includes(keywordSearchTerm.toLowerCase())  )
+            // || item.descriptiveWords.toLowerCase().includes(searchTerms.toLowerCase()) )
+        //    if (subset.length) 
             setFiltered(subset)
         } else {
             setFiltered(items)
@@ -36,16 +38,16 @@ export const ItemList = () => {
     }, [searchTerms, items, keywordSearchTerm])
     
     // LOADER
-    if (!userSaves.length) return <div className="centerLoaderHome organizeTilesDiv"><div class="ui active centered inline loader"></div></div>
+    if (!userSaves.length) return <div className="centerLoaderHome organizeTilesDiv"><div className="ui active centered inline loader"></div></div>
 
     return (
         <>
             <div className="organizeTilesDiv">
                 {
                     filteredItems.map(item => {
-                        const savedItem = userSaves.find(save => save.itemId === item.id) 
+                        const savedItem = userSaves.find(save => save.itemId === item.id) || 0
+
                         const isSaved = !!savedItem //(!! converts returned value into a boolean)
-                    //    console.log(isSaved)
                         return <ItemDetail key={item.id} item={item} isSaved={isSaved} savedItemId={savedItem && savedItem.id}/>  
                     })
                 }

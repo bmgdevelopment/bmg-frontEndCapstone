@@ -98,10 +98,6 @@ export const NavBar = () => {
                             <Link className="" to="/customerReviews">About</Link>
                         </li>
                         |
-                        {/* <li className="aNavLink">
-                            <Link className="" to="/contactUs">Contact Us</Link>
-                        </li>
-                        | */}
                         <li className="aNavLink">
                             <Link className="" to="/login" onClick={Logout}>Logout</Link>
                         </li>
@@ -116,7 +112,7 @@ export const NavBar = () => {
                             <Link to={`/trendyTravelers/detail/${trendagoUser.id}`} className="profilePicDirectLink" key={`userNameLink--${trendagoUser.id}`}>
                                 {<Popup
                                     trigger={<img key="smallIconProfilePic" className="tinyProfileLink" alt="tinyProfileLink" src={trendagoUser.profileURL} />}
-                                    content="My Trends"
+                                    content="My Closet"
                                     basic
                                 />}
                             </Link>

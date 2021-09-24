@@ -242,8 +242,8 @@
     color: rgba(255, 13, 13, 0.201);
     background-color: transparent;
     border: none;
-    z-index: 100;
 }
+
 .trashBtnItem:hover {
     font-size: 25px;
     font-weight: 100;
