@@ -2,7 +2,7 @@ import React, { useContext, useEffect } from "react";
 import { Carousel } from '@trendyol-js/react-carousel';
 import { RegionContext } from "../region/RegionProvider"
 import { CustomerReviewContext } from "./CustomerReviewProvider"
-import { Grid, Header, Image, Segment } from 'semantic-ui-react'
+import { Grid, Header, Image, Segment, Container } from 'semantic-ui-react'
 import trendagoCollage1 from '../images/trendagoCollage.png'
 import './AboutReviewsContact.css'
 
@@ -27,9 +27,8 @@ export const CustomerReviewList = () => {
                         <div className="div1Review">
                             <div className="reviewNameRegion">
                                 <div>
-
                                     {
-                                        !review.user.profileURL.length
+                                        !review.user.profileURL
                                             ? <div class="ui active centered inline loader"></div>
                                             : <img alt="reviewUserPic" src={review.user.profileURL} />
                                     }
@@ -79,13 +78,13 @@ export const CustomerReviewList = () => {
                                     TRENDAGO <br /> For stylish traveling trends
                                 </Header>
                                 <p style={{ fontSize: '1.33em', color: 'gray' }}>
-                                    You've safely landed on the best application that can bridge the gap between all trends across regions. Isn't it relieving that you no longer have to struggle with packing proper clothing for your trips? Catch your flights with confidence!
+                                    You've safely landed on the best application that can bridge the gap between all trends across regions. Isn't it relieving that you no longer have to struggle with packing proper clothing for your trips? Catch your flights with confidence with our application!
                                 </p>
                                 <Header as='h3' style={{ fontSize: '3em', fontFamily: 'Cormorant Garamond' }}>
                                     Share your travel trends <br /> across the globe
                                 </Header>
                                 <p style={{ fontSize: '1.33em', color: 'gray' }}>
-                                    Yes that's right, you can share your trendy expertise right here with others who will visit your region. Sharing is caring so upload the trends you love and represent for your region!
+                                    Yes, that's right, you can share your trendy expertise right here with others who will visit your region. Sharing is caring so upload the trends you love and represent for your region!
                                 </p>
                             </Grid.Column>
 
@@ -100,15 +99,6 @@ export const CustomerReviewList = () => {
             </div>
 
             <div className="carouselDiv">
-                {/* <div className="reviewHeader" >
-                    <Header as='h3' style={{ fontSize: '3em', fontFamily: 'Cormorant Garamond', color: 'white' }}>
-                        TRENDAGO <br /> For stylish traveling trends
-                    </Header>
-                </div> */}
-                {/* <p style={{ fontSize: '1.33em', color: 'gray' }}>
-                                    You've safely landed on the best application that can bridge the gap between all trends across regions. Isn't it relieving that you no longer have to struggle with packing proper clothing for your trips? Catch your flights with confidence!
-                                </p> */}
-
                 {customerReviews.length ?
                     <Carousel show={2.75} slide={1} swiping={true}>
                         {
@@ -123,6 +113,21 @@ export const CustomerReviewList = () => {
                 }
             </div>
 
+            <div className="organizeSegment">
+                <Segment style={{ padding: '8em 0em', marginBottom: '-4em', marginTop: '-20px'}} vertical >
+                    <Container text>
+                    <Header as='h3' style={{ marginTop: '-3em', fontSize: '3em', fontFamily: 'Cormorant Garamond' }}>
+                    Let's Connect! <br/>
+                    Contact Us                       
+                    </Header>
+                        <p style={{ fontSize: '1.33em', color: 'gray' }}>
+                        <button class="ui circular icon button"><i aria-hidden="true" class="mail icon"></i></button> (800) 239 - 8537 <br/> 
+                        <button class="ui circular icon button"><i aria-hidden="true" class="question circle outline icon"></i></button> questions@trendago.com <br/> 
+                        <button class="ui circular icon button"><i aria-hidden="true" class="map marker alternate icon"></i></button> 123 Fashion Lane Chicago, IL
+                        </p>
+                    </Container>
+                </Segment>
+            </div>
         </>
     )
 }

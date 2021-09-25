@@ -61,28 +61,6 @@ export const NavBar = () => {
                     </Link>
                 </div>
 
-                {/* <Dropdown item simple color='teal' icon="sidebar">
-                    <Dropdown.Menu>
-                        <Dropdown.Item>Explore</Dropdown.Item>
-                        <Dropdown.Item>Trendy Travelers</Dropdown.Item>
-                        <Dropdown.Divider />
-                        <Dropdown.Header>
-                        <Link to={`/trendyTravelers/detail/${trendagoUser.id}`} className="profilePicDirectLink" key={`userNameLink--${trendagoUser.id}`}>
-                        {trendagoUser.firstName}'s Menu
-                        </Link>
-                        </Dropdown.Header>
-                        <Dropdown.Item>
-                            <i className='dropdown icon' />
-                            <span className='text'>Profile</span>
-                            <Dropdown.Menu>
-                                <Dropdown.Item>My Trends</Dropdown.Item>
-                                <Dropdown.Item>Add New Item</Dropdown.Item>
-                            </Dropdown.Menu>
-                        </Dropdown.Item>
-                        <Dropdown.Item>Logout</Dropdown.Item>
-                    </Dropdown.Menu>
-                </Dropdown> */}
-
                 <ul className="navUL">
                     <div className="allNavLi">
 
