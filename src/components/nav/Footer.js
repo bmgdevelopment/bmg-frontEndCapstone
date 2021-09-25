@@ -11,13 +11,12 @@ export const Footer = () => {
     <Segment inverted vertical style={{ margin: '5em 0em 0em', padding: '5em 0em' }}>
       <Container textAlign='center'>
         <Link className="bmgRepoLink" to={{ pathname: "https://github.com/bmgdevelopment/bmg-frontEndCapstone" }} target="_blank">
-        {/* <Link to={{ pathname: "https://github.com/bmgdevelopment/bmg-frontEndCapstone" }} target="_blank" /> */}
         <img className="bmgLogo" src="https://i.postimg.cc/1RjXCC0d/BMG-DEVELOPMENT-White.png" alt="BMG Dev Logo"/>
         </Link>
         <br/>
         <br/>
-        <Link className="bmgRepoLink" to="https://github.com/bmgdevelopment/bmg-frontEndCapstone">
-        Brittany Garrett | Github Link
+        <Link className="bmgRepoLink" to={{ pathname: "https://github.com/bmgdevelopment/bmg-frontEndCapstone" }} target="_blank">
+        Brittany Garrett | Trendago Github Repo
         </Link>
         <br/>
    

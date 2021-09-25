@@ -110,7 +110,7 @@ export const CustomerReviewList = () => {
                                 </p> */}
 
                 {customerReviews.length ?
-                    <Carousel show={2.5} slide={1} swiping={true}>
+                    <Carousel show={2.75} slide={1} swiping={true}>
                         {
                             customerReviews.map(review => {
                                 return userMatchedReview(review)

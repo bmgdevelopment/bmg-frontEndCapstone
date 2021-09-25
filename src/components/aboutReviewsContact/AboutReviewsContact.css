@@ -47,7 +47,7 @@
         /* background-position: center; */
         /* filter: blur(3px); */
         /* height: 600px; */
-        padding: 20px 0;
+        padding: 40px 0;
         /* opacity: .8; */
         background-repeat: no-repeat;
         /* background-color: #63a7b1; */
@@ -73,11 +73,11 @@
 }
 
 .styles-module_carousel-arrow__26sRw {
-        height: 10px;
+        /* height: 10px;
         width: 10px;
         background-color: transparent;
-        border: transparent;
-        margin: 0 20px;
+        border: transparent; */
+        margin: 0 -20px;
 }
 
 .div1Review {

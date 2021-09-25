@@ -36,3 +36,11 @@ export const ItemSearch = () => {
     )
 }
 
+/*
+set the value to empty as
+
+handleClick = () => {
+        ReactDOM.findDOMNode(this.refs.form).value = "";
+      }
+and yes onClick expects a function or a value not a string. Also React.findDOMNode() is deprecated. You should use ReactDOM.findDOMNode();
+*/ 
