@@ -16,8 +16,6 @@ export const CustomerReviewList = () => {
         getReviews()
     }, [])
 
-    // useEffect(() => { }, [customerReviews, regions])
-
     const userMatchedReview = (review) => {
 
         return <>
