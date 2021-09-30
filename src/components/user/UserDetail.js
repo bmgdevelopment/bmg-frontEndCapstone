@@ -10,12 +10,14 @@ import "./User.css"
 export const UserDetail = () => {
     const { users, getUsers } = useContext(UserContext)
     const { items, getItems } = useContext(ItemContext)
-    const { saves, getSaves } = useContext(SaveContext)
+    const { saves, getSaves, userSaves, getSavesByUserId, deleteSave, saveItem } = useContext(SaveContext)
     const { regions, getRegions } = useContext(RegionContext)
 
     const [user, setUser] = useState({ region: {}, profileURL: {} })
     const [allUserItems, setAllUserItems] = useState([])
     const [allUserSaves, setAllUserSaves] = useState([])
+    const [matchedSaves, setMatchedSaves] = useState([])
+    const [state, setState] = useState({})
     const currentUserId = parseInt(sessionStorage.getItem("trendago_user"))
     const { userId } = useParams()
 
@@ -24,13 +26,14 @@ export const UserDetail = () => {
         getItems()
         getRegions()
         getSaves()
+        getSavesByUserId(currentUserId)
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
 
     useEffect(() => {
-        const thisUser = users.find(user => user.id === parseInt(userId)) || { region: {} }
+        const thisUser = users.find(user => user.id === parseInt(userId)) || { region: {}, profileURL: {} }
         setUser(thisUser)
-    }, [userId, users])
+    }, [userId, users, user.id])
 
     useEffect(() => {
         const userItems = items.filter(item => item.userId === parseInt(userId));
@@ -42,11 +45,59 @@ export const UserDetail = () => {
         setAllUserSaves(userSaves)
     }, [saves, userId])
 
-    const noSaveBtn = (item) => {
-        return item.userId === currentUserId && <></>
+
+    useEffect(() => {
+            console.log(userSaves)
+            if (currentUserId !== parseInt(userId)) {
+                // debugger
+                let currentLoggedInSaves = [];
+                if (allUserItems.length) {
+                    for (const userItem of allUserItems) {
+                        userSaves.filter(userSave => {
+                            if (userSave.itemId === userItem.id) {
+                                currentLoggedInSaves.push(userSave)
+                            }
+                        })
+                    }
+                    setMatchedSaves(currentLoggedInSaves)
+                    console.log(allUserItems)
+                    // console.log("Match saves:" + matchedSaves)
+                    console.log(matchedSaves)
+                }
+            }
+
+    }, [allUserItems, userSaves, userId, currentUserId])
+
+    const handleDelete = (matchId) => {
+        deleteSave(matchId)
+        .then(() => setState({})) //used to re-render component smoothly
     }
 
-    // NEED TO ADJUST LINKS FOR USERITEMMATCH
+    const handleSave = (itemId) => {
+            saveItem({
+                itemId: itemId,
+                userId: currentUserId
+            })
+                .then(() => setState({})) //used to re-render component smoothly
+    }
+
+    // 🛑 NOT ITERATING THROUGH ALL MATCHEDSAVES
+    const saveBtnCheck = (item) => {
+        if (matchedSaves.length) {
+            for (const match of matchedSaves) {
+                if (match.itemId === item.id) {
+                    return <div className="top-right"><Button icon className="suitCaseSaveBtn"><Icon circular inverted color='teal' name='suitcase'/></Button></div>
+                } else {
+                    return <div className="top-right"><Button icon className="suitCaseSaveBtn"><Icon circular inverted name='suitcase' /></Button></div>
+                }
+            }
+        } else {
+            console.log("no saves to match with user items")
+            return <div className="top-right"><Button icon className="suitCaseSaveBtn"><Icon circular inverted name='suitcase' /></Button></div>
+        }
+    }                                              
+
+    // // NEED TO ADJUST LINKS FOR USERITEMMATCH
     const userItemMatch = (save) => {
         // let userImgLink;
         users.filter(sortedUser => {
@@ -68,9 +119,9 @@ export const UserDetail = () => {
     }
 
 
-    // const sliceDate = (dateSent) => {
-    //     return <>{dateSent.slice(-4)}</>
-    // }
+    const sliceDate = (dateSent) => {
+        return <>{dateSent.slice(-4)}</>
+    }
 
     return (
         <>
@@ -78,7 +129,6 @@ export const UserDetail = () => {
                 <div className="mainFeedHome">
 
                     {
-
                         <div>
                             <div className="profileBanner">
                                 <img src={user.region.regionImage} alt="profileIMG" className="profileBannerBkgd" key={`profileIMGBanner--${user.id}`} />
@@ -87,7 +137,7 @@ export const UserDetail = () => {
                             <div className="userProfileTitle">
                                 <h2 className="userProfileH2">{user.firstName} {user.lastName}</h2>
                                 <p className="profileDetailsP">
-                                    Member since {user.dateJoined} from {user.region.name}
+                                    Member since {sliceDate(`${user.dateJoined}`)} from {user.region.name}
                                 </p>
                             </div>
 
@@ -103,10 +153,12 @@ export const UserDetail = () => {
                     {/* USER'S UPLOADED TRENDS THAT THEY OWN */}
                     {/* ------------------------------------ */}
                     {
-                        allUserItems.length > 0 ?
-                            <div className="trendTravH2Div">
-                                <h1 className="trendyTravlersH2 userItemsH2">{user.firstName}'s Trends</h1>
-                            </div> : <></>
+                        allUserItems.length > 0
+                            ? <>
+                                <div className="trendTravH2Div">
+                                    <h1 className="trendyTravlersH2 userItemsH2">{user.firstName}'s Trends</h1>
+                                </div><p style={{ color: 'gray', paddingRight: "3em", marginBottom: "-10px", display: "flex", justifyContent: "flex-end", fontSize: "17px" }}>{allUserItems.length} items</p></>
+                            : <></>
                     }
                     <div className="organizeTilesDiv">
                         {
@@ -118,8 +170,11 @@ export const UserDetail = () => {
                                         <div className="container">
                                             <Link to={`/items/detail/${item.id}`}>
                                                 <img key={`userItemSave--${item.id}`} className="itemTile" alt="item" src={item.itemImage} />
-                                                {currentUserId === user.id || currentUserId === item.userId ? noSaveBtn(item) : <div className="top-right"><Button icon><Icon circular inverted name='suitcase' /></Button></div>}
                                             </Link>
+                                            { currentUserId === userId || currentUserId === item.userId
+                                                ? <></>
+                                                : saveBtnCheck(item)
+                                            }
                                         </div>)
                                 })
                         }
@@ -128,10 +183,13 @@ export const UserDetail = () => {
                     {/* USER'S SAVED TRENDS THAT THEY DO NOT OWN */}
                     {/* ------------------------------------ */}
                     {
-                        allUserSaves.length > 0 ?
-                            <div className="trendTravH2Div">
-                                <h1 className="trendyTravlersH2 saveH2">{user.firstName}'s Saved Trends</h1>
-                            </div> : <></>
+                        allUserSaves.length > 0
+                            ? <>
+                                <div className="trendTravH2Div">
+                                    <h1 className="trendyTravlersH2 saveH2">{user.firstName}'s Saved Trends</h1>
+                                </div><p style={{ color: 'gray', paddingRight: "3em", marginBottom: "-10px", display: "flex", justifyContent: "flex-end", fontSize: "17px" }}>{allUserSaves.length} saved items</p>
+                            </>
+                            : <></>
                     }
 
                     <div className="organizeTilesDiv">
@@ -142,13 +200,13 @@ export const UserDetail = () => {
                                         <div className="container">
                                             <Link to={`/items/detail/${save.itemId}`}>
                                                 <img key={`userItemSave--${save.id}`} className="itemTile" alt="item" src={save.item.itemImage} />
-                                                {/* {currentUserId === save.userId ? <><div className="top-right"><Button icon><Icon circular inverted color='teal' name='suitcase' /></Button></div></> : <div className="top-right"><Button icon><Icon circular inverted color='white' name='suitcase' /></Button></div>} */}
-
-                                                {currentUserId === save.userId && <> <div className="top-right"><Button icon><Icon circular inverted color='teal' name='suitcase' /></Button></div></>}
-                                                {currentUserId !== save.userId && <> <div className="top-right"><Button icon><Icon circular inverted name='suitcase' /></Button></div></>}
-                                                {/* { currentUserId === item.userId && <></>} */}
-
                                             </Link>
+                                            {/* {currentUserId === save.userId ? <><div className="top-right"><Button icon><Icon circular inverted color='teal' name='suitcase' /></Button></div></> : <div className="top-right"><Button icon><Icon circular inverted color='white' name='suitcase' /></Button></div>} */}
+
+                                            {currentUserId === save.userId && <> <div className="top-right"><Button icon><Icon circular inverted color='teal' name='suitcase' /></Button></div></>}
+                                            {currentUserId !== save.userId && <> <div className="top-right"><Button icon><Icon circular inverted name='suitcase' /></Button></div></>}
+                                            {/* { currentUserId === item.userId && <></>} */}
+
                                             {userItemMatch(save)}
 
                                         </div>

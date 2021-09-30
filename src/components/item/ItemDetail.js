@@ -35,12 +35,16 @@ export const ItemDetail = (props) => {
         if (props.isSaved) {
             deleteSave(props.savedItemId)
                 .then(() => setState({})) //used to re-render component smoothly
-        } else {
-            saveItem({
-                itemId: itemIdOfSave,
-                userId: saveUserId
-            })
+                console.log("removedSave")
+            } else {
+                saveItem({
+                    itemId: itemIdOfSave,
+                    userId: saveUserId
+                })
                 .then(() => setState({})) //used to re-render component smoothly
+                console.log("addedSave")
+                // return <div className="top-right"><Button icon className="suitCaseSaveBtn"><Icon circular inverted name='suitcase' onClick={handleSave} /></Button></div>
+
         }
     }
 
