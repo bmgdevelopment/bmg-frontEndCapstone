@@ -5,8 +5,6 @@ import { UserContext } from "../user/UserProvider"
 import { Icon, Button } from 'semantic-ui-react'
 import "./Item.css"
 
-
-
 export const ItemDetail = (props) => {
     const { users, getUsers } = useContext(UserContext)
     const { saveItem, deleteSave } = useContext(SaveContext)
@@ -43,8 +41,6 @@ export const ItemDetail = (props) => {
                 })
                 .then(() => setState({})) //used to re-render component smoothly
                 console.log("addedSave")
-                // return <div className="top-right"><Button icon className="suitCaseSaveBtn"><Icon circular inverted name='suitcase' onClick={handleSave} /></Button></div>
-
         }
     }
 

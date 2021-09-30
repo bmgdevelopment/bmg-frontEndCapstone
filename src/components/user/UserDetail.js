@@ -47,38 +47,38 @@ export const UserDetail = () => {
 
 
     useEffect(() => {
-            console.log(userSaves)
-            if (currentUserId !== parseInt(userId)) {
-                // debugger
-                let currentLoggedInSaves = [];
-                if (allUserItems.length) {
-                    for (const userItem of allUserItems) {
-                        userSaves.filter(userSave => {
-                            if (userSave.itemId === userItem.id) {
-                                currentLoggedInSaves.push(userSave)
-                            }
-                        })
-                    }
-                    setMatchedSaves(currentLoggedInSaves)
-                    console.log(allUserItems)
-                    // console.log("Match saves:" + matchedSaves)
-                    console.log(matchedSaves)
+        console.log(userSaves)
+        if (currentUserId !== parseInt(userId)) {
+            // debugger
+            let currentLoggedInSaves = [];
+            if (allUserItems.length) {
+                for (const userItem of allUserItems) {
+                    userSaves.filter(userSave => {
+                        if (userSave.itemId === userItem.id) {
+                            currentLoggedInSaves.push(userSave)
+                        }
+                    })
                 }
+                setMatchedSaves(currentLoggedInSaves)
+                console.log(allUserItems)
+                console.log("Match saves:" + matchedSaves)
+                console.log(matchedSaves)
             }
+        }
 
     }, [allUserItems, userSaves, userId, currentUserId])
 
     const handleDelete = (matchId) => {
         deleteSave(matchId)
-        .then(() => setState({})) //used to re-render component smoothly
+            .then(() => setState({})) //used to re-render component smoothly
     }
 
     const handleSave = (itemId) => {
-            saveItem({
-                itemId: itemId,
-                userId: currentUserId
-            })
-                .then(() => setState({})) //used to re-render component smoothly
+        saveItem({
+            itemId: itemId,
+            userId: currentUserId
+        })
+            .then(() => setState({})) //used to re-render component smoothly
     }
 
     // 🛑 NOT ITERATING THROUGH ALL MATCHEDSAVES
@@ -86,41 +86,15 @@ export const UserDetail = () => {
         if (matchedSaves.length) {
             for (const match of matchedSaves) {
                 if (match.itemId === item.id) {
-                    return <div className="top-right"><Button icon className="suitCaseSaveBtn"><Icon circular inverted color='teal' name='suitcase'/></Button></div>
+                    return <div className="top-right"><Button icon className="suitCaseSaveBtn"><Icon circular inverted color='teal' name='suitcase' /></Button></div>
                 } else {
                     return <div className="top-right"><Button icon className="suitCaseSaveBtn"><Icon circular inverted name='suitcase' /></Button></div>
                 }
             }
         } else {
             console.log("no saves to match with user items")
-            return <div className="top-right"><Button icon className="suitCaseSaveBtn"><Icon circular inverted name='suitcase' /></Button></div>
+            return <div className="top-right"><Button icon className="suitCaseSaveBtn"><Icon circular inverted name='suitcase'  /></Button></div>
         }
-    }                                              
-
-    // // NEED TO ADJUST LINKS FOR USERITEMMATCH
-    const userItemMatch = (save) => {
-        // let userImgLink;
-        users.filter(sortedUser => {
-            save.item.userId === sortedUser.id ?
-                // console.log(`${save.item.userId} "+" ${sortedUser.id}`)
-                (<div className="tileInfoDiv">
-                    <div className="tileDetail">
-                        <Link to={`/trendyTravelers/detail/${sortedUser.id}`} key={`userNameLink--${sortedUser.id}`}>
-                            <img src={sortedUser.profileURL} alt="profileIMG" className="profileIMGicon" key={`profileIMGicon--${sortedUser.id}`} />
-                            {sortedUser.firstName} {sortedUser.lastName}<br />
-                            {/* <p className="tileRegion">{sortedUser.region.id === region.id && region.name}</p> */}
-                        </Link>
-                    </div>
-                </div>)
-                :
-                (<></>)
-
-        })
-    }
-
-
-    const sliceDate = (dateSent) => {
-        return <>{dateSent.slice(-4)}</>
     }
 
     return (
@@ -137,7 +111,7 @@ export const UserDetail = () => {
                             <div className="userProfileTitle">
                                 <h2 className="userProfileH2">{user.firstName} {user.lastName}</h2>
                                 <p className="profileDetailsP">
-                                    Member since {sliceDate(`${user.dateJoined}`)} from {user.region.name}
+                                    Member since {(`${user.dateJoined}`).slice(-4)} from {user.region.name}
                                 </p>
                             </div>
 
@@ -171,7 +145,7 @@ export const UserDetail = () => {
                                             <Link to={`/items/detail/${item.id}`}>
                                                 <img key={`userItemSave--${item.id}`} className="itemTile" alt="item" src={item.itemImage} />
                                             </Link>
-                                            { currentUserId === userId || currentUserId === item.userId
+                                            {currentUserId === userId || currentUserId === item.userId
                                                 ? <></>
                                                 : saveBtnCheck(item)
                                             }
@@ -201,13 +175,12 @@ export const UserDetail = () => {
                                             <Link to={`/items/detail/${save.itemId}`}>
                                                 <img key={`userItemSave--${save.id}`} className="itemTile" alt="item" src={save.item.itemImage} />
                                             </Link>
-                                            {/* {currentUserId === save.userId ? <><div className="top-right"><Button icon><Icon circular inverted color='teal' name='suitcase' /></Button></div></> : <div className="top-right"><Button icon><Icon circular inverted color='white' name='suitcase' /></Button></div>} */}
-
-                                            {currentUserId === save.userId && <> <div className="top-right"><Button icon><Icon circular inverted color='teal' name='suitcase' /></Button></div></>}
-                                            {currentUserId !== save.userId && <> <div className="top-right"><Button icon><Icon circular inverted name='suitcase' /></Button></div></>}
-                                            {/* { currentUserId === item.userId && <></>} */}
-
-                                            {userItemMatch(save)}
+                                            {currentUserId === userId || currentUserId === save.item.userId
+                                                ? <></>
+                                                : save.userId === currentUserId
+                                                    ? <div className="top-right"><Button icon className="suitCaseSaveBtn"><Icon circular inverted color='teal' name='suitcase' /></Button></div>
+                                                    : saveBtnCheck(save.item)
+                                            }
 
                                         </div>
                                     </>
