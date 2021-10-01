@@ -45,27 +45,28 @@ export const UserDetail = () => {
         setAllUserSaves(userSaves)
     }, [saves, userId])
 
-
     useEffect(() => {
-        console.log(userSaves)
+        // console.log(userSaves) //current logged in saves
         if (currentUserId !== parseInt(userId)) {
             // debugger
             let currentLoggedInSaves = [];
+
             if (allUserItems.length) {
                 for (const userItem of allUserItems) {
                     userSaves.filter(userSave => {
                         if (userSave.itemId === userItem.id) {
                             currentLoggedInSaves.push(userSave)
                         }
+                        return currentLoggedInSaves
                     })
                 }
+
                 setMatchedSaves(currentLoggedInSaves)
-                console.log(allUserItems)
-                console.log("Match saves:" + matchedSaves)
-                console.log(matchedSaves)
+                // console.log(allUserItems) //for that profile view user saves
+                // console.log("Match saves:" + matchedSaves)
+                // console.log(matchedSaves)
             }
         }
-
     }, [allUserItems, userSaves, userId, currentUserId])
 
     const handleDelete = (matchId) => {
@@ -83,19 +84,41 @@ export const UserDetail = () => {
 
     // 🛑 NOT ITERATING THROUGH ALL MATCHEDSAVES
     const saveBtnCheck = (item) => {
+        // debugger
+        let btnOption;
         if (matchedSaves.length) {
             for (const match of matchedSaves) {
                 if (match.itemId === item.id) {
-                    return <div className="top-right"><Button icon className="suitCaseSaveBtn"><Icon circular inverted color='teal' name='suitcase' /></Button></div>
+                    btnOption = <div className="top-right" key={match.itemId}><Button icon className="suitCaseSaveBtn"><Icon circular inverted color='teal' name='suitcase' /></Button></div>
                 } else {
-                    return <div className="top-right"><Button icon className="suitCaseSaveBtn"><Icon circular inverted name='suitcase' /></Button></div>
+                    btnOption = <div className="top-right" key={match.itemId}><Button icon className="suitCaseSaveBtn"><Icon circular inverted name='suitcase' /></Button></div>
                 }
+                console.log("info process:" + btnOption)
+                console.log(btnOption)
             }
         } else {
             console.log("no saves to match with user items")
-            return <div className="top-right"><Button icon className="suitCaseSaveBtn"><Icon circular inverted name='suitcase'  /></Button></div>
+            btnOption = <div className="top-right" ><Button icon className="suitCaseSaveBtn"><Icon circular inverted name='suitcase' /></Button></div>
         }
+        return btnOption;
     }
+
+    // const saveBtnCheck = (item) => {
+    //     //debugger
+    //     if (matchedSaves.length) {
+    //         for (const match of matchedSaves) {
+    //             if (match.itemId === item.id) {
+    //                 return <div className="top-right"><Button icon className="suitCaseSaveBtn"><Icon circular inverted color='teal' name='suitcase' /></Button></div>
+    //             } else {
+    //                 return <div className="top-right"><Button icon className="suitCaseSaveBtn"><Icon circular inverted name='suitcase' /></Button></div>
+    //             }
+    //         }
+    //     } else {
+    //         console.log("no saves to match with user items")
+    //         return <div className="top-right"><Button icon className="suitCaseSaveBtn"><Icon circular inverted name='suitcase' /></Button></div>
+    //     }
+    // }
+
 
     return (
         <>
@@ -152,6 +175,31 @@ export const UserDetail = () => {
                                         </div>)
                                 })
                         }
+
+
+                        {/* {
+                            allUserItems.length === 0 && allUserSaves.length === 0 ?
+                                <div className="noItemsDiv"><p className="noItemsP">{`${user.firstName} has yet to add an item`}</p></div>
+                                :
+                                allUserItems.map(item => {
+                                    return (
+                                        <div className="container">
+                                            <Link to={`/items/detail/${item.id}`}>
+                                                <img key={`userItemSave--${item.id}`} className="itemTile" alt="item" src={item.itemImage} />
+                                            </Link>
+                                            {currentUserId === userId || currentUserId === item.userId
+                                                ? <></>
+                                                : matchedSaves.map(match => {
+                                                    return match.itemId === item.id
+                                                        ? <div className="top-right"><Button icon className="suitCaseSaveBtn"><Icon circular inverted color='teal' name='suitcase' /></Button></div>
+                                                        : <div className="top-right"><Button icon className="suitCaseSaveBtn"><Icon circular inverted name='suitcase' /></Button></div>
+                                                })
+                                            }
+                                        </div>)
+                                })
+                        } */}
+
+
                     </div>
 
                     {/* USER'S SAVED TRENDS THAT THEY DO NOT OWN */}

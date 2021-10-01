@@ -115,7 +115,7 @@ export const ItemDetailInfo = () => {
             <div className="organizeTilesDiv">
 
                 <div className="oneItemDetailTile">
-                    <div className="container">
+                    <div className="container" >
                         <img key={`userItemSave--${item.id}`} className="oneItemTileIMG" alt="item" src={item.itemImage} />
 
                         <div className="tileInfoDiv">
@@ -133,7 +133,7 @@ export const ItemDetailInfo = () => {
                     </div>
 
 
-                    <div className="oneItemInfo">
+                    <div className="oneItemInfo" style={{ backgroundColor: "white"}}>
 
                         <div className="itemTopInfo">
                             <div className="itemInfoBtns">
