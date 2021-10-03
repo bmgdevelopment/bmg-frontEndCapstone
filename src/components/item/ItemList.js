@@ -18,6 +18,7 @@ export const ItemList = () => {
 
     const query = useQuery() //using URL from browser
     const keywordSearchTerm = query.get('keywordSearchTerm') || ""
+    
     useEffect(() => {
         getItems()
         getSavesByUserId(currentLoggedInUserId)

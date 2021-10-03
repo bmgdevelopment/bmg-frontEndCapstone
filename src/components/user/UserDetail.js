@@ -1,6 +1,7 @@
 import React, { useContext, useEffect, useState } from "react"
 import { UserContext } from "./UserProvider"
 import { ItemContext } from "../item/ItemProvider"
+import { ItemDetail } from "../item/ItemDetail"
 import { RegionContext } from "../region/RegionProvider"
 import { SaveContext } from "../save/SaveProvider"
 import { useParams, Link } from "react-router-dom"
@@ -33,7 +34,7 @@ export const UserDetail = () => {
     useEffect(() => {
         const thisUser = users.find(user => user.id === parseInt(userId)) || { region: {}, profileURL: {} }
         setUser(thisUser)
-    }, [userId, users, user.id])
+    }, [userId, users])
 
     useEffect(() => {
         const userItems = items.filter(item => item.userId === parseInt(userId));
@@ -83,42 +84,49 @@ export const UserDetail = () => {
     }
 
     // 🛑 NOT ITERATING THROUGH ALL MATCHEDSAVES
-    const saveBtnCheck = (item) => {
-        // debugger
-        let btnOption;
-        if (matchedSaves.length) {
-            for (const match of matchedSaves) {
-                if (match.itemId === item.id) {
-                    btnOption = <div className="top-right" key={match.itemId}><Button icon className="suitCaseSaveBtn"><Icon circular inverted color='teal' name='suitcase' /></Button></div>
-                } else {
-                    btnOption = <div className="top-right" key={match.itemId}><Button icon className="suitCaseSaveBtn"><Icon circular inverted name='suitcase' /></Button></div>
-                }
-                console.log("info process:" + btnOption)
-                console.log(btnOption)
-            }
-        } else {
-            console.log("no saves to match with user items")
-            btnOption = <div className="top-right" ><Button icon className="suitCaseSaveBtn"><Icon circular inverted name='suitcase' /></Button></div>
-        }
-        return btnOption;
-    }
-
     // const saveBtnCheck = (item) => {
-    //     //debugger
+    //     // debugger
+    //     let btnOption;
     //     if (matchedSaves.length) {
     //         for (const match of matchedSaves) {
+    //             console.log(allUserItems)
     //             if (match.itemId === item.id) {
-    //                 return <div className="top-right"><Button icon className="suitCaseSaveBtn"><Icon circular inverted color='teal' name='suitcase' /></Button></div>
+    //                 btnOption = <div className="top-right" key={match.itemId}><Button icon className="suitCaseSaveBtn"><Icon circular inverted color='teal' name='suitcase' /></Button></div>
     //             } else {
-    //                 return <div className="top-right"><Button icon className="suitCaseSaveBtn"><Icon circular inverted name='suitcase' /></Button></div>
+    //                 btnOption = <div className="top-right" key={match.itemId}><Button icon className="suitCaseSaveBtn"><Icon circular inverted name='suitcase' /></Button></div>
     //             }
+    //             console.log("info process:" + btnOption)
+    //             console.log(btnOption)
     //         }
     //     } else {
     //         console.log("no saves to match with user items")
-    //         return <div className="top-right"><Button icon className="suitCaseSaveBtn"><Icon circular inverted name='suitcase' /></Button></div>
+    //         btnOption = <div className="top-right" ><Button icon className="suitCaseSaveBtn"><Icon circular inverted name='suitcase' /></Button></div>
     //     }
+    //     return btnOption;
     // }
 
+    /*
+    */
+    const saveBtnCheck = (item) => {
+        const savedItem = matchedSaves.find(match => match.itemId === item.id) || 0
+        const isSaved = !!savedItem //(!! converts returned value into a boolean)
+
+        return <ItemDetail key={item.id} item={item} isSaved={isSaved} savedItemId={savedItem && savedItem.id} />
+    }
+
+    // const saveBtnCheck2 = (saveItem) => {
+    //     const savedItem = matchedSaves.find(match => match.itemId === saveItem.id) || 0
+    //     const isSaved = !!savedItem //(!! converts returned value into a boolean)
+
+    //     return <ItemDetail key={saveItem.id} item={saveItem} isSaved={isSaved} savedItemId={savedItem && savedItem.id} />
+    // }
+
+    const saveBtnCheck2 = (save) => {
+        const savedItem = matchedSaves.find(match => match.itemId === save.item.id) || 0
+        const isSaved = !!savedItem //(!! converts returned value into a boolean)
+
+        return <ItemDetail key={save.item.id} item={save.item} isSaved={isSaved} savedItemId={savedItem && savedItem.item.id} />
+    }
 
     return (
         <>
@@ -163,43 +171,15 @@ export const UserDetail = () => {
                                 <div className="noItemsDiv"><p className="noItemsP">{`${user.firstName} has yet to add an item`}</p></div>
                                 :
                                 allUserItems.map(item => {
-                                    return (
-                                        <div className="container">
-                                            <Link to={`/items/detail/${item.id}`}>
-                                                <img key={`userItemSave--${item.id}`} className="itemTile" alt="item" src={item.itemImage} />
-                                            </Link>
-                                            {currentUserId === userId || currentUserId === item.userId
-                                                ? <></>
-                                                : saveBtnCheck(item)
-                                            }
-                                        </div>)
+                                    return (currentUserId === parseInt(userId) || currentUserId === item.userId
+                                        ?
+                                        <Link to={`/items/detail/${item.id}`}>
+                                            <img key={`userItemSave--${item.id}`} className="itemTile" alt="item" src={item.itemImage} />
+                                        </Link>
+                                        : saveBtnCheck(item)
+                                    )
                                 })
                         }
-
-
-                        {/* {
-                            allUserItems.length === 0 && allUserSaves.length === 0 ?
-                                <div className="noItemsDiv"><p className="noItemsP">{`${user.firstName} has yet to add an item`}</p></div>
-                                :
-                                allUserItems.map(item => {
-                                    return (
-                                        <div className="container">
-                                            <Link to={`/items/detail/${item.id}`}>
-                                                <img key={`userItemSave--${item.id}`} className="itemTile" alt="item" src={item.itemImage} />
-                                            </Link>
-                                            {currentUserId === userId || currentUserId === item.userId
-                                                ? <></>
-                                                : matchedSaves.map(match => {
-                                                    return match.itemId === item.id
-                                                        ? <div className="top-right"><Button icon className="suitCaseSaveBtn"><Icon circular inverted color='teal' name='suitcase' /></Button></div>
-                                                        : <div className="top-right"><Button icon className="suitCaseSaveBtn"><Icon circular inverted name='suitcase' /></Button></div>
-                                                })
-                                            }
-                                        </div>)
-                                })
-                        } */}
-
-
                     </div>
 
                     {/* USER'S SAVED TRENDS THAT THEY DO NOT OWN */}
@@ -219,18 +199,27 @@ export const UserDetail = () => {
                             allUserSaves.map(save => {
                                 return (
                                     <>
-                                        <div className="container">
+                                        {/* <div className="container">
                                             <Link to={`/items/detail/${save.itemId}`}>
                                                 <img key={`userItemSave--${save.id}`} className="itemTile" alt="item" src={save.item.itemImage} />
                                             </Link>
-                                            {currentUserId === userId || currentUserId === save.item.userId
-                                                ? <></>
-                                                : save.userId === currentUserId
-                                                    ? <div className="top-right"><Button icon className="suitCaseSaveBtn"><Icon circular inverted color='teal' name='suitcase' /></Button></div>
-                                                    : saveBtnCheck(save.item)
-                                            }
+                                            </div> */}
 
-                                        </div>
+                                        {currentUserId === parseInt(userId) || currentUserId === save.item.userId
+                                            ?
+                                            // <div className="container">
+                                            //     <Link to={`/items/detail/${save.item.id}`}>
+                                            //         <img key={`userItemSave--${save.item.id}`} className="itemTile" alt="item" src={save.item.itemImage} />
+                                            //     </Link>
+                                            // </div>
+                                            <ItemDetail key={save.item.id} item={save.item} isSaved={save.item.isSaved} savedItemId={save.item && save.item.id} />
+                                            // : save.userId === currentUserId
+                                            //     ? <ItemDetail key={save.item.id} item={save.item} isSaved={save.item.isSaved} savedItemId={save.item && save.item.id} />
+
+                                                // : saveBtnCheck2(save.item)
+                                                : saveBtnCheck2(save)
+                                        }
+
                                     </>
                                 )
                             })
@@ -248,4 +237,9 @@ export const UserDetail = () => {
 
 
 /*
+1. check allUserSaves and map for one save
+2. check if currentUserId is the userId (profile in view for userId) or if currentUserId is owned by current user id
+3. produce item detail as is
+
+4. or for ternary-- if save is for the userId (profile in view for userId), 
 */

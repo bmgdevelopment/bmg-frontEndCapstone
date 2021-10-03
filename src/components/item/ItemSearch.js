@@ -1,4 +1,4 @@
-import React, { useContext } from "react"
+import React, { useContext, useState } from "react"
 import { Link } from "react-router-dom"
 import { ItemContext } from "./ItemProvider"
 // import { Icon } from 'semantic-ui-react'
@@ -6,10 +6,18 @@ import "./Item.css"
 
 export const ItemSearch = () => {
     const { searchTerms, setSearchTerms } = useContext(ItemContext)
+    // const [ inputValue, setInputValue ] = useState("")
     console.log(searchTerms)
-    const empty = (event) => {
+    
+    // useEffect(() => {
+    //     if (searchTerms) {
+    //     }
+    // }, [searchTerms])
+
+    const empty = () => {
         // event.target.value = ""
         setSearchTerms("")
+        // setInputValue("")
     }
 
     return (
@@ -17,14 +25,17 @@ export const ItemSearch = () => {
             <div className="searchDiv">
                 <input
                     type="text"
+                    // value={searchTerms}
                     className="input--wide"
                     onKeyUp={(event) => {
                         setSearchTerms(event.target.value)
+                        console.log("searchTerms " + searchTerms)
                     }}
                     placeholder='Search by keyword like "coral" or "blue"... '
                 />
                 <i aria-hidden="true" className="search icon"></i>
             </div>
+           
             <div className="clearLinkDiv">
                 <Link
                     className="clearLink"

@@ -23,8 +23,8 @@ export const ItemDetail = (props) => {
         setItemUser(thisUser)
     }, [item.userId, users])
 
-    useEffect(() => {
-    }, [props, props.isSaved, props.savedItemId])
+    // useEffect(() => {
+    // }, [props, props.isSaved, props.savedItemId])
 
     const handleSave = () => {
         const itemIdOfSave = item.id

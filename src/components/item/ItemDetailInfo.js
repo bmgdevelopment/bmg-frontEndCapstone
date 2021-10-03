@@ -90,9 +90,9 @@ export const ItemDetailInfo = () => {
         }
     }
 
-    console.log(item)
-    console.log("trueSave? " + trueSave)
-    console.log("trueSaveId? " + trueSaveId)
+    // console.log(item)
+    // console.log("trueSave? " + trueSave)
+    // console.log("trueSaveId? " + trueSaveId)
 
 
     const buttonCheck = () => {
