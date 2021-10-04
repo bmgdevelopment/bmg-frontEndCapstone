@@ -10,6 +10,8 @@ export const ItemDetail = (props) => {
     const { saveItem, deleteSave } = useContext(SaveContext)
 
     const { item } = props
+    console.log(props.item.isSaved)
+
     const [itemUser, setItemUser] = useState({ region: {}, profileURL: {} })
     const [state, setState] = useState({})
     const currentLoggedInUserId = parseInt(sessionStorage.getItem("trendago_user"))
@@ -30,7 +32,7 @@ export const ItemDetail = (props) => {
         const itemIdOfSave = item.id
         const saveUserId = currentLoggedInUserId
 
-        if (props.isSaved) {
+        if (item.isSaved || props.isSaved ) {
             deleteSave(props.savedItemId)
                 .then(() => setState({})) //used to re-render component smoothly
                 console.log("removedSave")

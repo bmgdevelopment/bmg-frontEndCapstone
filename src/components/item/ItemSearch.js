@@ -7,7 +7,7 @@ import "./Item.css"
 export const ItemSearch = () => {
     const { searchTerms, setSearchTerms } = useContext(ItemContext)
     // const [ inputValue, setInputValue ] = useState("")
-    console.log(searchTerms)
+    // console.log(searchTerms)
     
     // useEffect(() => {
     //     if (searchTerms) {

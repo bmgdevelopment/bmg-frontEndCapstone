@@ -18,6 +18,7 @@ export const UserDetail = () => {
     const [allUserItems, setAllUserItems] = useState([])
     const [allUserSaves, setAllUserSaves] = useState([])
     const [matchedSaves, setMatchedSaves] = useState([])
+    const [matchedSaves2, setMatchedSaves2] = useState([])
     const [state, setState] = useState({})
     const currentUserId = parseInt(sessionStorage.getItem("trendago_user"))
     const { userId } = useParams()
@@ -42,10 +43,11 @@ export const UserDetail = () => {
     }, [items, userId])
 
     useEffect(() => {
-        const userSaves = saves.filter(save => save.userId === parseInt(userId));
-        setAllUserSaves(userSaves)
+        const userSavesByParamId = saves.filter(save => save.userId === parseInt(userId));
+        setAllUserSaves(userSavesByParamId)
     }, [saves, userId])
 
+    /* This useEffect filters the user in profile view's owned items against the currently logged in user's saves*/
     useEffect(() => {
         // console.log(userSaves) //current logged in saves
         if (currentUserId !== parseInt(userId)) {
@@ -70,6 +72,33 @@ export const UserDetail = () => {
         }
     }, [allUserItems, userSaves, userId, currentUserId])
 
+    /* This useEffect filters the user in profile view's saved items against the currently logged in user's saves*/
+    
+     useEffect(() => {
+        // console.log(userSaves) //current logged in saves
+        if (currentUserId !== parseInt(userId)) {
+            // debugger
+            let currentLoggedInSavesFound = [];
+
+            if (allUserSaves.length) {
+                for (const userSave of allUserSaves) {
+                    userSaves.filter(loggedInUserSave => {
+                        if (loggedInUserSave.itemId === userSave.itemId) {
+                            currentLoggedInSavesFound.push(userSave)
+                        }
+                        return currentLoggedInSavesFound
+                    })
+                }
+
+                setMatchedSaves2(currentLoggedInSavesFound)
+                // console.log(allUserItems) //for that profile view user saves
+                // console.log("Match saves:" + matchedSaves)
+                // console.log(matchedSaves)
+            }
+        }
+    }, [allUserSaves, userSaves, userId, currentUserId])
+    
+
     const handleDelete = (matchId) => {
         deleteSave(matchId)
             .then(() => setState({})) //used to re-render component smoothly
@@ -83,30 +112,6 @@ export const UserDetail = () => {
             .then(() => setState({})) //used to re-render component smoothly
     }
 
-    // 🛑 NOT ITERATING THROUGH ALL MATCHEDSAVES
-    // const saveBtnCheck = (item) => {
-    //     // debugger
-    //     let btnOption;
-    //     if (matchedSaves.length) {
-    //         for (const match of matchedSaves) {
-    //             console.log(allUserItems)
-    //             if (match.itemId === item.id) {
-    //                 btnOption = <div className="top-right" key={match.itemId}><Button icon className="suitCaseSaveBtn"><Icon circular inverted color='teal' name='suitcase' /></Button></div>
-    //             } else {
-    //                 btnOption = <div className="top-right" key={match.itemId}><Button icon className="suitCaseSaveBtn"><Icon circular inverted name='suitcase' /></Button></div>
-    //             }
-    //             console.log("info process:" + btnOption)
-    //             console.log(btnOption)
-    //         }
-    //     } else {
-    //         console.log("no saves to match with user items")
-    //         btnOption = <div className="top-right" ><Button icon className="suitCaseSaveBtn"><Icon circular inverted name='suitcase' /></Button></div>
-    //     }
-    //     return btnOption;
-    // }
-
-    /*
-    */
     const saveBtnCheck = (item) => {
         const savedItem = matchedSaves.find(match => match.itemId === item.id) || 0
         const isSaved = !!savedItem //(!! converts returned value into a boolean)
@@ -114,18 +119,22 @@ export const UserDetail = () => {
         return <ItemDetail key={item.id} item={item} isSaved={isSaved} savedItemId={savedItem && savedItem.id} />
     }
 
-    // const saveBtnCheck2 = (saveItem) => {
-    //     const savedItem = matchedSaves.find(match => match.itemId === saveItem.id) || 0
-    //     const isSaved = !!savedItem //(!! converts returned value into a boolean)
-
-    //     return <ItemDetail key={saveItem.id} item={saveItem} isSaved={isSaved} savedItemId={savedItem && savedItem.id} />
-    // }
-
     const saveBtnCheck2 = (save) => {
-        const savedItem = matchedSaves.find(match => match.itemId === save.item.id) || 0
-        const isSaved = !!savedItem //(!! converts returned value into a boolean)
+        // debugger
+        console.log("matchedSaves" + matchedSaves2)
+        console.log(matchedSaves2)
 
-        return <ItemDetail key={save.item.id} item={save.item} isSaved={isSaved} savedItemId={savedItem && savedItem.item.id} />
+        if (matchedSaves.length) {
+            const savedItem = matchedSaves2.find(match => {
+                console.log(match.itemId)
+                if (match.item.id) {
+                    return match.item.id === save.item.id
+                }
+                })
+            const isSaved = !!savedItem //(!! converts returned value into a boolean)
+            console.log("savedItem:" + savedItem)
+            return <ItemDetail key={save.item.id} item={save.item} isSaved={isSaved} savedItemId={savedItem && savedItem.item.id} />
+        }
     }
 
     return (
@@ -195,6 +204,7 @@ export const UserDetail = () => {
                     }
 
                     <div className="organizeTilesDiv">
+                       { console.log(allUserSaves)}
                         {
                             allUserSaves.map(save => {
                                 return (
