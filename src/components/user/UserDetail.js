@@ -84,7 +84,7 @@ export const UserDetail = () => {
                 for (const userSave of allUserSaves) {
                     userSaves.filter(loggedInUserSave => {
                         if (loggedInUserSave.itemId === userSave.itemId) {
-                            currentLoggedInSavesFound.push(userSave)
+                            currentLoggedInSavesFound.push(loggedInUserSave)
                         }
                         return currentLoggedInSavesFound
                     })
@@ -99,19 +99,6 @@ export const UserDetail = () => {
     }, [allUserSaves, userSaves, userId, currentUserId])
     
 
-    const handleDelete = (matchId) => {
-        deleteSave(matchId)
-            .then(() => setState({})) //used to re-render component smoothly
-    }
-
-    const handleSave = (itemId) => {
-        saveItem({
-            itemId: itemId,
-            userId: currentUserId
-        })
-            .then(() => setState({})) //used to re-render component smoothly
-    }
-
     const saveBtnCheck = (item) => {
         const savedItem = matchedSaves.find(match => match.itemId === item.id) || 0
         const isSaved = !!savedItem //(!! converts returned value into a boolean)
@@ -125,6 +112,7 @@ export const UserDetail = () => {
         console.log(matchedSaves2)
 
         if (matchedSaves.length) {
+
             const savedItem = matchedSaves2.find(match => {
                 console.log(match.itemId)
                 if (match.item.id) {
@@ -141,6 +129,12 @@ export const UserDetail = () => {
     issues:
     under visiting profile, i can save one of a visited profile's saves
     but when I try to remove my save, their save gets deleted (visually and in the API ) and my save remains in the API
+
+    what is pushing the visited user's save.id to get deleted and when is this happening?
+
+
+    allUserSaves are the saves of the visiting profile
+    matchSaves are the matches between the loggedInUser saves AND the visiting profile user saves
 
     tester saves for Ina
 

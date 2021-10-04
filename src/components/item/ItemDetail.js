@@ -54,6 +54,8 @@ export const ItemDetail = (props) => {
     under visiting profile, i can save one of a visited profile's saves
     but when I try to remove my save, their save gets deleted (visually and in the API ) and my save remains in the API
 
+    what is pushing the visited user's save.id to get deleted and when is this happening?
+
     tester saves for Ina
 
     {
@@ -107,23 +109,3 @@ export const ItemDetail = (props) => {
         </>
     )
 }
-
-
-
-
-/*
-
-*/
-
-// eslint-disable-next-line no-lone-blocks
-/* {
-    allUserSaves.map(save => {
-
-        return save.userId === currentLoggedInUserId && save.itemId === item.id ?
-            <div className="top-right"><Button icon><Icon circular inverted color='teal' name='suitcase' onClick={() => { deleteSave(save.id).then(() => history.push("/")) }} /></Button></div>
-            :
-            <div className="top-right"><Button icon><Icon circular inverted color='white' name='suitcase' onClick={() => { saveItem(item).then(() => history.push("/")) }} /> </Button></div>
-
-
-    })
-} */
