@@ -51,7 +51,7 @@
         /* opacity: .8; */
         background-repeat: no-repeat;
         /* background-color: #63a7b1; */
-        background-color: rgb(240, 235, 235);
+        background-color: rgb(255, 255, 255);
         background-size: cover;
 }
 
@@ -171,7 +171,7 @@
         /* margin: 20px 0; */
         filter: drop-shadow(6px 6px 8px rgba(17, 16, 16, 0.577));
         /* background-color: #000000; */
-        background-color: #ffffffde;
+        background-color: #ffffff;
         border-radius: 15px;
         min-width: 400px;
         height: 220px;

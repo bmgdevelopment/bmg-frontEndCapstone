@@ -49,28 +49,6 @@ export const ItemDetail = (props) => {
         }
     }
 
-    /*
-    issues:
-    under visiting profile, i can save one of a visited profile's saves
-    but when I try to remove my save, their save gets deleted (visually and in the API ) and my save remains in the API
-
-    what is pushing the visited user's save.id to get deleted and when is this happening?
-
-    tester saves for Ina
-
-    {
-    "itemId": 11,
-    "userId": 1,
-    "id": 40
-    }, 
-    {
-    "itemId": 15,
-    "userId": 1,
-    "id": 41
-    }
-
-    */
-
     return (
         <>
             <div className="organizeTilesDiv">
@@ -89,7 +67,7 @@ export const ItemDetail = (props) => {
                             <div className="top-right"><Button icon className="suitCaseSaveBtn"><Icon circular inverted name='suitcase' onClick={handleSave} /></Button></div>
                     }
 
-                    {!itemUser.profileURL.length
+                    {!itemUser.profileURL
                         ? <div class="ui active centered inline loader"></div>
                         :
                         <div className="tileInfoDiv">
