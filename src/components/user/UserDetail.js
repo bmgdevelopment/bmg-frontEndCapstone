@@ -133,9 +133,29 @@ export const UserDetail = () => {
                 })
             const isSaved = !!savedItem //(!! converts returned value into a boolean)
             console.log("savedItem:" + savedItem)
-            return <ItemDetail key={save.item.id} item={save.item} isSaved={isSaved} savedItemId={savedItem && savedItem.item.id} />
+            return <ItemDetail key={save.item.id} item={save.item} isSaved={isSaved} savedItemId={savedItem && savedItem.id} />
         }
     }
+
+    /*
+    issues:
+    under visiting profile, i can save one of a visited profile's saves
+    but when I try to remove my save, their save gets deleted (visually and in the API ) and my save remains in the API
+
+    tester saves for Ina
+
+    {
+    "itemId": 11,
+    "userId": 1,
+    "id": 40
+    }, 
+    {
+    "itemId": 15,
+    "userId": 1,
+    "id": 41
+    }
+
+    */
 
     return (
         <>
@@ -204,30 +224,17 @@ export const UserDetail = () => {
                     }
 
                     <div className="organizeTilesDiv">
-                       { console.log(allUserSaves)}
                         {
                             allUserSaves.map(save => {
                                 return (
                                     <>
-                                        {/* <div className="container">
-                                            <Link to={`/items/detail/${save.itemId}`}>
-                                                <img key={`userItemSave--${save.id}`} className="itemTile" alt="item" src={save.item.itemImage} />
-                                            </Link>
-                                            </div> */}
-
-                                        {currentUserId === parseInt(userId) || currentUserId === save.item.userId
-                                            ?
-                                            // <div className="container">
-                                            //     <Link to={`/items/detail/${save.item.id}`}>
-                                            //         <img key={`userItemSave--${save.item.id}`} className="itemTile" alt="item" src={save.item.itemImage} />
-                                            //     </Link>
-                                            // </div>
-                                            <ItemDetail key={save.item.id} item={save.item} isSaved={save.item.isSaved} savedItemId={save.item && save.item.id} />
+                                    {currentUserId === parseInt(userId) || currentUserId === save.item.userId
+                                            ? <ItemDetail key={save.item.id} item={save.item} isSaved={!!save.item} savedItemId={save.item && save.id} />
+                                            : saveBtnCheck2(save)
                                             // : save.userId === currentUserId
                                             //     ? <ItemDetail key={save.item.id} item={save.item} isSaved={save.item.isSaved} savedItemId={save.item && save.item.id} />
 
                                                 // : saveBtnCheck2(save.item)
-                                                : saveBtnCheck2(save)
                                         }
 
                                     </>
