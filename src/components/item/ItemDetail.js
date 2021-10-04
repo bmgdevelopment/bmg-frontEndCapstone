@@ -5,19 +5,19 @@ import { UserContext } from "../user/UserProvider"
 import { Icon, Button } from 'semantic-ui-react'
 import "./Item.css"
 
-
-
 export const ItemDetail = (props) => {
     const { users, getUsers } = useContext(UserContext)
-    const { saveItem, deleteSave } = useContext(SaveContext)
+    const { userSaves, getSavesByUserId, saveItem, deleteSave } = useContext(SaveContext)
 
     const { item } = props
+
     const [itemUser, setItemUser] = useState({ region: {}, profileURL: {} })
     const [state, setState] = useState({})
     const currentLoggedInUserId = parseInt(sessionStorage.getItem("trendago_user"))
 
     useEffect(() => {
         getUsers()
+        getSavesByUserId(currentLoggedInUserId)
     }, [])
 
     useEffect(() => {
@@ -25,24 +25,51 @@ export const ItemDetail = (props) => {
         setItemUser(thisUser)
     }, [item.userId, users])
 
-    useEffect(() => {
-    }, [props, props.isSaved, props.savedItemId])
-
     const handleSave = () => {
         const itemIdOfSave = item.id
         const saveUserId = currentLoggedInUserId
 
-        if (props.isSaved) {
+        if ( props.isSaved ) {
             deleteSave(props.savedItemId)
-                .then(() => setState({})) //used to re-render component smoothly
-        } else {
-            saveItem({
-                itemId: itemIdOfSave,
-                userId: saveUserId
-            })
-                .then(() => setState({})) //used to re-render component smoothly
+                .then(() =>{ 
+                    setState({}) //used to re-render component smoothly
+                } ) 
+                console.log("removedSave")
+                getSavesByUserId(currentLoggedInUserId)
+            } else {
+                saveItem({
+                    itemId: itemIdOfSave,
+                    userId: saveUserId
+                })
+                .then(() =>{ 
+                    setState({}) //used to re-render component smoothly
+                } )
+                console.log("addedSave")
+                getSavesByUserId(currentLoggedInUserId)
         }
     }
+
+    /*
+    issues:
+    under visiting profile, i can save one of a visited profile's saves
+    but when I try to remove my save, their save gets deleted (visually and in the API ) and my save remains in the API
+
+    what is pushing the visited user's save.id to get deleted and when is this happening?
+
+    tester saves for Ina
+
+    {
+    "itemId": 11,
+    "userId": 1,
+    "id": 40
+    }, 
+    {
+    "itemId": 15,
+    "userId": 1,
+    "id": 41
+    }
+
+    */
 
     return (
         <>
@@ -60,8 +87,8 @@ export const ItemDetail = (props) => {
                             <div className="top-right"><Button icon className="suitCaseSaveBtn"><Icon circular inverted color='teal' name='suitcase' onClick={handleSave} /></Button></div>
                             :
                             <div className="top-right"><Button icon className="suitCaseSaveBtn"><Icon circular inverted name='suitcase' onClick={handleSave} /></Button></div>
-
                     }
+
                     {!itemUser.profileURL.length
                         ? <div class="ui active centered inline loader"></div>
                         :
@@ -82,23 +109,3 @@ export const ItemDetail = (props) => {
         </>
     )
 }
-
-
-
-
-/*
-
-*/
-
-// eslint-disable-next-line no-lone-blocks
-/* {
-    allUserSaves.map(save => {
-
-        return save.userId === currentLoggedInUserId && save.itemId === item.id ?
-            <div className="top-right"><Button icon><Icon circular inverted color='teal' name='suitcase' onClick={() => { deleteSave(save.id).then(() => history.push("/")) }} /></Button></div>
-            :
-            <div className="top-right"><Button icon><Icon circular inverted color='white' name='suitcase' onClick={() => { saveItem(item).then(() => history.push("/")) }} /> </Button></div>
-
-
-    })
-} */

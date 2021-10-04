@@ -17,7 +17,7 @@ export const ProfileDetail = () => {
     const [allUserItems, setAllUserItems] = useState([])
     const currentUserId = parseInt(sessionStorage.getItem("trendago_user"))
 
-    debugger
+    // debugger
 
     useEffect(() => {
         getUsers()

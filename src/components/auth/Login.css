@@ -56,8 +56,10 @@
   .container--login {
     display: flex;
     flex-direction: column;
-    width: 50%;
+    width: 43%;
+    /* height: 36%; */
     margin: 2%;
+    margin-bottom: 4%;
     padding-bottom: -50px;
     /* margin: 10% 15%; */
   }
