@@ -4,6 +4,7 @@ import { RegionContext } from "../region/RegionProvider"
 import { CustomerReviewContext } from "./CustomerReviewProvider"
 import { Grid, Header, Image, Segment, Container } from 'semantic-ui-react'
 import trendagoCollage1 from '../images/trendagoCollage.png'
+import trendagoContactUs from '../images/trendagoContactUs.png'
 import './AboutReviewsContact.css'
 
 
@@ -31,7 +32,11 @@ export const CustomerReviewList = () => {
                                             : <img alt="reviewUserPic" src={review.user.profileURL} />
                                     }
 
-                                    {/* <img alt="reviewUserPic" src={review.user.profileURL} /> */}
+                                    {/* 
+                                       {
+                                           review.userId === review.user.id &&  <img alt="reviewUserPic" src={review.user.profileURL} />
+                                        }
+                                    */}
                                 </div>
                                 <div className="reviewPdiv">
                                     <p className="reviewFirstName">{review.user.firstName}</p>
@@ -51,7 +56,7 @@ export const CustomerReviewList = () => {
                         </div>
 
                         <div className="div2Review">
-                            <p className="reviewSummary">" {review.review} "</p>
+                            <p className="reviewSummary" style={{ display: "flex", justifyContent: "center"}}>" {review.review} "</p>
                         </div>
                     </div>
                 </div>
@@ -112,16 +117,19 @@ export const CustomerReviewList = () => {
             </div>
 
             <div className="organizeSegment">
-                <Segment style={{ padding: '8em 0em', marginBottom: '-4em', marginTop: '-20px'}} vertical >
-                    <Container text>
-                    <Header as='h3' style={{ marginTop: '-3em', fontSize: '3em', fontFamily: 'Cormorant Garamond' }}>
-                    Let's Connect! <br/>
-                    Contact Us                       
-                    </Header>
+                <Segment style={{ padding: '14em 0em', marginBottom: '-4em', marginTop: '-20px', display: 'flex', justifyContent: 'center', marginLeft: '25em', marginRight: '30em' }} vertical >
+                    <div style={{ marginTop: '-18em'}}>
+                        <img alt="contactUs" src={trendagoContactUs} style={{height: '600px'}}/>
+                    </div>
+                    <Container text style={{ minWidth: "390px", right: "10em"}}>
+                        <Header as='h3' style={{ marginTop: '-3em', fontSize: '3em', fontFamily: 'Cormorant Garamond' }}>
+                            Let's Connect! <br />
+                            Contact Us
+                        </Header>
                         <p style={{ fontSize: '1.33em', color: 'gray' }}>
-                        <button class="ui circular icon button"><i aria-hidden="true" class="mail icon"></i></button> (800) 239 - 8537 <br/> 
-                        <button class="ui circular icon button"><i aria-hidden="true" class="question circle outline icon"></i></button> questions@trendago.com <br/> 
-                        <button class="ui circular icon button"><i aria-hidden="true" class="map marker alternate icon"></i></button> 123 Fashion Lane Chicago, IL
+                            <button class="ui circular icon button"><i aria-hidden="true" class="mail icon"></i></button> (800) 239 - 8537 <br />
+                            <button class="ui circular icon button"><i aria-hidden="true" class="question circle outline icon"></i></button> questions@trendago.com <br />
+                            <button class="ui circular icon button"><i aria-hidden="true" class="map marker alternate icon"></i></button> 123 Fashion Lane Chicago, IL
                         </p>
                     </Container>
                 </Segment>

@@ -11,22 +11,20 @@ import "./User.css"
 export const UserDetail = () => {
     const { users, getUsers } = useContext(UserContext)
     const { items, getItems } = useContext(ItemContext)
-    const { saves, getSaves, userSaves, getSavesByUserId, deleteSave, saveItem } = useContext(SaveContext)
-    const { regions, getRegions } = useContext(RegionContext)
+    const { saves, getSaves, userSaves, getSavesByUserId } = useContext(SaveContext)
 
     const [user, setUser] = useState({ region: {}, profileURL: {} })
     const [allUserItems, setAllUserItems] = useState([])
     const [allUserSaves, setAllUserSaves] = useState([])
     const [matchedSaves, setMatchedSaves] = useState([])
     const [matchedSaves2, setMatchedSaves2] = useState([])
-    const [state, setState] = useState({})
+    
     const currentUserId = parseInt(sessionStorage.getItem("trendago_user"))
     const { userId } = useParams()
 
     useEffect(() => {
         getUsers()
         getItems()
-        getRegions()
         getSaves()
         getSavesByUserId(currentUserId)
         // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -63,17 +61,12 @@ export const UserDetail = () => {
                         return currentLoggedInSaves
                     })
                 }
-
                 setMatchedSaves(currentLoggedInSaves)
-                // console.log(allUserItems) //for that profile view user saves
-                // console.log("Match saves:" + matchedSaves)
-                // console.log(matchedSaves)
             }
         }
     }, [allUserItems, userSaves, userId, currentUserId])
 
     /* This useEffect filters the user in profile view's saved items against the currently logged in user's saves*/
-    
      useEffect(() => {
         // console.log(userSaves) //current logged in saves
         if (currentUserId !== parseInt(userId)) {
@@ -89,11 +82,7 @@ export const UserDetail = () => {
                         return currentLoggedInSavesFound
                     })
                 }
-
                 setMatchedSaves2(currentLoggedInSavesFound)
-                // console.log(allUserItems) //for that profile view user saves
-                // console.log("Match saves:" + matchedSaves)
-                // console.log(matchedSaves)
             }
         }
     }, [allUserSaves, userSaves, userId, currentUserId])
@@ -124,32 +113,6 @@ export const UserDetail = () => {
             return <ItemDetail key={save.item.id} item={save.item} isSaved={isSaved} savedItemId={savedItem && savedItem.id} />
         }
     }
-
-    /*
-    issues:
-    under visiting profile, i can save one of a visited profile's saves
-    but when I try to remove my save, their save gets deleted (visually and in the API ) and my save remains in the API
-
-    what is pushing the visited user's save.id to get deleted and when is this happening?
-
-
-    allUserSaves are the saves of the visiting profile
-    matchSaves are the matches between the loggedInUser saves AND the visiting profile user saves
-
-    tester saves for Ina
-
-    {
-    "itemId": 11,
-    "userId": 1,
-    "id": 40
-    }, 
-    {
-    "itemId": 15,
-    "userId": 1,
-    "id": 41
-    }
-
-    */
 
     return (
         <>
