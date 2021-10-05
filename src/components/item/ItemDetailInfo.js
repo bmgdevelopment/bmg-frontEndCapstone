@@ -170,6 +170,8 @@ export const ItemDetailInfo = () => {
                                         {splitArr.map(word => {
                                             return <button name={word} value={word} className="keyWordSelect" onClick={() => {
                                                 history.push(`/?keywordSearchTerm=${word}`)
+                                                // history.push('/')
+                                                // setSearchTerms({word})
                                             }}>{word}</button>
                                         })}
                                     </div>
