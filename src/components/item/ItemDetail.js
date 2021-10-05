@@ -17,8 +17,13 @@ export const ItemDetail = (props) => {
 
     useEffect(() => {
         getUsers()
-        getSavesByUserId(currentLoggedInUserId)
+        // getSavesByUserId(currentLoggedInUserId)
     }, [])
+
+    useEffect(() => {
+        getSavesByUserId(currentLoggedInUserId)
+        
+    }, [state])
 
     useEffect(() => {
         const thisUser = users.find(user => user.id === item.userId) || { region: {}, profileURL: {} }
@@ -35,7 +40,8 @@ export const ItemDetail = (props) => {
                     setState({}) //used to re-render component smoothly
                 } ) 
                 console.log("removedSave")
-                getSavesByUserId(currentLoggedInUserId)
+                // getSavesByUserId(currentLoggedInUserId)
+                // return <div className="top-right"><Button icon className="suitCaseSaveBtn"><Icon circular inverted name='suitcase' onClick={handleSave} /></Button></div>
             } else {
                 saveItem({
                     itemId: itemIdOfSave,
@@ -45,7 +51,8 @@ export const ItemDetail = (props) => {
                     setState({}) //used to re-render component smoothly
                 } )
                 console.log("addedSave")
-                getSavesByUserId(currentLoggedInUserId)
+                // getSavesByUserId(currentLoggedInUserId)
+                // return <div className="top-right"><Button icon className="suitCaseSaveBtn"><Icon circular inverted color='teal' name='suitcase' onClick={handleSave} /></Button></div>
         }
     }
 

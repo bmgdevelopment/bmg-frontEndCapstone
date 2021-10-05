@@ -44,7 +44,7 @@ export const ItemDetailInfo = () => {
             console.log(userSaves)
             const isSaved = !!savedItemInfo
             setTrueSave(isSaved)
-            
+
             if (savedItemInfo) {
                 setTrueSaveId(savedItemInfo.id)
                 //  console.log(trueSave)
@@ -79,21 +79,16 @@ export const ItemDetailInfo = () => {
         if (trueSave) {
             deleteSave(trueSaveId)
             getSavesByUserId(currentUserId)
-            .then(() => setState({})) //used to re-render component smoothly
+                .then(() => setState({})) //used to re-render component smoothly
         } else {
             saveItem({
                 itemId: itemIdOfSave,
                 userId: saveUserId
             })
             getSavesByUserId(currentUserId)
-            .then(() => setState({})) //used to re-render component smoothly
+                .then(() => setState({})) //used to re-render component smoothly
         }
     }
-
-    // console.log(item)
-    // console.log("trueSave? " + trueSave)
-    // console.log("trueSaveId? " + trueSaveId)
-
 
     const buttonCheck = () => {
         if (item.userId === currentUserId) {
@@ -106,9 +101,6 @@ export const ItemDetailInfo = () => {
             return <div className="top-right"><Button icon className="suitCaseSaveBtn"><Icon circular inverted name='suitcase' onClick={handleSave} /></Button></div>
         }
     }
-
-
-    // if (!item.id) return <h1>Loading...</h1>
 
     return (
         <>
@@ -133,7 +125,7 @@ export const ItemDetailInfo = () => {
                     </div>
 
 
-                    <div className="oneItemInfo" style={{ backgroundColor: "white"}}>
+                    <div className="oneItemInfo" style={{ backgroundColor: "white" }}>
 
                         <div className="itemTopInfo">
                             <div className="itemInfoBtns">
