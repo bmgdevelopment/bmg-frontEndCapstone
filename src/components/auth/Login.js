@@ -49,7 +49,7 @@ export const Login = () => {
             })
     }
     return (
-        <div className="login-body">
+        <div className="login-body" style={{ paddingBottom: '8em'}}>
             <main className="container--login">
                 {/* <dialog className="dialog dialog--auth" open={open} onClose={handleClose}>
                     <div className="doesNotExist">User does not exist, please register for access</div>
@@ -83,7 +83,7 @@ export const Login = () => {
                     </form> */}
 
                     <div className="reactLoginForm">
-                        <Segment placeholder>
+                        <Segment placeholder style={{minHeight :'0'}}>
                             <Grid columns={2} relaxed='very' stackable>
                                 <Grid.Column>
                                     <Form>
