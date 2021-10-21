@@ -10,7 +10,7 @@ function useQuery() {
   } 
 
 export const ItemList = () => {
-    const { items, getItems, searchTerms, setSearchTerms, placeholderWord, setPlaceHolder } = useContext(ItemContext)
+    const { items, getItems, searchTerms, setSearchTerms, setPlaceHolder } = useContext(ItemContext)
     const { userSaves, getSavesByUserId } = useContext(SaveContext)
     const currentLoggedInUserId = parseInt(sessionStorage.getItem("trendago_user"))
     const [filteredItems, setFiltered] = useState([])
@@ -21,7 +21,7 @@ export const ItemList = () => {
     useEffect(() => {
         getItems()
         getSavesByUserId(currentLoggedInUserId)
-        // console.log(userSaves)
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
 
     useEffect(() => {
@@ -37,10 +37,10 @@ export const ItemList = () => {
             setFiltered(items)
         }
     }, [searchTerms, items, keywordSearchTerm, setSearchTerms, setPlaceHolder])
-
+    
     // LOADER
-    if (!userSaves.length) return <div className="centerLoaderHome organizeTilesDiv"><div className="ui active centered inline loader"></div></div>
-
+       if (!items.length) return <div className="centerLoaderHome organizeTilesDiv"><div className="ui active centered inline loader"></div></div>
+   
     return (
         <>
             <p style={{color: 'gray', paddingRight: "5em", display: "flex", justifyContent: "flex-end", fontSize: "17px"}}>Viewing {filteredItems.length} items</p>
@@ -57,3 +57,4 @@ export const ItemList = () => {
         </>
     )
 } // end of ItemList
+

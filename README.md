@@ -1,71 +1,46 @@
-# Getting Started with Create React App
+Front End Capstone | TRENDAGO by Brittany Garrett: 
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Why did you build this project?
+    This Reat.JS application was built in order to practice using the newest knowledge learned during the first portion and half of my instruction with NSS. While building this application, I wanted to have fun but also take on challenges that I knew would help me with my future projects and future software development positions. I wanted to make sure that it was very user-friendly but yet simple & effective.
 
-## Available Scripts
+Learning goals: 
+    - Practice using JavaScript and JSX within React to create a simple application with clean visuals and functionality
+    - Deepen my understanding of and learn to properly use asynchronous APIs, React hooks and JSX together for application rendering
+    - Strengthen my CSS styling for a fluid user experience while also getting better acquainted with external pre-packaged npm components
+    - Properly organize, plan, wireframe and  build an operating React app from a thorough idea to a usable MVP 
 
-In the project directory, you can run:
+Prolems & Solution: 
+    Packing for unique travel destinations can be overwhelming especially if it's a first time experience traveling to a new region.
+ 
+    With TRENDAGO, you can search for current trends by keywords that match the user to pre-assembled fashion suggestions. Keywords include region names, climate terms, and/or clothing or accessory types. Users can also upload their own suggested trends according to their region and/or regions they have visited.
 
-### `npm start`
+Project features:
+    Features within my application include: 
+    - Filtering by keyword and typed in search terms 
+    - Browsing a hard coded, self made API library of items including their descriptions and imagery
+    - Profiles for each user with a tailored view from the point of view of the currently logged in user
+    - The proper save button toggle for saving and unsaving items for later view within the current profile
+    - View of all users within the application and their profile including the items they have uploads and the items they have saved for later reference
+    - The ability to add new items/clothing as well as edit and delete the item and details.
+    - User friendly navigation and clean user experience
+    - Login/logout smoothly (with only email address, no passcode)
+    - Link to github repo of capstone within footer
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+Tech stack:
+    - React.JS
+    - JSX
+    - Semantics UI
+    - HTML/CSS
+    - Canva
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+Challenges faced: 
+    One of the biggest challenges I had was to compare the current users saved items to the entire list of items within the application on the explorer page as well as compare the current users saved items against each individual profile that has been visited that is not the currently logged in user's page. Initially, making the comparison wasn't too difficult. But later, when using ternaries to output the proper state of the saved item's button (blue, black or none if the item is owned by the current logged in user), that's when it became tricky. It took me some days/about 2 weeks to finally get that feature to smoothly run and reflect the proper states while navigating through the application. We were given about a month to get the MVP version together. If I didn't spend that time trying to figure that out, my application would not look or work the way I wanted it to. 
 
-### `npm test`
+Personal lessons: 
+- Find a place that is distraction free to be most productive 
+- Reach outside of your comfort zone for help! Whether through classmates or alum. Growth only happens in discomfort
+- Take breaks but celebrate small victories! They add to the overall progress of the project
+- It's YOU vs. YOU so strive to be better each day. Make your past self proud!
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
-
+Screenshots: 
+![alt text](https://www.google.com/search?q=screenshot&rlz=1C5CHFA_enUS909US909&sxsrf=AOaemvKiltKNTcsKeUa_McAdR-4R09oyQA:1634851251437&source=lnms&tbm=isch&sa=X&ved=2ahUKEwiak-jAt9zzAhUKmuAKHaByAnsQ_AUoA3oECAEQBQ&biw=1440&bih=796&dpr=2#imgrc=_IRafZFwgAW2jM)

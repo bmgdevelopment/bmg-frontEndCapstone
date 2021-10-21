@@ -2,10 +2,8 @@ import React, { useContext, useEffect, useState } from "react"
 import { UserContext } from "./UserProvider"
 import { ItemContext } from "../item/ItemProvider"
 import { ItemDetail } from "../item/ItemDetail"
-import { RegionContext } from "../region/RegionProvider"
 import { SaveContext } from "../save/SaveProvider"
 import { useParams, Link } from "react-router-dom"
-import { Button, Icon } from 'semantic-ui-react'
 import "./User.css"
 
 export const UserDetail = () => {
@@ -200,20 +198,9 @@ export const UserDetail = () => {
                         }
                     </div>
 
-
                 </div>
             </div>
         </>
     )
 
 } //end of UserDetail
-
-
-
-/*
-1. check allUserSaves and map for one save
-2. check if currentUserId is the userId (profile in view for userId) or if currentUserId is owned by current user id
-3. produce item detail as is
-
-4. or for ternary-- if save is for the userId (profile in view for userId), 
-*/

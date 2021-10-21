@@ -1,5 +1,4 @@
 import React, { createContext, useState } from "react";
-import { useHistory } from "react-router-dom";
 
 const apiURL = "http://localhost:7001"
 export const SaveContext = createContext()
@@ -7,7 +6,6 @@ export const SaveContext = createContext()
 export const SaveProvider = (props) => {
     const [saves, setSaves] = useState([])
     const [userSaves, setUserSaves] = useState([])
-    const history = useHistory()
     const currentLoggedInUserId = parseInt(sessionStorage.getItem("trendago_user"))
 
     const getSaves = () => {
@@ -31,11 +29,9 @@ export const SaveProvider = (props) => {
         })
             .then(getSaves)
             .then(getSavesByUserId(currentLoggedInUserId))
-            // .then(() => history.push("/"))
     }
 
     const saveItem = (save) => {
-        // console.log(save)
         return fetch(`${apiURL}/saves`, {
             method: "POST",
             headers: {
@@ -45,7 +41,6 @@ export const SaveProvider = (props) => {
         })
         .then(getSaves)
         .then(getSavesByUserId(currentLoggedInUserId))
-        // .then(() => history.push("/"))
     }
 
     return (

@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState} from "react"
+import { useContext, useEffect} from "react"
 import { ItemContext } from "../item/ItemProvider"
 import { SaveContext } from "./SaveProvider"
 
@@ -9,15 +9,8 @@ export const SaveInfo = () => {
 
     useEffect(() => {
         getItems().then(getSavesByUserId(currentLoggedInUserId))
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
-
-/*
-1. Get all items (items)
-2. Get all logged in user saves (usersaves)
-3. Filter items by each item against the save.itemId
-4. Mark each item with a save key/prop to later access in UserDetail.js
-5. In UserDetail.js, use the save key/prop to determine the correct save button to display
-*/ 
 
     useEffect(() => {
         items.map(item => {
@@ -26,9 +19,7 @@ export const SaveInfo = () => {
                 return savedItem
             } 
             return undefined
-        })
-        
+        }) 
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
-
-
 }

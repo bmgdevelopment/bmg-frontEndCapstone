@@ -1,18 +1,18 @@
 .aside_and_mainFeed {
-    /* border: 2px solid purple; */
     display: flex;
     margin-right: 12%;
     margin-left: 12%;
     margin-bottom: 10em;
     padding-top: 18%;
+    /* border: 2px solid purple; */
 }
 
 .aside_and_mainFeed_home {
-    /* border: 2px solid purple; */
     display: flex;
     margin-right: 10%;
     margin-left: 10%;
     margin-bottom: 10em;
+    /* border: 2px solid purple; */
     /* padding-top: 90px; */
 }
 
@@ -22,35 +22,35 @@
 
 /* ASIDE PANEL */
 .asidePanelHome {
-    /* border: 2px solid rgba(199, 180, 146, 0.205); */
     border-radius: 10px;
-    /* padding-top: 2em; */
     margin-top: 2em;
     margin-right: 2em;
     margin-left: 2em;
+    /* border: 2px solid rgba(199, 180, 146, 0.205); */
+    /* padding-top: 2em; */
     /* padding-top: 30px 30px; */
 
 }
 
 .asideSearchDiv {
-    /* border: 2px solid blue; */
-    /* margin: 3px 30px; */
-    padding: 30px 30px;
     margin: 0px;
+    padding: 30px 30px;
     background: gray;
     display: flex;
     justify-content: center;
     align-content: center;
     filter: drop-shadow(1px 1px 2px rgba(74, 72, 10, 0.694));
+    /* border: 2px solid blue; */
+    /* margin: 3px 30px; */
 }
 
 .asideAddNewDiv {
-    /* border: 2px solid red; */
-    /* margin: 20px 30px; */
     display: flex;
     justify-content: center;
     padding: 0px;
     margin-top: 60px;
+    /* border: 2px solid red; */
+    /* margin: 20px 30px; */
 }
 
 .regionBannerLinks {
@@ -61,8 +61,8 @@
 .regionBanner {
     height: 120px;
     width: 275px;
-    /* border: 1px solid rgba(159, 159, 159, 0);   */
     margin-bottom: 2px;  
+    /* border: 1px solid rgba(159, 159, 159, 0);   */
 }
 
 .addItemBanner {
@@ -87,7 +87,6 @@
     display: flex;
     padding: 20px 10px;
     background-color: #63A6B1;
-    /* border: 2px solid darkslategray; */
     font-family: 'Cormorant Garamond', serif;
     align-content: center;
     font-size: 25px;
@@ -96,12 +95,8 @@
     justify-content: center;
     margin-top: 60px;
     margin-bottom: 0;
+    /* border: 2px solid darkslategray; */
 }
-
-/* MAIN FEED */
-/* .mainFeedHome {
-    border: 2px solid gold;
-} */
 
 .organizeTilesDiv {
     display: flex;
@@ -160,11 +155,6 @@
     /* border: 2px solid rgb(15, 50, 77);     */
 }
 
-/* 
-.itemTopInfo {
-    border: 2px solid rgb(83, 240, 30);    
-} */
-
 .itemMustPackDiv {
     /* border: 2px solid rgb(224, 112, 26);   */
     display: flex;
@@ -179,12 +169,12 @@
 }
 
 .itemSummary {
-    /* border: 2px solid rgb(204, 22, 232);   */
     padding: 0px;
     display: flex;
     justify-content: flex-end;
     height: 175px;
     margin-left: 20px;
+    /* border: 2px solid rgb(204, 22, 232);   */
 }
 
 .itemSummaryP {
@@ -195,7 +185,6 @@
 }
 
 .creatorImgWithName {
-    /* border: 2px solid coral; */
     font-size: 12px;
     display: flex;
     margin-bottom: 0px;
@@ -204,36 +193,37 @@
     align-items: center;
     flex-direction: row;
     height: 20px;
+    /* border: 2px solid coral; */
 }
 
 .creatorImgWithName p {
-    /* border: 2px solid red; */
     margin-left: 10px;
+    /* border: 2px solid red; */
 }
 
 .imgNameRegionDate {
-    /* border: 5px solid rgb(148, 23, 201); */
     padding-top: 20px;
     padding-right: 10px;
     padding-bottom: 10px;
     border-bottom: .5px solid gray;
+    /* border: 5px solid rgb(148, 23, 201); */
 } 
 
 .itemUserRegion {
-    /* border: 2px solid blue; */
     display: flex;
     justify-content: flex-end;
     margin-left: 10px;
     margin-bottom: 0px;
     margin-top: 0px;
     font-size: 12px;
+    /* border: 2px solid blue; */
 }
 
 .keywordDiv {
-    /* border: 2px solid gold; */
     margin-right: 15px;
     margin-left: 15px;
     margin-top: 5px;
+    /* border: 2px solid gold; */
 }
 
 .keywordDiv p {
@@ -242,59 +232,3 @@
     color: gray;
     justify-content: center;
 }
-
-/* BACK TO TOP BTN */
-
-/* .backToTopDiv {
-    border: 2px solid gray;
-    display: flex;
-    justify-content: flex-end;
-    position: sticky;
-} */
-
-/* .backToTop {
-    background-color: darkslategrey;
-    justify-content: center;
-    align-content: center;
-    color: wheat;
-    font-size: 30px;
-    border-radius: 50%;
-    margin: 10px 30px;
-    height: 40px;
-    padding: 0px;
-    width: 40px;
-} */
-
-/* TESTING CSS */
-/* .testDiv {
-    border: 2px solid orange;
-    padding: 30px 60px 30px 80px;
-    display: flex;
-    justify-content: space-evenly;
-}
-
-.ui.card>.image {
-    border: 2px solid orange;
-    width: 275px;
-    height: auto;
-    justify-content: center;
-}
-
-.ui.card * {
-    margin: 0em 0em;
-    display: flex;
-    justify-content: center;
-    align-content: center;
-    border: none;
-}
-
-.ui.corner.label {
-    background-color: transparent!important;
-    color: teal;
-}
-
-.column {
-    display: flex;
-    justify-content: center;
-    align-content: center;
-} */

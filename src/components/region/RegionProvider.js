@@ -1,5 +1,4 @@
 import React, { createContext, useState } from "react"
-import "./Region.css"
 
 const apiURL = "http://localhost:7001"
 export const RegionContext = createContext()
