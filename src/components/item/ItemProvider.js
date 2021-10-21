@@ -5,7 +5,8 @@ export const ItemContext = createContext()
 
 export const ItemProvider = (props) => {
     const [items, setItems] = useState([])
-    const [ searchTerms, setSearchTerms] = useState("")
+    const [ searchTerms, setSearchTerms ] = useState("")
+    const [ placeholderWord, setPlaceHolder ] = useState('Search by keyword like "coral" or "blue"... ')
 
     const getItems = () => {
         return fetch(`${apiURL}/items?_expand=user&_expand=region`)
@@ -49,7 +50,7 @@ export const ItemProvider = (props) => {
 
     return (
         <ItemContext.Provider value={
-            { items, getItems, addItem, updateItem, deleteItem, getItemById, searchTerms, setSearchTerms }
+            { items, getItems, addItem, updateItem, deleteItem, getItemById, searchTerms, setSearchTerms, placeholderWord, setPlaceHolder }
         }>
             {props.children}
         </ItemContext.Provider>

@@ -91,10 +91,7 @@ export const ItemForm = () => {
                     </div>
 
                     <div className="titleBox2">
-                        {/* <Link to={`/items/detail/${item.id}`} className="X">
-                            <button>X</button>
-                        </Link> */}
-
+                     
                        { item.id ? 
                          <Link to={`/items/detail/${item.id}`} className="X">
                             <button>X</button>

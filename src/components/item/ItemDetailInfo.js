@@ -8,7 +8,7 @@ import "./Item.css"
 
 export const ItemDetailInfo = () => {
     const { itemId } = useParams()
-    const { items, getItems, deleteItem, setSearchTerms } = useContext(ItemContext)
+    const { items, getItems, deleteItem } = useContext(ItemContext)
     const { users, getUsers } = useContext(UserContext)
     const { userSaves, getSavesByUserId, saveItem, deleteSave } = useContext(SaveContext)
 
@@ -51,7 +51,7 @@ export const ItemDetailInfo = () => {
                 //  console.log(trueSaveId)
             }
         }
-    }, [userSaves, itemId])
+    }, [userSaves, itemId, state])
 
     useEffect(() => {
         const thisUser = users.find(user => user.id === item.userId) || { region: {}, profileURL: {} }
@@ -184,14 +184,3 @@ export const ItemDetailInfo = () => {
         </>
     )
 }
-
-/*
-
-<p value={word} className="keyWordSelect">{word}</p>
-
-const shortKeywords = (item) => {
-    const splitArr = item.descriptiveWords.split(" ").slice(0,10)
-    console.log(splitArr)
-   return splitArr
-}
-*/
