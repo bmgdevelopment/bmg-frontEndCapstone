@@ -41,4 +41,4 @@ Personal lessons:
 - It's YOU vs. YOU so strive to be better each day. Make your past self proud!
 
 Screenshots: 
-![alt text](https://www.google.com/search?q=screenshot&rlz=1C5CHFA_enUS909US909&sxsrf=AOaemvKiltKNTcsKeUa_McAdR-4R09oyQA:1634851251437&source=lnms&tbm=isch&sa=X&ved=2ahUKEwiak-jAt9zzAhUKmuAKHaByAnsQ_AUoA3oECAEQBQ&biw=1440&bih=796&dpr=2#imgrc=_IRafZFwgAW2jM)
+![alt text](src/components/images/screenshots/trendagoscreen1.png)
