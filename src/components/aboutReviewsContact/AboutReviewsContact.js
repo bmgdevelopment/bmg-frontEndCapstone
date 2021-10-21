@@ -15,6 +15,7 @@ export const CustomerReviewList = () => {
     useEffect(() => {
         getRegions()
         getReviews()
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
 
     const userMatchedReview = (review) => {
@@ -31,12 +32,6 @@ export const CustomerReviewList = () => {
                                             ? <div class="ui active centered inline loader"></div>
                                             : <img alt="reviewUserPic" src={review.user.profileURL} />
                                     }
-
-                                    {/* 
-                                       {
-                                           review.userId === review.user.id &&  <img alt="reviewUserPic" src={review.user.profileURL} />
-                                        }
-                                    */}
                                 </div>
                                 <div className="reviewPdiv">
                                     <p className="reviewFirstName">{review.user.firstName}</p>
@@ -62,8 +57,6 @@ export const CustomerReviewList = () => {
                 </div>
                 <div className="imgBoxReview">  </div>
                 {/* <div className="imgBoxReview" style={{ backgroundImage: `url(${regionObj.regionImage})` }} >  </div> */}
-
-
             </div>
 
         </>
@@ -91,9 +84,6 @@ export const CustomerReviewList = () => {
                                 </p>
                             </Grid.Column>
 
-                            {/* <Grid.Column floated='right' width={8}>
-                            <Image className="aboutCollage" rounded size='large' src={trendagoCollage1} />
-                        </Grid.Column>  */}
                             <Image className="aboutCollage" rounded size='large' src={trendagoCollage1} />
                         </Grid.Row>
 
@@ -127,7 +117,7 @@ export const CustomerReviewList = () => {
                             Contact Us
                         </Header>
                         <p style={{ fontSize: '1.33em', color: 'gray' }}>
-                            <button class="ui circular icon button"><i aria-hidden="true" class="mail icon"></i></button> (800) 239 - 8537 <br />
+                            <button class="ui circular icon button"><i aria-hidden="true" class="mail icon"></i></button> (615) 669 - 9414 <br />
                             <button class="ui circular icon button"><i aria-hidden="true" class="question circle outline icon"></i></button> questions@trendago.com <br />
                             <button class="ui circular icon button"><i aria-hidden="true" class="map marker alternate icon"></i></button> 123 Fashion Lane Chicago, IL
                         </p>
