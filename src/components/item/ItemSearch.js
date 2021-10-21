@@ -26,13 +26,22 @@ export const ItemSearch = () => {
                 />
                 <i aria-hidden="true" className="search icon"></i>
             </div>
-           
+
             <div className="clearLinkDiv">
+                {/* <button
+                    className="clearLink"
+                    onClick={empty}
+                    to={'/'}
+                >
+                    Clear Search Results
+                </button> */}
                 <Link
                     className="clearLink"
                     onClick={empty}
                     to={'/'}
-                >Clear Search Results</Link>
+                >
+                    Clear Search Results
+                </Link>
             </div>
         </>
     )

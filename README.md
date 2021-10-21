@@ -26,9 +26,9 @@ Features within my application include:
 
 Tech stack:
 - React.JS
-- JSX
-- Semantics UI
+- JS/JSX
 - HTML/CSS
+- Semantics UI
 - Canva
 
 Challenges: <br/>
