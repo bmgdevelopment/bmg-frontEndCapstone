@@ -1,7 +1,8 @@
 import React, { useState } from "react"
 import { Link, useHistory } from "react-router-dom";
-import { Button, Divider, Form, Grid, Segment } from 'semantic-ui-react'
+import { Button, Divider, Form, Grid, Segment, Container } from 'semantic-ui-react'
 import "./Login.css"
+import bmgBlue from '../images/bmgBlue.png'
 
 const apiURL = "http://localhost:7001"
 
@@ -37,47 +38,57 @@ export const Login = () => {
     }
 
     return (
-        <div className="login-body" style={{ paddingBottom: '8em'}}>
-            <main className="container--login">
+        <>
+            <div className="login-body">
+                <main className="container--login">
 
-                <section className="formSection">
-                    <h1 className="loginTitle">TRENDAGO</h1>
+                    <section className="formSection">
+                        <h1 className="loginTitle">TRENDAGO</h1>
 
-                    <div className="reactLoginForm">
-                        <Segment placeholder style={{minHeight :'0'}}>
-                            <Grid columns={2} relaxed='very' stackable>
-                                <Grid.Column>
-                                    <Form>
-                                        <Form.Input
-                                            icon='user'
-                                            id="email"
-                                            className="form-control"
-                                            iconPosition='left'
-                                            label='Email Address'
-                                            placeholder='Email Address'
-                                            value={loginUser.email}
-                                            onChange={handleInputChange}
-                                        />
-                                      
+                        <div className="reactLoginForm">
+                            <Segment placeholder style={{ minHeight: '0' }}>
+                                <Grid columns={2} relaxed='very' stackable>
+                                    <Grid.Column>
+                                        <Form>
+                                            <Form.Input
+                                                icon='user'
+                                                id="email"
+                                                className="form-control"
+                                                iconPosition='left'
+                                                label='Email Address'
+                                                placeholder='Email Address'
+                                                value={loginUser.email}
+                                                onChange={handleInputChange}
+                                            />
 
-                                        <Button onClick={handleLogin} type="submit" className="login" content='Login' primary />
-                                    </Form>
-                                </Grid.Column>
 
-                                <Grid.Column verticalAlign='middle'>
-                                    <Link to="/register" className="register">
-                                        <Button content='Register' icon='signup' size='big' />
-                                    </Link>
-                                </Grid.Column>
-                            </Grid>
+                                            <Button onClick={handleLogin} type="submit" className="login" content='Login' primary />
+                                        </Form>
+                                    </Grid.Column>
 
-                            <Divider vertical>Or</Divider>
-                        </Segment>
+                                    <Grid.Column verticalAlign='middle'>
+                                        <Link to="/register" className="register">
+                                            <Button content='Register' icon='signup' size='big' />
+                                        </Link>
+                                    </Grid.Column>
+                                </Grid>
 
-                    </div>
-                </section>
+                                <Divider vertical>Or</Divider>
+                            </Segment>
 
-            </main>
-        </div>
-    )
+                        </div>
+                    </section>
+                </main>
+
+                <div>
+                    <Segment inverted vertical style={{ margin: '0', background: 'transparent' }}>
+                        <Container textAlign='center' >
+                            <Link className="bmgRepoLink" to={{ pathname: "https://github.com/bmgdevelopment/bmg-frontEndCapstone" }} target="_blank">
+                                <img className="bmgLogo repoBMG" style={{ height: '100px' }} src={bmgBlue} alt="BMG Dev Logo" />
+                            </Link>
+                        </Container>
+                    </Segment>
+                </div>
+            </div>
+        </>)
 }

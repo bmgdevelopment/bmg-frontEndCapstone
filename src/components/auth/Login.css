@@ -77,3 +77,11 @@
     background-color: transparent;
     min-height: 0;
   }
+
+  .repoBMG {
+    transition: .5s;
+  }
+
+  .repoBMG:hover {
+    transform: scale(1.5);
+  }

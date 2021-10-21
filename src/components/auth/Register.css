@@ -112,6 +112,7 @@ hr {
     border: 2px solid #63A6B1;
     border-radius: 5px;
     margin-bottom: 10px;
+    transition: .5s;
     /* filter: drop-shadow(rgb(59, 92, 87) 0px 0px 1px); */
 }
 
