@@ -42,3 +42,8 @@ Personal lessons:
 
 Screenshots: 
 ![alt text](src/components/images/screenshots/trendagoscreen1.png)
+![alt text](src/components/images/screenshots/trendagoscreen2.png)
+![alt text](src/components/images/screenshots/trendagoscreen3.png)
+![alt text](src/components/images/screenshots/trendagoscreen4.png)
+![alt text](src/components/images/screenshots/trendagoscreen5.png)
+![alt text](src/components/images/screenshots/trendagoscreen6.png)
