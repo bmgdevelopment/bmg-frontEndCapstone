@@ -20,6 +20,29 @@
     padding-top: 18%;
 }
 
+@media only screen and (max-width: 1380px) {
+ 
+.searchBarHomeDiv {
+    padding-top: 25%;
+}
+
+.aside_and_mainFeed_home {
+    display: flex;
+    margin-right: 15%;
+    margin-left: 15%;
+}
+
+}
+
+@media only screen and (max-width: 950px) {
+ 
+.searchBarHomeDiv {
+    padding-top: 34%;
+}
+
+}
+
+
 /* ASIDE PANEL */
 .asidePanelHome {
     border-radius: 10px;
