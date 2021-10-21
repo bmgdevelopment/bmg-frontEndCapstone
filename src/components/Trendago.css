@@ -156,12 +156,12 @@
 }
 
 .itemMustPackDiv {
-    /* border: 2px solid rgb(224, 112, 26);   */
     display: flex;
     padding-right: 10px;
     font-size: 12px;
     margin: 0px;
     justify-content: flex-end;
+    /* border: 2px solid rgb(224, 112, 26);   */
 }
 
 .itemMustPackDiv p {

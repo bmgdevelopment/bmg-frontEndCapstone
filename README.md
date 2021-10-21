@@ -1,3 +1,4 @@
+![alt text](src/components/images/bmgBlue.png)
 Front End Capstone | TRENDAGO by Brittany Garrett: 
 
 Why TRENDAGO:<br/>
