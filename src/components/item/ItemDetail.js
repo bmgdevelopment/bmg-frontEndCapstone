@@ -7,7 +7,7 @@ import "./Item.css"
 
 export const ItemDetail = (props) => {
     const { users, getUsers } = useContext(UserContext)
-    const { userSaves, getSavesByUserId, saveItem, deleteSave } = useContext(SaveContext)
+    const { getSavesByUserId, saveItem, deleteSave } = useContext(SaveContext)
 
     const { item } = props
 
@@ -17,13 +17,12 @@ export const ItemDetail = (props) => {
 
     useEffect(() => {
         getUsers()
-        // getSavesByUserId(currentLoggedInUserId)
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
 
     useEffect(() => {
-        getSavesByUserId(currentLoggedInUserId)
-        
-    }, [state])
+        getSavesByUserId(currentLoggedInUserId)  
+    }, [ state ])
 
     useEffect(() => {
         const thisUser = users.find(user => user.id === item.userId) || { region: {}, profileURL: {} }
@@ -40,8 +39,7 @@ export const ItemDetail = (props) => {
                     setState({}) //used to re-render component smoothly
                 } ) 
                 console.log("removedSave")
-                // getSavesByUserId(currentLoggedInUserId)
-                // return <div className="top-right"><Button icon className="suitCaseSaveBtn"><Icon circular inverted name='suitcase' onClick={handleSave} /></Button></div>
+              
             } else {
                 saveItem({
                     itemId: itemIdOfSave,
@@ -51,8 +49,6 @@ export const ItemDetail = (props) => {
                     setState({}) //used to re-render component smoothly
                 } )
                 console.log("addedSave")
-                // getSavesByUserId(currentLoggedInUserId)
-                // return <div className="top-right"><Button icon className="suitCaseSaveBtn"><Icon circular inverted color='teal' name='suitcase' onClick={handleSave} /></Button></div>
         }
     }
 
@@ -73,7 +69,7 @@ export const ItemDetail = (props) => {
                             :
                             <div className="top-right"><Button icon className="suitCaseSaveBtn"><Icon circular inverted name='suitcase' onClick={handleSave} /></Button></div>
                     }
-
+                    
                     {!itemUser.profileURL
                         ? <div class="ui active centered inline loader"></div>
                         :
