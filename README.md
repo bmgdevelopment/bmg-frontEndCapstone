@@ -1,4 +1,4 @@
-(**Please note, the data and API for this application are not within this repo therefore downloading this repo will not result in full access to the application)
+* Please note, the data and API for this application are not within this repo therefore downloading this repo will not result in full access to the application
 
 Front End Capstone | TRENDAGO by Brittany Garrett | BMG Development: 
 
