@@ -38,9 +38,6 @@ export const Home = () => {
                 </RegionProvider>
             </UserProvider>
 
-            {/* <div className="backToTopDiv">
-                <button className="backToTop">⬆</button>
-            </div> */}
         </>
     )
 }

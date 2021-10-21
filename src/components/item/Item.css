@@ -1,11 +1,11 @@
 .searchDiv {
-    /* border: 1px solid rgba(255, 17, 0, 0.55); */
     border-radius: 30px;
     margin-right: 25%;
     margin-left: 25%;
     margin-top: -10px;
     display: flex;
     justify-content: center;
+    /* border: 1px solid rgba(255, 17, 0, 0.55); */
 }
 
 .searchDiv i.icon.search {
@@ -14,23 +14,23 @@
 }
 
 .input--wide {
-    /* border: 2px solid yellow; */
-    /* border: none; */
     width: 700px;
     border: 1px solid rgba(0, 128, 128, 0.55);
     border-radius: 30px;
-    /* margin-right: 25%;
-    margin-left: 25%; */
     margin-top: -10px;
     margin-right: 20px;
     padding: 7px 25px;
     display: flex;
     justify-content: space-between;
+    /* border: 2px solid yellow; */
+    /* border: none; */
+    /* margin-right: 25%;
+    margin-left: 25%; */
 }
 
 .search {
-    /* border: 2px solid rgb(187, 0, 238); */
     color: gray;
+    /* border: 2px solid rgb(187, 0, 238); */
 }
 
 .tileInfoDiv {
@@ -41,11 +41,11 @@
 
 .tileDetail {
     color: gray;
-    /* border: 2px solid rgb(0, 79, 207); */
     display: flex;
     justify-content: space-between;
-    /* flex-direction: column; */
     align-content: center;
+    /* border: 2px solid rgb(0, 79, 207); */
+    /* flex-direction: column; */
 }
 
 .tileDetail a {
@@ -71,6 +71,7 @@
     margin-left: 10px;
     margin-top: -50px;
     z-index: 20;
+    transition: .5s;
     /* width: 120px; */
 }
 
@@ -102,12 +103,12 @@
 }
 
 .oneItemInfo {
-    /* border: 2px solid lime; */
     border: 2px solid #63a7b180;
     width: 275px;
     height: 472px;
     margin-top: 2em;
     padding-top: 10px;
+    /* border: 2px solid lime; */
 }
 
 .itemTopInfo {
@@ -119,10 +120,10 @@
 }
 
 .itemInfoBtns {
-    /* border: 2px dotted rgb(11, 187, 105); */
     display: flex;
     justify-content: flex-end;
     margin-top: -5px;
+    /* border: 2px dotted rgb(11, 187, 105); */
 }
 
 .oneItemTileIMG {
@@ -172,6 +173,7 @@
     margin-left: 10px;
     margin-top: -70px;
     z-index: 20;
+    transition: .5s;
 }
 
 .oneTileIMGicon:hover {
@@ -190,17 +192,17 @@
     font-size: 15px;
     padding-top: 10px;
     padding-bottom: 15px;
-    /* padding-left: 5px;
-    padding-right: 5px; */
     display: flex;
     justify-content: center;
+    /* padding-left: 5px;
+    padding-right: 5px; */
     /* border: 2px solid rgb(190, 30, 205); */
 }
 
 .X {
     margin-left: 5px;
-    /* position: inherit; */
     z-index: 50;
+    /* position: inherit; */
 }
 
 
@@ -212,6 +214,7 @@
     border: none;
     z-index: 100;
     margin-right: 5px;
+    transition: .5s;
 }
 
 .X button:hover {
@@ -223,9 +226,9 @@
 }
 
 .change {
+    z-index: 50;
     /* margin-left: 76%; */
     /* position: inherit; */
-    z-index: 50;
 }
 
 .change button {
@@ -243,6 +246,7 @@
     color: rgba(255, 13, 13, 0.201);
     background-color: transparent;
     border: none;
+    transition: .5s;
 }
 
 .trashBtnItem:hover {
@@ -288,9 +292,9 @@
     justify-content: space-evenly;
     align-items: center;
     align-content: center;
-    /* padding: 10px; */
     width: 200px;
     flex-wrap: wrap;
+    /* padding: 10px; */
     /* border: 2px solid blue; */
 }
 
@@ -302,6 +306,7 @@
     font-size: 13px;
     background-color: transparent;
     color: gray;
+    transition: .5s;
 }
 
 .keyWordSelect:hover {
@@ -310,14 +315,13 @@
 }
 
 /* EDIT ITEM INFO */
-
+/* -------------- */
 .formAdjustPosition {
     padding-top: 18%;
 }
 
 .itemFormContainerDiv {
     background-color: rgb(255, 255, 255);
-    /* margin-top: 50px; */
     width: 640px;
     border-radius: 20px 10px;
     margin-left: auto;
@@ -325,19 +329,20 @@
     margin-bottom: 10px;
     padding-bottom: 30px;
     filter: drop-shadow(rgb(220, 226, 225) 2px 2px 10px);
+    /* margin-top: 50px; */
 }
 
 .itemSummaryInput {
-    /* width: 400px; */
     color: gray;
     font-weight: 800;
     font-size: 23px;
     font-family: 'Cormorant Garamond', serif;
     border: 1px solid rgba(128, 128, 128, 0.331);    
-    /* border-left: 1px solid rgba(128, 128, 128, 0.331); */ 
     border-radius: 3px;
     padding-left: 10px;
     color: gray;
+    /* width: 400px; */
+    /* border-left: 1px solid rgba(128, 128, 128, 0.331); */ 
 }
 
 .itemFields {
@@ -357,8 +362,8 @@
     font-size: 15px;
     padding: 9px 2px;
     color: rgb(128, 128, 128);
-    /* border: 1px solid rgba(128, 128, 128, 0.452); */
     border-radius: 3px;
+    /* border: 1px solid rgba(128, 128, 128, 0.452); */
 }
 
 .itemInputFields {
@@ -384,9 +389,9 @@
 }
 
 .titleBox1 {
-    /* border: 2px solid orange; */
     margin-top: 10px;
     margin-left: 15px;
+    /* border: 2px solid orange; */
 }
 
 .titleBox2 {
@@ -415,35 +420,17 @@
 }
 
 .clearLinkDiv {
-    /* border: 2px solid coral; */
     display: flex;
     justify-content: flex-end;
     margin: 0 27%;
+    /* border: 2px solid coral; */
 }
 
 .clearLink {
-    /* border: 2px solid blue; */
     padding-top: 5px;
+    /* border: 2px solid blue; */
 }
 
-/* 
-.centerLoaderHome {
-    display: flex;
-    justify-content: center;
-    border: 2px solid coral;
-    width: auto;
-
-} */
-
-/* SAVE/UNSAVE BTN BACKGROUND DISABLED
-i.icon:before, i.icon:after, .suitcase:before, .suitcase::after, i.icon:hover, i.icon:active {
-    background: none;
-} */
-
-/* 
-.suitCaseSaveBtn, .suitCaseSaveBtn:active, .suitCaseSaveBtn:after, .ui.icon.button, .ui.icon.button:after, .ui.icon.button:active {
-    position: normal;
-    z-index: 10;
-    background: transparent;
-} */
-
+.ui.active.button:active, .ui.button:active, .ui.button:focus {
+    background-color: transparent;
+}

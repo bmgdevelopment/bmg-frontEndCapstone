@@ -28,7 +28,7 @@ export const Register = () => {
         dateJoined: registerDate
     })
 
-    const [conflictDialog, setConflictDialog] = useState(false)
+    // const [conflictDialog, setConflictDialog] = useState(false)
     const history = useHistory()
 
     const handleInputChange = (event) => {
@@ -72,9 +72,9 @@ export const Register = () => {
                             }
                         })
                 }
-                else {
-                    setConflictDialog(true)
-                }
+                // else {
+                //     setConflictDialog(true)
+                // }
             })
 
     }
@@ -135,7 +135,6 @@ export const Register = () => {
                                     )
                                 })}
                             </select>
-                            {/* <input type="regionId" name="regionId" id="regionId" className="form-control-registration regionSelect" placeholder=" Select region number (1-7)" required value={registerUser.regionId} onChange={handleInputChange} /> */}
                         </fieldset>
                     </div>
 
@@ -151,17 +150,3 @@ export const Register = () => {
     )
 }
 
-
-/*
-<select placeholder="Region select"" value={registerUser.regionId}  className="form-control-registration regionSelect"  required onChange={handleInputChange}>
-<option value="0">Select a home region</option>
-{
-    regions.map(region => {
-        return (
-                <option value={region.id} key={region.id}>{region.name}</option>
-                )
-            })
-
-        }
-        </select>
-*/

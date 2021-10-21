@@ -3,7 +3,6 @@ import { Link } from "react-router-dom"
 import { UserContext } from "./UserProvider"
 import "./User.css"
 
-
 export const UserList = () => {
     const { users, getUsers } = useContext(UserContext)
     const currentUserId = parseInt(sessionStorage.getItem("trendago_user"))

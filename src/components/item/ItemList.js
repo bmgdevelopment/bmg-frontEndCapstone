@@ -10,8 +10,7 @@ function useQuery() {
   } 
 
 export const ItemList = () => {
-    // const { users, getUsers } = useContext(UserContext)
-    const { items, getItems, searchTerms, setSearchTerms } = useContext(ItemContext)
+    const { items, getItems, searchTerms, setSearchTerms, setPlaceHolder } = useContext(ItemContext)
     const { userSaves, getSavesByUserId } = useContext(SaveContext)
     const currentLoggedInUserId = parseInt(sessionStorage.getItem("trendago_user"))
     const [filteredItems, setFiltered] = useState([])
@@ -22,26 +21,26 @@ export const ItemList = () => {
     useEffect(() => {
         getItems()
         getSavesByUserId(currentLoggedInUserId)
-        // console.log(userSaves)
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
 
     useEffect(() => {
         if (searchTerms !== "" ) {
-            const subset = items.filter(item => item.descriptiveWords.includes(searchTerms))
-            // const subset = items.filter(item => item.descriptiveWords.toLowerCase().includes(searchTerms.toLowerCase())  )
+            const subset = items.filter(item => item.descriptiveWords.includes(searchTerms.toLowerCase()))
             setFiltered(subset)
         } else if (keywordSearchTerm) {
-            const subset = items.filter(item => item.descriptiveWords.includes(keywordSearchTerm))
+            const subset = items.filter(item => item.descriptiveWords.includes(keywordSearchTerm.toLowerCase()))
             setFiltered(subset)
-            setSearchTerms(keywordSearchTerm) // 🛑 need to review
+            setSearchTerms(keywordSearchTerm)
+            setPlaceHolder(keywordSearchTerm) 
         } else {
             setFiltered(items)
         }
-    }, [searchTerms, items, keywordSearchTerm, setSearchTerms])
-
+    }, [searchTerms, items, keywordSearchTerm, setSearchTerms, setPlaceHolder])
+    
     // LOADER
-    if (!userSaves.length) return <div className="centerLoaderHome organizeTilesDiv"><div className="ui active centered inline loader"></div></div>
-
+       if (!items.length) return <div className="centerLoaderHome organizeTilesDiv"><div className="ui active centered inline loader"></div></div>
+   
     return (
         <>
             <p style={{color: 'gray', paddingRight: "5em", display: "flex", justifyContent: "flex-end", fontSize: "17px"}}>Viewing {filteredItems.length} items</p>
@@ -58,3 +57,4 @@ export const ItemList = () => {
         </>
     )
 } // end of ItemList
+

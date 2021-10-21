@@ -2,7 +2,6 @@ import React, { useEffect, useContext, useState } from "react"
 import { ItemContext } from "../item/ItemProvider"
 import { UserContext } from "../user/UserProvider"
 import { SaveContext } from "../save/SaveProvider"
-import { Button, Icon } from 'semantic-ui-react'
 import { Link } from "react-router-dom"
 import "../Trendago.css"
 import "../user/User.css"
@@ -16,8 +15,6 @@ export const ProfileDetail = () => {
     const [currentUser, setCurrentUser] = useState({ region: {}, profileURL: {}, dateJoined: {} })
     const [allUserItems, setAllUserItems] = useState([])
     const currentUserId = parseInt(sessionStorage.getItem("trendago_user"))
-
-    // debugger
 
     useEffect(() => {
         getUsers()
@@ -40,16 +37,6 @@ export const ProfileDetail = () => {
         const userSaves = saves.filter(save => save.userId === currentUserId);
         setAllUserSaves(userSaves)
     }, [currentUserId, saves, allUserSaves])
-
-    // const noSaveBtn = (item) => {
-    //     if (item.userId === currentUserId) {
-    //         return <></>
-    //     }
-    // }
-
-    // const sliceDate = (date) => {
-    //     return date.slice(-4)
-    // }
 
     return (
 
@@ -93,7 +80,6 @@ export const ProfileDetail = () => {
                                             <div className="container">
                                                 <Link to={`/items/detail/${item.id}`}>
                                                     <img key={`userItemSave--${item.id}`} className="itemTile" alt="item" src={item.itemImage} />
-                                                    {/* {item ? noSaveBtn(item) : <div className="top-right"><Button icon><Icon circular inverted name='suitcase' /></Button></div>} */}
                                                 </Link>
                                             </div>)
                                     })
@@ -119,9 +105,6 @@ export const ProfileDetail = () => {
                                                     {/* <div className="top-right"><Button icon><Icon circular inverted color='teal' name='suitcase' /></Button></div> */}
                                                 </Link>
                                             </div>
-
-
-
                                         </>
                                     )
                                 })

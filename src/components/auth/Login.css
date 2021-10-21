@@ -35,10 +35,6 @@
     /* padding-bottom: 32%; */
     /* height: auto; */
   }
-  
-  /* h1 {
-  color:cornflowerblue;
-} */
 
 .loginTitle, h1 {
     font-family: 'Cormorant Garamond', serif;
@@ -80,4 +76,12 @@
     background: transparent;
     background-color: transparent;
     min-height: 0;
+  }
+
+  .repoBMG {
+    transition: .5s;
+  }
+
+  .repoBMG:hover {
+    transform: scale(1.5);
   }

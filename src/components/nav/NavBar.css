@@ -12,7 +12,6 @@ nav * {
     align-content: center;
     align-items: center;
     background-color: white;
-    /* border: 8px solid yellow; */
     border-bottom: .5px solid rgba(128, 128, 128, 0.26);
     position: fixed;
     margin-bottom: 3em;
@@ -21,10 +20,10 @@ nav * {
     z-index: 100;
     right: 0px;
     left: 0px;
+    /* border: 8px solid yellow; */
 }
 
 .logoDiv {
-    /* border: 2px solid rgb(165, 18, 194); */
     display: flex;
     justify-content: center;
     align-content: center;
@@ -32,6 +31,7 @@ nav * {
     min-width: 650px;
     height: auto;
     margin-bottom: .5em;
+    /* border: 2px solid rgb(165, 18, 194); */
 }
 
 .trendagoLogo {
@@ -56,17 +56,18 @@ nav * {
     display: flex;
     align-content: space-between;
     justify-content: space-evenly;
-    /* border: 2px solid skyblue; */
     width: 60em;
     min-width: 850px;
     padding: 0 120px;
+    /* border: 2px solid skyblue; */
 }
 
 .aNavLink {
-    /* margin-left: em; */
     font-family: 'Cormorant Garamond', serif;
     font-size: 22px;
     font-weight: 600;
+    transition: .5s;
+    /* margin-left: em; */
 }
 
 .aNavLink:hover {
@@ -82,18 +83,18 @@ nav * {
 }
 
 .ui.fluid.input  {
-    /* border: 2px solid orange; */
     margin-right: 20%;
     margin-left: 20%;
     margin-bottom: 13px;
+    /* border: 2px solid orange; */
 }
 
 .navSection1 {
-    /* border: 2px solid orange; */
     display: flex;
     justify-content: flex-end;
     align-items: center;
     align-content: center;
+    /* border: 2px solid orange; */
     /* position: relative;
     left: 20px; */
 }
@@ -109,6 +110,7 @@ nav * {
     margin-left: 10px;
     margin-top: 4px;
     z-index: 20;
+    transition: .5s;
 }
 
 .tinyProfileLink:hover {
@@ -136,8 +138,8 @@ nav * {
 .addItemFormLink:hover button {
   color: white;
     box-shadow: 0px 0px 0px 2px white;
-    /* border: 1px solid white; */
     background-color: #63A6B1;
+    /* border: 1px solid white; */
 } 
 
 .bmgLogo {

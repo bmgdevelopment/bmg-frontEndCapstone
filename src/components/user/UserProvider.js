@@ -24,15 +24,7 @@ export const UserProvider = (props) => {
         })
         .then(getUsers)
     }
-/*
-MAY NOT DELETE USERS
-    const deleteUser = (userId) => {
-        return fetch((`${apiURL}/users/${userId}`), {
-            method: "DELETE"
-        })
-        .then(getUsers)
-    }
-*/
+    
     return (
         <UserContext.Provider value={
             { users, getUsers, updateUser }

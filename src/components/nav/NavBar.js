@@ -3,18 +3,6 @@ import { Link, useHistory } from "react-router-dom"
 import plainLogoClear from "../images/plainLogoClear.png"
 import { UserContext } from "../user/UserProvider"
 import { Icon, Button, Popup } from 'semantic-ui-react'
-// import {
-//     Container,
-//     Divider,
-//     Dropdown,
-//     Grid,
-//     Header,
-//     Image,
-//     List,
-//     Menu,
-//     Segment,
-// } from 'semantic-ui-react'
-
 import "./NavBar.css"
 
 export const NavBar = () => {
@@ -26,6 +14,7 @@ export const NavBar = () => {
 
     useEffect(() => {
         getUsers()
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
 
     useEffect(() => {
@@ -37,20 +26,6 @@ export const NavBar = () => {
         history.push("/login")
         sessionStorage.removeItem("trendago_user")
     }
-    /*
-    
-    const Logout = () => {
-        sessionStorage.removeItem("trendago_user")
-        history.push("/login")
-    }
-    
-    //in UL
-    
-     <li className="aNavLink">
-        <Link className="" onClick={Logout}>Logout</Link>
-    </li>
-    
-    */
 
     return (
         <>
@@ -110,14 +85,3 @@ export const NavBar = () => {
         </>
     )
 }
-/*
-
-import { Button, Popup } from 'semantic-ui-react'
-    {<Popup
-        trigger={<img key="smallIconProfilePic" className="tinyProfileLink" alt="tinyProfileLink" src={trendagoUser.profileURL} />}
-        content="My Trends"
-        basic
-    />}
-
-*/
-
