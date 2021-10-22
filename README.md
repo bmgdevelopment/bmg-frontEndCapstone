@@ -1,6 +1,8 @@
 ** Please note, the data and API for this application are not within this repo therefore downloading this repo will not result in full access to the application
 
 ### Front End Capstone | TRENDAGO by Brittany Garrett | BMG Development: 
+Email - brittanymgarrett@gmail.com
+LinkedIn - http://www.linkedin.com/in/brittanymgarrett
 
 ### Why TRENDAGO:<br/>
 This Reat.JS application was built in order to practice using the newest knowledge learned during the first portion of my instruction with the Nashville Software School (NSS). While building this application, I wanted to have fun but also take on challenges that I knew would help me with my future projects and future software development positions. I wanted to make sure it was very user-friendly but also simple & effective.
