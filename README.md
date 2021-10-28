@@ -1,7 +1,7 @@
 ** Please note, the data and API for this application are not within this repo therefore downloading this repo will not result in full access to the application
 
 ### Front End Capstone | TRENDAGO by Brittany Garrett | BMG Development: 
-Email - brittanymgarrett@gmail.com
+Email - brittanymgarrett@gmail.com <br/>
 LinkedIn - http://www.linkedin.com/in/brittanymgarrett
 
 ### Why TRENDAGO:<br/>
