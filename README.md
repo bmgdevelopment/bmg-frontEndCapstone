@@ -13,7 +13,7 @@ This Reat.JS application was built in order to practice using the newest knowled
 - Strengthen my CSS styling for a fluid user experience while also getting better acquainted with external pre-packaged npm components
 - Properly organize, plan, wireframe and  build an operating React app from a thorough idea to a usable MVP 
 
-### Prolems & Solution: <br/>
+### Problem & Solution: <br/>
 Packing for unique travel destinations can be overwhelming especially if it's a first time experience traveling to a new region. With TRENDAGO, you can search for current trends by keywords that match the user to pre-assembled fashion suggestions. Keywords include region names, climate terms, and/or clothing or accessory types. Users can also upload their own suggested trends according to their region and/or regions they have visited.
 
 ### Project features:
@@ -29,7 +29,7 @@ Features within my application include:
 - Link to github repo of capstone within footer
 
 ### Tech stack:
-- React.JS
+- React
 - JS/JSX
 - HTML/CSS
 - Semantics UI
