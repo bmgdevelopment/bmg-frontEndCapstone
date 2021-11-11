@@ -8,9 +8,7 @@ import "./Item.css"
 export const ItemDetail = (props) => {
     const { users, getUsers } = useContext(UserContext)
     const { getSavesByUserId, saveItem, deleteSave } = useContext(SaveContext)
-
     const { item } = props
-
     const [itemUser, setItemUser] = useState({ region: {}, profileURL: {} })
     const [state, setState] = useState({})
     const currentLoggedInUserId = parseInt(sessionStorage.getItem("trendago_user"))
