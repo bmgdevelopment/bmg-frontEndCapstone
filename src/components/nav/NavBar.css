@@ -13,10 +13,10 @@ nav * {
     align-items: center;
     background-color: white;
     border-bottom: .5px solid rgba(128, 128, 128, 0.26);
-    position: fixed;
     margin-bottom: 3em;
     padding-left: 7em;
     padding-right: 7em;
+    position: fixed;
     z-index: 100;
     right: 0px;
     left: 0px;
